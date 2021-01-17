@@ -26,7 +26,8 @@ public class ControladorPanelGeneros {
 	public void accionadoBottonVolverPanelGeneros() {
 		this.controlador.navegarPanelBienvenida();
 	}
+	
 	public void accionadoBottonHurrengoaPanelGeneros() {
-		this.controlador.navegarPanelPelikulas();
+		this.controlador.navegarPanelAutoak();
 	}
 }

@@ -1,7 +1,6 @@
 package Modelo;
 
 public class metodos {
-
 	public static String[] irakurri() {
 		autoa a1 = new autoa("7894EFE","Audi","Q5","marroia");
 		autoa a2 = new autoa("2849FSR","Audi","A3","beltza");

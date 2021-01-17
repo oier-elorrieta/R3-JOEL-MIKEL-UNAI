@@ -1,9 +1,7 @@
 package Modelo;
 
 public class Modelo {
-	
-	public String[] bueltatuAutoak() {
+	public String[] autoakJaso() {
 		return metodos.irakurri();
 	}
-
 }

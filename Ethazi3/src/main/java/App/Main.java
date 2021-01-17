@@ -1,5 +1,6 @@
 package App;
-import Controlador.Controlador; 
+
+import Controlador.Controlador;
 import Modelo.Modelo;
 import Vista.Vista;
 
@@ -15,7 +16,5 @@ public class Main {
 		vista = new Vista();
                 
 		controlador = new Controlador(modelo, vista);
-	
 	}
-
 }
