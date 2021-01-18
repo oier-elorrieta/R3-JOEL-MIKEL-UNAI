@@ -7,16 +7,16 @@ public class Controlador {
 
 	private Modelo modelo;
 	private Vista vista;
-	private ControladorPanelBienvenida controladorPanelBienvenida;
-	private ControladorPanelGeneros controladorPanelGeneros;
-	private ControladorPanelAutoak controladorPanelAutoak;
+	private ControladorPanelTicketResumen controladorPanelBienvenida;
+	private ControladorPanelTicket controladorPanelGeneros;
+	private ControladorPanelMenu controladorPanelAutoak;
 	
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
 		this.vista = vista;
-		this.controladorPanelBienvenida = new ControladorPanelBienvenida(this.modelo, this.vista, this);
-		this.controladorPanelGeneros = new ControladorPanelGeneros(this.modelo, this.vista, this);
-		this.controladorPanelAutoak = new ControladorPanelAutoak(this.modelo, this.vista, this);
+		this.controladorPanelBienvenida = new ControladorPanelTicketResumen(this.modelo, this.vista, this);
+		this.controladorPanelGeneros = new ControladorPanelTicket(this.modelo, this.vista, this);
+		this.controladorPanelAutoak = new ControladorPanelMenu(this.modelo, this.vista, this);
 		this.navegarPanelBienvenida();
 	}
 	

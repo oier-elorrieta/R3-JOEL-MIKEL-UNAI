@@ -6,17 +6,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import Controlador.ControladorPanelGeneros;
+import Controlador.ControladorPanelTicket;
 
 @SuppressWarnings("serial")
-public class PanelGeneros extends JPanel {
+public class PanelTicket extends JPanel {
 
 	private JButton btnVolver;
 	private JLabel lblGeneros;
-	private ControladorPanelGeneros controladorPanelGeneros;
+	private ControladorPanelTicket controladorPanelGeneros;
 	private JButton btnHurrengoa;
 	
-	public PanelGeneros(ControladorPanelGeneros controladorPanelGeneros)
+	public PanelTicket(ControladorPanelTicket controladorPanelGeneros)
 	{
 		this.controladorPanelGeneros = controladorPanelGeneros;
 		
@@ -42,7 +42,7 @@ public class PanelGeneros extends JPanel {
 		this.btnHurrengoa.addActionListener(listenerBotonHurrengoa(controladorPanelGeneros));
 	}
 	
-	private ActionListener listenerBotonVolver(ControladorPanelGeneros controladorPanelGeneros) {
+	private ActionListener listenerBotonVolver(ControladorPanelTicket controladorPanelGeneros) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Volver");
@@ -50,7 +50,7 @@ public class PanelGeneros extends JPanel {
 			}
 		};
 	}
-	private ActionListener listenerBotonHurrengoa(ControladorPanelGeneros controladorPanelGeneros) {
+	private ActionListener listenerBotonHurrengoa(ControladorPanelTicket controladorPanelGeneros) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Hurrengoa");
