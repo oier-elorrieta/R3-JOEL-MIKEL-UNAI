@@ -23,7 +23,7 @@ public class ControladorPanelMenu {
 	}
 
 	public void accionadoBottonMostrarPanelGeneros() {
-		this.controlador.navegarPanelGeneros();
+		//this.controlador.navegarPanelGeneros();
 	}
 	
 

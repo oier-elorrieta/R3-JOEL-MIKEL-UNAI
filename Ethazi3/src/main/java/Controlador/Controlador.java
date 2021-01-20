@@ -7,31 +7,46 @@ public class Controlador {
 
 	private Modelo modelo;
 	private Vista vista;
-	private ControladorPanelTicketResumen controladorPanelBienvenida;
-	private ControladorPanelTicket controladorPanelGeneros;
-	private ControladorPanelMenu controladorPanelAutoak;
-	
+	private ControladorPanelFaktura controladorPanelFaktura;
+	private ControladorPanelFakturaLaburpena controladorPanelFakturaLaburpena;
+	private ControladorPanelTicket controladorPanelTicket;
+	private ControladorPanelTicketLaburpena controladorPanelTicketLaburpena;
+	private ControladorPanelPedidos controladorPanelPedidos;
+	private ControladorPanelPedidosLaburpena controladorPanelPedidosLaburpena;
+
+	 
+
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
 		this.vista = vista;
-		this.controladorPanelBienvenida = new ControladorPanelTicketResumen(this.modelo, this.vista, this);
-		this.controladorPanelGeneros = new ControladorPanelTicket(this.modelo, this.vista, this);
-		this.controladorPanelAutoak = new ControladorPanelMenu(this.modelo, this.vista, this);
-		this.navegarPanelBienvenida();
+		this.controladorPanelFaktura = new ControladorPanelFaktura(this.modelo, this.vista, this);
+		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
+		this.controladorPanelTicketLaburpena =  new ControladorPanelTicketLaburpena(this.modelo, this.vista, this);
+		this.controladorPanelFakturaLaburpena = new ControladorPanelFakturaLaburpena(this.modelo, this.vista, this);
+		this.controladorPanelPedidos = new ControladorPanelPedidos(this.modelo, this.vista, this);
+		this.controladorPanelPedidosLaburpena = new ControladorPanelPedidosLaburpena(this.modelo, this.vista, this);
+	}
+
+	public void navegarPanelFaktura() { 
+		this.controladorPanelFaktura.mostrarPanelFaktura();
 	}
 	
-	public void navegarPanelBienvenida() {
-		System.out.println("Navegar panel Bienvenida");
-		this.controladorPanelBienvenida.mostrarPanelBienvenida();
+	public void navegarPanelFakturaLaburpena() {
+		this.controladorPanelFakturaLaburpena.mostrarPanelFakturaLaburpena();
 	}
-	
-	public void navegarPanelGeneros() {
-		System.out.println("Navegar panel Generos");
-		this.controladorPanelGeneros.mostrarPanelGeneros();
+
+	public void navegarPanelTicket() { 
+		this.controladorPanelTicket.mostrarPanelTicket();
 	}
-	
-	public void navegarPanelAutoak() {
-		System.out.println("Navegar panel Autoak");
-		this.controladorPanelAutoak.mostrarPanelAutoak();
+	public void navegarPanelTicketLaburpena() { 
+		this.controladorPanelTicketLaburpena.mostrarPanelTicketLaburpena();
 	}
+	public void navegarPanelPedidos() {
+		
+	}
+	public void navegarPanelPedidosLaburpena() {
+		
+	}
+
+	 
 }

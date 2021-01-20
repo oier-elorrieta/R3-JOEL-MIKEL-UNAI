@@ -5,16 +5,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import Controlador.ControladorPanelTicketResumen;
+import Controlador.ControladorPanelTicketLaburpena;
 
 @SuppressWarnings("serial")
-public class PanelTicketResumen extends JPanel{
+public class PanelTicketLaburpena extends JPanel{
 
 	private JButton btnGeneros;
 	private JLabel lblBienvenida;
-	private ControladorPanelTicketResumen controladorPanelBienvenida;
+	private ControladorPanelTicketLaburpena controladorPanelBienvenida;
 	
-	public PanelTicketResumen(ControladorPanelTicketResumen controladorPanelBienvenida) {
+	public PanelTicketLaburpena(ControladorPanelTicketLaburpena controladorPanelBienvenida) {
 		this.controladorPanelBienvenida = controladorPanelBienvenida;
 		
 		setLayout(null);
@@ -34,11 +34,11 @@ public class PanelTicketResumen extends JPanel{
 		this.btnGeneros.addActionListener(listenerBotonGeneros(this.controladorPanelBienvenida));
 	}
 	
-	private ActionListener listenerBotonGeneros(ControladorPanelTicketResumen controladorPanelBienvenida) {
+	private ActionListener listenerBotonGeneros(ControladorPanelTicketLaburpena controladorPanelBienvenida) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Ejecutando evento Boton Generos");
-				controladorPanelBienvenida.accionadoBottonMostrarPanelGeneros();
+				//controladorPanelBienvenida.accionadoBottonMostrarPanelGeneros();
 			}
 		};
 	}

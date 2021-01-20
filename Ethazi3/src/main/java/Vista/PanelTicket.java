@@ -11,50 +11,31 @@ import Controlador.ControladorPanelTicket;
 @SuppressWarnings("serial")
 public class PanelTicket extends JPanel {
 
-	private JButton btnVolver;
-	private JLabel lblGeneros;
-	private ControladorPanelTicket controladorPanelGeneros;
-	private JButton btnHurrengoa;
+	private JButton btnLaburpenera; 
+	private ControladorPanelTicket controladorPanelTicket; 
 	
-	public PanelTicket(ControladorPanelTicket controladorPanelGeneros)
+	public PanelTicket(ControladorPanelTicket controladorPanelTicket)
 	{
-		this.controladorPanelGeneros = controladorPanelGeneros;
+		this.controladorPanelTicket = controladorPanelTicket;
 		
 		setLayout(null);
 		
-		lblGeneros = new JLabel("Panel Generos");
-		lblGeneros.setBounds(58, 35, 115, 14);
-		add(lblGeneros);
+		btnLaburpenera = new JButton("Laburpenera Ticket");
+		btnLaburpenera.setBounds(58, 62, 89, 23);
+		add(btnLaburpenera);
 		
-		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(58, 62, 89, 23);
-		add(btnVolver);
-		
-		btnHurrengoa = new JButton("Hurrengoa");
-		btnHurrengoa.setBounds(70, 82, 89, 23);
-		add(btnHurrengoa);
 		
 		initializeEvents();
 	}
 	
 	private void initializeEvents() {
-		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelGeneros));
-		this.btnHurrengoa.addActionListener(listenerBotonHurrengoa(controladorPanelGeneros));
+		this.btnLaburpenera.addActionListener(listenerBotonVolver(this.controladorPanelTicket)); 
 	}
 	
-	private ActionListener listenerBotonVolver(ControladorPanelTicket controladorPanelGeneros) {
+	private ActionListener listenerBotonVolver(ControladorPanelTicket controladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Ejecutando evento Boton Volver");
-				controladorPanelGeneros.accionadoBottonVolverPanelGeneros();
-			}
-		};
-	}
-	private ActionListener listenerBotonHurrengoa(ControladorPanelTicket controladorPanelGeneros) {
-		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Ejecutando evento Boton Hurrengoa");
-				controladorPanelGeneros.accionadoBottonHurrengoaPanelGeneros();
+				controladorPanelTicket.accionadoBottonLaburpenera(); 
 			}
 		};
 	}

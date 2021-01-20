@@ -10,7 +10,7 @@ public class ControladorPanelTicket {
 	private Modelo modelo;
 	private Vista vista;
 	private Controlador controlador;
-	private PanelTicket panelGeneros;
+	private PanelTicket panelTicket;
 	
 	public ControladorPanelTicket(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
@@ -18,16 +18,12 @@ public class ControladorPanelTicket {
 		this.controlador = controlador;	
 	}
 	
-	public void mostrarPanelGeneros() {
-		this.panelGeneros = new PanelTicket(this);
-		this.vista.mostrarPanel(this.panelGeneros);
+	public void mostrarPanelTicket() {
+		this.panelTicket = new PanelTicket(this);
+		this.vista.mostrarPanel(panelTicket);
 	}
 	
-	public void accionadoBottonVolverPanelGeneros() {
-		this.controlador.navegarPanelBienvenida();
-	}
-	
-	public void accionadoBottonHurrengoaPanelGeneros() {
-		this.controlador.navegarPanelAutoak();
+	public void accionadoBottonLaburpenera() {
+		this.controlador.navegarPanelTicketLaburpena();
 	}
 }
