@@ -12,18 +12,14 @@ import java.awt.Font;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JSpinner;
-
 import Controlador.ControladorPanelFaktura; 
 
 @SuppressWarnings("serial")
 public class PanelFaktura extends JPanel {
 
-
-	private JButton btnLaburpena;
 	private ControladorPanelFaktura controladorPanelFaktura;
+	
 	Calendar fecha = new GregorianCalendar();
 
 	int año = fecha.get(Calendar.YEAR);
@@ -38,14 +34,14 @@ public class PanelFaktura extends JPanel {
 	private JLabel LB_TransferentziaZenbakia;
 	private JLabel LB_Totala;
 	private JTextField textField_2;
+	private JButton btnAtzera;
+	private JButton btnAurrera;
 
 	public PanelFaktura(ControladorPanelFaktura controladorPanelFaktura)
 	{
 		this.controladorPanelFaktura = controladorPanelFaktura;
 
-		setLayout(null);
-
-		setBackground(new Color(211, 211, 211));
+		setBackground(Color.pink);
 		setLayout(null);
 
 		TF_Titulua = new JTextField();
@@ -58,13 +54,13 @@ public class PanelFaktura extends JPanel {
 		add(TF_Titulua);
 		TF_Titulua.setColumns(10);
 
-		JButton btnNewButton = new JButton("\u2716\uFE0F Atzera");
-		btnNewButton.setBounds(353, 266, 92, 23);
-		add(btnNewButton);
+		btnAtzera = new JButton("\u2716\uFE0F Atzera");
+		btnAtzera.setBounds(353, 266, 92, 23);
+		add(btnAtzera);
 
-		JButton btnNewButton_1 = new JButton("\u2714\uFE0F Aurrera");
-		btnNewButton_1.setBounds(254, 266, 92, 23);
-		add(btnNewButton_1);
+		btnAurrera = new JButton("\u2714\uFE0F Aurrera");
+		btnAurrera.setBounds(254, 266, 92, 23);
+		add(btnAurrera);
 
 		TF_Fecha = new JTextField(dia + "/" + (mes+1) + "/" + año);
 		TF_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
@@ -114,13 +110,21 @@ public class PanelFaktura extends JPanel {
 	}
 
 	private void initializeEvents() {
-		this.btnLaburpena.addActionListener(listenerBotonVolver(this.controladorPanelFaktura)); 
+		this.btnAurrera.addActionListener(listenerBotonLaburpenera(this.controladorPanelFaktura)); 
+		this.btnAtzera.addActionListener(listenerBotonAtzera(this.controladorPanelFaktura));
 	}
 
-	private ActionListener listenerBotonVolver(ControladorPanelFaktura controladorPanelFaktura) {
+	private ActionListener listenerBotonLaburpenera(ControladorPanelFaktura controladorPanelFaktura) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.accionadoBottonLaburpenera();
+			}
+		};
+	}
+	private ActionListener listenerBotonAtzera(ControladorPanelFaktura controladorPanelFaktura) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelFaktura.accionadoBottonAtzera();
 			}
 		};
 	}

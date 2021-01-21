@@ -12,36 +12,57 @@ import Controlador.ControladorPanelMenu;
 @SuppressWarnings("serial")
 public class PanelMenu extends JPanel{
 
-	private JButton btnVolver;
-	private JButton Matrikula;
-	private ControladorPanelMenu controladorPanelAutoak;
+	private JButton btnfaktura;
+	private JButton btnticket;
+	private JButton btnpedidos;
+	//private JButton ;
+	private ControladorPanelMenu controladorPanelMenu;
 
-	public PanelMenu(ControladorPanelMenu controladorPanelAutoak)
+	public PanelMenu(ControladorPanelMenu controladorPanelMenu)
 	{
-		this.controladorPanelAutoak = controladorPanelAutoak;
+		this.controladorPanelMenu = controladorPanelMenu;
 
 		setLayout(null);
 
-		Matrikula = new JButton("Matrikula");
-		Matrikula.setBounds(58, 70, 115, 25);
-		add(Matrikula);
+		btnfaktura = new JButton("Faktura");
+		btnfaktura.setBounds(58, 70, 115, 25);
+		add(btnfaktura);
 
-		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(58, 30, 89, 23);
-		add(btnVolver);
+		btnticket = new JButton("Ticket");
+		btnticket.setBounds(58, 30, 89, 23);
+		add(btnticket);
+		
+		btnpedidos = new JButton("Pedidos");
+		btnpedidos.setBounds(58, 140, 150, 25);
+		add(btnpedidos);
 
 		initializeEvents();
 	}
 
 	private void initializeEvents() {
-		this.btnVolver.addActionListener(listenerBotonVolver(this.controladorPanelAutoak)); 
+		this.btnfaktura.addActionListener(listenerBotonFaktura(this.controladorPanelMenu)); 
+		this.btnpedidos.addActionListener(listenerBotonPedidos(this.controladorPanelMenu));
+		this.btnticket.addActionListener(listenerBotonTicket(this.controladorPanelMenu));
 	}
 
-	private ActionListener listenerBotonVolver(ControladorPanelMenu controladorPanelAutoak) {
+	private ActionListener listenerBotonFaktura(ControladorPanelMenu controladorPanelMenu) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Ejecutando evento Boton Volver");
-				controladorPanelAutoak.accionadoBottonMostrarPanelGeneros();
+				controladorPanelMenu.accionadoBottonMostrarPanelFaktura();
+			}
+		};
+	}
+	private ActionListener listenerBotonPedidos(ControladorPanelMenu controladorPanelMenu) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelMenu.accionadoBottonMostrarPanelPedidos();
+			}
+		};
+	}
+	private ActionListener listenerBotonTicket(ControladorPanelMenu controladorPanelMenu) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelMenu.accionadoBottonMostrarPanelTicket();
 			}
 		};
 	}

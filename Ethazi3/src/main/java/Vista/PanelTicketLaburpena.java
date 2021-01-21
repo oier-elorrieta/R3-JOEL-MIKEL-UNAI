@@ -10,8 +10,7 @@ import Controlador.ControladorPanelTicketLaburpena;
 @SuppressWarnings("serial")
 public class PanelTicketLaburpena extends JPanel{
 
-	private JButton btnGeneros;
-	private JLabel lblBienvenida;
+	private JLabel lbllaburpen;
 	private ControladorPanelTicketLaburpena controladorPanelBienvenida;
 	
 	public PanelTicketLaburpena(ControladorPanelTicketLaburpena controladorPanelBienvenida) {
@@ -19,18 +18,16 @@ public class PanelTicketLaburpena extends JPanel{
 		
 		setLayout(null);
 		
-		lblBienvenida = new JLabel("Panel Bienvenida");
-		lblBienvenida.setBounds(58, 35, 115, 14);
-		add(lblBienvenida);
+		lbllaburpen = new JLabel("Ticket laburpena");
+		lbllaburpen.setBounds(58, 35, 115, 14);
+		add(lbllaburpen);
 		
-		btnGeneros = new JButton("Generos");
-		btnGeneros.setBounds(58, 116, 120, 23);
-		add(btnGeneros);
 		
-		initializeEvents();
+		
+	//	initializeEvents();
 	}
 	
-	private void initializeEvents() {
+/*	private void initializeEvents() {
 		this.btnGeneros.addActionListener(listenerBotonGeneros(this.controladorPanelBienvenida));
 	}
 	
@@ -41,5 +38,5 @@ public class PanelTicketLaburpena extends JPanel{
 				//controladorPanelBienvenida.accionadoBottonMostrarPanelGeneros();
 			}
 		};
-	}
+	}*/
 }

@@ -25,4 +25,7 @@ public class ControladorPanelFaktura {
 	public void accionadoBottonLaburpenera() {
 		this.controlador.navegarPanelFakturaLaburpena();
 	}
+	public void accionadoBottonAtzera() {
+		this.controlador.navegarPanelMenu();
+	}
 }

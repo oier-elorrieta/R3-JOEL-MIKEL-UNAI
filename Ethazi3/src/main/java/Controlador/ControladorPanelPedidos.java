@@ -24,4 +24,7 @@ public class ControladorPanelPedidos {
 	public void accionadoBottonLaburpenera() {
 		this.controlador.navegarPanelPedidosLaburpena();
 	}
+	public void accionadoBottonAtzera() {
+		this.controlador.navegarPanelMenu();
+	}
 }

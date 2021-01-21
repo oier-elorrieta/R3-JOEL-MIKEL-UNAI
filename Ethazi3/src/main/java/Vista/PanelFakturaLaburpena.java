@@ -1,9 +1,5 @@
 package Vista;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -11,26 +7,23 @@ import Controlador.ControladorPanelFakturaLaburpena;
 
 public class PanelFakturaLaburpena extends JPanel{
 
-	private JButton btnGeneros;
-	private JLabel lblBienvenida;
+	private JLabel lbllaburpen; 
 	private ControladorPanelFakturaLaburpena controladorPanelFakturaLaburpena;
 
-	public PanelFakturaLaburpena(ControladorPanelFakturaLaburpena controladorPanelBienvenida) {
+	public PanelFakturaLaburpena(ControladorPanelFakturaLaburpena controladorPanelFakturaLaburpena) {
 		this.controladorPanelFakturaLaburpena = controladorPanelFakturaLaburpena;
 
 		setLayout(null);
 
-		lblBienvenida = new JLabel("Panel Bienvenida");
-		lblBienvenida.setBounds(58, 35, 115, 14);
-		add(lblBienvenida);
+		lbllaburpen = new JLabel("Laburpen Faktura");
+		lbllaburpen.setBounds(58, 35, 115, 14);
+		add(lbllaburpen);
 
-		btnGeneros = new JButton("Generos");
-		btnGeneros.setBounds(58, 116, 120, 23);
-		add(btnGeneros);
+		
 
-		initializeEvents();
+	//	initializeEvents();
 	}
-
+/*
 	private void initializeEvents() {
 		this.btnGeneros.addActionListener(listenerBotonGeneros(this.controladorPanelFakturaLaburpena));
 	}
@@ -42,5 +35,5 @@ public class PanelFakturaLaburpena extends JPanel{
 				//controladorPanelBienvenida.accionadoBottonMostrarPanelGeneros();
 			}
 		};
-	}
+	}*/
 }

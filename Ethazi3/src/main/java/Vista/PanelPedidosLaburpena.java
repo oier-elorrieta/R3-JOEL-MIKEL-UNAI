@@ -4,13 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controlador.ControladorPanelPedidosLaburpena;
 
 public class PanelPedidosLaburpena extends JPanel {
 
-	private JButton btnLaburpena;
+	private JLabel Laburpena;
 	private ControladorPanelPedidosLaburpena controladorPanelPedidosLaburpena;
 
 	public PanelPedidosLaburpena(ControladorPanelPedidosLaburpena controladorPanelPedidosLaburpena)
@@ -19,13 +20,13 @@ public class PanelPedidosLaburpena extends JPanel {
 
 		setLayout(null);
 
-		btnLaburpena = new JButton("Laburpena PedidosLaburpena");
-		btnLaburpena.setBounds(58, 30, 89, 23);
-		add(btnLaburpena);
+		Laburpena = new JLabel("Laburpena PedidosLaburpena");
+		Laburpena.setBounds(58, 30, 150, 150);
+		add(Laburpena);
 
-		initializeEvents();
+		//initializeEvents();
 	}
-
+/*
 	private void initializeEvents() {
 		this.btnLaburpena.addActionListener(listenerBotonVolver(this.controladorPanelPedidosLaburpena)); 
 	}
@@ -36,6 +37,6 @@ public class PanelPedidosLaburpena extends JPanel {
 				controladorPanelPedidosLaburpena.accionadoBottonLaburpenera();
 			}
 		};
-	}
+	}*/
 }
 
