@@ -1,8 +1,8 @@
 package Controlador;
+ 
 
 import Modelo.Modelo;
-import Vista.PanelFakturaLaburpena;
-import Vista.PanelFakturaLaburpena;
+import Vista.PanelFakturaLaburpena; 
 import Vista.Vista;
 
 public class ControladorPanelFakturaLaburpena {
@@ -24,7 +24,8 @@ public class ControladorPanelFakturaLaburpena {
 		this.vista.mostrarPanel(this.panelFakturaLaburpena);
 	}
 	
-	/*public void accionadoBottonMostrarPanelGeneros() {
-		this.controlador.navegarPanelGeneros();
-	}*/
+	public void accionadoBottonMostrarPanelMenu() throws InterruptedException {
+		Thread.sleep(1350);
+		this.controlador.navegarPanelMenu();
+	}
 }

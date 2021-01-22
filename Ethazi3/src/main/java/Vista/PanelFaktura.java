@@ -16,7 +16,6 @@ import javax.swing.JLabel;
 import Controlador.ControladorPanelFaktura;
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
-import javax.swing.JTextArea; 
 
 @SuppressWarnings("serial")
 public class PanelFaktura extends JPanel {
@@ -132,6 +131,42 @@ public class PanelFaktura extends JPanel {
 		panel = new JPanel();
 		panel.setBounds(254, 67, 188, 154);
 		add(panel);
+		
+		JLabel LB_Izena = new JLabel("Izena:");
+		LB_Izena.setHorizontalAlignment(SwingConstants.CENTER);
+		LB_Izena.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		LB_Izena.setBounds(20, 176, 46, 14);
+		add(LB_Izena);
+		
+		JLabel LB_Abizena = new JLabel("Abizena");
+		LB_Abizena.setHorizontalAlignment(SwingConstants.CENTER);
+		LB_Abizena.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		LB_Abizena.setBounds(20, 207, 46, 14);
+		add(LB_Abizena);
+		
+		JLabel LB_NIF = new JLabel("NIF");
+		LB_NIF.setHorizontalAlignment(SwingConstants.CENTER);
+		LB_NIF.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		LB_NIF.setBounds(20, 236, 46, 14);
+		add(LB_NIF);
+		
+		JTextField TF_Izena = new JTextField("x");
+		TF_Izena.setHorizontalAlignment(SwingConstants.CENTER);
+		TF_Izena.setColumns(10);
+		TF_Izena.setBounds(61, 173, 183, 20);
+		add(TF_Izena);
+		
+		JTextField TF_Abizena = new JTextField("x");
+		TF_Abizena.setHorizontalAlignment(SwingConstants.CENTER);
+		TF_Abizena.setColumns(10);
+		TF_Abizena.setBounds(61, 204, 183, 20);
+		add(TF_Abizena);
+		
+		JTextField TF_NIF = new JTextField("x");
+		TF_NIF.setHorizontalAlignment(SwingConstants.CENTER);
+		TF_NIF.setColumns(10);
+		TF_NIF.setBounds(61, 233, 183, 20);
+		add(TF_NIF);
 
 		initializeEvents();
 	}

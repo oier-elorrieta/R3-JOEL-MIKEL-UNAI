@@ -15,5 +15,4 @@ public class Vista extends JFrame{
 		this.setContentPane(panel);
 		this.setVisible(true);
 	}
-	
 }

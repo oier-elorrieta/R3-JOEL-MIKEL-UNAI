@@ -23,7 +23,7 @@ public class ControladorPanelTicketLaburpena {
 		this.vista.mostrarPanel(this.panelTicketLaburpena);
 	}
 	
-	/*public void accionadoBottonMostrarPanelGeneros() {
-		this.controlador.navegarPanelGeneros();
-	}*/
-}
+	public void accionadoBottonMostrarPanelMenu() throws InterruptedException {
+		Thread.sleep(1350);
+		this.controlador.navegarPanelMenu();
+	}}

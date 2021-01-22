@@ -22,7 +22,8 @@ public class ControladorPanelPedidosLaburpena {
 		this.vista.mostrarPanel(this.panelPedidosLaburpena);
 	}
 
-	public void accionadoBottonLaburpenera() {
-		this.controlador.navegarPanelPedidosLaburpena();
+	public void accionadoBottonMostrarPanelMenu() throws InterruptedException {
+		Thread.sleep(1350);
+		this.controlador.navegarPanelMenu();
 	}
 }

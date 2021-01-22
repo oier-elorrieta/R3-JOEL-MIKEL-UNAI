@@ -14,8 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
-import Controlador.ControladorPanelFaktura;
 import Controlador.ControladorPanelPedidos;
 import javax.swing.JRadioButton;
 

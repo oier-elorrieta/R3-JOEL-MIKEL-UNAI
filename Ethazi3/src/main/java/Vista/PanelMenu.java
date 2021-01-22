@@ -6,14 +6,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox; 
+import javax.swing.JButton;  
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
-import Controlador.ControladorPanelFaktura;
+ 
 import Controlador.ControladorPanelMenu; 
-import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class PanelMenu extends JPanel {
 
@@ -35,15 +32,15 @@ public class PanelMenu extends JPanel {
 
 		setBounds(0, 0, 450, 300);
 
-		btnFaktura = new JButton("FAKTURA");
-		btnFaktura.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnFaktura.setBounds(176, 113, 89, 23); 
-		add(btnFaktura);
-
 		btnTicket = new JButton("TICKET");
 		btnTicket.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnTicket.setBounds(176, 147, 89, 23);
+		btnTicket.setBounds(176, 113, 89, 23); 
 		add(btnTicket);
+
+		btnFaktura = new JButton("FAKTURA");
+		btnFaktura.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		btnFaktura.setBounds(176, 147, 89, 23);
+		add(btnFaktura);
 
 		btnEskaera = new JButton("ESKAERA");
 		btnEskaera.setFont(new Font("Tahoma", Font.ITALIC, 11));
