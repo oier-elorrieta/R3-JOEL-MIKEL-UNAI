@@ -31,7 +31,7 @@ public class PanelTicketLaburpena extends JPanel{
 		add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("____________________________________________________________");
-		lblNewLabel_1.setBounds(10, 27, 430, 14);
+		lblNewLabel_1.setBounds(10, 27, 425, 14);
 		add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("____________________________________________________________");
@@ -59,12 +59,12 @@ public class PanelTicketLaburpena extends JPanel{
 
 		JLabel LB_TotalCant = new JLabel("X");
 		LB_TotalCant.setHorizontalAlignment(SwingConstants.RIGHT);
-		LB_TotalCant.setBounds(285, 259, 155, 20);
+		LB_TotalCant.setBounds(285, 259, 155, 10);
 		add(LB_TotalCant);
 
 
 		btnNewButton = new JButton("\u2714");
-		btnNewButton.setBounds(370, 0, 89, 23);
+		btnNewButton.setBounds(370, 0, 88, 23);
 		add(btnNewButton);		
 
 		initializeEvents();

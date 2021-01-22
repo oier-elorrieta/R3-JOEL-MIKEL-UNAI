@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -16,6 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SwingConstants;
+
+import Controlador.ControladorPanelFaktura;
 import Controlador.ControladorPanelPedidos;
 import javax.swing.JRadioButton;
 
@@ -45,6 +48,8 @@ public class PanelPedidos extends JPanel {
 	private JSpinner NºUnidades;
 	private JPanel panel;
 	private JTextField TF_Helbide;
+	private JLabel argazkiak;
+	private String[] produktuak;
 
 	public PanelPedidos(ControladorPanelPedidos controladorPanelPedidos)
 	{
@@ -149,17 +154,19 @@ public class PanelPedidos extends JPanel {
 		TF_Helbide.setBounds(87, 233, 157, 20);
 		add(TF_Helbide);
 		
-		String[] produktuak = controladorPanelPedidos.accionadoComboBox();
+		produktuak = controladorPanelPedidos.accionadoComboBox();
 		for(int i=0;i < produktuak.length;i++) {
 			CB_Produktoak.addItem(produktuak[i]);
 		}
-
+		
 		initializeEvents();
 	}
 
 	private void initializeEvents() {
 		this.btnAurrera.addActionListener(listenerBotonLaburpenera(this.controladorPanelPedidos)); 
 		this.btnAtzera.addActionListener(listenerBotonAtzera(this.controladorPanelPedidos));
+		this.CB_Produktoak.addActionListener(listenerComboBox(this.controladorPanelPedidos));
+		this.btnSegi.addActionListener(listenerBotonSegi());
 	}
 
 	private ActionListener listenerBotonLaburpenera(ControladorPanelPedidos controladorPanelPedidos) {
@@ -173,6 +180,56 @@ public class PanelPedidos extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelPedidos.accionadoBottonAtzera();
+			}
+		};
+	}
+	
+	private ActionListener listenerBotonSegi() {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				NºUnidades.setValue("0");
+			}
+		};
+	}
+	
+	private ActionListener listenerComboBox(ControladorPanelPedidos controladorPanelPedidos) {
+		return new ActionListener() {
+			@SuppressWarnings("unused")
+			public void actionPerformed(ActionEvent arg0) {
+				String aukera = (String) CB_Produktoak.getSelectedItem();
+				for(int i=0;i < produktuak.length;i++) {
+					if (aukera == "Zukua") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/zumo.jpg"));
+					}
+					if (aukera == "Sidra") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/sidra.jpg"));
+					}
+					if (aukera == "Ura") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/ura.jpg"));
+					}
+					if (aukera == "Kafea") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/cafe.jpg"));
+					}
+					if (aukera == "Txakoli") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/txakoli.jpg"));
+					}
+					if (aukera == "Patata tortilla") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/tortilla.jpg"));
+					}
+					if (aukera == "Garagardoa") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/garagardoa.png"));
+					}
+					if (aukera == "Colacao") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/colacao.jpg"));
+					}
+					if (aukera == "Ardoa") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/ardoa.jpg"));
+					}
+					if (aukera == "Gilda") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/gilda.jpg"));
+					}
+					break;
+				}
 			}
 		};
 	}

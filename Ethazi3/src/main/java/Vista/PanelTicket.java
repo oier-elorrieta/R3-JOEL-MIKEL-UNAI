@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -16,6 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SwingConstants;
+
+import Controlador.ControladorPanelFaktura;
 import Controlador.ControladorPanelTicket;
 
 @SuppressWarnings("serial")
@@ -46,6 +49,8 @@ public class PanelTicket extends JPanel {
 	private JTextField TF_Izena;
 	private JTextField TF_Abizena;
 	private JTextField TF_NIF;
+	private JLabel argazkiak;
+	private String[] produktuak;
 
 	public PanelTicket(ControladorPanelTicket controladorPanelTicket) {
 		this.controladorPanelTicket = controladorPanelTicket;
@@ -133,12 +138,17 @@ public class PanelTicket extends JPanel {
 		NºUnidades = new JSpinner(model1);
 		NºUnidades.setBounds(254, 233, 120, 20);
 		add(NºUnidades);
+		
+		argazkiak = new JLabel();
+		argazkiak.setIcon(new ImageIcon("C:\\Users\\in1dam\\Desktop\\R3-JOEL-MIKEL-UNAI\\Ethazi3\\argazkiak\\zumo.jpg"));
+		argazkiak.setBounds(254, 67, 188, 154);
+		add(argazkiak);
 
 		panel = new JPanel();
 		panel.setBounds(254, 67, 188, 154);
 		add(panel);
 	
-		String[] produktuak = controladorPanelTicket.accionadoComboBox();
+		produktuak = controladorPanelTicket.accionadoComboBox();
 		for(int i=0;i < produktuak.length;i++) {
 			CB_Produktoak.addItem(produktuak[i]);
 		}
@@ -149,6 +159,7 @@ public class PanelTicket extends JPanel {
 	private void initializeEvents() {
 		this.btnAurrera.addActionListener(listenerBotonLaburpenera(this.controladorPanelTicket));
 		this.btnAtzera.addActionListener(listenerBotonAtzera(this.controladorPanelTicket));
+		this.CB_Produktoak.addActionListener(listenerComboBox(this.controladorPanelTicket));
 		this.btnSegi.addActionListener(listenerBotonSegi());
 	}
 
@@ -172,6 +183,48 @@ public class PanelTicket extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				NºUnidades.setValue("0");
+			}
+		};
+	}
+	
+	private ActionListener listenerComboBox(ControladorPanelTicket controladorPanelTicket2) {
+		return new ActionListener() {
+			@SuppressWarnings("unused")
+			public void actionPerformed(ActionEvent arg0) {
+				String aukera = (String) CB_Produktoak.getSelectedItem();
+				for(int i=0;i < produktuak.length;i++) {
+					if (aukera == "Zukua") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/zumo.jpg"));
+					}
+					if (aukera == "Sidra") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/sidra.jpg"));
+					}
+					if (aukera == "Ura") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/ura.jpg"));
+					}
+					if (aukera == "Kafea") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/cafe.jpg"));
+					}
+					if (aukera == "Txakoli") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/txakoli.jpg"));
+					}
+					if (aukera == "Patata tortilla") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/tortilla.jpg"));
+					}
+					if (aukera == "Garagardoa") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/garagardoa.png"));
+					}
+					if (aukera == "Colacao") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/colacao.jpg"));
+					}
+					if (aukera == "Ardoa") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/ardoa.jpg"));
+					}
+					if (aukera == "Gilda") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/gilda.jpg"));
+					}
+					break;
+				}
 			}
 		};
 	}

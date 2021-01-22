@@ -42,6 +42,7 @@ public class PanelFaktura extends JPanel {
 	private JTextField textField_2;
 	private JButton btnAtzera;
 	private JButton btnAurrera;
+	private JPanel panel;
 	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JButton btnSegi;
 	private JSpinner NºUnidades;
@@ -138,10 +139,9 @@ public class PanelFaktura extends JPanel {
 		NºUnidades.setBounds(254, 233, 120, 20);
 		add(NºUnidades);
 
-		argazkiak = new JLabel();
-		argazkiak.setIcon(new ImageIcon("C:\\Users\\in1dam\\Desktop\\R3-JOEL-MIKEL-UNAI\\Ethazi3\\argazkiak\\zumo.jpg"));
-		argazkiak.setBounds(254, 67, 188, 154);
-		add(argazkiak);
+		panel = new JPanel();
+		panel.setBounds(254, 67, 188, 154);
+		add(panel);
 
 		JLabel LB_Izena = new JLabel("Izena:");
 		LB_Izena.setHorizontalAlignment(SwingConstants.CENTER);
@@ -191,6 +191,7 @@ public class PanelFaktura extends JPanel {
 		this.btnAurrera.addActionListener(listenerBotonLaburpenera(this.controladorPanelFaktura)); 
 		this.btnAtzera.addActionListener(listenerBotonAtzera(this.controladorPanelFaktura));
 		this.CB_Produktoak.addActionListener(listenerComboBox(this.controladorPanelFaktura));
+		this.btnSegi.addActionListener(listenerBotonSegi());
 	}
 
 	private ActionListener listenerBotonLaburpenera(ControladorPanelFaktura controladorPanelFaktura) {
@@ -207,6 +208,16 @@ public class PanelFaktura extends JPanel {
 			}
 		};
 	}
+	
+	
+	private ActionListener listenerBotonSegi() {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				NºUnidades.setValue("0");
+			}
+		};
+	}
+	
 	private ActionListener listenerComboBox(ControladorPanelFaktura controladorPanelFaktura) {
 		return new ActionListener() {
 			@SuppressWarnings("unused")
@@ -214,12 +225,41 @@ public class PanelFaktura extends JPanel {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
 				for(int i=0;i < produktuak.length;i++) {
 					if (aukera == "Zukua") {
-						argazkiak.setIcon(new ImageIcon("C:\\Users\\in1dam\\Desktop\\argazkiak\\zumo.jpg"));
+						argazkiak.setIcon(new ImageIcon("argazkiak/zumo.jpg"));
+					}
+					if (aukera == "Sidra") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/sidra.jpg"));
+					}
+					if (aukera == "Ura") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/ura.jpg"));
+					}
+					if (aukera == "Kafea") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/cafe.jpg"));
+					}
+					if (aukera == "Txakoli") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/txakoli.jpg"));
+					}
+					if (aukera == "Patata tortilla") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/tortilla.jpg"));
+					}
+					if (aukera == "Garagardoa") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/garagardoa.png"));
+					}
+					if (aukera == "Colacao") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/colacao.jpg"));
+					}
+					if (aukera == "Ardoa") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/ardoa.jpg"));
+					}
+					if (aukera == "Gilda") {
+						argazkiak.setIcon(new ImageIcon("argazkiak/gilda.jpg"));
 					}
 					break;
 				}
 			}
 		};
 	}
+	
+	
 }
 
