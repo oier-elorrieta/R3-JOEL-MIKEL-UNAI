@@ -50,7 +50,6 @@ public class PanelFaktura extends JPanel {
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		//proba
 
 		TF_Titulua = new JTextField();
 		TF_Titulua.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -62,11 +61,13 @@ public class PanelFaktura extends JPanel {
 		add(TF_Titulua);
 		TF_Titulua.setColumns(10);
 
-		btnAtzera = new JButton("\u2716\uFE0F Atzera");
+		btnAtzera = new JButton(" Atzera");
+		btnAtzera.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnAtzera.setBounds(353, 266, 92, 23);
 		add(btnAtzera);
 
-		btnAurrera = new JButton("\u2714\uFE0F Aurrera");
+		btnAurrera = new JButton(" Aurrera");
+		btnAurrera.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnAurrera.setBounds(254, 266, 92, 23);
 		add(btnAurrera);
 
@@ -77,11 +78,13 @@ public class PanelFaktura extends JPanel {
 		TF_Fecha.setColumns(10);
 
 		LB_Data = new JLabel("Data:");
+		LB_Data.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		LB_Data.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_Data.setBounds(328, 39, 46, 14);
 		add(LB_Data);
 
 		LB_Lokala = new JLabel("Lokala:");
+		LB_Lokala.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		LB_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_Lokala.setBounds(20, 39, 46, 14);
 		add(LB_Lokala);
@@ -99,6 +102,7 @@ public class PanelFaktura extends JPanel {
 		add(textField_1);
 
 		LB_TransferentziaZenbakia = new JLabel("Trans Zbk:");
+		LB_TransferentziaZenbakia.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		LB_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_TransferentziaZenbakia.setBounds(170, 39, 57, 14);
 		add(LB_TransferentziaZenbakia);
@@ -111,7 +115,7 @@ public class PanelFaktura extends JPanel {
 		textField_2 = new JTextField("x");
 		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_2.setColumns(10);
-		textField_2.setBounds(61, 267, 150, 20);
+		textField_2.setBounds(61, 267, 183, 20);
 		add(textField_2);
 		CB_Produktoak.setBounds(30, 68, 214, 20);
 		add(CB_Produktoak);

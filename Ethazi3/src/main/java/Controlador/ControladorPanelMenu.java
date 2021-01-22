@@ -18,7 +18,7 @@ public class ControladorPanelMenu {
 	}
 
 	public void mostrarPanelMenu() {
-		this.panelMenu = new PanelMenu();
+		this.panelMenu = new PanelMenu(this);
 		this.vista.mostrarPanel(this.panelMenu);
 	}
 
@@ -31,6 +31,9 @@ public class ControladorPanelMenu {
 	public void accionadoBottonMostrarPanelPedidos() {
 		this.controlador.navegarPanelPedidos();
 	}
-	
-
+	public void accionadoBottonAtzera() {
+		this.controlador.itxi();
+	}
 }
+
+
