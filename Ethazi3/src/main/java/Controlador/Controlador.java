@@ -48,4 +48,7 @@ public class Controlador {
 	public void navegarPanelPedidosLaburpena() {
 		this.controladorPanelPedidosLaburpena.mostrarPanelPedidosLaburpena();
 	}
+	public void itxi() {
+		System.exit(0);
+	}
 }

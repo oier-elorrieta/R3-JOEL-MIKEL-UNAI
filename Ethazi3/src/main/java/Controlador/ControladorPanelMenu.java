@@ -31,6 +31,9 @@ public class ControladorPanelMenu {
 	public void accionadoBottonMostrarPanelPedidos() {
 		this.controlador.navegarPanelPedidos();
 	}
-	
-
+	public void accionadoBottonAtzera() {
+		this.controlador.itxi();
+	}
 }
+
+

@@ -43,7 +43,6 @@ public class PanelFaktura extends JPanel {
 
 		setBackground(Color.pink);
 		setLayout(null);
-		//proba
 
 		TF_Titulua = new JTextField();
 		TF_Titulua.setFont(new Font("Tahoma", Font.BOLD, 12));
