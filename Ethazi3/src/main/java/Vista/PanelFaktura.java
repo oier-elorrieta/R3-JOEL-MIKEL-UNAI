@@ -16,6 +16,7 @@ import java.util.GregorianCalendar;
 
 import javax.swing.JLabel;
 import Controlador.ControladorPanelFaktura;
+
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 
@@ -40,7 +41,7 @@ public class PanelFaktura extends JPanel {
 	private JTextField textField_2;
 	private JButton btnAtzera;
 	private JButton btnAurrera;
-	private final JComboBox CB_Produktoak = new JComboBox();
+	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JButton btnSegi;
 	private JSpinner NºUnidades;
 	private JPanel panel;
@@ -51,6 +52,7 @@ public class PanelFaktura extends JPanel {
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
+		
 
 		TF_Titulua = new JTextField();
 		TF_Titulua.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -172,13 +174,18 @@ public class PanelFaktura extends JPanel {
 		TF_NIF.setColumns(10);
 		TF_NIF.setBounds(61, 233, 183, 20);
 		add(TF_NIF);
+		
+		String[] produktuak = controladorPanelFaktura.accionadoComboBox();
+		for(int i=0;i < produktuak.length;i++) {
+			CB_Produktoak.addItem(produktuak[i]);
+		}
 
 		initializeEvents();
 	}
 
 	private void initializeEvents() {
 		this.btnAurrera.addActionListener(listenerBotonLaburpenera(this.controladorPanelFaktura)); 
-		this.btnAtzera.addActionListener(listenerBotonAtzera(this.controladorPanelFaktura));
+		this.btnAtzera.addActionListener(listenerBotonAtzera(this.controladorPanelFaktura)); 
 	}
 
 	private ActionListener listenerBotonLaburpenera(ControladorPanelFaktura controladorPanelFaktura) {

@@ -40,7 +40,7 @@ public class PanelPedidos extends JPanel {
 	private JTextField textField_2;
 	private JButton btnAtzera;
 	private JButton btnAurrera;
-	private final JComboBox CB_Produktoak = new JComboBox();
+	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JButton btnSegi;
 	private JSpinner NºUnidades;
 	private JPanel panel;
@@ -148,6 +148,11 @@ public class PanelPedidos extends JPanel {
 		TF_Helbide.setColumns(10);
 		TF_Helbide.setBounds(87, 233, 157, 20);
 		add(TF_Helbide);
+		
+		String[] produktuak = controladorPanelPedidos.accionadoComboBox();
+		for(int i=0;i < produktuak.length;i++) {
+			CB_Produktoak.addItem(produktuak[i]);
+		}
 
 		initializeEvents();
 	}

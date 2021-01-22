@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.util.ArrayList;
+
 import Modelo.Modelo;
 import Vista.PanelFaktura; 
 import Vista.Vista;
@@ -27,5 +29,8 @@ public class ControladorPanelFaktura {
 	}
 	public void accionadoBottonAtzera() {
 		this.controlador.navegarPanelMenu();
+	}
+	public String[] accionadoComboBox() {
+		return this.modelo.produktuakJaso();
 	}
 }
