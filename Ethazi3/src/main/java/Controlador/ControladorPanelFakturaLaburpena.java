@@ -26,6 +26,6 @@ public class ControladorPanelFakturaLaburpena {
 	
 	public void accionadoBottonMostrarPanelMenu() throws InterruptedException {
 		Thread.sleep(1350);
-		this.controlador.navegarPanelMenu();
+		this.controlador.navegarPanelLogin();
 	}
 }
