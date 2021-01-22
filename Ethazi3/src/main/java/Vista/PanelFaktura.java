@@ -13,7 +13,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.swing.JLabel;
-import Controlador.ControladorPanelFaktura; 
+import Controlador.ControladorPanelFaktura;
+import javax.swing.JSpinner;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea; 
 
 @SuppressWarnings("serial")
 public class PanelFaktura extends JPanel {
@@ -36,12 +39,16 @@ public class PanelFaktura extends JPanel {
 	private JTextField textField_2;
 	private JButton btnAtzera;
 	private JButton btnAurrera;
+	private final JComboBox CB_Produktoak = new JComboBox();
+	private JButton btnSegi;
+	private JSpinner NºUnidades;
+	private JPanel panel;
 
 	public PanelFaktura(ControladorPanelFaktura controladorPanelFaktura)
 	{
 		this.controladorPanelFaktura = controladorPanelFaktura;
 
-		setBackground(Color.pink);
+		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		//proba
 
@@ -106,6 +113,21 @@ public class PanelFaktura extends JPanel {
 		textField_2.setColumns(10);
 		textField_2.setBounds(61, 267, 150, 20);
 		add(textField_2);
+		CB_Produktoak.setBounds(30, 68, 214, 20);
+		add(CB_Produktoak);
+		
+		btnSegi = new JButton("\u2714\uFE0F");
+		btnSegi.setHorizontalAlignment(SwingConstants.TRAILING);
+		btnSegi.setBounds(388, 232, 57, 23);
+		add(btnSegi);
+		
+		NºUnidades = new JSpinner();
+		NºUnidades.setBounds(254, 233, 120, 20);
+		add(NºUnidades);
+		
+		panel = new JPanel();
+		panel.setBounds(254, 67, 188, 154);
+		add(panel);
 
 		initializeEvents();
 	}

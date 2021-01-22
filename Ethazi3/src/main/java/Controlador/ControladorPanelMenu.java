@@ -18,7 +18,7 @@ public class ControladorPanelMenu {
 	}
 
 	public void mostrarPanelMenu() {
-		this.panelMenu = new PanelMenu(this);
+		this.panelMenu = new PanelMenu();
 		this.vista.mostrarPanel(this.panelMenu);
 	}
 
