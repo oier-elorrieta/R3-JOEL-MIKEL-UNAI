@@ -64,7 +64,7 @@ public class PanelTicketLaburpena extends JPanel{
 
 
 		btnNewButton = new JButton("\u2714");
-		btnNewButton.setBounds(362, 0, 89, 23);
+		btnNewButton.setBounds(370, 0, 89, 23);
 		add(btnNewButton);		
 
 		initializeEvents();
