@@ -29,4 +29,7 @@ public class ControladorPanelTicket {
 	public void accionadoBottonAtzera() {
 		this.controlador.navegarPanelMenu();
 	}
+	public String[] accionadoComboBox() {
+		return this.modelo.produktuakJaso();
+	}
 }

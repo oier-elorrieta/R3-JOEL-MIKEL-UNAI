@@ -37,7 +37,7 @@ public class PanelTicket extends JPanel {
 	private JTextField textField_2;
 	private JButton btnAtzera;
 	private JButton btnAurrera;
-	private final JComboBox CB_Produktoak = new JComboBox();
+	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JButton btnSegi;
 	private JSpinner NºUnidades;
 	private JPanel panel;
@@ -133,6 +133,11 @@ public class PanelTicket extends JPanel {
 		panel = new JPanel();
 		panel.setBounds(254, 67, 188, 154);
 		add(panel);
+	
+		String[] produktuak = controladorPanelTicket.accionadoComboBox();
+		for(int i=0;i < produktuak.length;i++) {
+			CB_Produktoak.addItem(produktuak[i]);
+		}
 
 		initializeEvents();
 	}

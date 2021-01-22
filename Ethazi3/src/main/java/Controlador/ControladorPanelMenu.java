@@ -22,7 +22,7 @@ public class ControladorPanelMenu {
 		this.vista.mostrarPanel(this.panelMenu);
 	}
 
-	public void accionadoBottonMostrarPanelFaktura() {
+	public void accionadoBottonMostrarPanelFaktura( ) {
 		this.controlador.navegarPanelFaktura();
 	}
 	public void accionadoBottonMostrarPanelTicket() {

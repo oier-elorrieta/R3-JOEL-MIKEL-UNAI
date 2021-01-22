@@ -27,4 +27,7 @@ public class ControladorPanelPedidos {
 	public void accionadoBottonAtzera() {
 		this.controlador.navegarPanelMenu();
 	}
+	public String[] accionadoComboBox() {
+		return this.modelo.produktuakJaso();
+	}
 }
