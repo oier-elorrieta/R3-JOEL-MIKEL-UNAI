@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SpinnerListModel;
+import javax.swing.SpinnerModel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
@@ -124,7 +126,10 @@ public class PanelFaktura extends JPanel {
 		btnSegi.setBounds(388, 232, 57, 23);
 		add(btnSegi);
 		
-		NºUnidades = new JSpinner();
+		final String numbers[] = {"0","1","2","3","4","5","6","7","8","9","10"};
+	    SpinnerModel model1 = new SpinnerListModel(numbers);
+		
+		NºUnidades = new JSpinner(model1);
 		NºUnidades.setBounds(254, 233, 120, 20);
 		add(NºUnidades);
 		
