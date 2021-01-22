@@ -7,7 +7,10 @@ public class Controlador {
 
 	private Modelo modelo;
 	private Vista vista;
-	private ControladorPanelMenu controladorPanelMenu;
+	private ControladorPanelLogin controladorPanelLogin;
+	private ControladorPanelMenu controladorPanelMenu;	
+	private ControladorPanelMenu2 controladorPanelMenu2;	
+	private ControladorPanelMenu3 controladorPanelMenu3;	
 	private ControladorPanelFaktura controladorPanelFaktura;
 	private ControladorPanelFakturaLaburpena controladorPanelFakturaLaburpena;
 	private ControladorPanelTicket controladorPanelTicket;
@@ -18,17 +21,29 @@ public class Controlador {
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
 		this.vista = vista;
+		this.controladorPanelLogin = new ControladorPanelLogin(this.modelo, this.vista, this);
 		this.controladorPanelMenu = new ControladorPanelMenu(this.modelo, this.vista, this);
+		this.controladorPanelMenu2 = new ControladorPanelMenu2(this.modelo, this.vista, this);
+		this.controladorPanelMenu3 = new ControladorPanelMenu3(this.modelo, this.vista, this);
 		this.controladorPanelFaktura = new ControladorPanelFaktura(this.modelo, this.vista, this);
 		this.controladorPanelFakturaLaburpena = new ControladorPanelFakturaLaburpena(this.modelo, this.vista, this);
 		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
 		this.controladorPanelTicketLaburpena =  new ControladorPanelTicketLaburpena(this.modelo, this.vista, this);
 		this.controladorPanelPedidos = new ControladorPanelPedidos(this.modelo, this.vista, this);
 		this.controladorPanelPedidosLaburpena = new ControladorPanelPedidosLaburpena(this.modelo, this.vista, this);
-		this.navegarPanelMenu();
+		this.navegarPanelLogin();
+	}
+	public void navegarPanelLogin() {
+		this.controladorPanelLogin.mostrarPanelLogin();
 	}
 	public void navegarPanelMenu() {
 		this.controladorPanelMenu.mostrarPanelMenu();
+	}
+	public void navegarPanelMenu2() {
+		this.controladorPanelMenu2.mostrarPanelMenu2();
+	}
+	public void navegarPanelMenu3() {
+		this.controladorPanelMenu3.mostrarPanelMenu3();
 	}
 	public void navegarPanelFaktura() { 
 		this.controladorPanelFaktura.mostrarPanelFaktura();
