@@ -2,16 +2,12 @@ package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import Controlador.ControladorPanelPedidosLaburpena;
-import Modelo.Modelo;
-import Modelo.metodos; 
+import javax.swing.JPanel; 
+ 
+import Controlador.ControladorPanelPedidosLaburpena;  
 
 import java.awt.Color;
-import javax.swing.SwingConstants;
-import javax.swing.event.AncestorListener;
+import javax.swing.SwingConstants; 
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -22,7 +18,7 @@ public class PanelPedidosLaburpena extends JPanel {
 
 	private ControladorPanelPedidosLaburpena controladorPanelPedidosLaburpena;
 
-	private JButton btnNewButton;
+	private JButton btnNewButton; 
 
 
 
@@ -77,12 +73,17 @@ public class PanelPedidosLaburpena extends JPanel {
 		btnNewButton = new JButton("\u2714");
 		btnNewButton.setBounds(370, 0, 89, 23);
 		add(btnNewButton);
-
+		
 		String aukera = controladorPanelPedidosLaburpena.arrayaIkusi();
-		JTextField lblLaburpen = new JTextField(aukera);
-		lblLaburpen.setBounds(56, 135, 308, 107);
+		JLabel lblLaburpen = new JLabel(aukera);
+		lblLaburpen.setBounds(112, 108, 131, 143);
 		add(lblLaburpen);  
 		
+		String kantitatea = controladorPanelPedidosLaburpena.arrayaKantitateakIkusi();
+		JLabel lbldirua = new JLabel(kantitatea);
+		lbldirua.setBounds(38, 108, 46, 143);
+		add(lbldirua);
+
 
 		initializeEvents();
 	}
@@ -102,6 +103,5 @@ public class PanelPedidosLaburpena extends JPanel {
 			}
 		};
 	}
-
 }
 

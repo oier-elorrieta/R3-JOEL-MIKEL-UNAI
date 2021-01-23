@@ -130,7 +130,7 @@ public class PanelTicket extends JPanel {
 		btnSegi.setBounds(388, 232, 57, 23);
 		add(btnSegi);
 
-		final String numbers[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+		final String numbers[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
 		SpinnerModel model1 = new SpinnerListModel(numbers);
 
 		NºUnidades = new JSpinner(model1);
@@ -180,7 +180,51 @@ public class PanelTicket extends JPanel {
 	private ActionListener listenerBotonSegi() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NºUnidades.setValue("0");
+				String aukera = (String) CB_Produktoak.getSelectedItem();
+				if (aukera == "Zukua") { 
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+				}if (aukera == "Sidra") {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+				}if (aukera == "Ura") {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+				}if (aukera == "Kafea") {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+				}if (aukera == "Txakoli") {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+				}if (aukera == "Patata tortilla") {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+				}if (aukera == "Garagardoa") {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+				}if (aukera == "Colacao") {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+				}if (aukera == "Ardoa") {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+				}if (aukera == "Gilda") {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+				}
+				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
+				if(kantitatea == 1) {
+					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 2) {
+					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 3) {
+					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 4) {
+					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 5) {
+					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 6) {
+					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 7) {
+					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 8) {
+					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 9) {
+					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 10) {
+					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
+				}
+				NºUnidades.setValue("1");
 			}
 		};
 	}

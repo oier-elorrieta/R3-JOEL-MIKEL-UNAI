@@ -64,6 +64,16 @@ public class PanelFakturaLaburpena extends JPanel{
 		btnNewButton = new JButton("\u2714");
 		btnNewButton.setBounds(370, 0, 89, 23);
 		add(btnNewButton);
+		
+		String aukera = controladorPanelFakturaLaburpena.arrayaIkusi();
+		JLabel lblLaburpen = new JLabel(aukera);
+		lblLaburpen.setBounds(56, 135, 308, 107);
+		add(lblLaburpen);
+		
+		String kantitatea = controladorPanelFakturaLaburpena.arrayaKantitateakIkusi();
+		JLabel lbldirua = new JLabel(kantitatea);
+		lbldirua.setBounds(38, 108, 46, 143);
+		add(lbldirua);
 
 		initializeEvents();
 	}
@@ -75,8 +85,7 @@ public class PanelFakturaLaburpena extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					controladorPanelFakturaLaburpena.accionadoBottonMostrarPanelMenu();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				} catch (InterruptedException e) { 
 					e.printStackTrace();
 				}
 			}

@@ -34,4 +34,7 @@ public class ControladorPanelPedidos {
 	public String[] accionadoBotonGuardar(String aukera) {
 		 return this.modelo.sartuProduktuak(aukera);
 	}
+	public int[] accionadoBotonGuardar2(int aukera) {
+		return this.modelo.sartuAukeratutakoKantitateak(aukera);
+	}
 }

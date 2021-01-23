@@ -133,7 +133,7 @@ public class PanelPedidos extends JPanel {
 		btnSegi.setBounds(388, 232, 57, 23);
 		add(btnSegi);
 
-		final String numbers[] = {"0","1","2","3","4","5","6","7","8","9","10"};
+		final String numbers[] = {"1","2","3","4","5","6","7","8","9","10"};
 		SpinnerModel model1 = new SpinnerListModel(numbers);
 
 		NºUnidades = new JSpinner(model1);
@@ -190,9 +190,7 @@ public class PanelPedidos extends JPanel {
 	private ActionListener listenerBotonSegi(ControladorPanelPedidos controladorPanelPedidos) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NºUnidades.setValue("0");
 				String aukera = (String) CB_Produktoak.getSelectedItem();
-				//String[] aukeratutakoak = new String[10];
 				if (aukera == "Zukua") { 
 					 controladorPanelPedidos.accionadoBotonGuardar(aukera);
 				}if (aukera == "Sidra") {
@@ -214,6 +212,29 @@ public class PanelPedidos extends JPanel {
 				}if (aukera == "Gilda") {
 					 controladorPanelPedidos.accionadoBotonGuardar(aukera);
 				}
+				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
+				if(kantitatea == 1) {
+					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 2) {
+					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 3) {
+					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 4) {
+					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 5) {
+					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 6) {
+					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 7) {
+					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 8) {
+					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 9) {
+					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
+				}if(kantitatea == 10) {
+					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
+				}
+				NºUnidades.setValue("1");
 			}
 		};
 	}

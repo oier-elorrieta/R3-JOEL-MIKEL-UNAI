@@ -27,5 +27,12 @@ public class ControladorPanelFakturaLaburpena {
 	public void accionadoBottonMostrarPanelMenu() throws InterruptedException {
 		Thread.sleep(1350);
 		this.controlador.navegarPanelLogin();
+		this.modelo.clear();
+	}
+	public String arrayaIkusi() {
+		return this.modelo.arraya();
+	}
+	public String arrayaKantitateakIkusi() {
+		return this.modelo.arrayaKantitateak();
 	}
 }

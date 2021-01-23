@@ -66,6 +66,16 @@ public class PanelTicketLaburpena extends JPanel{
 		btnNewButton = new JButton("\u2714");
 		btnNewButton.setBounds(370, 0, 88, 23);
 		add(btnNewButton);		
+		
+		String aukera = controladorPanelTicketLaburpena.arrayaIkusi();
+		JLabel lblLaburpen = new JLabel(aukera);
+		lblLaburpen.setBounds(56, 135, 308, 107);
+		add(lblLaburpen);
+		
+		String kantitatea = controladorPanelTicketLaburpena.arrayaKantitateakIkusi();
+		JLabel lbldirua = new JLabel(kantitatea);
+		lbldirua.setBounds(38, 108, 46, 143);
+		add(lbldirua);
 
 		initializeEvents();
 	}
@@ -79,8 +89,7 @@ public class PanelTicketLaburpena extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					controladorPanelTicketLaburpena.accionadoBottonMostrarPanelMenu();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				} catch (InterruptedException e) { 
 					e.printStackTrace();
 				}
 			}
