@@ -8,23 +8,22 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;  
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
- 
-import Controlador.ControladorPanelMenu;
+
 import Controlador.ControladorPanelMenu3; 
 @SuppressWarnings("serial")
 public class PanelMenu3 extends JPanel {
 
-	private ControladorPanelMenu3 controladorPanelMenu;
+	private ControladorPanelMenu3 controladorPanelMenu3;
 	private JButton btnFaktura;
 	private JButton btnTicket;
 	private JButton btnEskaera;
 	private JButton btnSarratu;
+	private JButton btnHasiera;
 
 
 	public PanelMenu3(ControladorPanelMenu3 controladorPanelMenu3) {
 
-		this.controladorPanelMenu = controladorPanelMenu3;
+		this.controladorPanelMenu3 = controladorPanelMenu3;
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
@@ -51,42 +50,55 @@ public class PanelMenu3 extends JPanel {
 		btnSarratu.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		btnSarratu.setBounds(350, 259, 90, 30);
 		add(btnSarratu);
+		
+		btnHasiera = new JButton("Hasiera");
+		btnHasiera.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		btnHasiera.setBounds(10, 259, 90, 30);
+		add(btnHasiera);
 
 		initializeEvents();
 	}
 	
 	private void initializeEvents() {
-		this.btnFaktura.addActionListener(listenerBottonFaktura(this.controladorPanelMenu));
-		this.btnTicket.addActionListener(listenerBottonTicket(this.controladorPanelMenu));
-		this.btnEskaera.addActionListener(listenerBottonEskaera(this.controladorPanelMenu));
-		this.btnSarratu.addActionListener(listenerBottonSarratu(this.controladorPanelMenu));
+		this.btnFaktura.addActionListener(listenerBottonFaktura(this.controladorPanelMenu3));
+		this.btnTicket.addActionListener(listenerBottonTicket(this.controladorPanelMenu3));
+		this.btnEskaera.addActionListener(listenerBottonEskaera(this.controladorPanelMenu3));
+		this.btnSarratu.addActionListener(listenerBottonSarratu(this.controladorPanelMenu3));
+		this.btnHasiera.addActionListener(listenerBotonHasiera(this.controladorPanelMenu3));
 	}
 	
-	private ActionListener listenerBottonFaktura(ControladorPanelMenu3 controladorPanelMenu2) {
+	private ActionListener listenerBottonFaktura(ControladorPanelMenu3 controladorPanelMenu3) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.accionadoBottonMostrarPanelFaktura();
+				controladorPanelMenu3.accionadoBottonMostrarPanelFaktura();
 			}
 		};
 	} 
-	private ActionListener listenerBottonTicket(ControladorPanelMenu3 controladorPanelMenu2) {
+	private ActionListener listenerBottonTicket(ControladorPanelMenu3 controladorPanelMenu3) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.accionadoBottonMostrarPanelTicket();
+				controladorPanelMenu3.accionadoBottonMostrarPanelTicket();
 			}
 		};
 	} 
-	private ActionListener listenerBottonEskaera(ControladorPanelMenu3 controladorPanelMenu2) {
+	private ActionListener listenerBottonEskaera(ControladorPanelMenu3 controladorPanelMenu3) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.accionadoBottonMostrarPanelPedidos();
+				controladorPanelMenu3.accionadoBottonMostrarPanelPedidos();
 			}
 		};
 	} 
-	private ActionListener listenerBottonSarratu(ControladorPanelMenu3 controladorPanelMenu2) {
+	private ActionListener listenerBottonSarratu(ControladorPanelMenu3 controladorPanelMenu3) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.accionadoBottonAtzera();
+				controladorPanelMenu3.accionadoBottonAtzera();
+			}
+		};
+	} 
+	private ActionListener listenerBotonHasiera(ControladorPanelMenu3 controladorPanelMenu3) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelMenu3.accionadoBotonHasiera();
 			}
 		};
 	} 

@@ -26,4 +26,7 @@ public class ControladorPanelPedidosLaburpena {
 		Thread.sleep(1350);
 		this.controlador.navegarPanelLogin();
 	}
+	public String arrayaIkusi() {
+		return this.modelo.arraya();
+	}
 }

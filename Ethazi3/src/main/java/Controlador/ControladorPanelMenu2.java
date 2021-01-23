@@ -10,7 +10,7 @@ public class ControladorPanelMenu2 {
 	private Modelo modelo;
 	private Vista vista;
 	private Controlador controlador;
-	private PanelMenu2 panelMenu;
+	private PanelMenu2 panelMenu2;
 
 	public ControladorPanelMenu2(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
@@ -19,8 +19,8 @@ public class ControladorPanelMenu2 {
 	}
 
 	public void mostrarPanelMenu2() {
-		this.panelMenu = new PanelMenu2(this);
-		this.vista.mostrarPanel(this.panelMenu);
+		this.panelMenu2 = new PanelMenu2(this);
+		this.vista.mostrarPanel(this.panelMenu2);
 	}
 
 	public void accionadoBottonMostrarPanelFaktura() {
@@ -31,6 +31,9 @@ public class ControladorPanelMenu2 {
 	}
 	public void accionadoBottonAtzera() {
 		this.controlador.itxi();
+	}
+	public void accionadoBotonHasiera() {
+		this.controlador.navegarPanelLogin();
 	}
 }
 

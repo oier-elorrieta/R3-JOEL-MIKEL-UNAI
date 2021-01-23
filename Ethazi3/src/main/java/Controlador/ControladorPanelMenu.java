@@ -34,6 +34,9 @@ public class ControladorPanelMenu {
 	public void accionadoBottonAtzera() {
 		this.controlador.itxi();
 	}
+	public void accionadoBotonHasiera() {
+		this.controlador.navegarPanelLogin();
+	}
 }
 
 

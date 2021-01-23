@@ -11,7 +11,7 @@ public class ControladorPanelMenu3 {
 	private Modelo modelo;
 	private Vista vista;
 	private Controlador controlador;
-	private PanelMenu3 panelMenu;
+	private PanelMenu3 panelMenu3;
 
 	public ControladorPanelMenu3(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
@@ -20,8 +20,8 @@ public class ControladorPanelMenu3 {
 	}
 
 	public void mostrarPanelMenu3() {
-		this.panelMenu = new PanelMenu3(this);
-		this.vista.mostrarPanel(this.panelMenu);
+		this.panelMenu3 = new PanelMenu3(this);
+		this.vista.mostrarPanel(this.panelMenu3);
 	}
 
 	public void accionadoBottonMostrarPanelFaktura() {
@@ -35,6 +35,9 @@ public class ControladorPanelMenu3 {
 	}
 	public void accionadoBottonAtzera() {
 		this.controlador.itxi();
+	}
+	public void accionadoBotonHasiera() {
+		this.controlador.navegarPanelLogin();
 	}
 }
 

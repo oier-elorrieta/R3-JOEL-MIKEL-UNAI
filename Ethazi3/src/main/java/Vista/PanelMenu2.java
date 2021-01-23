@@ -8,22 +8,20 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;  
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
- 
-import Controlador.ControladorPanelMenu;
+
 import Controlador.ControladorPanelMenu2; 
 @SuppressWarnings("serial")
 public class PanelMenu2 extends JPanel {
 
-	private ControladorPanelMenu2 controladorPanelMenu;
+	private ControladorPanelMenu2 controladorPanelMenu2;
 	private JButton btnFaktura;
 	private JButton btnTicket;
 	private JButton btnSarratu;
-
+	private JButton btnHasiera;
 
 	public PanelMenu2(ControladorPanelMenu2 controladorPanelMenu2) {
 
-		this.controladorPanelMenu = controladorPanelMenu2;
+		this.controladorPanelMenu2 = controladorPanelMenu2;
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
@@ -45,14 +43,20 @@ public class PanelMenu2 extends JPanel {
 		btnSarratu.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		btnSarratu.setBounds(350, 259, 90, 30);
 		add(btnSarratu);
+		
+		btnHasiera = new JButton("Hasiera");
+		btnHasiera.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		btnHasiera.setBounds(10, 259, 90, 30);
+		add(btnHasiera);
 
 		initializeEvents();
 	}
 	
 	private void initializeEvents() {
-		this.btnFaktura.addActionListener(listenerBottonFaktura(this.controladorPanelMenu));
-		this.btnTicket.addActionListener(listenerBottonTicket(this.controladorPanelMenu));
-		this.btnSarratu.addActionListener(listenerBottonSarratu(this.controladorPanelMenu));
+		this.btnFaktura.addActionListener(listenerBottonFaktura(this.controladorPanelMenu2));
+		this.btnTicket.addActionListener(listenerBottonTicket(this.controladorPanelMenu2));
+		this.btnSarratu.addActionListener(listenerBottonSarratu(this.controladorPanelMenu2));
+		this.btnHasiera.addActionListener(listenerBotonHasiera(this.controladorPanelMenu2));
 	}
 	
 	private ActionListener listenerBottonFaktura(ControladorPanelMenu2 controladorPanelMenu2) {
@@ -69,13 +73,6 @@ public class PanelMenu2 extends JPanel {
 			}
 		};
 	} 
-	private ActionListener listenerBottonEskaera(ControladorPanelMenu controladorPanelMenu) {
-		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu.accionadoBottonMostrarPanelPedidos();
-			}
-		};
-	} 
 	private ActionListener listenerBottonSarratu(ControladorPanelMenu2 controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -83,4 +80,11 @@ public class PanelMenu2 extends JPanel {
 			}
 		};
 	} 
+	private ActionListener listenerBotonHasiera(ControladorPanelMenu2 controladorPanelMenu2) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelMenu2.accionadoBotonHasiera();
+			}
+		};
+	}
 }

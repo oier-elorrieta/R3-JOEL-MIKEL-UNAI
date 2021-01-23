@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;  
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
  
 import Controlador.ControladorPanelMenu; 
 @SuppressWarnings("serial")
@@ -19,6 +18,8 @@ public class PanelMenu extends JPanel {
 	private JButton btnTicket;
 	private JButton btnEskaera;
 	private JButton btnSarratu;
+	private JButton btnKomanda;
+	private JButton  btnHasiera;
 
 
 	public PanelMenu(ControladorPanelMenu controladorPanelMenu) {
@@ -51,10 +52,15 @@ public class PanelMenu extends JPanel {
 		btnSarratu.setBounds(350, 259, 90, 30);
 		add(btnSarratu);
 		
-		JButton btnKomanda = new JButton("KOMANDA");
+		btnKomanda = new JButton("KOMANDA");
 		btnKomanda.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		btnKomanda.setBounds(230, 135, 210, 113);
 		add(btnKomanda);
+		
+		btnHasiera = new JButton("Hasiera");
+		btnHasiera.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		btnHasiera.setBounds(10, 259, 90, 30);
+		add(btnHasiera);
 
 		initializeEvents();
 	}
@@ -64,6 +70,7 @@ public class PanelMenu extends JPanel {
 		this.btnTicket.addActionListener(listenerBottonTicket(this.controladorPanelMenu));
 		this.btnEskaera.addActionListener(listenerBottonEskaera(this.controladorPanelMenu));
 		this.btnSarratu.addActionListener(listenerBottonSarratu(this.controladorPanelMenu));
+		this.btnHasiera.addActionListener(listenerBotonHasiera(this.controladorPanelMenu));
 	}
 	
 	private ActionListener listenerBottonFaktura(ControladorPanelMenu controladorPanelMenu) {
@@ -93,5 +100,12 @@ public class PanelMenu extends JPanel {
 				controladorPanelMenu.accionadoBottonAtzera();
 			}
 		};
-	} 
+	}
+	private ActionListener listenerBotonHasiera(ControladorPanelMenu controladorPanelMenu) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelMenu.accionadoBotonHasiera();
+			}
+		};
+	}
 }

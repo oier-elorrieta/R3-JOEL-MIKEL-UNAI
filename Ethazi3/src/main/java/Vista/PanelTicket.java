@@ -18,7 +18,6 @@ import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SwingConstants;
 
-import Controlador.ControladorPanelFaktura;
 import Controlador.ControladorPanelTicket;
 
 @SuppressWarnings("serial")
@@ -44,8 +43,7 @@ public class PanelTicket extends JPanel {
 	private JButton btnAurrera;
 	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JButton btnSegi;
-	private JSpinner NºUnidades;
-	private JPanel panel;
+	private JSpinner NºUnidades; 
 	private JTextField TF_Izena;
 	private JTextField TF_Abizena;
 	private JTextField TF_NIF;
@@ -144,9 +142,9 @@ public class PanelTicket extends JPanel {
 		argazkiak.setBounds(254, 67, 188, 154);
 		add(argazkiak);
 
-		panel = new JPanel();
-		panel.setBounds(254, 67, 188, 154);
-		add(panel);
+		argazkiak = new JLabel();
+		argazkiak.setBounds(254, 67, 188, 154);
+		add(argazkiak);
 	
 		produktuak = controladorPanelTicket.accionadoComboBox();
 		for(int i=0;i < produktuak.length;i++) {
@@ -189,10 +187,8 @@ public class PanelTicket extends JPanel {
 	
 	private ActionListener listenerComboBox(ControladorPanelTicket controladorPanelTicket2) {
 		return new ActionListener() {
-			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
-				for(int i=0;i < produktuak.length;i++) {
 					if (aukera == "Zukua") {
 						argazkiak.setIcon(new ImageIcon("argazkiak/zumo.jpg"));
 					}
@@ -223,8 +219,6 @@ public class PanelTicket extends JPanel {
 					if (aukera == "Gilda") {
 						argazkiak.setIcon(new ImageIcon("argazkiak/gilda.jpg"));
 					}
-					break;
-				}
 			}
 		};
 	}

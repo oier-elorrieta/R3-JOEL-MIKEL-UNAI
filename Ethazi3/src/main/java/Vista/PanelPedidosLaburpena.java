@@ -3,10 +3,16 @@ package Vista;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import Controlador.ControladorPanelPedidosLaburpena;
+import Modelo.Modelo;
+import Modelo.metodos; 
+
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.event.AncestorListener;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +23,9 @@ public class PanelPedidosLaburpena extends JPanel {
 	private ControladorPanelPedidosLaburpena controladorPanelPedidosLaburpena;
 
 	private JButton btnNewButton;
+
+
+
 
 	public PanelPedidosLaburpena(ControladorPanelPedidosLaburpena controladorPanelPedidosLaburpena)
 	{
@@ -44,6 +53,7 @@ public class PanelPedidosLaburpena extends JPanel {
 		lblNewLabel_1_2.setBounds(10, 275, 430, 14);
 		add(lblNewLabel_1_2);
 
+
 		JLabel lblNewLabel_2 = new JLabel("NOMBRE");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setBounds(10, 47, 430, 14);
@@ -66,26 +76,32 @@ public class PanelPedidosLaburpena extends JPanel {
 
 		btnNewButton = new JButton("\u2714");
 		btnNewButton.setBounds(370, 0, 89, 23);
-		add(btnNewButton);		
+		add(btnNewButton);
+
+		String aukera = controladorPanelPedidosLaburpena.arrayaIkusi();
+		JTextField lblLaburpen = new JTextField(aukera);
+		lblLaburpen.setBounds(56, 135, 308, 107);
+		add(lblLaburpen);  
+		
 
 		initializeEvents();
 	}
-	
+
 	private void initializeEvents() {
 		this.btnNewButton.addActionListener(listenerBotonHasierara(this.controladorPanelPedidosLaburpena));
 	}
-	
+
 	private ActionListener listenerBotonHasierara(ControladorPanelPedidosLaburpena controladorPanelPedidosLaburpena) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					controladorPanelPedidosLaburpena.accionadoBottonMostrarPanelMenu();
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		};
 	}
+
 }
 

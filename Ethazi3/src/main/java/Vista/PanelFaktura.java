@@ -41,8 +41,7 @@ public class PanelFaktura extends JPanel {
 	private JLabel LB_Totala;
 	private JTextField textField_2;
 	private JButton btnAtzera;
-	private JButton btnAurrera;
-	private JPanel panel;
+	private JButton btnAurrera; 
 	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JButton btnSegi;
 	private JSpinner NºUnidades;
@@ -139,9 +138,6 @@ public class PanelFaktura extends JPanel {
 		NºUnidades.setBounds(254, 233, 120, 20);
 		add(NºUnidades);
 
-		panel = new JPanel();
-		panel.setBounds(254, 67, 188, 154);
-		add(panel);
 
 		JLabel LB_Izena = new JLabel("Izena:");
 		LB_Izena.setHorizontalAlignment(SwingConstants.CENTER);
@@ -178,6 +174,10 @@ public class PanelFaktura extends JPanel {
 		TF_NIF.setColumns(10);
 		TF_NIF.setBounds(61, 233, 183, 20);
 		add(TF_NIF);
+		
+		argazkiak = new JLabel();
+		argazkiak.setBounds(254, 67, 188, 154);
+		add(argazkiak);
 
 		produktuak = controladorPanelFaktura.accionadoComboBox();
 		for(int i=0;i < produktuak.length;i++) {
@@ -219,11 +219,9 @@ public class PanelFaktura extends JPanel {
 	}
 	
 	private ActionListener listenerComboBox(ControladorPanelFaktura controladorPanelFaktura) {
-		return new ActionListener() {
-			@SuppressWarnings("unused")
+		return new ActionListener() { 
 			public void actionPerformed(ActionEvent arg0) {
-				String aukera = (String) CB_Produktoak.getSelectedItem();
-				for(int i=0;i < produktuak.length;i++) {
+				String aukera = (String) CB_Produktoak.getSelectedItem(); 
 					if (aukera == "Zukua") {
 						argazkiak.setIcon(new ImageIcon("argazkiak/zumo.jpg"));
 					}
@@ -253,10 +251,8 @@ public class PanelFaktura extends JPanel {
 					}
 					if (aukera == "Gilda") {
 						argazkiak.setIcon(new ImageIcon("argazkiak/gilda.jpg"));
-					}
-					break;
-				}
-			}
+					} 
+				} 
 		};
 	}
 	
