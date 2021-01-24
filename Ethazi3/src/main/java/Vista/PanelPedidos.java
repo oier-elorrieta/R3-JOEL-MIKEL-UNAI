@@ -179,6 +179,7 @@ public class PanelPedidos extends JPanel {
 		for (int i = 0; i < produktuak.length; i++) {
 			CB_Produktoak.addItem(produktuak[i]);
 		}
+		CB_Produktoak.setSelectedItem(null);
 
 		initializeEvents();
 	}
@@ -219,37 +220,48 @@ public class PanelPedidos extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
-				if (aukera == "Zukua") {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-				}
-				if (aukera == "Sidra") {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-				}
-				if (aukera == "Ura") {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-				}
-				if (aukera == "Kafea") {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-				}
-				if (aukera == "Txakoli") {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-				}
-				if (aukera == "Patata tortilla") {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-				}
-				if (aukera == "Garagardoa") {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-				}
-				if (aukera == "Colacao") {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-				}
-				if (aukera == "Ardoa") {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-				}
-				if (aukera == "Gilda") {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-				}
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
+				if (aukera == "Zukua" && kantitatea != 0) {
+					controladorPanelPedidos.accionadoBotonGuardar(aukera);
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
+				}
+				if (aukera == "Sidra" && kantitatea != 0) {
+					controladorPanelPedidos.accionadoBotonGuardar(aukera);
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
+				}
+				if (aukera == "Ura" && kantitatea != 0) {
+					controladorPanelPedidos.accionadoBotonGuardar(aukera);
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
+				}
+				if (aukera == "Kafea" && kantitatea != 0) {
+					controladorPanelPedidos.accionadoBotonGuardar(aukera);
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
+				}
+				if (aukera == "Txakoli" && kantitatea != 0) {
+					controladorPanelPedidos.accionadoBotonGuardar(aukera);
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
+				}
+				if (aukera == "Patata tortilla" && kantitatea != 0) {
+					controladorPanelPedidos.accionadoBotonGuardar(aukera);
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
+				}
+				if (aukera == "Garagardoa" && kantitatea != 0) {
+					controladorPanelPedidos.accionadoBotonGuardar(aukera);
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
+				}
+				if (aukera == "Colacao" && kantitatea != 0) {
+					controladorPanelPedidos.accionadoBotonGuardar(aukera);
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
+				}
+				if (aukera == "Ardoa" && kantitatea != 0) {
+					controladorPanelPedidos.accionadoBotonGuardar(aukera);
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
+				}
+				if (aukera == "Gilda" && kantitatea != 0) {
+					controladorPanelPedidos.accionadoBotonGuardar(aukera);
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
+				}
+				
 				if (kantitatea == 1) {
 					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
 				}

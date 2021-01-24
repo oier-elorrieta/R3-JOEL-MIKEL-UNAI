@@ -1,8 +1,6 @@
 package Controlador;
 
-import Modelo.Modelo;
-import Vista.PanelMenuRestaurante;
-import Vista.PanelMenuBar;
+import Modelo.Modelo; 
 import Vista.PanelMenuCafeteria;
 import Vista.Vista;
 

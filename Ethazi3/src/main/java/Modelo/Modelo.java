@@ -3,6 +3,7 @@ package Modelo;
 
 
 public class Modelo {
+	
 	public String[] produktuakJaso() {
 		return metodos.sartuSalgaiak();
 	}
@@ -12,13 +13,23 @@ public class Modelo {
 	public String arraya(){
 		return metodos.arraya();
 	}
-	public void clear() {
-		metodos.ezabatu();
-	}
+	
 	public int[] sartuAukeratutakoKantitateak(int zbk) {
 		return metodos.sartuAukeratutakoZenbakiak(zbk);
 	}
 	public String arrayaKantitateak() {
 		return metodos.arrayaKantitateak();
+	}
+	public int[] sartuAukeratutakoenDirua(String aukera) {
+		return metodos.sartuDirua(aukera);
+	}
+	public String arrayaDirua() {
+		return metodos.arrayaDirua();
+	}
+	public int diruTotala() {
+		return metodos.diruTotala();
+	}
+	public void clear() {
+		metodos.ezabatu();
 	}
 }

@@ -28,20 +28,32 @@ public class PanelTicketLaburpena extends JPanel{
 	private JLabel LB_TotalCant;
 	private JLabel lbldirua;
 	private JLabel lblLaburpen;
+	private JLabel lblkopurua;
 
 	private String aukera;
 	private String kantitatea;
+	private String dirua; 
+	
+	private int diruTotala;
 
 	// *****************************************************************************************************************************************************************************************************
-	
-	public PanelTicketLaburpena(ControladorPanelTicketLaburpena controladorPanelBienvenida) {
-		
-		this.controladorPanelTicketLaburpena = controladorPanelBienvenida;
+
+	public PanelTicketLaburpena(ControladorPanelTicketLaburpena controladorPanelTicketLaburpena) {
+
+		this.controladorPanelTicketLaburpena = controladorPanelTicketLaburpena;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		aukera = controladorPanelTicketLaburpena.arrayaIkusi();	
+		kantitatea = controladorPanelTicketLaburpena.arrayaKantitateakIkusi();
+		dirua = controladorPanelTicketLaburpena.arrayaDiruaIkusi(); 
+		diruTotala = controladorPanelTicketLaburpena.diruTotala();
 		
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
 		LB_Erosketa = new JLabel("EROSKETA");
 		LB_Erosketa.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		LB_Erosketa.setHorizontalAlignment(SwingConstants.CENTER);
@@ -70,7 +82,7 @@ public class PanelTicketLaburpena extends JPanel{
 		LB_Direccion.setBounds(10, 72, 430, 14);
 		add(LB_Direccion);
 
-		LB_Total = new JLabel("TOTAL EUR");
+		LB_Total = new JLabel("TOTAL EUR: "+diruTotala);
 		LB_Total.setHorizontalAlignment(SwingConstants.LEFT);
 		LB_Total.setBounds(10, 259, 155, 20);
 		add(LB_Total);
@@ -81,35 +93,36 @@ public class PanelTicketLaburpena extends JPanel{
 		add(LB_TotalCant);
 
 		lblLaburpen = new JLabel(aukera);
-		lblLaburpen.setBounds(56, 135, 308, 107);
+		lblLaburpen.setBounds(112, 108, 131, 143);
 		add(lblLaburpen);
-	
-		lbldirua = new JLabel(kantitatea);
-		lbldirua.setBounds(38, 108, 46, 143);
+
+		lblkopurua = new JLabel(kantitatea);
+		lblkopurua.setBounds(38, 108, 46, 143);
+		add(lblkopurua);
+		
+		lbldirua = new JLabel(dirua);
+		lbldirua.setBounds(248, 108, 55, 140);
 		add(lbldirua);
-		
+
+
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
 		btnSegi = new JButton("\u2714");
 		btnSegi.setBounds(370, 0, 88, 23);
 		add(btnSegi);		
 		
-		// _______________________________________________________________________________________________________________________________________________________________________________
-		
-		aukera = controladorPanelTicketLaburpena.arrayaIkusi();	
-		kantitatea = controladorPanelTicketLaburpena.arrayaKantitateakIkusi();
-		
+
 		initializeEvents();
 	}
 
 	// *****************************************************************************************************************************************************************************************************
-	
+
 	private void initializeEvents() {
 		this.btnSegi.addActionListener(listenerBotonHasierara(this.controladorPanelTicketLaburpena));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
-	
+
 	private ActionListener listenerBotonHasierara(ControladorPanelTicketLaburpena controladorPanelTicketLaburpena) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

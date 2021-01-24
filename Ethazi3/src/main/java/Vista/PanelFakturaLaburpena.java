@@ -28,9 +28,13 @@ public class PanelFakturaLaburpena extends JPanel {
 	private JLabel LB_TotalCant;
 	private JLabel lbldirua;
 	private JLabel lblLaburpen;
+	private JLabel lblkopurua;
 
 	private String aukera;
 	private String kantitatea;
+	private String dirua; 
+	
+	private int diruTotala;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -39,6 +43,13 @@ public class PanelFakturaLaburpena extends JPanel {
 		this.controladorPanelFakturaLaburpena = controladorPanelFakturaLaburpena;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		aukera = controladorPanelFakturaLaburpena.arrayaIkusi();
+		kantitatea = controladorPanelFakturaLaburpena.arrayaKantitateakIkusi();
+		dirua = controladorPanelFakturaLaburpena.arrayaDiruaIkusi();
+		diruTotala = controladorPanelFakturaLaburpena.diruTotala();
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -70,7 +81,7 @@ public class PanelFakturaLaburpena extends JPanel {
 		LB_Direccion.setBounds(10, 72, 430, 14);
 		add(LB_Direccion);
 
-		LB_Total = new JLabel("TOTAL EUR");
+		LB_Total = new JLabel("TOTAL EUR "+diruTotala);
 		LB_Total.setHorizontalAlignment(SwingConstants.LEFT);
 		LB_Total.setBounds(10, 259, 155, 20);
 		add(LB_Total);
@@ -80,24 +91,23 @@ public class PanelFakturaLaburpena extends JPanel {
 		LB_TotalCant.setBounds(285, 259, 155, 20);
 		add(LB_TotalCant);
 
-		lbldirua = new JLabel(kantitatea);
-		lbldirua.setBounds(38, 108, 46, 143);
-		add(lbldirua);
+		lblkopurua = new JLabel(kantitatea);
+		lblkopurua.setBounds(38, 108, 46, 143);
+		add(lblkopurua);
 
 		lblLaburpen = new JLabel(aukera);
-		lblLaburpen.setBounds(56, 135, 308, 107);
+		lblLaburpen.setBounds(112, 108, 131, 143);
 		add(lblLaburpen);
+		
+		lbldirua = new JLabel(dirua);
+		lbldirua.setBounds(248, 108, 55, 140);
+		add(lbldirua);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		btnSegi = new JButton("\u2714");
 		btnSegi.setBounds(370, 0, 89, 23);
 		add(btnSegi);
-
-		// _______________________________________________________________________________________________________________________________________________________________________________
-
-		aukera = controladorPanelFakturaLaburpena.arrayaIkusi();
-		kantitatea = controladorPanelFakturaLaburpena.arrayaKantitateakIkusi();
 
 		initializeEvents();
 	}

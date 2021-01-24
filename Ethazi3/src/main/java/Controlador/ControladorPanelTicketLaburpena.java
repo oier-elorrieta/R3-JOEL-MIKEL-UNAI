@@ -34,4 +34,10 @@ public class ControladorPanelTicketLaburpena {
 	public String arrayaKantitateakIkusi() {
 		return this.modelo.arrayaKantitateak();
 	}
+	public String arrayaDiruaIkusi() {
+		return this.modelo.arrayaDirua();
+	}
+	public int diruTotala() {
+		return this.modelo.diruTotala();
+	}
 }

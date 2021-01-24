@@ -50,6 +50,7 @@ public class PanelTicket extends JPanel {
 	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JSpinner NºUnidades; 
 	private String[] produktuak;
+	
 
 	// *****************************************************************************************************************************************************************************************************
 	
@@ -159,10 +160,12 @@ public class PanelTicket extends JPanel {
 		CB_Produktoak.setBounds(30, 68, 214, 20);
 		add(CB_Produktoak);
 	
+		
 		produktuak = controladorPanelTicket.accionadoComboBox();
 		for(int i=0;i < produktuak.length;i++) {
 			CB_Produktoak.addItem(produktuak[i]);
 		}
+		CB_Produktoak.setSelectedItem(null);
 
 		initializeEvents();
 	}
@@ -202,28 +205,39 @@ public class PanelTicket extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
-				if (aukera == "Zukua") { 
-					 controladorPanelTicket.accionadoBotonGuardar(aukera);
-				}if (aukera == "Sidra") {
-					 controladorPanelTicket.accionadoBotonGuardar(aukera);
-				}if (aukera == "Ura") {
-					 controladorPanelTicket.accionadoBotonGuardar(aukera);
-				}if (aukera == "Kafea") {
-					 controladorPanelTicket.accionadoBotonGuardar(aukera);
-				}if (aukera == "Txakoli") {
-					 controladorPanelTicket.accionadoBotonGuardar(aukera);
-				}if (aukera == "Patata tortilla") {
-					 controladorPanelTicket.accionadoBotonGuardar(aukera);
-				}if (aukera == "Garagardoa") {
-					 controladorPanelTicket.accionadoBotonGuardar(aukera);
-				}if (aukera == "Colacao") {
-					 controladorPanelTicket.accionadoBotonGuardar(aukera);
-				}if (aukera == "Ardoa") {
-					 controladorPanelTicket.accionadoBotonGuardar(aukera);
-				}if (aukera == "Gilda") {
-					 controladorPanelTicket.accionadoBotonGuardar(aukera);
-				}
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
+				if (aukera == "Zukua" && kantitatea != 0) { 
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+					 controladorPanelTicket.accionadoBotonGuardar3(aukera);
+				}if (aukera == "Sidra" && kantitatea != 0) {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+					 controladorPanelTicket.accionadoBotonGuardar3(aukera);
+				}if (aukera == "Ura" && kantitatea != 0) {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+					 controladorPanelTicket.accionadoBotonGuardar3(aukera);
+				}if (aukera == "Kafea" && kantitatea != 0) {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+					 controladorPanelTicket.accionadoBotonGuardar3(aukera);
+				}if (aukera == "Txakoli" && kantitatea != 0) {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+					 controladorPanelTicket.accionadoBotonGuardar3(aukera);
+				}if (aukera == "Patata tortilla" && kantitatea != 0) {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+					 controladorPanelTicket.accionadoBotonGuardar3(aukera);
+				}if (aukera == "Garagardoa" && kantitatea != 0) {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+					 controladorPanelTicket.accionadoBotonGuardar3(aukera);
+				}if (aukera == "Colacao" && kantitatea != 0) {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+					 controladorPanelTicket.accionadoBotonGuardar3(aukera);
+				}if (aukera == "Ardoa" && kantitatea != 0) {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+					 controladorPanelTicket.accionadoBotonGuardar3(aukera);
+				}if (aukera == "Gilda" && kantitatea != 0) {
+					 controladorPanelTicket.accionadoBotonGuardar(aukera);
+					 controladorPanelTicket.accionadoBotonGuardar3(aukera);
+				}
+				
 				if(kantitatea == 1) {
 					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
 				}if(kantitatea == 2) {
