@@ -1,6 +1,5 @@
 package Vista;
 
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -9,23 +8,25 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;  
 import javax.swing.JPanel;
 
-import Controlador.ControladorPanelMenu2; 
-@SuppressWarnings("serial")
-public class PanelMenu2 extends JPanel {
+import Controlador.ControladorPanelMenuBar; 
 
-	private ControladorPanelMenu2 controladorPanelMenu2;
+@SuppressWarnings("serial")
+public class PanelMenuBar extends JPanel {
+
+	private ControladorPanelMenuBar controladorPanelMenu2;
+	
 	private JButton btnFaktura;
 	private JButton btnTicket;
 	private JButton btnSarratu;
 	private JButton btnHasiera;
 
-	public PanelMenu2(ControladorPanelMenu2 controladorPanelMenu2) {
+	// *****************************************************************************************************************************************************************************************************
+	
+	public PanelMenuBar(ControladorPanelMenuBar controladorPanelMenu2) {
 
 		this.controladorPanelMenu2 = controladorPanelMenu2;
-
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-
 		setBounds(0, 0, 450, 300);
 
 		btnTicket = new JButton("TICKET");
@@ -52,6 +53,8 @@ public class PanelMenu2 extends JPanel {
 		initializeEvents();
 	}
 	
+	// *****************************************************************************************************************************************************************************************************
+	
 	private void initializeEvents() {
 		this.btnFaktura.addActionListener(listenerBottonFaktura(this.controladorPanelMenu2));
 		this.btnTicket.addActionListener(listenerBottonTicket(this.controladorPanelMenu2));
@@ -59,28 +62,39 @@ public class PanelMenu2 extends JPanel {
 		this.btnHasiera.addActionListener(listenerBotonHasiera(this.controladorPanelMenu2));
 	}
 	
-	private ActionListener listenerBottonFaktura(ControladorPanelMenu2 controladorPanelMenu2) {
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerBottonFaktura(ControladorPanelMenuBar controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu2.accionadoBottonMostrarPanelFaktura();
 			}
 		};
 	} 
-	private ActionListener listenerBottonTicket(ControladorPanelMenu2 controladorPanelMenu2) {
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerBottonTicket(ControladorPanelMenuBar controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu2.accionadoBottonMostrarPanelTicket();
 			}
 		};
 	} 
-	private ActionListener listenerBottonSarratu(ControladorPanelMenu2 controladorPanelMenu2) {
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerBottonSarratu(ControladorPanelMenuBar controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu2.accionadoBottonAtzera();
 			}
 		};
 	} 
-	private ActionListener listenerBotonHasiera(ControladorPanelMenu2 controladorPanelMenu2) {
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerBotonHasiera(ControladorPanelMenuBar controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu2.accionadoBotonHasiera();

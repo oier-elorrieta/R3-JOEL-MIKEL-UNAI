@@ -11,81 +11,111 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-
 @SuppressWarnings("serial")
-public class PanelFakturaLaburpena extends JPanel{
-	
+public class PanelFakturaLaburpena extends JPanel {
+
 	private ControladorPanelFakturaLaburpena controladorPanelFakturaLaburpena;
-	private JButton btnNewButton;
+
+	private JButton btnSegi;
+
+	private JLabel LB_1_;
+	private JLabel LB_2_;
+	private JLabel LB_3_;
+	private JLabel LB_Erosketa;
+	private JLabel LB_Nombre;
+	private JLabel LB_Direccion;
+	private JLabel LB_Total;
+	private JLabel LB_TotalCant;
+	private JLabel lbldirua;
+	private JLabel lblLaburpen;
+
+	private String aukera;
+	private String kantitatea;
+
+	// *****************************************************************************************************************************************************************************************************
 
 	public PanelFakturaLaburpena(ControladorPanelFakturaLaburpena controladorPanelFakturaLaburpena) {
-		setBackground(Color.LIGHT_GRAY);
+
 		this.controladorPanelFakturaLaburpena = controladorPanelFakturaLaburpena;
+		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("EROSKETA");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 11, 430, 30);
-		add(lblNewLabel);
+		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		JLabel lblNewLabel_1 = new JLabel("_____________________________________________________________");
-		lblNewLabel_1.setBounds(10, 27, 430, 14);
-		add(lblNewLabel_1);
+		LB_Erosketa = new JLabel("EROSKETA");
+		LB_Erosketa.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		LB_Erosketa.setHorizontalAlignment(SwingConstants.CENTER);
+		LB_Erosketa.setBounds(10, 11, 430, 30);
+		add(LB_Erosketa);
 
-		JLabel lblNewLabel_1_1 = new JLabel("_____________________________________________________________");
-		lblNewLabel_1_1.setBounds(10, 83, 430, 14);
-		add(lblNewLabel_1_1);
+		LB_1_ = new JLabel("_____________________________________________________________");
+		LB_1_.setBounds(10, 27, 430, 14);
+		add(LB_1_);
 
-		JLabel lblNewLabel_1_2 = new JLabel("_____________________________________________________________");
-		lblNewLabel_1_2.setBounds(10, 275, 430, 14);
-		add(lblNewLabel_1_2);
+		LB_2_ = new JLabel("_____________________________________________________________");
+		LB_2_.setBounds(10, 83, 430, 14);
+		add(LB_2_);
 
-		JLabel lblNewLabel_2 = new JLabel("NOMBRE");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(10, 47, 430, 14);
-		add(lblNewLabel_2);
+		LB_3_ = new JLabel("_____________________________________________________________");
+		LB_3_.setBounds(10, 275, 430, 14);
+		add(LB_3_);
 
-		JLabel lblNewLabel_2_1 = new JLabel("DIRECCION");
-		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2_1.setBounds(10, 72, 430, 14);
-		add(lblNewLabel_2_1);
+		LB_Nombre = new JLabel("NOMBRE");
+		LB_Nombre.setHorizontalAlignment(SwingConstants.CENTER);
+		LB_Nombre.setBounds(10, 47, 430, 14);
+		add(LB_Nombre);
 
-		JLabel LB_Total = new JLabel("TOTAL EUR");
+		LB_Direccion = new JLabel("DIRECCION");
+		LB_Direccion.setHorizontalAlignment(SwingConstants.CENTER);
+		LB_Direccion.setBounds(10, 72, 430, 14);
+		add(LB_Direccion);
+
+		LB_Total = new JLabel("TOTAL EUR");
 		LB_Total.setHorizontalAlignment(SwingConstants.LEFT);
 		LB_Total.setBounds(10, 259, 155, 20);
 		add(LB_Total);
 
-		JLabel LB_TotalCant = new JLabel("X");
+		LB_TotalCant = new JLabel("X");
 		LB_TotalCant.setHorizontalAlignment(SwingConstants.RIGHT);
 		LB_TotalCant.setBounds(285, 259, 155, 20);
 		add(LB_TotalCant);
 
-		btnNewButton = new JButton("\u2714");
-		btnNewButton.setBounds(370, 0, 89, 23);
-		add(btnNewButton);
-		
-		String aukera = controladorPanelFakturaLaburpena.arrayaIkusi();
-		JLabel lblLaburpen = new JLabel(aukera);
-		lblLaburpen.setBounds(56, 135, 308, 107);
-		add(lblLaburpen);
-		
-		String kantitatea = controladorPanelFakturaLaburpena.arrayaKantitateakIkusi();
-		JLabel lbldirua = new JLabel(kantitatea);
+		lbldirua = new JLabel(kantitatea);
 		lbldirua.setBounds(38, 108, 46, 143);
 		add(lbldirua);
 
+		lblLaburpen = new JLabel(aukera);
+		lblLaburpen.setBounds(56, 135, 308, 107);
+		add(lblLaburpen);
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		btnSegi = new JButton("\u2714");
+		btnSegi.setBounds(370, 0, 89, 23);
+		add(btnSegi);
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		aukera = controladorPanelFakturaLaburpena.arrayaIkusi();
+		kantitatea = controladorPanelFakturaLaburpena.arrayaKantitateakIkusi();
+
 		initializeEvents();
 	}
+
+	// *****************************************************************************************************************************************************************************************************
+
 	private void initializeEvents() {
-		this.btnNewButton.addActionListener(listenerBotonHasierara(this.controladorPanelFakturaLaburpena));
+		this.btnSegi.addActionListener(listenerBotonHasierara(this.controladorPanelFakturaLaburpena));
 	}
+
+	// *****************************************************************************************************************************************************************************************************
+
 	private ActionListener listenerBotonHasierara(ControladorPanelFakturaLaburpena controladorPanelFakturaLaburpena) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					controladorPanelFakturaLaburpena.accionadoBottonMostrarPanelMenu();
-				} catch (InterruptedException e) { 
+				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}

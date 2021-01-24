@@ -30,32 +30,37 @@ public class PanelTicket extends JPanel {
 	int año = fecha.get(Calendar.YEAR);
 	int mes = fecha.get(Calendar.MONTH);
 	int dia = fecha.get(Calendar.DAY_OF_MONTH);
+	
 	private JTextField TF_Titulua;
 	private JTextField TF_Fecha;
+	private JTextField TF_Lokala;
+	private JTextField TF_TransferentziaZenbakia;
+	private JTextField TF_Totala;
+		
 	private JLabel LB_Data;
 	private JLabel LB_Lokala;
-	private JTextField textField;
-	private JTextField textField_1;
 	private JLabel LB_TransferentziaZenbakia;
 	private JLabel LB_Totala;
-	private JTextField textField_2;
+	private JLabel argazkiak;
+		
 	private JButton btnAtzera;
 	private JButton btnAurrera;
-	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JButton btnSegi;
+	
+	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JSpinner NºUnidades; 
-	private JTextField TF_Izena;
-	private JTextField TF_Abizena;
-	private JTextField TF_NIF;
-	private JLabel argazkiak;
 	private String[] produktuak;
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public PanelTicket(ControladorPanelTicket controladorPanelTicket) {
 		this.controladorPanelTicket = controladorPanelTicket;
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
+		// _______________________________________________________________________________________________________________________________________________________________________________
+			
 		TF_Titulua = new JTextField();
 		TF_Titulua.setFont(new Font("Tahoma", Font.BOLD, 12));
 		TF_Titulua.setForeground(new Color(255, 255, 255));
@@ -63,25 +68,40 @@ public class PanelTicket extends JPanel {
 		TF_Titulua.setBackground(new Color(0, 0, 255));
 		TF_Titulua.setHorizontalAlignment(SwingConstants.LEFT);
 		TF_Titulua.setText(" \u2666\uFE0F Ticket Kalkuloak \u2666\uFE0F");
-		add(TF_Titulua);
 		TF_Titulua.setColumns(10);
-
-		btnAtzera = new JButton(" Atzera");
-		btnAtzera.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnAtzera.setBounds(353, 266, 92, 23);
-		add(btnAtzera);
-
-		btnAurrera = new JButton(" Aurrera");
-		btnAurrera.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnAurrera.setBounds(254, 266, 92, 23);
-		add(btnAurrera);
-
+		TF_Titulua.setEditable(false);
+		add(TF_Titulua);
+		
 		TF_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + año);
 		TF_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Fecha.setBounds(367, 36, 75, 20);
-		add(TF_Fecha);
 		TF_Fecha.setColumns(10);
+		TF_Fecha.setEditable(false);
+		add(TF_Fecha);
+		
+		TF_Lokala = new JTextField("x");
+		TF_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
+		TF_Lokala.setBounds(61, 36, 75, 20);
+		TF_Lokala.setColumns(10);
+		TF_Lokala.setEditable(false);
+		add(TF_Lokala);
 
+		TF_TransferentziaZenbakia = new JTextField("x");
+		TF_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
+		TF_TransferentziaZenbakia.setBounds(226, 36, 75, 20);
+		TF_TransferentziaZenbakia.setColumns(10);
+		TF_TransferentziaZenbakia.setEditable(false);
+		add(TF_TransferentziaZenbakia);
+			
+		TF_Totala = new JTextField("x");
+		TF_Totala.setHorizontalAlignment(SwingConstants.CENTER);
+		TF_Totala.setBounds(61, 267, 183, 20);
+		TF_Totala.setColumns(10);
+		TF_Totala.setEditable(false);
+		add(TF_Totala);
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+		
 		LB_Data = new JLabel("Data:");
 		LB_Data.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		LB_Data.setHorizontalAlignment(SwingConstants.CENTER);
@@ -94,18 +114,6 @@ public class PanelTicket extends JPanel {
 		LB_Lokala.setBounds(20, 39, 46, 14);
 		add(LB_Lokala);
 
-		textField = new JTextField("x");
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setColumns(10);
-		textField.setBounds(61, 36, 75, 20);
-		add(textField);
-
-		textField_1 = new JTextField("x");
-		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_1.setColumns(10);
-		textField_1.setBounds(226, 36, 75, 20);
-		add(textField_1);
-
 		LB_TransferentziaZenbakia = new JLabel("Trans Zbk:");
 		LB_TransferentziaZenbakia.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		LB_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
@@ -116,35 +124,40 @@ public class PanelTicket extends JPanel {
 		LB_Totala.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_Totala.setBounds(20, 270, 46, 14);
 		add(LB_Totala);
+		
+		argazkiak = new JLabel();
+		argazkiak.setBounds(254, 67, 188, 154);
+		argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
+		add(argazkiak);
+		
+		// _______________________________________________________________________________________________________________________________________________________________________________
+		
+		btnAtzera = new JButton(" Atzera");
+		btnAtzera.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnAtzera.setBounds(353, 266, 92, 23);
+		add(btnAtzera);
 
-		textField_2 = new JTextField("x");
-		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_2.setColumns(10);
-		textField_2.setBounds(61, 267, 183, 20);
-		add(textField_2);
-		CB_Produktoak.setBounds(30, 68, 214, 20);
-		add(CB_Produktoak);
-
+		btnAurrera = new JButton(" Aurrera");
+		btnAurrera.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnAurrera.setBounds(254, 266, 92, 23);
+		add(btnAurrera);
+		
 		btnSegi = new JButton("\u2714\uFE0F");
 		btnSegi.setHorizontalAlignment(SwingConstants.TRAILING);
 		btnSegi.setBounds(388, 232, 57, 23);
 		add(btnSegi);
+		
+		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		final String numbers[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+		final String numbers[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
 		SpinnerModel model1 = new SpinnerListModel(numbers);
 
 		NºUnidades = new JSpinner(model1);
 		NºUnidades.setBounds(254, 233, 120, 20);
 		add(NºUnidades);
-		
-		argazkiak = new JLabel();
-		argazkiak.setIcon(new ImageIcon("C:\\Users\\in1dam\\Desktop\\R3-JOEL-MIKEL-UNAI\\Ethazi3\\argazkiak\\zumo.jpg"));
-		argazkiak.setBounds(254, 67, 188, 154);
-		add(argazkiak);
 
-		argazkiak = new JLabel();
-		argazkiak.setBounds(254, 67, 188, 154);
-		add(argazkiak);
+		CB_Produktoak.setBounds(30, 68, 214, 20);
+		add(CB_Produktoak);
 	
 		produktuak = controladorPanelTicket.accionadoComboBox();
 		for(int i=0;i < produktuak.length;i++) {
@@ -154,6 +167,8 @@ public class PanelTicket extends JPanel {
 		initializeEvents();
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	private void initializeEvents() {
 		this.btnAurrera.addActionListener(listenerBotonLaburpenera(this.controladorPanelTicket));
 		this.btnAtzera.addActionListener(listenerBotonAtzera(this.controladorPanelTicket));
@@ -161,6 +176,8 @@ public class PanelTicket extends JPanel {
 		this.btnSegi.addActionListener(listenerBotonSegi());
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	private ActionListener listenerBotonLaburpenera(ControladorPanelTicket ControladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -169,6 +186,8 @@ public class PanelTicket extends JPanel {
 		};
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	private ActionListener listenerBotonAtzera(ControladorPanelTicket ControladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -177,6 +196,8 @@ public class PanelTicket extends JPanel {
 		};
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	private ActionListener listenerBotonSegi() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -224,10 +245,14 @@ public class PanelTicket extends JPanel {
 				}if(kantitatea == 10) {
 					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
 				}
-				NºUnidades.setValue("1");
+				NºUnidades.setValue("0");
+				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
+				CB_Produktoak.setSelectedItem(null);
 			}
 		};
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 	
 	private ActionListener listenerComboBox(ControladorPanelTicket controladorPanelTicket2) {
 		return new ActionListener() {

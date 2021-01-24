@@ -1,7 +1,7 @@
 package Vista;
 
-
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,11 +9,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;  
 import javax.swing.JPanel;
  
-import Controlador.ControladorPanelMenu; 
-@SuppressWarnings("serial")
-public class PanelMenu extends JPanel {
+import Controlador.ControladorPanelMenuRestaurante; 
 
-	private ControladorPanelMenu controladorPanelMenu;
+@SuppressWarnings("serial")
+public class PanelMenuRestaurante extends JPanel {
+
+	private ControladorPanelMenuRestaurante controladorPanelMenu;
+	
 	private JButton btnFaktura;
 	private JButton btnTicket;
 	private JButton btnEskaera;
@@ -21,14 +23,13 @@ public class PanelMenu extends JPanel {
 	private JButton btnKomanda;
 	private JButton  btnHasiera;
 
-
-	public PanelMenu(ControladorPanelMenu controladorPanelMenu) {
+	// *****************************************************************************************************************************************************************************************************
+	
+	public PanelMenuRestaurante(ControladorPanelMenuRestaurante controladorPanelMenu) {
 
 		this.controladorPanelMenu = controladorPanelMenu;
-
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-
 		setBounds(0, 0, 450, 300);
 
 		btnTicket = new JButton("TICKET");
@@ -65,6 +66,8 @@ public class PanelMenu extends JPanel {
 		initializeEvents();
 	}
 	
+	// *****************************************************************************************************************************************************************************************************
+	
 	private void initializeEvents() {
 		this.btnFaktura.addActionListener(listenerBottonFaktura(this.controladorPanelMenu));
 		this.btnTicket.addActionListener(listenerBottonTicket(this.controladorPanelMenu));
@@ -73,35 +76,49 @@ public class PanelMenu extends JPanel {
 		this.btnHasiera.addActionListener(listenerBotonHasiera(this.controladorPanelMenu));
 	}
 	
-	private ActionListener listenerBottonFaktura(ControladorPanelMenu controladorPanelMenu) {
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerBottonFaktura(ControladorPanelMenuRestaurante controladorPanelMenu) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu.accionadoBottonMostrarPanelFaktura();
 			}
 		};
 	} 
-	private ActionListener listenerBottonTicket(ControladorPanelMenu controladorPanelMenu) {
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerBottonTicket(ControladorPanelMenuRestaurante controladorPanelMenu) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu.accionadoBottonMostrarPanelTicket();
 			}
 		};
 	} 
-	private ActionListener listenerBottonEskaera(ControladorPanelMenu controladorPanelMenu) {
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerBottonEskaera(ControladorPanelMenuRestaurante controladorPanelMenu) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu.accionadoBottonMostrarPanelPedidos();
 			}
 		};
 	} 
-	private ActionListener listenerBottonSarratu(ControladorPanelMenu controladorPanelMenu) {
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerBottonSarratu(ControladorPanelMenuRestaurante controladorPanelMenu) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu.accionadoBottonAtzera();
 			}
 		};
 	}
-	private ActionListener listenerBotonHasiera(ControladorPanelMenu controladorPanelMenu) {
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerBotonHasiera(ControladorPanelMenuRestaurante controladorPanelMenu) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu.accionadoBotonHasiera();

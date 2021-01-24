@@ -2,7 +2,7 @@ package Controlador;
 
 import Modelo.Modelo;
 import Vista.PanelLogin;
-import Vista.PanelMenu;
+import Vista.PanelMenuRestaurante;
 import Vista.Vista;
 
 public class ControladorPanelLogin {

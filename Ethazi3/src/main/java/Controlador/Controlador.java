@@ -8,9 +8,9 @@ public class Controlador {
 	private Modelo modelo;
 	private Vista vista;
 	private ControladorPanelLogin controladorPanelLogin;
-	private ControladorPanelMenu controladorPanelMenu;	
-	private ControladorPanelMenu2 controladorPanelMenu2;	
-	private ControladorPanelMenu3 controladorPanelMenu3;	
+	private ControladorPanelMenuRestaurante controladorPanelMenu;	
+	private ControladorPanelMenuBar controladorPanelMenu2;	
+	private ControladorPanelMenuCafeteria controladorPanelMenu3;	
 	private ControladorPanelFaktura controladorPanelFaktura;
 	private ControladorPanelFakturaLaburpena controladorPanelFakturaLaburpena;
 	private ControladorPanelTicket controladorPanelTicket;
@@ -22,9 +22,9 @@ public class Controlador {
 		this.modelo = modelo;
 		this.vista = vista;
 		this.controladorPanelLogin = new ControladorPanelLogin(this.modelo, this.vista, this);
-		this.controladorPanelMenu = new ControladorPanelMenu(this.modelo, this.vista, this);
-		this.controladorPanelMenu2 = new ControladorPanelMenu2(this.modelo, this.vista, this);
-		this.controladorPanelMenu3 = new ControladorPanelMenu3(this.modelo, this.vista, this);
+		this.controladorPanelMenu = new ControladorPanelMenuRestaurante(this.modelo, this.vista, this);
+		this.controladorPanelMenu2 = new ControladorPanelMenuBar(this.modelo, this.vista, this);
+		this.controladorPanelMenu3 = new ControladorPanelMenuCafeteria(this.modelo, this.vista, this);
 		this.controladorPanelFaktura = new ControladorPanelFaktura(this.modelo, this.vista, this);
 		this.controladorPanelFakturaLaburpena = new ControladorPanelFakturaLaburpena(this.modelo, this.vista, this);
 		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);

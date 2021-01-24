@@ -1,26 +1,26 @@
 package Controlador;
 
 import Modelo.Modelo;
-import Vista.PanelMenu;
-import Vista.PanelMenu2;
-import Vista.PanelMenu3;
+import Vista.PanelMenuRestaurante;
+import Vista.PanelMenuBar;
+import Vista.PanelMenuCafeteria;
 import Vista.Vista;
 
-public class ControladorPanelMenu3 {
+public class ControladorPanelMenuCafeteria {
 
 	private Modelo modelo;
 	private Vista vista;
 	private Controlador controlador;
-	private PanelMenu3 panelMenu3;
+	private PanelMenuCafeteria panelMenu3;
 
-	public ControladorPanelMenu3(Modelo modelo, Vista vista, Controlador controlador) {
+	public ControladorPanelMenuCafeteria(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
 		this.vista = vista;
 		this.controlador = controlador;	
 	}
 
 	public void mostrarPanelMenu3() {
-		this.panelMenu3 = new PanelMenu3(this);
+		this.panelMenu3 = new PanelMenuCafeteria(this);
 		this.vista.mostrarPanel(this.panelMenu3);
 	}
 

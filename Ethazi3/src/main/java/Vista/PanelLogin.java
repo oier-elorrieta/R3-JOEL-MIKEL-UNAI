@@ -1,6 +1,5 @@
 package Vista;
 
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -8,10 +7,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;  
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 import Controlador.ControladorPanelLogin;
-import Controlador.ControladorPanelMenu; 
+ 
 @SuppressWarnings("serial")
 public class PanelLogin extends JPanel {
 
@@ -21,7 +19,8 @@ public class PanelLogin extends JPanel {
 	private JButton BT_restaurante;
 	private JButton btnSarratu;
 
-
+	// *****************************************************************************************************************************************************************************************************
+	
 	public PanelLogin(ControladorPanelLogin controladorPanelLogin) {
 
 		this.controladorPanelMenu = controladorPanelLogin;
@@ -55,12 +54,16 @@ public class PanelLogin extends JPanel {
 		initializeEvents();
 	}
 	
+	// *****************************************************************************************************************************************************************************************************
+	
 	private void initializeEvents() {
 		this.BT_cafeteria.addActionListener(listenerBottonFaktura(this.controladorPanelMenu));
 		this.BT_bar.addActionListener(listenerBottonTicket(this.controladorPanelMenu));
 		this.BT_restaurante.addActionListener(listenerBottonEskaera(this.controladorPanelMenu));
 		this.btnSarratu.addActionListener(listenerBottonSarratu(this.controladorPanelMenu));
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 	
 	private ActionListener listenerBottonFaktura(ControladorPanelLogin controladorPanelMenu2) {
 		return new ActionListener() {
@@ -69,6 +72,9 @@ public class PanelLogin extends JPanel {
 			}
 		};
 	} 
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	private ActionListener listenerBottonTicket(ControladorPanelLogin controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -76,13 +82,19 @@ public class PanelLogin extends JPanel {
 			}
 		};
 	} 
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	private ActionListener listenerBottonEskaera(ControladorPanelLogin controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu2.accionadoBottonMostrarPanelRestaurante();
 			}
 		};
-	} 
+	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	private ActionListener listenerBottonSarratu(ControladorPanelLogin controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
