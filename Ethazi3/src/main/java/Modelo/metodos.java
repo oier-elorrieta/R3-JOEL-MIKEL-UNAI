@@ -105,13 +105,9 @@ public class metodos {
 	}
 	public static int diruTotala(){
 		int diruTotala = 0;
-		for(int i=0;i<dirua.length;i++) {
-			if(dirua[i] != 0) {
-			for(int j=0;j<kantitateak.length;j++) {
-				if(kantitateak[i] != 0) {
-					diruTotala = diruTotala + (dirua[i]*kantitateak[j]);
-				} 
-			}}
+		Produktua elikagaiak[] = objektuak();
+		for(int i=0;i<kantitateak.length;i++) {
+			diruTotala = diruTotala + (kantitateak[i] * elikagaiak[i].getUnitatePrezioa());
 		}
 		return diruTotala;
 	}
