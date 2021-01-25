@@ -24,7 +24,7 @@ public class ControladorPanelTicket {
 	}
 	
 	public void accionadoBottonLaburpenera() {
-		this.controlador.navegarPanelTicketLaburpena();
+		this.controlador.navegarPanelLaburpena();
 	}
 	public void accionadoBottonAtzera() {
 		this.controlador.navegarPanelMenu();

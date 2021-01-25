@@ -22,7 +22,7 @@ public class ControladorPanelPedidos {
 	}
 
 	public void accionadoBottonLaburpenera() {
-		this.controlador.navegarPanelPedidosLaburpena();
+		this.controlador.navegarPanelLaburpena();
 	}
 	public void accionadoBottonAtzera() {
 		this.controlador.navegarPanelMenu();

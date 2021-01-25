@@ -1,27 +1,25 @@
 package Controlador;
- 
 
 import Modelo.Modelo;
-import Vista.PanelFakturaLaburpena; 
+import Vista.PanelLaburpena;
 import Vista.Vista;
 
-public class ControladorPanelFakturaLaburpena {
+public class ControladorPanelLaburpena {
 
-	@SuppressWarnings("unused")
 	private Modelo modelo;
 	private Vista vista;
 	private Controlador controlador;
-	private PanelFakturaLaburpena panelFakturaLaburpena;
+	private PanelLaburpena panelLaburpena;
 	
-	public ControladorPanelFakturaLaburpena(Modelo modelo, Vista vista, Controlador controlador) {
+	public ControladorPanelLaburpena(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
 		this.vista = vista;
 		this.controlador = controlador;	
 	}
 	
-	public void mostrarPanelFakturaLaburpena() {
-		this.panelFakturaLaburpena = new PanelFakturaLaburpena(this);
-		this.vista.mostrarPanel(this.panelFakturaLaburpena);
+	public void mostrarPanelLaburpena() {
+		this.panelLaburpena = new PanelLaburpena(this);
+		this.vista.mostrarPanel(this.panelLaburpena);
 	}
 	
 	public void accionadoBottonMostrarPanelMenu() throws InterruptedException {

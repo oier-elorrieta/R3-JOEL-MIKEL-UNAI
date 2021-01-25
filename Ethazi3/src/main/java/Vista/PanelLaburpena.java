@@ -1,20 +1,20 @@
 package Vista;
 
+
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import Controlador.ControladorPanelFakturaLaburpena;
+import Controlador.ControladorPanelLaburpena;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-
 @SuppressWarnings("serial")
-public class PanelFakturaLaburpena extends JPanel {
+public class PanelLaburpena extends JPanel{
 
-	private ControladorPanelFakturaLaburpena controladorPanelFakturaLaburpena;
+	private ControladorPanelLaburpena controladorPanelTicketLaburpena;
 
 	private JButton btnSegi;
 
@@ -38,18 +38,19 @@ public class PanelFakturaLaburpena extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public PanelFakturaLaburpena(ControladorPanelFakturaLaburpena controladorPanelFakturaLaburpena) {
+	public PanelLaburpena(ControladorPanelLaburpena controladorPanelTicketLaburpena) {
 
-		this.controladorPanelFakturaLaburpena = controladorPanelFakturaLaburpena;
+		this.controladorPanelTicketLaburpena = controladorPanelTicketLaburpena;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		aukera = controladorPanelFakturaLaburpena.arrayaIkusi();
-		kantitatea = controladorPanelFakturaLaburpena.arrayaKantitateakIkusi();
-		dirua = controladorPanelFakturaLaburpena.arrayaDiruaIkusi();
-		diruTotala = controladorPanelFakturaLaburpena.diruTotala();
+		aukera = controladorPanelTicketLaburpena.arrayaIkusi();	
+		kantitatea = controladorPanelTicketLaburpena.arrayaKantitateakIkusi();
+		dirua = controladorPanelTicketLaburpena.arrayaDiruaIkusi(); 
+		diruTotala = controladorPanelTicketLaburpena.diruTotala();
+		
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -81,33 +82,35 @@ public class PanelFakturaLaburpena extends JPanel {
 		LB_Direccion.setBounds(10, 72, 430, 14);
 		add(LB_Direccion);
 
-		LB_Total = new JLabel("TOTAL EUR "+diruTotala);
+		LB_Total = new JLabel("TOTAL EUR: "+diruTotala);
 		LB_Total.setHorizontalAlignment(SwingConstants.LEFT);
 		LB_Total.setBounds(10, 259, 155, 20);
 		add(LB_Total);
 
 		LB_TotalCant = new JLabel("X");
 		LB_TotalCant.setHorizontalAlignment(SwingConstants.RIGHT);
-		LB_TotalCant.setBounds(285, 259, 155, 20);
+		LB_TotalCant.setBounds(285, 259, 155, 10);
 		add(LB_TotalCant);
-
-		lblkopurua = new JLabel(kantitatea);
-		lblkopurua.setBounds(38, 108, 46, 143);
-		add(lblkopurua);
 
 		lblLaburpen = new JLabel(aukera);
 		lblLaburpen.setBounds(112, 108, 131, 143);
 		add(lblLaburpen);
+
+		lblkopurua = new JLabel(kantitatea);
+		lblkopurua.setBounds(38, 108, 46, 143);
+		add(lblkopurua);
 		
 		lbldirua = new JLabel(dirua);
 		lbldirua.setBounds(248, 108, 55, 140);
 		add(lbldirua);
 
+
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		btnSegi = new JButton("\u2714");
-		btnSegi.setBounds(370, 0, 89, 23);
-		add(btnSegi);
+		btnSegi.setBounds(370, 0, 88, 23);
+		add(btnSegi);		
+		
 
 		initializeEvents();
 	}
@@ -115,17 +118,17 @@ public class PanelFakturaLaburpena extends JPanel {
 	// *****************************************************************************************************************************************************************************************************
 
 	private void initializeEvents() {
-		this.btnSegi.addActionListener(listenerBotonHasierara(this.controladorPanelFakturaLaburpena));
+		this.btnSegi.addActionListener(listenerBotonHasierara(this.controladorPanelTicketLaburpena));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerBotonHasierara(ControladorPanelFakturaLaburpena controladorPanelFakturaLaburpena) {
+	private ActionListener listenerBotonHasierara(ControladorPanelLaburpena controladorPanelTicketLaburpena) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					controladorPanelFakturaLaburpena.accionadoBottonMostrarPanelMenu();
-				} catch (InterruptedException e) {
+					controladorPanelTicketLaburpena.accionadoBottonMostrarPanelMenu();
+				} catch (InterruptedException e) { 
 					e.printStackTrace();
 				}
 			}
