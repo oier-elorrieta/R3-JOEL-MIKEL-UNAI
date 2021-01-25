@@ -31,6 +31,8 @@ public class metodos {
 		return elikagaiak;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String[] sartuSalgaiak() {
 		Produktua elikagaiak[] = objektuak();
 
@@ -40,6 +42,9 @@ public class metodos {
 		}
 		return produktoIzena;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String[] sartuAukeratutakoak(String aukera) { 
 		for(int i = 0; i < aukeratutakoak.length; i++) {
 			if(aukeratutakoak[i] == null) {
@@ -51,17 +56,21 @@ public class metodos {
 		}
 		return aukeratutakoak;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static  String arraya() {
 		String kk="";
-		int kont = 1;
 		for(int i=0;i<aukeratutakoak.length;i++) {
 			if(aukeratutakoak[i]!=null) {
-				kk = kk+"<html>"+kont+"."+aukeratutakoak[i]+" ----><br><html>";
+				kk = kk+"<html>"+aukeratutakoak[i]+"<br><html>";
 			}
-			kont++;
 		}
 		return kk;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static  int[] sartuAukeratutakoZenbakiak(int zbk) {
 		for(int i = 0; i < kantitateak.length; i++) {
 			if(kantitateak[i] == 0) {
@@ -71,15 +80,21 @@ public class metodos {
 		}
 		return kantitateak;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String arrayaKantitateak() {
 		String kk=""; 
 		for(int i=0;i<kantitateak.length;i++) {
 			if(kantitateak[i]!=0) {
-				kk = kk+"<html>"+kantitateak[i]+"<br><html>";
+				kk = kk+"<html>"+"x"+kantitateak[i]+"<br><html>";
 			} 
 		}
 		return kk;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static int[] sartuDirua(String aukera) {
 		Produktua elikagaiak[] = objektuak();
 		int kont = 0;
@@ -94,15 +109,21 @@ public class metodos {
 		}
 		return dirua;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String arrayaDirua() {
 		String kk=""; 
 		for(int i=0;i<dirua.length;i++) {
 			if(dirua[i]!= 0) {
-				kk = kk+"<html>"+dirua[i]+"<br><html>";
+				kk = kk+"<html>"+dirua[i]+"€"+"<br><html>";
 			} 
 		}
 		return kk;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static int diruTotala(){
 		int diruTotala = 0;
 		Produktua elikagaiak[] = objektuak();
@@ -111,6 +132,9 @@ public class metodos {
 		}
 		return diruTotala;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static  void ezabatu() {
 		for(int i = 0; i < aukeratutakoak.length; i++) {
 			aukeratutakoak[i] = null;
