@@ -18,4 +18,3 @@ public class Main {
 		controlador = new Controlador(modelo, vista);
 	}
 }
-//https://evilnapsis.com/2016/03/29/conectar-una-base-de-datos-mysql-con-java-y-netbeans/

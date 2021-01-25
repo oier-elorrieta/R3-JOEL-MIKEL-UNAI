@@ -82,7 +82,7 @@ public class PanelPedidos extends JPanel {
 		TF_Fecha.setColumns(10);
 		TF_Fecha.setEditable(false);
 		add(TF_Fecha);
-		
+
 		TF_Lokala = new JTextField("x");
 		TF_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Lokala.setBounds(61, 36, 75, 20);
@@ -96,14 +96,14 @@ public class PanelPedidos extends JPanel {
 		TF_TransferentziaZenbakia.setColumns(10);
 		TF_TransferentziaZenbakia.setEditable(false);
 		add(TF_TransferentziaZenbakia);
-		
+
 		TF_Totala = new JTextField("x");
 		TF_Totala.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Totala.setBounds(61, 267, 183, 20);	
 		TF_Totala.setColumns(10);
 		TF_Totala.setEditable(false);
 		add(TF_Totala);
-		
+
 		TF_Helbide = new JTextField("");
 		TF_Helbide.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Helbide.setBounds(87, 233, 157, 20);	
@@ -124,7 +124,7 @@ public class PanelPedidos extends JPanel {
 		LB_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_Lokala.setBounds(20, 39, 46, 14);
 		add(LB_Lokala);
-		
+
 		LB_TransferentziaZenbakia = new JLabel("Trans Zbk:");
 		LB_TransferentziaZenbakia.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		LB_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
@@ -152,17 +152,17 @@ public class PanelPedidos extends JPanel {
 		btnAurrera.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnAurrera.setBounds(254, 266, 92, 23);
 		add(btnAurrera);
-		
+
 		btnSegi = new JButton("\u2714\uFE0F");
 		btnSegi.setHorizontalAlignment(SwingConstants.TRAILING);
 		btnSegi.setBounds(388, 232, 57, 23);
 		add(btnSegi);
-		
+
 		RB_Helbide = new JRadioButton("Helbide");
 		RB_Helbide.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		RB_Helbide.setBounds(20, 233, 60, 20);
 		add(RB_Helbide);
-		
+
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		final String numbers[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
@@ -174,7 +174,7 @@ public class PanelPedidos extends JPanel {
 
 		CB_Produktoak.setBounds(30, 68, 214, 20);
 		add(CB_Produktoak);
-		
+
 		produktuak = controladorPanelPedidos.accionadoComboBox();
 		for (int i = 0; i < produktuak.length; i++) {
 			CB_Produktoak.addItem(produktuak[i]);
@@ -221,75 +221,9 @@ public class PanelPedidos extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
-				if (aukera == "Zukua" && kantitatea != 0) {
+				if (kantitatea != 0) {
 					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Sidra" && kantitatea != 0) {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Ura" && kantitatea != 0) {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Kafea" && kantitatea != 0) {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Txakoli" && kantitatea != 0) {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Patata tortilla" && kantitatea != 0) {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Garagardoa" && kantitatea != 0) {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Colacao" && kantitatea != 0) {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Ardoa" && kantitatea != 0) {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Gilda" && kantitatea != 0) {
-					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-					controladorPanelPedidos.accionadoBotonGuardar3(aukera);
-				}
-				
-				if (kantitatea == 1) {
-					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 2) {
-					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 3) {
-					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 4) {
-					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 5) {
-					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 6) {
-					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 7) {
-					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 8) {
-					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 9) {
-					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 10) {
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera); 
 					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
 				}
 				NºUnidades.setValue("0");

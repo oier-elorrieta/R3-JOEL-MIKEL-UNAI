@@ -205,7 +205,7 @@ public class PanelFaktura extends JPanel {
 
 		CB_Produktoak.setBounds(30, 68, 214, 20);
 		add(CB_Produktoak);
-		
+
 
 		produktuak = controladorPanelFaktura.accionadoComboBox();
 		for (int i = 0; i < produktuak.length; i++) {
@@ -252,75 +252,9 @@ public class PanelFaktura extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
-				if (aukera == "Zukua" && kantitatea != 0) {
+				if (kantitatea != 0) {
 					controladorPanelFaktura.accionadoBotonGuardar(aukera);
 					controladorPanelFaktura.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Sidra" && kantitatea != 0) {
-					controladorPanelFaktura.accionadoBotonGuardar(aukera);
-					controladorPanelFaktura.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Ura" && kantitatea != 0) {
-					controladorPanelFaktura.accionadoBotonGuardar(aukera);
-					controladorPanelFaktura.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Kafea" && kantitatea != 0) {
-					controladorPanelFaktura.accionadoBotonGuardar(aukera);
-					controladorPanelFaktura.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Txakoli" && kantitatea != 0) {
-					controladorPanelFaktura.accionadoBotonGuardar(aukera);
-					controladorPanelFaktura.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Patata tortilla" && kantitatea != 0) {
-					controladorPanelFaktura.accionadoBotonGuardar(aukera);
-					controladorPanelFaktura.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Garagardoa" && kantitatea != 0) {
-					controladorPanelFaktura.accionadoBotonGuardar(aukera);
-					controladorPanelFaktura.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Colacao" && kantitatea != 0) {
-					controladorPanelFaktura.accionadoBotonGuardar(aukera);
-					controladorPanelFaktura.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Ardoa" && kantitatea != 0) {
-					controladorPanelFaktura.accionadoBotonGuardar(aukera);
-					controladorPanelFaktura.accionadoBotonGuardar3(aukera);
-				}
-				if (aukera == "Gilda" && kantitatea != 0) {
-					controladorPanelFaktura.accionadoBotonGuardar(aukera);
-					controladorPanelFaktura.accionadoBotonGuardar3(aukera);
-				}
-				
-				if (kantitatea == 1) {
-					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 2) {
-					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 3) {
-					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 4) {
-					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 5) {
-					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 6) {
-					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 7) {
-					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 8) {
-					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 9) {
-					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
-				}
-				if (kantitatea == 10) {
 					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
 				}
 				NºUnidades.setValue("0");
