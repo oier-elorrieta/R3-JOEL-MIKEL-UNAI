@@ -27,21 +27,38 @@ public class ControladorPanelFaktura {
 	}
 	public void accionadoBottonAtzera() {
 		this.controlador.navegarPanelMenu();
-		this.modelo.clear();
 	}
 	public String[] accionadoComboBox() {
 		return this.modelo.produktuakJaso();
 	}
-	public String[] accionadoBotonGuardar(String aukera) {
-		 return this.modelo.sartuProduktuak(aukera);
+	public String[] accionadoBotonGuardar(String aukera, String[] aukeratutakoak) {
+		 return this.modelo.sartuProduktuak(aukera, aukeratutakoak);
 	}
-	public int[] accionadoBotonGuardar2(int aukera) {
-		return this.modelo.sartuAukeratutakoKantitateak(aukera);
+	public String arraya(String[] aukeratutakoak) {
+		return this.modelo.arraya(aukeratutakoak);
 	}
-	public int[] accionadoBotonGuardar3(String aukera,int kantitatea) {
-		return this.modelo.sartuAukeratutakoenDirua(aukera, kantitatea);
+	public int[] accionadoBotonGuardar2(int aukera, int[] kantitateak) {
+		return this.modelo.sartuAukeratutakoKantitateak(aukera, kantitateak);
 	}
-	public int diruTotala() {
-		return this.modelo.diruTotala();
+	public String arrayaKantitateak(int[] kantitateak) {
+		return this.modelo.arrayaKantitateak(kantitateak);
+	}
+	public int[] accionadoBotonGuardar3(String aukera, int kantitatea, int[] dirua) {
+		return this.modelo.sartuAukeratutakoenDirua(aukera, kantitatea, dirua);
+	}
+	public String arrayaDirua(int[] dirua) {
+		return this.modelo.arrayaDirua(dirua);
+	}
+	public int diruTotala(int[] kantitateak) {
+		return this.modelo.diruTotala(kantitateak);
+	}
+	public String[] clear1(String[] aukeratutakoak) {
+		return this.modelo.clear1(aukeratutakoak);
+	}
+	public int[] clear2(int[] kantitateak) {
+		return this.modelo.clear2(kantitateak);
+	}
+	public int[] clear3(int[] dirua) {
+		return this.modelo.clear3(dirua);
 	}
 }

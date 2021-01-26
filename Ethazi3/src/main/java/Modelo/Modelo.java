@@ -3,33 +3,39 @@ package Modelo;
 
 
 public class Modelo {
-	
+
 	public String[] produktuakJaso() {
 		return metodos.sartuSalgaiak();
 	}
-	public String[] sartuProduktuak(String aukera){
-		return metodos.sartuAukeratutakoak(aukera);
+	public String[] sartuProduktuak(String aukera, String[] aukeratutakoak){
+		return metodos.sartuAukeratutakoak(aukera, aukeratutakoak);
 	}
-	public String arraya(){
-		return metodos.arraya();
+	public String arraya(String[] aukeratutakoak){
+		return metodos.arraya(aukeratutakoak);
 	}
-	
-	public int[] sartuAukeratutakoKantitateak(int zbk) {
-		return metodos.sartuAukeratutakoZenbakiak(zbk);
+
+	public int[] sartuAukeratutakoKantitateak(int zbk, int[] kantitateak) {
+		return metodos.sartuAukeratutakoZenbakiak(zbk, kantitateak);
 	}
-	public String arrayaKantitateak() {
-		return metodos.arrayaKantitateak();
+	public String arrayaKantitateak(int[] kantitateak) {
+		return metodos.arrayaKantitateak(kantitateak);
 	}
-	public int[] sartuAukeratutakoenDirua(String aukera, int kantitatea) {
-		return metodos.sartuDirua(aukera, kantitatea);
+	public int[] sartuAukeratutakoenDirua(String aukera, int kantitatea, int[] dirua) {
+		return metodos.sartuDirua(aukera, kantitatea, dirua);
 	}
-	public String arrayaDirua() {
-		return metodos.arrayaDirua();
+	public String arrayaDirua(int[] dirua) {
+		return metodos.arrayaDirua(dirua);
 	}
-	public int diruTotala() {
-		return metodos.diruTotala();
+	public int diruTotala(int[] kantitateak) {
+		return metodos.diruTotala(kantitateak);
 	}
-	public void clear() {
-		metodos.ezabatu();
+	public String[] clear1(String[] aukeratutakoak) {
+		return metodos.ezabatuArray(aukeratutakoak);
+	}
+	public int[] clear2(int[] kantitateak) {
+		return metodos.ezabatuArray2(kantitateak);
+	}
+	public int[] clear3(int[] dirua) {
+		return metodos.ezabatuArray3(dirua);
 	}
 }

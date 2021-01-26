@@ -24,19 +24,27 @@ public class ControladorPanelLaburpena {
 	
 	public void accionadoBottonMostrarPanelMenu() throws InterruptedException {
 		Thread.sleep(1350);
-		this.controlador.navegarPanelLogin();
-		this.modelo.clear();
+		this.controlador.navegarPanelLogin(); 
 	}
-	public String arrayaIkusi() {
-		return this.modelo.arraya();
+	public String arrayaIkusi(String[] aukeratutakoak) {
+		return this.modelo.arraya(aukeratutakoak);
 	}
-	public String arrayaKantitateakIkusi() {
-		return this.modelo.arrayaKantitateak();
+	public String arrayaKantitateakIkusi(int[] kantitateak) {
+		return this.modelo.arrayaKantitateak(kantitateak);
 	}
-	public String arrayaDiruaIkusi() {
-		return this.modelo.arrayaDirua();
+	public String arrayaDiruaIkusi(int[] dirua) {
+		return this.modelo.arrayaDirua(dirua);
 	}
-	public int diruTotala() {
-		return this.modelo.diruTotala();
+	public int diruTotala(int[] kantitateak) {
+		return this.modelo.diruTotala(kantitateak);
+	}
+	public String[] clear1(String[] aukeratutakoak) {
+		return this.modelo.clear1(aukeratutakoak);
+	}
+	public int[] clear2(int[] kantitateak) {
+		return this.modelo.clear2(kantitateak);
+	}
+	public int[] clear3(int[] dirua) {
+		return this.modelo.clear3(dirua);
 	}
 }

@@ -57,6 +57,10 @@ public class PanelFaktura extends JPanel {
 	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JSpinner NºUnidades;
 	private String[] produktuak;
+	
+	private String[] aukeratutakoak = new String[10];
+	private int[] kantitateak = new int[10];
+	private int[] dirua = new int[10];
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -241,6 +245,9 @@ public class PanelFaktura extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.accionadoBottonAtzera();
+				aukeratutakoak = controladorPanelFaktura.clear1(aukeratutakoak);
+				kantitateak = controladorPanelFaktura.clear2(kantitateak);
+				dirua = controladorPanelFaktura.clear3(dirua);
 			}
 		};
 	}
@@ -253,14 +260,15 @@ public class PanelFaktura extends JPanel {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
 				if (kantitatea != 0) {
-					controladorPanelFaktura.accionadoBotonGuardar(aukera);
-					controladorPanelFaktura.accionadoBotonGuardar3(aukera,kantitatea);
-					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
+					aukeratutakoak = controladorPanelFaktura.accionadoBotonGuardar(aukera, aukeratutakoak);
+					kantitateak = controladorPanelFaktura.accionadoBotonGuardar2(kantitatea, kantitateak);
+					dirua = controladorPanelFaktura.accionadoBotonGuardar3(aukera,kantitatea, dirua);
+					
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				CB_Produktoak.setSelectedItem(null);
-				String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
+				String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala(kantitateak));
 				TF_Totala.setText(diruTotala);
 			}
 		};

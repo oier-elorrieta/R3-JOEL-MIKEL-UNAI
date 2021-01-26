@@ -35,6 +35,10 @@ public class PanelLaburpena extends JPanel{
 	private String dirua; 
 	
 	private int diruTotala;
+	
+	private String[] aukeratutakoak = new String[10];
+	private int[] kantitateak = new int[10];
+	private int[] diruak = new int[10];
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -45,11 +49,12 @@ public class PanelLaburpena extends JPanel{
 		setLayout(null);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-
-		aukera = controladorPanelLaburpena.arrayaIkusi();	
-		kantitatea = controladorPanelLaburpena.arrayaKantitateakIkusi();
-		dirua = controladorPanelLaburpena.arrayaDiruaIkusi(); 
-		diruTotala = controladorPanelLaburpena.diruTotala();
+		
+		aukera = controladorPanelLaburpena.arrayaIkusi(aukeratutakoak);
+		kantitatea = controladorPanelLaburpena.arrayaKantitateakIkusi(kantitateak);
+		dirua = controladorPanelLaburpena.arrayaDiruaIkusi(diruak);
+		 
+		diruTotala = controladorPanelLaburpena.diruTotala(kantitateak);
 		
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
@@ -131,6 +136,9 @@ public class PanelLaburpena extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					controladorPanelLaburpena.accionadoBottonMostrarPanelMenu();
+					aukeratutakoak = controladorPanelLaburpena.clear1(aukeratutakoak);
+					kantitateak = controladorPanelLaburpena.clear2(kantitateak);
+					diruak = controladorPanelLaburpena.clear3(diruak);
 				} catch (InterruptedException e) { 
 					e.printStackTrace();
 				}
