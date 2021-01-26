@@ -104,7 +104,7 @@ public class PanelLaburpena extends JPanel{
 		
 		lbldirua = new JLabel(dirua);
 		lbldirua.setVerticalAlignment(SwingConstants.TOP);
-		lbldirua.setBounds(420, 108, 20, 140);
+		lbldirua.setBounds(415, 108, 32, 140);
 		add(lbldirua);
 
 

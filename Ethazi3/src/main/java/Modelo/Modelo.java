@@ -20,8 +20,8 @@ public class Modelo {
 	public String arrayaKantitateak() {
 		return metodos.arrayaKantitateak();
 	}
-	public int[] sartuAukeratutakoenDirua(String aukera) {
-		return metodos.sartuDirua(aukera);
+	public int[] sartuAukeratutakoenDirua(String aukera, int kantitatea) {
+		return metodos.sartuDirua(aukera, kantitatea);
 	}
 	public String arrayaDirua() {
 		return metodos.arrayaDirua();

@@ -39,8 +39,8 @@ public class ControladorPanelTicket {
 	public int[] accionadoBotonGuardar2(int aukera) {
 		return this.modelo.sartuAukeratutakoKantitateak(aukera);
 	}
-	public int[] accionadoBotonGuardar3(String aukera) {
-		return this.modelo.sartuAukeratutakoenDirua(aukera);
+	public int[] accionadoBotonGuardar3(String aukera, int kantitatea) {
+		return this.modelo.sartuAukeratutakoenDirua(aukera, kantitatea);
 	}
 	public int diruTotala() {
 		return this.modelo.diruTotala();

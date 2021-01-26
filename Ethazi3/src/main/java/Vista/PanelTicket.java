@@ -208,12 +208,14 @@ public class PanelTicket extends JPanel {
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
 				if (kantitatea != 0) { 
 					controladorPanelTicket.accionadoBotonGuardar(aukera);
-					controladorPanelTicket.accionadoBotonGuardar3(aukera);
+					controladorPanelTicket.accionadoBotonGuardar3(aukera, kantitatea);
 					controladorPanelTicket.accionadoBotonGuardar2(kantitatea);
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				CB_Produktoak.setSelectedItem(null);
+				String diruTotala = String.valueOf(controladorPanelTicket.diruTotala());
+				TF_Totala.setText(diruTotala);
 			}
 		};
 	}

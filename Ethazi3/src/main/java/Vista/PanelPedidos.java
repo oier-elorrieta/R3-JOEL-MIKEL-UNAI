@@ -223,12 +223,14 @@ public class PanelPedidos extends JPanel {
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
 				if (kantitatea != 0) {
 					controladorPanelPedidos.accionadoBotonGuardar(aukera);
-					controladorPanelPedidos.accionadoBotonGuardar3(aukera); 
+					controladorPanelPedidos.accionadoBotonGuardar3(aukera, kantitatea); 
 					controladorPanelPedidos.accionadoBotonGuardar2(kantitatea);
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				CB_Produktoak.setSelectedItem(null);
+				String diruTotala = String.valueOf(controladorPanelPedidos.diruTotala());
+				TF_Totala.setText(diruTotala);
 			}
 		};
 	}

@@ -95,12 +95,12 @@ public class metodos {
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	public static int[] sartuDirua(String aukera) {
+	public static int[] sartuDirua(String aukera, int kantitatea) {
 		Produktua elikagaiak[] = objektuak();
 		int kont = 0;
 		for(int i=0;i<elikagaiak.length;i++) {
 			if(elikagaiak[i].getIzena().equalsIgnoreCase(aukera)) {
-				dirua[kont] = elikagaiak[i].getUnitatePrezioa(); 
+				dirua[kont] = kantitatea * elikagaiak[i].getUnitatePrezioa(); 
 				System.out.println(elikagaiak[i].getUnitatePrezioa()); 
 				break;
 			}else {

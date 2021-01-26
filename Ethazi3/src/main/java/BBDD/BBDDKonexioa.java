@@ -13,17 +13,17 @@ public class BBDDKonexioa {
 
 
 	private static final String CONTROLADOR = "com.mysql.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:3306/ethazi3";
+	private static final String URL = "jdbc:mysql://localhost:33060/ethazi3";
 	private static final String USUARIO = "root";
-	private static final String CLAVE = "12345678";
+	private static final String CLAVE = "elorrieta";
 	
 
 	public static Connection getConexion() {
 		Connection konekzioa = null;
 		/*ResultSet re;
 		Statement s;
-		PreparedStatement p;
-		*/
+		PreparedStatement p;*/
+		
 		
 		try {
 			Class.forName(CONTROLADOR);
@@ -31,7 +31,7 @@ public class BBDDKonexioa {
 			//Insertar valores en BBDD
 			/*s = konekzioa.createStatement();
 			String query1 = ("INSERT INTO Usuario VALUES ('79187197Z','Unai','Hernando','12345678')");
-			s.executeUpdate(query1);*/ 
+			s.executeUpdate(query1);*/
 			//Mirar los valores de BBDD
 			/*String query1 = ("SELECT * FROM usuario;");
 			p = konekzioa.prepareStatement(query1);
@@ -51,7 +51,6 @@ public class BBDDKonexioa {
 			System.out.println("Errorea konexioan"/*Error en la conexión*/);
 			e.printStackTrace();
 		}
-
 		return konekzioa;
 	}
 	public static void main(String[] args) {

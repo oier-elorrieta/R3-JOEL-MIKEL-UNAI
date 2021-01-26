@@ -254,12 +254,14 @@ public class PanelFaktura extends JPanel {
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
 				if (kantitatea != 0) {
 					controladorPanelFaktura.accionadoBotonGuardar(aukera);
-					controladorPanelFaktura.accionadoBotonGuardar3(aukera);
+					controladorPanelFaktura.accionadoBotonGuardar3(aukera,kantitatea);
 					controladorPanelFaktura.accionadoBotonGuardar2(kantitatea);
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				CB_Produktoak.setSelectedItem(null);
+				String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
+				TF_Totala.setText(diruTotala);
 			}
 		};
 	}
