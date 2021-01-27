@@ -53,7 +53,6 @@ public class PanelLaburpena extends JPanel{
 		aukera = controladorPanelLaburpena.arrayaIkusi(aukeratutakoak);
 		kantitatea = controladorPanelLaburpena.arrayaKantitateakIkusi(kantitateak);
 		dirua = controladorPanelLaburpena.arrayaDiruaIkusi(diruak);
-		 
 		diruTotala = controladorPanelLaburpena.diruTotala(kantitateak);
 		
 
