@@ -4,17 +4,20 @@ package Vista;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import Controlador.ControladorPanelLaburpena;
+import Controlador.ControladorPanelLaburpena; 
+import Modelo.Modelo;
+
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionListener; 
 
 @SuppressWarnings("serial")
 public class PanelLaburpena extends JPanel{
 
 	private ControladorPanelLaburpena controladorPanelLaburpena;
+	private Modelo modelo;
 
 	private JButton btnSegi;
 
@@ -29,16 +32,10 @@ public class PanelLaburpena extends JPanel{
 	private JLabel lbldirua;
 	private JLabel lblLaburpen;
 	private JLabel lblkopurua;
-
-	private String aukera;
-	private String kantitatea;
-	private String dirua; 
 	
 	private int diruTotala;
 	
-	private String[] aukeratutakoak = new String[10];
-	private int[] kantitateak = new int[10];
-	private int[] diruak = new int[10];
+	
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -50,11 +47,9 @@ public class PanelLaburpena extends JPanel{
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		aukera = controladorPanelLaburpena.arrayaIkusi(aukeratutakoak);
-		kantitatea = controladorPanelLaburpena.arrayaKantitateakIkusi(kantitateak);
-		dirua = controladorPanelLaburpena.arrayaDiruaIkusi(diruak);
-		diruTotala = controladorPanelLaburpena.diruTotala(kantitateak);
 		
+		String kk3 = controladorPanelLaburpena.pantailaratu();
+		int diruTotala = controladorPanelLaburpena.diruTotala();
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -96,12 +91,12 @@ public class PanelLaburpena extends JPanel{
 		LB_TotalCant.setBounds(285, 259, 145, 10);
 		add(LB_TotalCant);
 
-		lblLaburpen = new JLabel(aukera);
+		lblLaburpen = new JLabel(kk3);
 		lblLaburpen.setVerticalAlignment(SwingConstants.TOP);
 		lblLaburpen.setBounds(40, 108, 370, 143);
 		add(lblLaburpen);
 
-		lblkopurua = new JLabel(kantitatea);
+		/*lblkopurua = new JLabel(kantitatea);
 		lblkopurua.setVerticalAlignment(SwingConstants.TOP);
 		lblkopurua.setBounds(10, 108, 20, 143);
 		add(lblkopurua);
@@ -110,7 +105,7 @@ public class PanelLaburpena extends JPanel{
 		lbldirua.setVerticalAlignment(SwingConstants.TOP);
 		lbldirua.setBounds(415, 108, 32, 140);
 		add(lbldirua);
-
+*/
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -135,9 +130,6 @@ public class PanelLaburpena extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					controladorPanelLaburpena.accionadoBottonMostrarPanelMenu();
-					aukeratutakoak = controladorPanelLaburpena.clear1(aukeratutakoak);
-					kantitateak = controladorPanelLaburpena.clear2(kantitateak);
-					diruak = controladorPanelLaburpena.clear3(diruak);
 				} catch (InterruptedException e) { 
 					e.printStackTrace();
 				}

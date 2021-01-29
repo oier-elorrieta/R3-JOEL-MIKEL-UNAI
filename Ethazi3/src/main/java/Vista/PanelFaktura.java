@@ -245,9 +245,9 @@ public class PanelFaktura extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.accionadoBottonAtzera();
-				aukeratutakoak = controladorPanelFaktura.clear1(aukeratutakoak);
+				/*aukeratutakoak = controladorPanelFaktura.clear1(aukeratutakoak);
 				kantitateak = controladorPanelFaktura.clear2(kantitateak);
-				dirua = controladorPanelFaktura.clear3(dirua);
+				dirua = controladorPanelFaktura.clear3(dirua);*/
 			}
 		};
 	}
@@ -260,16 +260,14 @@ public class PanelFaktura extends JPanel {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
 				if (kantitatea != 0) {
-					aukeratutakoak = controladorPanelFaktura.accionadoBotonGuardar(aukera, aukeratutakoak);
-					kantitateak = controladorPanelFaktura.accionadoBotonGuardar2(kantitatea, kantitateak);
-					dirua = controladorPanelFaktura.accionadoBotonGuardar3(aukera,kantitatea, dirua);
+					controladorPanelFaktura.sartu(aukera, kantitatea);
 					
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				CB_Produktoak.setSelectedItem(null);
-				String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala(kantitateak));
-				TF_Totala.setText(diruTotala);
+				//String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala(kantitateak));
+				//TF_Totala.setText(diruTotala);
 			}
 		};
 	}

@@ -1,5 +1,8 @@
 package Controlador;
 
+import java.util.ArrayList;
+
+import Modelo.Karrito;
 import Modelo.Modelo;
 import Vista.PanelPedidos;
 import Vista.Vista;
@@ -30,27 +33,10 @@ public class ControladorPanelPedidos {
 	public String[] accionadoComboBox() {
 		return this.modelo.produktuakJaso();
 	}
-	public String[] accionadoBotonGuardar(String aukera, String[] aukeratutakoak) {
-		 return this.modelo.sartuProduktuak(aukera, aukeratutakoak);
-	}
-	public String arraya(String[] aukeratutakoak) {
-		return this.modelo.arraya(aukeratutakoak);
-	}
-	public int[] accionadoBotonGuardar2(int aukera, int[] kantitateak) {
-		return this.modelo.sartuAukeratutakoKantitateak(aukera, kantitateak);
-	}
-	public String arrayaKantitateak(int[] kantitateak) {
-		return this.modelo.arrayaKantitateak(kantitateak);
-	}
-	public int[] accionadoBotonGuardar3(String aukera, int kantitatea, int[] dirua) {
-		return this.modelo.sartuAukeratutakoenDirua(aukera, kantitatea, dirua);
-	}
-	public String arrayaDirua(int[] dirua) {
+	/*public String arrayaDirua(int[] dirua) {
 		return this.modelo.arrayaDirua(dirua);
 	}
-	public int diruTotala(int[] kantitateak) {
-		return this.modelo.diruTotala(kantitateak);
-	}
+	
 	public String[] clear1(String[] aukeratutakoak) {
 		return this.modelo.clear1(aukeratutakoak);
 	}
@@ -59,5 +45,8 @@ public class ControladorPanelPedidos {
 	}
 	public int[] clear3(int[] dirua) {
 		return this.modelo.clear3(dirua);
-	}
+	}*/
+	public ArrayList<Karrito> sartu(String elikagaia,int kopuru) {
+		return this.modelo.sartu(elikagaia, kopuru); 
+	} 
 }

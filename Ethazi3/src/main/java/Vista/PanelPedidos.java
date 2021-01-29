@@ -214,9 +214,9 @@ public class PanelPedidos extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelPedidos.accionadoBottonAtzera();
-				aukeratutakoak = controladorPanelPedidos.clear1(aukeratutakoak);
+			/*	aukeratutakoak = controladorPanelPedidos.clear1(aukeratutakoak);
 				kantitateak = controladorPanelPedidos.clear2(kantitateak);
-				dirua = controladorPanelPedidos.clear3(dirua);
+				dirua = controladorPanelPedidos.clear3(dirua);*/
 			}
 		};
 	}
@@ -229,15 +229,13 @@ public class PanelPedidos extends JPanel {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
 				if (kantitatea != 0) {
-					aukeratutakoak = controladorPanelPedidos.accionadoBotonGuardar(aukera,aukeratutakoak);
-					kantitateak = controladorPanelPedidos.accionadoBotonGuardar2(kantitatea, kantitateak);
-					dirua = controladorPanelPedidos.accionadoBotonGuardar3(aukera, kantitatea, dirua); 
+					controladorPanelPedidos.sartu(aukera, kantitatea);
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				CB_Produktoak.setSelectedItem(null);
-				String diruTotala = String.valueOf(controladorPanelPedidos.diruTotala(kantitateak));
-				TF_Totala.setText(diruTotala);
+			//	String diruTotala = String.valueOf(controladorPanelPedidos.diruTotala(kantitateak));
+				//TF_Totala.setText(diruTotala);
 			}
 		};
 	}

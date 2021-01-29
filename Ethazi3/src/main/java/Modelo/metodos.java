@@ -1,8 +1,11 @@
 package Modelo;
 
+import java.util.ArrayList;
+
 public class metodos { 
 
 	public static Produktua[] objektuak() {
+
 		Produktua sidra = new Produktua("Sidra", 0, "Edaria", 3, 1);
 		Produktua kafea = new Produktua("Kafea", 0, "Edaria", 3, 1);
 		Produktua ura = new Produktua("Ura", 0, "Edaria", 3, 1);
@@ -29,6 +32,25 @@ public class metodos {
 
 	// *****************************************************************************************************************************************************************************************************
 
+	public static ArrayList<Karrito> sartu(String elikagaia,int kopuru, ArrayList<Karrito> karroa) {
+		int dirua = sartuDirua(elikagaia, kopuru);
+		System.out.println(elikagaia);
+		System.out.println(kopuru);
+		System.out.println(dirua); 
+		Karrito k = new Karrito(elikagaia, kopuru, dirua);
+		karroa.add(k);
+		System.out.println(karroa.size());
+		return karroa;
+	}
+	public static String pantailatu(ArrayList<Karrito> karroa) {
+		String edukiontzi= "";
+		for(int i=0;i<karroa.size();i++) { 
+			edukiontzi  = edukiontzi + "<html>"+karroa.get(i).toString()+"<br><html>"; 
+		}
+		return edukiontzi;
+	}
+
+
 	public static String[] sartuSalgaiak() {
 		Produktua elikagaiak[] = objektuak();
 
@@ -38,10 +60,67 @@ public class metodos {
 		}
 		return produktoIzena;
 	}
+	
+	public static int sartuDirua(String aukera, int kantitatea) {
+		Produktua elikagaiak[] = objektuak();
+		int dirua = 1;
+		for(int i=0;i<elikagaiak.length;i++) {
+			if(elikagaiak[i].getIzena().equalsIgnoreCase(aukera)) {
+				dirua = kantitatea * elikagaiak[i].getUnitatePrezioa(); 
+				break;
+			} 
+		}
+		return dirua;
+	}
 
+	public static int diruTotala(ArrayList<Karrito> karroa) {
+		int kont = 0;
+		for(int i = 0; i < karroa.size(); i++) {
+			System.out.println(karroa.get(i).getBalioa());
+			System.out.println(karroa.get(i).getBalioa()*karroa.get(i).getKopuru());
+			kont = kont + karroa.get(i).getBalioa();
+		}
+		return kont;
+		
+	}
 	// *****************************************************************************************************************************************************************************************************
+//_____________________________________________________________________________________________________________________________________________-
+	
+	/*public static String[] sartuLaburpenak(String aukera, String[] arrayLaburpen) { 	
+		for(int i = 0; i < arrayLaburpen.length; i++) {
+			if(arrayLaburpen[i] == null) {
+				arrayLaburpen[i] = aukera; 
+				break;
+			}
+		}
+		return arrayLaburpen;
+	}
 
-	public static String[] sartuAukeratutakoak(String aukera, String[] aukeratutakoak) { 		
+	public static String bueltatuLaburpenak(String[] arrayLaburpen) {
+		String edukiontzi="";
+		for(int i=0;i<arrayLaburpen.length;i++) {
+			if(arrayLaburpen[i]!=null) {
+				edukiontzi = edukiontzi+"<html>"+arrayLaburpen[i]+"<br><html>";
+				break;
+			}
+		}
+		return edukiontzi;
+	}
+
+	/*public static int sartuDirua(String aukera, int kantitatea) {
+		Produktua elikagaiak[] = objektuak();
+		int dirua = 0;
+		for(int i=0;i<elikagaiak.length;i++) {
+			if(elikagaiak[i].getIzena().equalsIgnoreCase(aukera)) {
+				dirua = kantitatea * elikagaiak[i].getUnitatePrezioa(); 
+				System.out.println(elikagaiak[i].getUnitatePrezioa()); 
+				break;
+			} 
+		}
+		return dirua;
+	}*/
+
+	/*public static String[] sartuAukeratutakoak(String aukera) { 	
 		for(int i = 0; i < aukeratutakoak.length; i++) {
 			if(aukeratutakoak[i] == null) {
 				aukeratutakoak[i] = aukera;
@@ -65,8 +144,8 @@ public class metodos {
 	}
 
 	// *****************************************************************************************************************************************************************************************************
-
-	public static  int[] sartuAukeratutakoZenbakiak(int zbk,int[] kantitateak) {
+/*
+	public static  int[] sartuAukeratutakoZenbakiak(int zbk) {
 		for(int i = 0; i < kantitateak.length; i++) {
 			if(kantitateak[i] == 0) {
 				kantitateak[i] = zbk;
@@ -90,7 +169,7 @@ public class metodos {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static int[] sartuDirua(String aukera, int kantitatea, int[] dirua) {
+	/*public static int[] sartuDirua(String aukera, int kantitatea) {
 		Produktua elikagaiak[] = objektuak();
 		int kont = 0;
 		for(int i=0;i<elikagaiak.length;i++) {
@@ -103,11 +182,11 @@ public class metodos {
 			}
 		}
 		return dirua;
-	}
+	}*/
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String arrayaDirua(int[] dirua) {
+	/*public static String arrayaDirua(int[] dirua) {
 		String edukiontzi=""; 
 		for(int i=0;i<dirua.length;i++) {
 			if(dirua[i]!= 0) {
@@ -119,18 +198,18 @@ public class metodos {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static int diruTotala(int[] kantitateak){
+	/*public static int diruTotala(int[] kantitateak){
 		int diruTotala = 0;
 		Produktua elikagaiak[] = objektuak();
 		for(int i=0;i<kantitateak.length;i++) {
 			diruTotala = diruTotala + (kantitateak[i] * elikagaiak[i].getUnitatePrezioa());
 		}
 		return diruTotala;
-	}
+	}*/
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String[] ezabatuArray(String[] aukeratutakoak) {
+	/*public static String[] ezabatuArray(String[] aukeratutakoak) {
 		for(int i = 0; i < aukeratutakoak.length; i++) {
 			aukeratutakoak[i] = null;
 		}
@@ -148,4 +227,6 @@ public class metodos {
 		}
 		return dirua;
 	}
+*/
+
 }

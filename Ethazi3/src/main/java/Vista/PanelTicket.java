@@ -199,9 +199,9 @@ public class PanelTicket extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorPanelTicket.accionadoBottonAtzera();
-				aukeratutakoak = controladorPanelTicket.clear1(aukeratutakoak);
+				/*aukeratutakoak = controladorPanelTicket.clear1(aukeratutakoak);
 				kantitateak = controladorPanelTicket.clear2(kantitateak);
-				dirua = controladorPanelTicket.clear3(dirua);
+				dirua = controladorPanelTicket.clear3(dirua);*/
 			}
 		};
 	}
@@ -214,15 +214,13 @@ public class PanelTicket extends JPanel {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
 				if (kantitatea != 0) { 
-					aukeratutakoak = controladorPanelTicket.accionadoBotonGuardar(aukera, aukeratutakoak);
-					kantitateak = controladorPanelTicket.accionadoBotonGuardar2(kantitatea, kantitateak);
-					dirua = controladorPanelTicket.accionadoBotonGuardar3(aukera, kantitatea, dirua);
+					controladorPanelTicket.sartu(aukera, kantitatea);
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				CB_Produktoak.setSelectedItem(null);
-				String diruTotala = String.valueOf(controladorPanelTicket.diruTotala(kantitateak));
-				TF_Totala.setText(diruTotala);
+				//String diruTotala = String.valueOf(controladorPanelTicket.diruTotala(kantitateak));
+				//TF_Totala.setText(diruTotala);
 			}
 		};
 	}
