@@ -32,34 +32,11 @@ public class ControladorPanelTicket {
 	}
 	public void accionadoBottonAtzera() {
 		this.controlador.navegarPanelMenu();
+		this.modelo.ezabatu();
 	}
 	public String[] accionadoComboBox() {
 		return this.modelo.produktuakJaso();
 	}
-	/*public String[] accionadoBotonGuardar(String aukera) {
-		 return this.modelo.sartuProduktuak(aukera);
-	}
-	public String arraya(String[] aukeratutakoak) {
-		return this.modelo.arraya(aukeratutakoak);
-	}
-	public int[] accionadoBotonGuardar2(int aukera) {
-		return this.modelo.sartuAukeratutakoKantitateak(aukera);
-	}
-	public String arrayaKantitateak(int[] kantitateak) {
-		return this.modelo.arrayaKantitateak(kantitateak);
-	}
-	public String arrayaDirua(int[] dirua) {
-		return this.modelo.arrayaDirua(dirua);
-	}
-	public String[] clear1(String[] aukeratutakoak) {
-		return this.modelo.clear1(aukeratutakoak);
-	}
-	public int[] clear2(int[] kantitateak) {
-		return this.modelo.clear2(kantitateak);
-	}
-	public int[] clear3(int[] dirua) {
-		return this.modelo.clear3(dirua);
-	}*/
 	public ArrayList<Karrito> sartu(String elikagaia,int kopuru) {
 		return this.modelo.sartu(elikagaia, kopuru); 
 	}   

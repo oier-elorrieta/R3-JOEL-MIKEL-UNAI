@@ -55,9 +55,6 @@ public class PanelPedidos extends JPanel {
 	private JSpinner NºUnidades;
 	private String[] produktuak;
 	
-	private String[] aukeratutakoak = new String[10];
-	private int[] kantitateak = new int[10];
-	private int[] dirua = new int[10];
 
 	// *****************************************************************************************************************************************************************************************************
 

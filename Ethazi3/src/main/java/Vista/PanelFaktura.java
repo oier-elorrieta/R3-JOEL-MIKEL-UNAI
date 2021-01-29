@@ -57,10 +57,6 @@ public class PanelFaktura extends JPanel {
 	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JSpinner NºUnidades;
 	private String[] produktuak;
-	
-	private String[] aukeratutakoak = new String[10];
-	private int[] kantitateak = new int[10];
-	private int[] dirua = new int[10];
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -245,9 +241,6 @@ public class PanelFaktura extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.accionadoBottonAtzera();
-				/*aukeratutakoak = controladorPanelFaktura.clear1(aukeratutakoak);
-				kantitateak = controladorPanelFaktura.clear2(kantitateak);
-				dirua = controladorPanelFaktura.clear3(dirua);*/
 			}
 		};
 	}

@@ -20,4 +20,7 @@ public class Modelo {
 	public int diruTotala() {
 		return metodos.diruTotala(karroa);
 	}
+	public ArrayList<Karrito> ezabatu(){
+		return metodos.ezabatu(karroa);
+	}
 }

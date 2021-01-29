@@ -33,7 +33,7 @@ public class Karrito {
 
 	@Override
 	public String toString() {
-		return elikagaia + "  " + "x"+kopuru + "  " + balioa;
+		return "x"+kopuru+"    "+elikagaia + "      " + "  " + balioa;
 	}
 	
 	

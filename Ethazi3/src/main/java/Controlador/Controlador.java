@@ -1,7 +1,6 @@
 package Controlador;
 
-import Modelo.Karrito;
-import Modelo.Karro;
+import Modelo.Karrito; 
 import Modelo.Modelo;
 import Vista.Vista;
 
@@ -16,9 +15,7 @@ public class Controlador {
 	private ControladorPanelFaktura controladorPanelFaktura;
 	private ControladorPanelTicket controladorPanelTicket;
 	private ControladorPanelLaburpena controladorPanelLaburpena;
-	private ControladorPanelPedidos controladorPanelPedidos;
-	private Karrito karrito;
-	private Karro karro;
+	private ControladorPanelPedidos controladorPanelPedidos; 
 
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
@@ -29,7 +26,7 @@ public class Controlador {
 		this.controladorPanelMenu3 = new ControladorPanelMenuCafeteria(this.modelo, this.vista, this);
 		this.controladorPanelFaktura = new ControladorPanelFaktura(this.modelo, this.vista, this);
 		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
-		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this,this.karro, this.karrito);
+		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this);
 		this.controladorPanelPedidos = new ControladorPanelPedidos(this.modelo, this.vista, this);
 		this.navegarPanelLogin();
 	}

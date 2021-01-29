@@ -34,12 +34,8 @@ public class metodos {
 
 	public static ArrayList<Karrito> sartu(String elikagaia,int kopuru, ArrayList<Karrito> karroa) {
 		int dirua = sartuDirua(elikagaia, kopuru);
-		System.out.println(elikagaia);
-		System.out.println(kopuru);
-		System.out.println(dirua); 
 		Karrito k = new Karrito(elikagaia, kopuru, dirua);
 		karroa.add(k);
-		System.out.println(karroa.size());
 		return karroa;
 	}
 	
@@ -69,7 +65,7 @@ public class metodos {
 	
 	public static int sartuDirua(String aukera, int kantitatea) {
 		Produktua elikagaiak[] = objektuak();
-		int dirua = 1;
+		int dirua = 0;
 		for(int i=0;i<elikagaiak.length;i++) {
 			if(elikagaiak[i].getIzena().equalsIgnoreCase(aukera)) {
 				dirua = kantitatea * elikagaiak[i].getUnitatePrezioa(); 
@@ -93,4 +89,11 @@ public class metodos {
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
+	
+	public static ArrayList<Karrito> ezabatu(ArrayList<Karrito> karroa) {
+		karroa.clear();
+		return karroa;
+	}
+
+
 }
