@@ -29,13 +29,7 @@ public class PanelLaburpena extends JPanel{
 	private JLabel LB_Direccion;
 	private JLabel LB_Total;
 	private JLabel LB_TotalCant;
-	private JLabel lbldirua;
 	private JLabel lblLaburpen;
-	private JLabel lblkopurua;
-	
-	private int diruTotala;
-	
-	
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -95,17 +89,6 @@ public class PanelLaburpena extends JPanel{
 		lblLaburpen.setVerticalAlignment(SwingConstants.TOP);
 		lblLaburpen.setBounds(40, 108, 370, 143);
 		add(lblLaburpen);
-
-		/*lblkopurua = new JLabel(kantitatea);
-		lblkopurua.setVerticalAlignment(SwingConstants.TOP);
-		lblkopurua.setBounds(10, 108, 20, 143);
-		add(lblkopurua);
-		
-		lbldirua = new JLabel(dirua);
-		lbldirua.setVerticalAlignment(SwingConstants.TOP);
-		lbldirua.setBounds(415, 108, 32, 140);
-		add(lbldirua);
-*/
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 

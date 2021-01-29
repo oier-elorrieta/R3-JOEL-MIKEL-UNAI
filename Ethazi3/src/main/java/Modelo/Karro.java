@@ -8,13 +8,13 @@ public class Karro {
 	public Karro(ArrayList<Karrito> karroa) {
 		this.karroa = karroa;
 	}
-	//public Karro(ArrayList<Karrito> karroa) {
-	//this.karroa = karroa;
-	//}
+	
 	int kont = 0;
+	
 	public ArrayList<Karrito> ArrayList(ArrayList<Karrito> karroa){
 		return karroa;
 	}
+	
 	public String pantailaratu(ArrayList<Karrito> karroa) {
 		
 		Karrito kk= karroa.get(kont);
@@ -25,9 +25,11 @@ public class Karro {
 		kont++;
 		return emaitza;
 	}
+	
 	public ArrayList<Karrito> getKarroa() {
 		return karroa;
 	}
+	
 	public void setKarroa(ArrayList<Karrito> karroa) {
 		this.karroa = karroa;
 	}

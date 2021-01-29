@@ -42,6 +42,9 @@ public class metodos {
 		System.out.println(karroa.size());
 		return karroa;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String pantailatu(ArrayList<Karrito> karroa) {
 		String edukiontzi= "";
 		for(int i=0;i<karroa.size();i++) { 
@@ -50,7 +53,8 @@ public class metodos {
 		return edukiontzi;
 	}
 
-
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static String[] sartuSalgaiak() {
 		Produktua elikagaiak[] = objektuak();
 
@@ -60,6 +64,8 @@ public class metodos {
 		}
 		return produktoIzena;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 	
 	public static int sartuDirua(String aukera, int kantitatea) {
 		Produktua elikagaiak[] = objektuak();
@@ -73,6 +79,8 @@ public class metodos {
 		return dirua;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+	
 	public static int diruTotala(ArrayList<Karrito> karroa) {
 		int kont = 0;
 		for(int i = 0; i < karroa.size(); i++) {
@@ -83,150 +91,6 @@ public class metodos {
 		return kont;
 		
 	}
-	// *****************************************************************************************************************************************************************************************************
-//_____________________________________________________________________________________________________________________________________________-
 	
-	/*public static String[] sartuLaburpenak(String aukera, String[] arrayLaburpen) { 	
-		for(int i = 0; i < arrayLaburpen.length; i++) {
-			if(arrayLaburpen[i] == null) {
-				arrayLaburpen[i] = aukera; 
-				break;
-			}
-		}
-		return arrayLaburpen;
-	}
-
-	public static String bueltatuLaburpenak(String[] arrayLaburpen) {
-		String edukiontzi="";
-		for(int i=0;i<arrayLaburpen.length;i++) {
-			if(arrayLaburpen[i]!=null) {
-				edukiontzi = edukiontzi+"<html>"+arrayLaburpen[i]+"<br><html>";
-				break;
-			}
-		}
-		return edukiontzi;
-	}
-
-	/*public static int sartuDirua(String aukera, int kantitatea) {
-		Produktua elikagaiak[] = objektuak();
-		int dirua = 0;
-		for(int i=0;i<elikagaiak.length;i++) {
-			if(elikagaiak[i].getIzena().equalsIgnoreCase(aukera)) {
-				dirua = kantitatea * elikagaiak[i].getUnitatePrezioa(); 
-				System.out.println(elikagaiak[i].getUnitatePrezioa()); 
-				break;
-			} 
-		}
-		return dirua;
-	}*/
-
-	/*public static String[] sartuAukeratutakoak(String aukera) { 	
-		for(int i = 0; i < aukeratutakoak.length; i++) {
-			if(aukeratutakoak[i] == null) {
-				aukeratutakoak[i] = aukera;
-				System.out.println(aukeratutakoak[i]);
-				break;
-			}
-		}
-		return aukeratutakoak;
-	}
-
 	// *****************************************************************************************************************************************************************************************************
-
-	public static String arraya(String[] aukeratutakoak) {
-		String edukiontzi="";
-		for(int i=0;i<aukeratutakoak.length;i++) {
-			if(aukeratutakoak[i]!=null) {
-				edukiontzi = edukiontzi+"<html>"+aukeratutakoak[i]+"<br><html>";
-			}
-		}
-		return edukiontzi;
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-/*
-	public static  int[] sartuAukeratutakoZenbakiak(int zbk) {
-		for(int i = 0; i < kantitateak.length; i++) {
-			if(kantitateak[i] == 0) {
-				kantitateak[i] = zbk;
-				break;
-			}
-		}
-		return kantitateak;
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	public static String arrayaKantitateak(int[] kantitateak) {
-		String edukiontzi=""; 
-		for(int i=0;i<kantitateak.length;i++) {
-			if(kantitateak[i]!=0) {
-				edukiontzi = edukiontzi+"<html>"+"x"+kantitateak[i]+"<br><html>";
-			} 
-		}
-		return edukiontzi;
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	/*public static int[] sartuDirua(String aukera, int kantitatea) {
-		Produktua elikagaiak[] = objektuak();
-		int kont = 0;
-		for(int i=0;i<elikagaiak.length;i++) {
-			if(elikagaiak[i].getIzena().equalsIgnoreCase(aukera)) {
-				dirua[kont] = kantitatea * elikagaiak[i].getUnitatePrezioa(); 
-				System.out.println(elikagaiak[i].getUnitatePrezioa()); 
-				break;
-			}else {
-				kont++;
-			}
-		}
-		return dirua;
-	}*/
-
-	// *****************************************************************************************************************************************************************************************************
-
-	/*public static String arrayaDirua(int[] dirua) {
-		String edukiontzi=""; 
-		for(int i=0;i<dirua.length;i++) {
-			if(dirua[i]!= 0) {
-				edukiontzi = edukiontzi+"<html>"+dirua[i]+"€"+"<br><html>";
-			} 
-		}
-		return edukiontzi;
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	/*public static int diruTotala(int[] kantitateak){
-		int diruTotala = 0;
-		Produktua elikagaiak[] = objektuak();
-		for(int i=0;i<kantitateak.length;i++) {
-			diruTotala = diruTotala + (kantitateak[i] * elikagaiak[i].getUnitatePrezioa());
-		}
-		return diruTotala;
-	}*/
-
-	// *****************************************************************************************************************************************************************************************************
-
-	/*public static String[] ezabatuArray(String[] aukeratutakoak) {
-		for(int i = 0; i < aukeratutakoak.length; i++) {
-			aukeratutakoak[i] = null;
-		}
-		return aukeratutakoak;
-	}
-	public static int[] ezabatuArray2(int[] kantitateak) {
-		for(int i = 0; i < kantitateak.length; i++) {
-			kantitateak[i] = 0;
-		}
-		return kantitateak;
-	}
-	public static int[] ezabatuArray3(int[] dirua) {
-		for(int i = 0; i < dirua.length; i++) {
-			dirua[i] = 0;
-		}
-		return dirua;
-	}
-*/
-
 }
