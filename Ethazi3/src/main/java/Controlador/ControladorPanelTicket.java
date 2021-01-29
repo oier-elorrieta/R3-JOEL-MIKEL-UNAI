@@ -1,6 +1,5 @@
 package Controlador;
 
- 
 import java.util.ArrayList;
 
 import Modelo.Karrito; 
@@ -9,7 +8,6 @@ import Vista.PanelTicket;
 import Vista.Vista;
 
 public class ControladorPanelTicket {
-
 	 
 	private Modelo modelo;
 	private Vista vista;
@@ -30,16 +28,20 @@ public class ControladorPanelTicket {
 	public void accionadoBottonLaburpenera() {
 		this.controlador.navegarPanelLaburpena();
 	}
+	
 	public void accionadoBottonAtzera() {
 		this.controlador.navegarPanelLogin();
 		this.modelo.ezabatu();
 	}
+	
 	public String[] accionadoComboBox() {
 		return this.modelo.produktuakJaso();
 	}
+	
 	public ArrayList<Karrito> sartu(String elikagaia,int kopuru) {
 		return this.modelo.sartu(elikagaia, kopuru); 
-	}   
+	}  
+	
 	public double diruTotala() {
 		return this.modelo.diruTotala();
 	}	

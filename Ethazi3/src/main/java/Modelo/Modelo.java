@@ -11,16 +11,18 @@ public class Modelo {
 	}
 
 	public ArrayList<Karrito> sartu(String elikagaia,int kopuru) {
-		return metodos.sartu(elikagaia, kopuru, karroa); 
+		return metodos.sartuProduktuaArrayan(elikagaia, kopuru, karroa); 
 	}
 	 
 	public String pantailaratu() {
-		return metodos.pantailatu(karroa);
+		return metodos.pantailatuProduktua(karroa);
 	}
+	
 	public double diruTotala() {
 		return metodos.diruTotala(karroa);
 	}
+	
 	public ArrayList<Karrito> ezabatu(){
-		return metodos.ezabatu(karroa);
+		return metodos.ezabatuArraya(karroa);
 	}
 }

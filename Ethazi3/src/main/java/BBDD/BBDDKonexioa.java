@@ -20,6 +20,7 @@ public class BBDDKonexioa {
 
 	public static Connection getConexion() {
 		Connection konekzioa = null;
+		
 		/*ResultSet re;
 		Statement s;
 		PreparedStatement p;*/
@@ -28,10 +29,12 @@ public class BBDDKonexioa {
 		try {
 			Class.forName(CONTROLADOR);
 			konekzioa = DriverManager.getConnection(URL, USUARIO, CLAVE);
+			
 			//Insertar valores en BBDD
 			/*s = konekzioa.createStatement();
 			String query1 = ("INSERT INTO Usuario VALUES ('79187197Z','Unai','Hernando','12345678')");
 			s.executeUpdate(query1);*/
+			
 			//Mirar los valores de BBDD
 			/*String query1 = ("SELECT * FROM usuario;");
 			p = konekzioa.prepareStatement(query1);

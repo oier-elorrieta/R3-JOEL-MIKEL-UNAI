@@ -254,7 +254,6 @@ public class PanelFaktura extends JPanel {
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
 				if (kantitatea != 0) {
 					controladorPanelFaktura.sartu(aukera, kantitatea);
-					
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));

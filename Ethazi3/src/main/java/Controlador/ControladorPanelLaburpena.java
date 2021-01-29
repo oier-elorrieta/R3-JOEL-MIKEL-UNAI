@@ -31,6 +31,7 @@ public class ControladorPanelLaburpena {
 	public String pantailaratu() {
 		return this.modelo.pantailaratu();
 	}
+	
 	public double diruTotala() {
 		return this.modelo.diruTotala();
 	}

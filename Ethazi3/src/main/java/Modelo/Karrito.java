@@ -15,28 +15,32 @@ public class Karrito {
 	public String getElikagaia() {
 		return elikagaia;
 	}
+	
 	public void setElikagaia(String elikagaia) {
 		this.elikagaia = elikagaia;
 	}
+	
 	public int getKopuru() {
 		return kopuru;
 	}
+	
 	public void setKopuru(int kopuru) {
 		this.kopuru = kopuru;
 	}
-	public double getBalioa() {
+	
+	public double getBalioa() { 
 		return balioa;
 	}
+	
 	public void setBalioa(int balioa) {
 		this.balioa = balioa;
 	}
 
-	@Override
+	@Override 
 	public String toString() {
-		return "<html>"+"<p>"+"x"+kopuru 
-				+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"
-				+elikagaia +"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"
-				+ balioa+"€"+"<p>"+"<html>";
+		return "<html>"+"<p>"+"x"+kopuru+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+								 +elikagaia+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+								 +balioa+"€"+"&nbsp;<p>"+"<html>";
 	}
 	
 	

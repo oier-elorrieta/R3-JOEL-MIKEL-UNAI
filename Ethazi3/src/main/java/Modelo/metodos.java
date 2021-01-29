@@ -17,6 +17,7 @@ public class metodos {
 		Produktua gilda = new Produktua("Gilda", 0, "Janaria", 3, 1);
 		Produktua colacao = new Produktua("Colacao", 0, "Edaria", 3, 1);
 		Produktua elikagaiak[] = new Produktua[10];
+		
 		elikagaiak[0] = sidra;
 		elikagaiak[1] = kafea;
 		elikagaiak[2] = ura;	
@@ -27,26 +28,27 @@ public class metodos {
 		elikagaiak[7] = tortilla;
 		elikagaiak[8] = gilda;
 		elikagaiak[9] = colacao; 
+		
 		return elikagaiak;
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static ArrayList<Karrito> sartu(String elikagaia,int kopuru, ArrayList<Karrito> karroa) {
+	public static ArrayList<Karrito> sartuProduktuaArrayan(String elikagaia,int kopuru, ArrayList<Karrito> karroa) {
 		double dirua = sartuDirua(elikagaia, kopuru);
-		Karrito k = new Karrito(elikagaia, kopuru, dirua);
-		karroa.add(k);
+		Karrito Prod = new Karrito(elikagaia, kopuru, dirua);
+		karroa.add(Prod);
 		return karroa;
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	public static String pantailatu(ArrayList<Karrito> karroa) {
-		String edukiontzi= "";
+	public static String pantailatuProduktua(ArrayList<Karrito> karroa) {
+		String PantailatukoDena= "";
 		for(int i=0;i<karroa.size();i++) { 
-			edukiontzi  = edukiontzi + "<html>"+karroa.get(i).toString()+"<br><html>"; 
+			PantailatukoDena  = PantailatukoDena + "<html>"+karroa.get(i).toString()+"<br><html>"; 
 		}
-		return edukiontzi;
+		return PantailatukoDena;
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -78,17 +80,16 @@ public class metodos {
 	// *****************************************************************************************************************************************************************************************************
 	
 	public static double diruTotala(ArrayList<Karrito> karroa) {
-		double kont = 0;
+		double diruTotala = 0;
 		for(int i = 0; i < karroa.size(); i++) {
-			kont = kont + karroa.get(i).getBalioa();
+			diruTotala = diruTotala + karroa.get(i).getBalioa();
 		}
-		return kont;
-		
+		return diruTotala;
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	public static ArrayList<Karrito> ezabatu(ArrayList<Karrito> karroa) {
+	public static ArrayList<Karrito> ezabatuArraya(ArrayList<Karrito> karroa) {
 		karroa.clear();
 		return karroa;
 	}

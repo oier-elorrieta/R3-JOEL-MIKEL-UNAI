@@ -1,12 +1,9 @@
 package Vista;
 
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Controlador.ControladorPanelLaburpena; 
-import Modelo.Modelo;
-
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -17,7 +14,6 @@ import java.awt.event.ActionListener;
 public class PanelLaburpena extends JPanel{
 
 	private ControladorPanelLaburpena controladorPanelLaburpena;
-	private Modelo modelo;
 
 	private JButton btnSegi;
 
@@ -40,7 +36,6 @@ public class PanelLaburpena extends JPanel{
 		setLayout(null);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
 		
 		String emaitza = controladorPanelLaburpena.pantailaratu();
 		double diruTotala = controladorPanelLaburpena.diruTotala();
@@ -95,7 +90,6 @@ public class PanelLaburpena extends JPanel{
 		btnSegi = new JButton("\u2714");
 		btnSegi.setBounds(415, 0, 44, 23);
 		add(btnSegi);		
-		
 
 		initializeEvents();
 	}

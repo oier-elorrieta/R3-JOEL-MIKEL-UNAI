@@ -160,7 +160,6 @@ public class PanelTicket extends JPanel {
 		CB_Produktoak.setBounds(30, 68, 214, 20);
 		add(CB_Produktoak);
 
-
 		produktuak = controladorPanelTicket.accionadoComboBox();
 		for(int i=0;i < produktuak.length;i++) {
 			CB_Produktoak.addItem(produktuak[i]);

@@ -14,6 +14,7 @@ import Controlador.ControladorPanelLogin;
 public class PanelLogin extends JPanel {
 
 	private ControladorPanelLogin controladorPanelMenu;
+	
 	private JButton BT_cafeteria;
 	private JButton BT_bar;
 	private JButton BT_restaurante;

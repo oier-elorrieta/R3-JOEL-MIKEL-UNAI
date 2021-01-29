@@ -25,12 +25,15 @@ public class ControladorPanelLogin {
 	public void accionadoBottonMostrarPanelBar() {
 		this.controlador.navegarPanelMenu3();
 	}
+	
 	public void accionadoBottonMostrarPanelCafeteria() {
 		this.controlador.navegarPanelMenu2();
 	}
+	
 	public void accionadoBottonMostrarPanelRestaurante() {
 		this.controlador.navegarPanelMenu();
 	}
+	
 	public void accionadoBottonAtzera() {
 		this.controlador.itxi();
 	}

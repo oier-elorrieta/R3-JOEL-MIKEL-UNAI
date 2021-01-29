@@ -25,15 +25,19 @@ public class ControladorPanelMenuCafeteria {
 	public void accionadoBottonMostrarPanelFaktura() {
 		this.controlador.navegarPanelFaktura();
 	}
+	
 	public void accionadoBottonMostrarPanelTicket() {
 		this.controlador.navegarPanelTicket();
 	}
+	
 	public void accionadoBottonMostrarPanelPedidos() {
 		this.controlador.navegarPanelPedidos();
 	}
+	
 	public void accionadoBottonAtzera() {
 		this.controlador.itxi();
 	}
+	
 	public void accionadoBotonHasiera() {
 		this.controlador.navegarPanelLogin();
 	}

@@ -25,12 +25,15 @@ public class ControladorPanelMenuBar {
 	public void accionadoBottonMostrarPanelFaktura() {
 		this.controlador.navegarPanelFaktura();
 	}
+	
 	public void accionadoBottonMostrarPanelTicket() {
 		this.controlador.navegarPanelTicket();
 	}
+	
 	public void accionadoBottonAtzera() {
 		this.controlador.itxi();
 	}
+	
 	public void accionadoBotonHasiera() {
 		this.controlador.navegarPanelLogin();
 	}

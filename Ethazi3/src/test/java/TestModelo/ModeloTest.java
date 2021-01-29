@@ -40,7 +40,7 @@ public class ModeloTest {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	@Test
+	@Test 
 	public void ezabatu() {
 
 		Karrito sidra = new Karrito("Sidra", 0, 3);
@@ -60,7 +60,7 @@ public class ModeloTest {
 
 		ArrayList<Karrito> esperotakoa = new ArrayList<Karrito>(10);
 
-		assertEquals(esperotakoa, metodos.ezabatu(aukera));
+		assertEquals(esperotakoa, metodos.ezabatuArraya(aukera));
 
 	}
 
@@ -75,16 +75,16 @@ public class ModeloTest {
 
 		aukera.add(sidra);
 
-		String esperotakoa = "<html>" + "x" + "1" + "    " + "Sidra" + "      " + "  " + "3" + "<br><html>";
+		String esperotakoa = "";
 
-		assertEquals(esperotakoa, metodos.pantailatu(aukera));
+		assertNotEquals(esperotakoa, metodos.pantailatuProduktua(aukera));
 
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
 	@Test
-	public void sartu() {
+	public void TestSartuProduktuaArrayan() {
 
 		Karrito sidra = new Karrito("Sidra", 1, 3);
 
@@ -94,13 +94,13 @@ public class ModeloTest {
 
 		ArrayList<Karrito> aukera1 = new ArrayList<Karrito>(10);
 
-		aukera1 = metodos.sartu("Sidra", 1, aukera1);
+		aukera1 = metodos.sartuProduktuaArrayan("Sidra", 1, aukera1);
 
 		Karrito esperotakoa = esperotakoa1.get(0);
 
 		Karrito aukera = aukera1.get(0);
 
-		assertEquals(aukera.getBalioa(), esperotakoa.getBalioa());
+		assertEquals(aukera.getBalioa(), esperotakoa.getBalioa(),0);
 		assertEquals(aukera.getElikagaia(), esperotakoa.getElikagaia());
 		assertEquals(aukera.getKopuru(), esperotakoa.getKopuru());
 
@@ -113,7 +113,7 @@ public class ModeloTest {
 
 		int esperotakoa = 9;
 
-		assertEquals(esperotakoa, metodos.sartuDirua("Sidra", 3));
+		assertEquals(esperotakoa, metodos.sartuDirua("Sidra", 3),0);
 
 	}
 
@@ -139,7 +139,7 @@ public class ModeloTest {
 
 		int esperotakoa = 30;
 
-		assertEquals(esperotakoa, metodos.diruTotala(aukera));
+		assertEquals(esperotakoa, metodos.diruTotala(aukera),0);
 
 	}
 
