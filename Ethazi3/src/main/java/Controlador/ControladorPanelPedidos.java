@@ -28,7 +28,7 @@ public class ControladorPanelPedidos {
 		this.controlador.navegarPanelLaburpena();
 	}
 	public void accionadoBottonAtzera() {
-		this.controlador.navegarPanelMenu();
+		this.controlador.navegarPanelLogin();
 		this.modelo.ezabatu();
 	}
 	public String[] accionadoComboBox() {
@@ -37,4 +37,7 @@ public class ControladorPanelPedidos {
 	public ArrayList<Karrito> sartu(String elikagaia,int kopuru) {
 		return this.modelo.sartu(elikagaia, kopuru); 
 	} 
+	public double diruTotala() {
+		return this.modelo.diruTotala();
+	}
 }

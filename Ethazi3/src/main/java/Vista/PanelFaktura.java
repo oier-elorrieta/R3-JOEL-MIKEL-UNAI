@@ -259,8 +259,8 @@ public class PanelFaktura extends JPanel {
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				CB_Produktoak.setSelectedItem(null);
-				//String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala(kantitateak));
-				//TF_Totala.setText(diruTotala);
+				String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
+				TF_Totala.setText(diruTotala);
 			}
 		};
 	}

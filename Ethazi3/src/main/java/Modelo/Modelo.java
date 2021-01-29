@@ -17,7 +17,7 @@ public class Modelo {
 	public String pantailaratu() {
 		return metodos.pantailatu(karroa);
 	}
-	public int diruTotala() {
+	public double diruTotala() {
 		return metodos.diruTotala(karroa);
 	}
 	public ArrayList<Karrito> ezabatu(){

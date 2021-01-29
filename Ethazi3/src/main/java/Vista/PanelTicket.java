@@ -50,10 +50,6 @@ public class PanelTicket extends JPanel {
 	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JSpinner NºUnidades; 
 	private String[] produktuak;
-	
-	private String[] aukeratutakoak = new String[10];
-	private int[] kantitateak = new int[10];
-	private int[] dirua = new int[10];
 
 
 	// *****************************************************************************************************************************************************************************************************
@@ -199,9 +195,6 @@ public class PanelTicket extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorPanelTicket.accionadoBottonAtzera();
-				/*aukeratutakoak = controladorPanelTicket.clear1(aukeratutakoak);
-				kantitateak = controladorPanelTicket.clear2(kantitateak);
-				dirua = controladorPanelTicket.clear3(dirua);*/
 			}
 		};
 	}
@@ -219,8 +212,8 @@ public class PanelTicket extends JPanel {
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				CB_Produktoak.setSelectedItem(null);
-				//String diruTotala = String.valueOf(controladorPanelTicket.diruTotala(kantitateak));
-				//TF_Totala.setText(diruTotala);
+				String diruTotala = String.valueOf(controladorPanelTicket.diruTotala());
+				TF_Totala.setText(diruTotala);
 			}
 		};
 	}

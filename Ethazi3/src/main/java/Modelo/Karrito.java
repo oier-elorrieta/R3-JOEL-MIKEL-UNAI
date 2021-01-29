@@ -4,9 +4,9 @@ public class Karrito {
 	
 	private String elikagaia;
 	private int kopuru;
-	private int balioa;
+	private double balioa;
 	
-	public Karrito(String elikagaia, int kopuru, int balioa) { 
+	public Karrito(String elikagaia, int kopuru, double balioa) { 
 		this.elikagaia = elikagaia;
 		this.kopuru = kopuru;
 		this.balioa = balioa;
@@ -24,7 +24,7 @@ public class Karrito {
 	public void setKopuru(int kopuru) {
 		this.kopuru = kopuru;
 	}
-	public int getBalioa() {
+	public double getBalioa() {
 		return balioa;
 	}
 	public void setBalioa(int balioa) {
@@ -33,7 +33,7 @@ public class Karrito {
 
 	@Override
 	public String toString() {
-		return "x"+kopuru+"    "+elikagaia + "      " + "  " + balioa;
+		return "x"+kopuru+"   "+elikagaia + "  " + "   " + balioa+"€";
 	}
 	
 	

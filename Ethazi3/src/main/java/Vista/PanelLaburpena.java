@@ -42,8 +42,8 @@ public class PanelLaburpena extends JPanel{
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
 		
-		String kk3 = controladorPanelLaburpena.pantailaratu();
-		int diruTotala = controladorPanelLaburpena.diruTotala();
+		String emaitza = controladorPanelLaburpena.pantailaratu();
+		double diruTotala = controladorPanelLaburpena.diruTotala();
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -85,7 +85,7 @@ public class PanelLaburpena extends JPanel{
 		LB_TotalCant.setBounds(285, 259, 145, 10);
 		add(LB_TotalCant);
 
-		lblLaburpen = new JLabel(kk3);
+		lblLaburpen = new JLabel(emaitza);
 		lblLaburpen.setVerticalAlignment(SwingConstants.TOP);
 		lblLaburpen.setBounds(40, 108, 370, 143);
 		add(lblLaburpen);

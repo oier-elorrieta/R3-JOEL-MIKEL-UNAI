@@ -33,7 +33,7 @@ public class metodos {
 	// *****************************************************************************************************************************************************************************************************
 
 	public static ArrayList<Karrito> sartu(String elikagaia,int kopuru, ArrayList<Karrito> karroa) {
-		int dirua = sartuDirua(elikagaia, kopuru);
+		double dirua = sartuDirua(elikagaia, kopuru);
 		Karrito k = new Karrito(elikagaia, kopuru, dirua);
 		karroa.add(k);
 		return karroa;
@@ -63,9 +63,9 @@ public class metodos {
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	public static int sartuDirua(String aukera, int kantitatea) {
+	public static double sartuDirua(String aukera, int kantitatea) {
 		Produktua elikagaiak[] = objektuak();
-		int dirua = 0;
+		double dirua = 0;
 		for(int i=0;i<elikagaiak.length;i++) {
 			if(elikagaiak[i].getIzena().equalsIgnoreCase(aukera)) {
 				dirua = kantitatea * elikagaiak[i].getUnitatePrezioa(); 
@@ -77,11 +77,9 @@ public class metodos {
 
 	// *****************************************************************************************************************************************************************************************************
 	
-	public static int diruTotala(ArrayList<Karrito> karroa) {
-		int kont = 0;
+	public static double diruTotala(ArrayList<Karrito> karroa) {
+		double kont = 0;
 		for(int i = 0; i < karroa.size(); i++) {
-			System.out.println(karroa.get(i).getBalioa());
-			System.out.println(karroa.get(i).getBalioa()*karroa.get(i).getKopuru());
 			kont = kont + karroa.get(i).getBalioa();
 		}
 		return kont;

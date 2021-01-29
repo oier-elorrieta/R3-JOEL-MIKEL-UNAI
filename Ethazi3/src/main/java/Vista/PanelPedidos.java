@@ -54,7 +54,7 @@ public class PanelPedidos extends JPanel {
 	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JSpinner NºUnidades;
 	private String[] produktuak;
-	
+
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -211,9 +211,6 @@ public class PanelPedidos extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelPedidos.accionadoBottonAtzera();
-			/*	aukeratutakoak = controladorPanelPedidos.clear1(aukeratutakoak);
-				kantitateak = controladorPanelPedidos.clear2(kantitateak);
-				dirua = controladorPanelPedidos.clear3(dirua);*/
 			}
 		};
 	}
@@ -231,8 +228,8 @@ public class PanelPedidos extends JPanel {
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				CB_Produktoak.setSelectedItem(null);
-			//	String diruTotala = String.valueOf(controladorPanelPedidos.diruTotala(kantitateak));
-				//TF_Totala.setText(diruTotala);
+				String diruTotala = String.valueOf(controladorPanelPedidos.diruTotala());
+				TF_Totala.setText(diruTotala);
 			}
 		};
 	}
