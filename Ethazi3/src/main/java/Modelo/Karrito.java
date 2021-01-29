@@ -33,7 +33,10 @@ public class Karrito {
 
 	@Override
 	public String toString() {
-		return "x"+kopuru+"   "+elikagaia + "  " + "   " + balioa+"€";
+		return "<html>"+"<p>"+"x"+kopuru 
+				+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"
+				+elikagaia +"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"
+				+ balioa+"€"+"<p>"+"<html>";
 	}
 	
 	

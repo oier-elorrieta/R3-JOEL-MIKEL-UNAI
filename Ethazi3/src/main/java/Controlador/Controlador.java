@@ -1,6 +1,5 @@
 package Controlador;
 
-import Modelo.Karrito; 
 import Modelo.Modelo;
 import Vista.Vista;
 
