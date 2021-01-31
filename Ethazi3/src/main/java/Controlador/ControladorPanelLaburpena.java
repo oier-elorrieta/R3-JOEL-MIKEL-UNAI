@@ -17,14 +17,14 @@ public class ControladorPanelLaburpena {
 		this.controlador = controlador;	
 	}
 	
-	public void mostrarPanelLaburpena() {
+	public void ikusiPanelLaburpena() {
 		this.panelLaburpena = new PanelLaburpena(this);
-		this.vista.mostrarPanel(this.panelLaburpena);
+		this.vista.ikusiPanela(this.panelLaburpena);
 	}
 	
 	public void accionadoBottonMostrarPanelMenu() throws InterruptedException {
 		Thread.sleep(1350);
-		this.controlador.navegarPanelLogin(); 
+		this.controlador.nabegatzenPanelLogin(); 
 		this.modelo.ezabatu();
 	}
 	 

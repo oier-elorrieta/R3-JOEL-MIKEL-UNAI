@@ -6,13 +6,13 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import Modelo.Karrito;
+import Modelo.Karritoa;
 import Modelo.Produktua;
-import Modelo.metodos;
+import Modelo.metodoak;
 
 public class ModeloTest {
 
-	Produktua elikagaiak[] = metodos.objektuak();
+	Produktua elikagaiak[] = metodoak.objektuak();
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -22,7 +22,7 @@ public class ModeloTest {
 
 		String esperotakoa = "Sidra";
 
-		metodos.sartuSalgaiak();
+		metodoak.sartuSalgaiak();
 
 		assertEquals(esperotakoa, aukera);
 	}
@@ -33,7 +33,7 @@ public class ModeloTest {
 
 		String esperotakoa = "Ura";
 
-		metodos.sartuSalgaiak();
+		metodoak.sartuSalgaiak();
 
 		assertEquals(esperotakoa, aukera);
 	}
@@ -43,9 +43,9 @@ public class ModeloTest {
 	@Test 
 	public void ezabatu() {
 
-		Karrito sidra = new Karrito("Sidra", 0, 3);
+		Karritoa sidra = new Karritoa("Sidra", 0, 3);
 
-		ArrayList<Karrito> aukera = new ArrayList<Karrito>(10);
+		ArrayList<Karritoa> aukera = new ArrayList<Karritoa>(10);
 
 		aukera.add(sidra);
 		aukera.add(sidra);
@@ -58,9 +58,9 @@ public class ModeloTest {
 		aukera.add(sidra);
 		aukera.add(sidra);
 
-		ArrayList<Karrito> esperotakoa = new ArrayList<Karrito>(10);
+		ArrayList<Karritoa> esperotakoa = new ArrayList<Karritoa>(10);
 
-		assertEquals(esperotakoa, metodos.ezabatuArraya(aukera));
+		assertEquals(esperotakoa, metodoak.ezabatuArraya(aukera));
 
 	}
 
@@ -69,15 +69,15 @@ public class ModeloTest {
 	@Test
 	public void pantailatu() {
 
-		Karrito sidra = new Karrito("Sidra", 1, 3);
+		Karritoa sidra = new Karritoa("Sidra", 1, 3);
 
-		ArrayList<Karrito> aukera = new ArrayList<Karrito>(10);
+		ArrayList<Karritoa> aukera = new ArrayList<Karritoa>(10);
 
 		aukera.add(sidra);
 
 		String esperotakoa = "";
 
-		assertNotEquals(esperotakoa, metodos.pantailatuProduktua(aukera));
+		assertNotEquals(esperotakoa, metodoak.pantailatuProduktua(aukera));
 
 	}
 
@@ -86,19 +86,19 @@ public class ModeloTest {
 	@Test
 	public void TestSartuProduktuaArrayan() {
 
-		Karrito sidra = new Karrito("Sidra", 1, 3);
+		Karritoa sidra = new Karritoa("Sidra", 1, 3);
 
-		ArrayList<Karrito> esperotakoa1 = new ArrayList<Karrito>(10);
+		ArrayList<Karritoa> esperotakoa1 = new ArrayList<Karritoa>(10);
 
 		esperotakoa1.add(sidra);
 
-		ArrayList<Karrito> aukera1 = new ArrayList<Karrito>(10);
+		ArrayList<Karritoa> aukera1 = new ArrayList<Karritoa>(10);
 
-		aukera1 = metodos.sartuProduktuaArrayan("Sidra", 1, aukera1);
+		aukera1 = metodoak.sartuProduktuaArrayan("Sidra", 1, aukera1);
 
-		Karrito esperotakoa = esperotakoa1.get(0);
+		Karritoa esperotakoa = esperotakoa1.get(0);
 
-		Karrito aukera = aukera1.get(0);
+		Karritoa aukera = aukera1.get(0);
 
 		assertEquals(aukera.getBalioa(), esperotakoa.getBalioa(),0);
 		assertEquals(aukera.getElikagaia(), esperotakoa.getElikagaia());
@@ -113,7 +113,7 @@ public class ModeloTest {
 
 		int esperotakoa = 9;
 
-		assertEquals(esperotakoa, metodos.sartuDirua("Sidra", 3),0);
+		assertEquals(esperotakoa, metodoak.sartuDirua("Sidra", 3),0);
 
 	}
 
@@ -122,9 +122,9 @@ public class ModeloTest {
 	@Test
 	public void DiruTotalak() {
 
-		Karrito sidra = new Karrito("Sidra", 0, 3);
+		Karritoa sidra = new Karritoa("Sidra", 0, 3);
 
-		ArrayList<Karrito> aukera = new ArrayList<Karrito>(10);
+		ArrayList<Karritoa> aukera = new ArrayList<Karritoa>(10);
 
 		aukera.add(sidra);
 		aukera.add(sidra);
@@ -139,7 +139,7 @@ public class ModeloTest {
 
 		int esperotakoa = 30;
 
-		assertEquals(esperotakoa, metodos.diruTotala(aukera),0);
+		assertEquals(esperotakoa, metodoak.diruTotala(aukera),0);
 
 	}
 

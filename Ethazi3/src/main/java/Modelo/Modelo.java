@@ -4,25 +4,29 @@ import java.util.ArrayList;
 
 public class Modelo {
 
-	private ArrayList<Karrito> karroa = new ArrayList<Karrito>();
+	private ArrayList<Karritoa> karroa = new ArrayList<Karritoa>();
 
 	public String[] produktuakJaso() {
-		return metodos.sartuSalgaiak();
+		return metodoak.sartuSalgaiak();
 	}
 
-	public ArrayList<Karrito> sartu(String elikagaia,int kopuru) {
-		return metodos.sartuProduktuaArrayan(elikagaia, kopuru, karroa); 
+	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
+		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa); 
 	}
 	 
 	public String pantailaratu() {
-		return metodos.pantailatuProduktua(karroa);
+		return metodoak.pantailatuProduktua(karroa);
 	}
 	
 	public double diruTotala() {
-		return metodos.diruTotala(karroa);
+		return metodoak.diruTotala(karroa);
 	}
 	
-	public ArrayList<Karrito> ezabatu(){
-		return metodos.ezabatuArraya(karroa);
+	public ArrayList<Karritoa> ezabatu(){
+		return metodoak.ezabatuArraya(karroa);
+	}
+	
+	public Object argazkiaAukeratu(String aukera) {
+		return metodoak.argazkiaAukeratu(aukera);
 	}
 }

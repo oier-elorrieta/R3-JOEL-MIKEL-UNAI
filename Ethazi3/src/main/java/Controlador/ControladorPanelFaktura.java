@@ -2,7 +2,7 @@ package Controlador;
 
 import java.util.ArrayList;
 
-import Modelo.Karrito;
+import Modelo.Karritoa;
 import Modelo.Modelo;
 import Vista.PanelFaktura; 
 import Vista.Vista;
@@ -20,29 +20,33 @@ public class ControladorPanelFaktura {
 		this.controlador = controlador;	
 	}
 
-	public void mostrarPanelFaktura() {
+	public void ikusiPanelFaktura() {
 		this.panelFaktura = new PanelFaktura(this);
-		this.vista.mostrarPanel(this.panelFaktura);
+		this.vista.ikusiPanela(this.panelFaktura);
 	}
 
-	public void accionadoBottonLaburpenera() {
-		this.controlador.navegarPanelLaburpena();
+	public void sakatuLaburpeneraBotoia() {
+		this.controlador.nabegatzenPanelLaburpena();
 	}
 	
-	public void accionadoBottonAtzera() {
-		this.controlador.navegarPanelLogin();
+	public void sakatuAtzeraBotoia() {
+		this.controlador.nabegatzenPanelLogin();
 		this.modelo.ezabatu();
 	}
 	
-	public String[] accionadoComboBox() {
+	public String[] ComboBoxaSakatu() {
 		return this.modelo.produktuakJaso();
 	}
 	
-	public ArrayList<Karrito> sartu(String elikagaia,int kopuru) {
+	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
 		return this.modelo.sartu(elikagaia, kopuru); 
 	} 
 	
 	public double diruTotala() {
 		return this.modelo.diruTotala();
+	}
+	
+	public Object argazkiaAukeratu(String aukera) {
+		return this.modelo.argazkiaAukeratu(aukera);
 	}
 }

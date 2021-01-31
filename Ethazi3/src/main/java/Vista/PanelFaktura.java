@@ -12,8 +12,6 @@ import javax.swing.SpinnerModel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.swing.JLabel;
 import Controlador.ControladorPanelFaktura;
@@ -25,12 +23,6 @@ import javax.swing.JComboBox;
 public class PanelFaktura extends JPanel {
 
 	private ControladorPanelFaktura controladorPanelFaktura;
-
-	Calendar fecha = new GregorianCalendar();
-
-	int año = fecha.get(Calendar.YEAR);
-	int mes = fecha.get(Calendar.MONTH);
-	int dia = fecha.get(Calendar.DAY_OF_MONTH);
 
 	private JTextField TF_Titulua;
 	private JTextField TF_Fecha;
@@ -79,7 +71,7 @@ public class PanelFaktura extends JPanel {
 		TF_Titulua.setEditable(false);
 		add(TF_Titulua);
 
-		TF_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + año);
+		TF_Fecha = new JTextField();
 		TF_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Fecha.setBounds(367, 36, 75, 20);
 		TF_Fecha.setColumns(10);
@@ -207,7 +199,7 @@ public class PanelFaktura extends JPanel {
 		add(CB_Produktoak);
 
 
-		produktuak = controladorPanelFaktura.accionadoComboBox();
+		produktuak = controladorPanelFaktura.ComboBoxaSakatu();
 		for (int i = 0; i < produktuak.length; i++) {
 			CB_Produktoak.addItem(produktuak[i]);
 		}
@@ -219,35 +211,35 @@ public class PanelFaktura extends JPanel {
 	// *****************************************************************************************************************************************************************************************************
 
 	private void initializeEvents() {
-		this.btnAurrera.addActionListener(listenerBotonLaburpenera(this.controladorPanelFaktura));
-		this.btnAtzera.addActionListener(listenerBotonAtzera(this.controladorPanelFaktura));
+		this.btnAurrera.addActionListener(listenerLaburpeneraBotoia(this.controladorPanelFaktura));
+		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelFaktura));
 		this.CB_Produktoak.addActionListener(listenerComboBox(this.controladorPanelFaktura));
-		this.btnSegi.addActionListener(listenerBotonSegi());
+		this.btnSegi.addActionListener(listenerSegiBotoia());
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerBotonLaburpenera(ControladorPanelFaktura controladorPanelFaktura) {
+	private ActionListener listenerLaburpeneraBotoia(ControladorPanelFaktura controladorPanelFaktura) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelFaktura.accionadoBottonLaburpenera();
+				controladorPanelFaktura.sakatuLaburpeneraBotoia();
 			}
 		};
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerBotonAtzera(ControladorPanelFaktura controladorPanelFaktura) {
+	private ActionListener listenerAtzeraBotoia(ControladorPanelFaktura controladorPanelFaktura) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelFaktura.accionadoBottonAtzera();
+				controladorPanelFaktura.sakatuAtzeraBotoia();
 			}
 		};
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerBotonSegi() {
+	private ActionListener listenerSegiBotoia() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
@@ -257,7 +249,6 @@ public class PanelFaktura extends JPanel {
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
-				CB_Produktoak.setSelectedItem(null);
 				String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
 				TF_Totala.setText(diruTotala);
 			}
@@ -270,36 +261,8 @@ public class PanelFaktura extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
-				if (aukera == "Zukua") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/zumo.jpg"));
-				}
-				if (aukera == "Sidra") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/sidra.jpg"));
-				}
-				if (aukera == "Ura") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/ura.jpg"));
-				}
-				if (aukera == "Kafea") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/cafe.jpg"));
-				}
-				if (aukera == "Txakoli") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/txakoli.jpg"));
-				}
-				if (aukera == "Patata tortilla") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/tortilla.jpg"));
-				}
-				if (aukera == "Garagardoa") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/garagardoa.png"));
-				}
-				if (aukera == "Colacao") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/colacao.jpg"));
-				}
-				if (aukera == "Ardoa") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/ardoa.jpg"));
-				}
-				if (aukera == "Gilda") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/gilda.jpg"));
-				}
+				ImageIcon argazkia = (ImageIcon) controladorPanelFaktura.argazkiaAukeratu(aukera);
+				argazkiak.setIcon(argazkia);
 			}
 		};
 	}

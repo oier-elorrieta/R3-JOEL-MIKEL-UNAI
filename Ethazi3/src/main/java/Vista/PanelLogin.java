@@ -15,9 +15,9 @@ public class PanelLogin extends JPanel {
 
 	private ControladorPanelLogin controladorPanelMenu;
 	
-	private JButton BT_cafeteria;
-	private JButton BT_bar;
-	private JButton BT_restaurante;
+	private JButton BT_Kafetegi;
+	private JButton BT_Taberna;
+	private JButton BT_Jatetxe;
 	private JButton btnSarratu;
 
 	// *****************************************************************************************************************************************************************************************************
@@ -31,20 +31,20 @@ public class PanelLogin extends JPanel {
 
 		setBounds(0, 0, 450, 300);
 
-		BT_bar = new JButton("BAR");
-		BT_bar.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		BT_bar.setBounds(10, 11, 210, 113); 
-		add(BT_bar);
+		BT_Taberna = new JButton("TABERNA");
+		BT_Taberna.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		BT_Taberna.setBounds(10, 11, 210, 113); 
+		add(BT_Taberna);
 
-		BT_cafeteria = new JButton("CAFETERIA");
-		BT_cafeteria.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		BT_cafeteria.setBounds(230, 11, 210, 113);
-		add(BT_cafeteria);
+		BT_Kafetegi = new JButton("KAFETEGIA");
+		BT_Kafetegi.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		BT_Kafetegi.setBounds(230, 11, 210, 113);
+		add(BT_Kafetegi);
 
-		BT_restaurante = new JButton("RESTAURANTE");
-		BT_restaurante.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		BT_restaurante.setBounds(123, 135, 210, 113);
-		add(BT_restaurante);
+		BT_Jatetxe = new JButton("JATETXEA");
+		BT_Jatetxe.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		BT_Jatetxe.setBounds(123, 135, 210, 113);
+		add(BT_Jatetxe);
 
 
 		btnSarratu = new JButton("SARRATU ");
@@ -58,48 +58,48 @@ public class PanelLogin extends JPanel {
 	// *****************************************************************************************************************************************************************************************************
 	
 	private void initializeEvents() {
-		this.BT_cafeteria.addActionListener(listenerBottonFaktura(this.controladorPanelMenu));
-		this.BT_bar.addActionListener(listenerBottonTicket(this.controladorPanelMenu));
-		this.BT_restaurante.addActionListener(listenerBottonEskaera(this.controladorPanelMenu));
-		this.btnSarratu.addActionListener(listenerBottonSarratu(this.controladorPanelMenu));
+		this.BT_Kafetegi.addActionListener(listenerKafetegiBotoia(this.controladorPanelMenu));
+		this.BT_Taberna.addActionListener(listenerTabernaBotoia(this.controladorPanelMenu));
+		this.BT_Jatetxe.addActionListener(listenerJatetxeBotoia(this.controladorPanelMenu));
+		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelMenu));
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerBottonFaktura(ControladorPanelLogin controladorPanelMenu2) {
+	private ActionListener listenerTabernaBotoia(ControladorPanelLogin controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.accionadoBottonMostrarPanelBar();
+				controladorPanelMenu2.sakatuPanelTabernaBotoia();
 			}
 		};
 	} 
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerBottonTicket(ControladorPanelLogin controladorPanelMenu2) {
+	private ActionListener listenerKafetegiBotoia(ControladorPanelLogin controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.accionadoBottonMostrarPanelCafeteria();
+				controladorPanelMenu2.sakatuPanelKafetegiaBotoia();
 			}
 		};
 	} 
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerBottonEskaera(ControladorPanelLogin controladorPanelMenu2) {
+	private ActionListener listenerJatetxeBotoia(ControladorPanelLogin controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.accionadoBottonMostrarPanelRestaurante();
+				controladorPanelMenu2.sakatuPanelJatetxBotoia();
 			}
 		};
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerBottonSarratu(ControladorPanelLogin controladorPanelMenu2) {
+	private ActionListener listenerSarratuBotoia(ControladorPanelLogin controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.accionadoBottonAtzera();
+				controladorPanelMenu2.sakatuAtzeraBotoia();
 			}
 		};
 	} 

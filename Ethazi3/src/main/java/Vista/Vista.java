@@ -11,7 +11,7 @@ public class Vista extends JFrame{
 		setBounds(100, 100, 475, 340);
 	}
 	
-	public void mostrarPanel(JPanel panel) {
+	public void ikusiPanela(JPanel panel) {
 		this.setContentPane(panel);
 		this.setVisible(true);
 	}

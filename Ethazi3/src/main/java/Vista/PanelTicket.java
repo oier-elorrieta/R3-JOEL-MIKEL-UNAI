@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,12 +22,6 @@ import Controlador.ControladorPanelTicket;
 public class PanelTicket extends JPanel {
 
 	private ControladorPanelTicket controladorPanelTicket;
-
-	Calendar fecha = new GregorianCalendar();
-
-	int año = fecha.get(Calendar.YEAR);
-	int mes = fecha.get(Calendar.MONTH);
-	int dia = fecha.get(Calendar.DAY_OF_MONTH);
 
 	private JTextField TF_Titulua;
 	private JTextField TF_Fecha;
@@ -73,7 +65,7 @@ public class PanelTicket extends JPanel {
 		TF_Titulua.setEditable(false);
 		add(TF_Titulua);
 
-		TF_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + año);
+		TF_Fecha = new JTextField();
 		TF_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Fecha.setBounds(367, 36, 75, 20);
 		TF_Fecha.setColumns(10);
@@ -160,7 +152,7 @@ public class PanelTicket extends JPanel {
 		CB_Produktoak.setBounds(30, 68, 214, 20);
 		add(CB_Produktoak);
 
-		produktuak = controladorPanelTicket.accionadoComboBox();
+		produktuak = controladorPanelTicket.ComboBoxaSakatu();
 		for(int i=0;i < produktuak.length;i++) {
 			CB_Produktoak.addItem(produktuak[i]);
 		}
@@ -172,35 +164,35 @@ public class PanelTicket extends JPanel {
 	// *****************************************************************************************************************************************************************************************************
 
 	private void initializeEvents() {
-		this.btnAurrera.addActionListener(listenerBotonLaburpenera(this.controladorPanelTicket));
-		this.btnAtzera.addActionListener(listenerBotonAtzera(this.controladorPanelTicket));
+		this.btnAurrera.addActionListener(listenerLaburpeneraBotoia(this.controladorPanelTicket));
+		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelTicket));
 		this.CB_Produktoak.addActionListener(listenerComboBox(this.controladorPanelTicket));
-		this.btnSegi.addActionListener(listenerBotonSegi());
+		this.btnSegi.addActionListener(listenerSegiBotoia());
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerBotonLaburpenera(ControladorPanelTicket ControladorPanelTicket) {
+	private ActionListener listenerLaburpeneraBotoia(ControladorPanelTicket ControladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ControladorPanelTicket.accionadoBottonLaburpenera();
+				ControladorPanelTicket.sakatuLaburpeneraBotoia();
 			}
 		};
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerBotonAtzera(ControladorPanelTicket ControladorPanelTicket) {
+	private ActionListener listenerAtzeraBotoia(ControladorPanelTicket ControladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ControladorPanelTicket.accionadoBottonAtzera();
+				ControladorPanelTicket.sakatuAtzeraBotoia();
 			}
 		};
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerBotonSegi() {
+	private ActionListener listenerSegiBotoia() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
@@ -210,7 +202,6 @@ public class PanelTicket extends JPanel {
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
-				CB_Produktoak.setSelectedItem(null);
 				String diruTotala = String.valueOf(controladorPanelTicket.diruTotala());
 				TF_Totala.setText(diruTotala);
 			}
@@ -219,40 +210,12 @@ public class PanelTicket extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerComboBox(ControladorPanelTicket controladorPanelTicket2) {
+	private ActionListener listenerComboBox(ControladorPanelTicket controladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
-				if (aukera == "Zukua") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/zumo.jpg"));
-				}
-				if (aukera == "Sidra") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/sidra.jpg"));
-				}
-				if (aukera == "Ura") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/ura.jpg"));
-				}
-				if (aukera == "Kafea") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/cafe.jpg"));
-				}
-				if (aukera == "Txakoli") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/txakoli.jpg"));
-				}
-				if (aukera == "Patata tortilla") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/tortilla.jpg"));
-				}
-				if (aukera == "Garagardoa") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/garagardoa.png"));
-				}
-				if (aukera == "Colacao") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/colacao.jpg"));
-				}
-				if (aukera == "Ardoa") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/ardoa.jpg"));
-				}
-				if (aukera == "Gilda") {
-					argazkiak.setIcon(new ImageIcon("argazkiak/gilda.jpg"));
-				}
+				ImageIcon argazkia = (ImageIcon) controladorPanelTicket.argazkiaAukeratu(aukera);
+				argazkiak.setIcon(argazkia);
 			}
 		};
 	}

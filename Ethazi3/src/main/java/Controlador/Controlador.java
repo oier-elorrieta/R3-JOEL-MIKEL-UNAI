@@ -10,58 +10,58 @@ public class Controlador {
 	private Vista vista;
 	
 	private ControladorPanelLogin controladorPanelLogin;
-	private ControladorPanelMenuRestaurante controladorPanelMenu;	
-	private ControladorPanelMenuBar controladorPanelMenu2;	
-	private ControladorPanelMenuCafeteria controladorPanelMenu3;	
+	private ControladorPanelMenuJatetxea controladorPanelMenu;	
+	private ControladorPanelMenuTaberna controladorPanelMenu2;	
+	private ControladorPanelMenuKafetegia controladorPanelMenu3;	
 	private ControladorPanelFaktura controladorPanelFaktura;
 	private ControladorPanelTicket controladorPanelTicket;
 	private ControladorPanelLaburpena controladorPanelLaburpena;
-	private ControladorPanelPedidos controladorPanelPedidos; 
+	private ControladorPanelEskaera controladorPanelPedidos; 
 
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
 		this.vista = vista;
-		this.controladorPanelLogin = new ControladorPanelLogin(this.modelo, this.vista, this);
-		this.controladorPanelMenu = new ControladorPanelMenuRestaurante(this.modelo, this.vista, this);
-		this.controladorPanelMenu2 = new ControladorPanelMenuBar(this.modelo, this.vista, this);
-		this.controladorPanelMenu3 = new ControladorPanelMenuCafeteria(this.modelo, this.vista, this);
+		this.controladorPanelLogin = new ControladorPanelLogin(this.vista, this);
+		this.controladorPanelMenu = new ControladorPanelMenuJatetxea(this.vista, this);
+		this.controladorPanelMenu2 = new ControladorPanelMenuTaberna(this.vista, this);
+		this.controladorPanelMenu3 = new ControladorPanelMenuKafetegia(this.vista, this);
 		this.controladorPanelFaktura = new ControladorPanelFaktura(this.modelo, this.vista, this);
 		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
 		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this);
-		this.controladorPanelPedidos = new ControladorPanelPedidos(this.modelo, this.vista, this);
-		this.navegarPanelLogin();
+		this.controladorPanelPedidos = new ControladorPanelEskaera(this.modelo, this.vista, this);
+		this.nabegatzenPanelLogin();
 	}
 	
-	public void navegarPanelLogin() {
-		this.controladorPanelLogin.mostrarPanelLogin();
+	public void nabegatzenPanelLogin() {
+		this.controladorPanelLogin.ikusiPanelLogin();
 	}
 	
-	public void navegarPanelMenu() {
-		this.controladorPanelMenu.mostrarPanelMenu();
+	public void nabegatzenPanelMenu() {
+		this.controladorPanelMenu.ikusiPanelMenu();
 	}
 	
-	public void navegarPanelMenu2() {
-		this.controladorPanelMenu2.mostrarPanelMenu2();
+	public void nabegatzenPanelMenu2() {
+		this.controladorPanelMenu2.ikusiPanelMenu2();
 	}
 	
-	public void navegarPanelMenu3() {
-		this.controladorPanelMenu3.mostrarPanelMenu3();
+	public void nabegatzenPanelMenu3() {
+		this.controladorPanelMenu3.ikusiPanelMenu3();
 	}
 	
-	public void navegarPanelFaktura() { 
-		this.controladorPanelFaktura.mostrarPanelFaktura();
+	public void nabegatzenPanelFaktura() { 
+		this.controladorPanelFaktura.ikusiPanelFaktura();
 	}
 	
-	public void navegarPanelTicket() { 
-		this.controladorPanelTicket.mostrarPanelTicket();
+	public void nabegatzenPanelTicket() { 
+		this.controladorPanelTicket.ikusiPanelTicket();
 	}
 	
-	public void navegarPanelLaburpena() { 
-		this.controladorPanelLaburpena.mostrarPanelLaburpena();
+	public void nabegatzenPanelLaburpena() { 
+		this.controladorPanelLaburpena.ikusiPanelLaburpena();
 	}
 	
-	public void navegarPanelPedidos() {
-		this.controladorPanelPedidos.mostrarPanelPedidos();
+	public void nabegatzenPanelPedidos() {
+		this.controladorPanelPedidos.ikusiPanelPedidos();
 	}
 	
 	public void itxi() {
