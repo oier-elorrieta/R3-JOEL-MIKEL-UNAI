@@ -98,41 +98,8 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static Object argazkiaAukeratu(String aukera) {
-		ImageIcon argazkia = null;
-		switch(aukera) {
-		case "Zukua":
-			argazkia = new ImageIcon("argazkiak/zumo.jpg");
-			break;
-		case "Sidra":
-			argazkia = new ImageIcon("argazkiak/sidra.jpg");
-			break;
-		case "Ura":
-			argazkia = new ImageIcon("argazkiak/ura.jpg");
-			break;
-		case "Kafea":
-			argazkia = new ImageIcon("argazkiak/cafe.jpg");
-			break;
-		case "Txakoli":
-			argazkia = new ImageIcon("argazkiak/txakoli.jpg");
-			break;
-		case "Patata tortilla":
-			argazkia = new ImageIcon("argazkiak/tortilla.jpg");
-			break;
-		case "Garagardoa":
-			argazkia = new ImageIcon("argazkiak/garagardoa.png");
-			break;
-		case "Colacao":
-			argazkia = new ImageIcon("argazkiak/colacao.jpg");
-			break;
-		case "Ardoa":
-			argazkia = new ImageIcon("argazkiak/ardoa.jpg");	
-			break;	
-		case "Gilda":	
-			argazkia = new ImageIcon("argazkiak/gilda.jpg");
-			break;
-		}
-		return argazkia;
+	public static ImageIcon argazkiaAukeratu(String aukera) {		
+		return new ImageIcon("argazkiak/"+aukera+".jpg");
 	}
 
 }

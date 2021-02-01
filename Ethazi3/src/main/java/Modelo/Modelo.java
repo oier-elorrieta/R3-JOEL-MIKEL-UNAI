@@ -2,6 +2,8 @@ package Modelo;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 public class Modelo {
 
 	private ArrayList<Karritoa> karroa = new ArrayList<Karritoa>();
@@ -26,7 +28,7 @@ public class Modelo {
 		return metodoak.ezabatuArraya(karroa);
 	}
 	
-	public Object argazkiaAukeratu(String aukera) {
+	public ImageIcon argazkiaAukeratu(String aukera) {
 		return metodoak.argazkiaAukeratu(aukera);
 	}
 }

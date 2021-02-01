@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 import org.junit.Test;
 
 import Modelo.Karritoa;
@@ -140,6 +142,17 @@ public class ModeloTest {
 		int esperotakoa = 30;
 
 		assertEquals(esperotakoa, metodoak.diruTotala(aukera),0);
+
+	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	@Test
+	public void TestArgazkiaAukeratu() {
+
+	ImageIcon esperotakoa = new ImageIcon("argazkiak/Zukua.jpg");
+
+	assertEquals(esperotakoa.getImage(), metodoak.argazkiaAukeratu("Zukua").getImage());
 
 	}
 

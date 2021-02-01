@@ -2,6 +2,8 @@ package Controlador;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 import Modelo.Karritoa;
 import Modelo.Modelo;
 import Vista.PanelFaktura; 
@@ -46,7 +48,7 @@ public class ControladorPanelFaktura {
 		return this.modelo.diruTotala();
 	}
 	
-	public Object argazkiaAukeratu(String aukera) {
+	public ImageIcon argazkiaAukeratu(String aukera) {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 }
