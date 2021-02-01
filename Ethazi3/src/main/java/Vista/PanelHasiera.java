@@ -8,12 +8,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;  
 import javax.swing.JPanel;
 
-import Controlador.ControladorPanelLogin;
+import Controlador.ControladorPanelHasiera;
  
 @SuppressWarnings("serial")
-public class PanelLogin extends JPanel {
+public class PanelHasiera extends JPanel {
 
-	private ControladorPanelLogin controladorPanelMenu;
+	private ControladorPanelHasiera controladorPanelMenu;
 	
 	private JButton BT_Kafetegi;
 	private JButton BT_Taberna;
@@ -22,7 +22,7 @@ public class PanelLogin extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 	
-	public PanelLogin(ControladorPanelLogin controladorPanelLogin) {
+	public PanelHasiera(ControladorPanelHasiera controladorPanelLogin) {
 
 		this.controladorPanelMenu = controladorPanelLogin;
 
@@ -66,7 +66,7 @@ public class PanelLogin extends JPanel {
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerTabernaBotoia(ControladorPanelLogin controladorPanelMenu2) {
+	private ActionListener listenerTabernaBotoia(ControladorPanelHasiera controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu2.sakatuPanelTabernaBotoia();
@@ -76,7 +76,7 @@ public class PanelLogin extends JPanel {
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerKafetegiBotoia(ControladorPanelLogin controladorPanelMenu2) {
+	private ActionListener listenerKafetegiBotoia(ControladorPanelHasiera controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu2.sakatuPanelKafetegiaBotoia();
@@ -86,7 +86,7 @@ public class PanelLogin extends JPanel {
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerJatetxeBotoia(ControladorPanelLogin controladorPanelMenu2) {
+	private ActionListener listenerJatetxeBotoia(ControladorPanelHasiera controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu2.sakatuPanelJatetxBotoia();
@@ -96,7 +96,7 @@ public class PanelLogin extends JPanel {
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerSarratuBotoia(ControladorPanelLogin controladorPanelMenu2) {
+	private ActionListener listenerSarratuBotoia(ControladorPanelHasiera controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelMenu2.sakatuAtzeraBotoia();

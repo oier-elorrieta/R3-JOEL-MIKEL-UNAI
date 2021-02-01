@@ -9,7 +9,7 @@ public class Controlador {
 	
 	private Vista vista;
 	
-	private ControladorPanelLogin controladorPanelLogin;
+	private ControladorPanelHasiera controladorPanelLogin;
 	private ControladorPanelMenuJatetxea controladorPanelMenu;	
 	private ControladorPanelMenuTaberna controladorPanelMenu2;	
 	private ControladorPanelMenuKafetegia controladorPanelMenu3;	
@@ -21,7 +21,7 @@ public class Controlador {
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
 		this.vista = vista;
-		this.controladorPanelLogin = new ControladorPanelLogin(this.vista, this);
+		this.controladorPanelLogin = new ControladorPanelHasiera(this.vista, this);
 		this.controladorPanelMenu = new ControladorPanelMenuJatetxea(this.vista, this);
 		this.controladorPanelMenu2 = new ControladorPanelMenuTaberna(this.vista, this);
 		this.controladorPanelMenu3 = new ControladorPanelMenuKafetegia(this.vista, this);
