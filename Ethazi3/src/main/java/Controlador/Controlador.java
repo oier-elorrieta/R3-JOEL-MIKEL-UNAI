@@ -1,5 +1,6 @@
 package Controlador;
 
+import BBDD.BBDDKonexioa;
 import Modelo.Modelo;
 import Vista.Vista;
 
@@ -8,6 +9,8 @@ public class Controlador {
 	private Modelo modelo;
 	
 	private Vista vista;
+	
+	private BBDDKonexioa BBDD;
 	
 	private ControladorPanelLogin controladorPanelLogin;
 	private ControladorPanelMenuJatetxea controladorPanelMenu;	
@@ -19,18 +22,19 @@ public class Controlador {
 	private ControladorPanelEskaera controladorPanelPedidos; 
 	private ControladorPanelErregistratu controladorPanelErregistratu; 
 
-	public Controlador(Modelo modelo, Vista vista) {
+	public Controlador(Modelo modelo, Vista vista, BBDDKonexioa BBDD) {
 		this.modelo = modelo;
-		this.vista = vista;
-		this.controladorPanelLogin = new ControladorPanelLogin(this.vista, this);
-		this.controladorPanelErregistratu = new ControladorPanelErregistratu(this.vista, this);
+		this.vista = vista; 
+		this.BBDD = BBDD;
+		this.controladorPanelLogin = new ControladorPanelLogin(this.vista, this, this.BBDD);
+		this.controladorPanelErregistratu = new ControladorPanelErregistratu(this.vista, this, this.BBDD);
 		this.controladorPanelMenu = new ControladorPanelMenuJatetxea(this.vista, this);
 		this.controladorPanelMenu2 = new ControladorPanelMenuTaberna(this.vista, this);
 		this.controladorPanelMenu3 = new ControladorPanelMenuKafetegia(this.vista, this);
 		this.controladorPanelFaktura = new ControladorPanelFaktura(this.modelo, this.vista, this);
 		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
 		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this);
-		this.controladorPanelPedidos = new ControladorPanelEskaera(this.modelo, this.vista, this);
+		this.controladorPanelPedidos = new ControladorPanelEskaera(this.modelo, this.vista, this); 
 		this.nabegatzenPanelLogin();
 	}
 	

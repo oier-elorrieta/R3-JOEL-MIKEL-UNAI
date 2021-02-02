@@ -18,24 +18,25 @@ import javax.swing.JOptionPane;
 @SuppressWarnings("serial")
 public class PanelLogin extends JPanel {
 
-	private ControladorPanelLogin controladorPanelMenu;
+	private ControladorPanelLogin controladorPanelLogin;
 	
 	private JButton btnSarratu;
 	private JButton btnLogin;
 	private JButton btnErregistratu;
 
-	private JLabel LB_Usuarioa;
+	private JLabel LB_Erabiltzailea;
 	private JLabel LB_1;
 	private JLabel LB_Pasahitza;
 	
-	private JTextField TF_Usuarioa;
+	private JTextField TF_Erabiltzailea;
 	private JPasswordField TF_Pasahitza;
 
 	// *****************************************************************************************************************************************************************************************************
 	
 	public PanelLogin(ControladorPanelLogin controladorPanelLogin) {
 
-		this.controladorPanelMenu = controladorPanelLogin;
+		this.controladorPanelLogin = controladorPanelLogin;
+		
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		setBounds(0, 0, 450, 300);
@@ -57,10 +58,10 @@ public class PanelLogin extends JPanel {
 		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		TF_Usuarioa = new JTextField();
-		TF_Usuarioa.setBounds(135, 60, 170, 19);
-		add(TF_Usuarioa);
-		TF_Usuarioa.setColumns(10);
+		TF_Erabiltzailea = new JTextField();
+		TF_Erabiltzailea.setBounds(135, 60, 170, 19);
+		add(TF_Erabiltzailea);
+		TF_Erabiltzailea.setColumns(10);
 		
 		TF_Pasahitza = new JPasswordField();
 		TF_Pasahitza.setColumns(10);
@@ -69,9 +70,9 @@ public class PanelLogin extends JPanel {
 		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		LB_Usuarioa = new JLabel("Usuarioa:");
-		LB_Usuarioa.setBounds(135, 37, 170, 13);
-		add(LB_Usuarioa);
+		LB_Erabiltzailea = new JLabel("Erabiltzailea:");
+		LB_Erabiltzailea.setBounds(135, 37, 170, 13);
+		add(LB_Erabiltzailea);
 		
 		LB_Pasahitza = new JLabel("Pasahitza:");
 		LB_Pasahitza.setBounds(135, 97, 170, 13);
@@ -88,25 +89,31 @@ public class PanelLogin extends JPanel {
 	// *****************************************************************************************************************************************************************************************************
 	
 	private void initializeEvents() {
-		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelMenu));
-		this.btnLogin.addActionListener(listenerLoginBotoia(this.controladorPanelMenu));
-		this.btnErregistratu.addActionListener(listenerErregistratuBotoia(this.controladorPanelMenu));
+		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelLogin));
+		this.btnLogin.addActionListener(listenerLoginBotoia(this.controladorPanelLogin));
+		this.btnErregistratu.addActionListener(listenerErregistratuBotoia(this.controladorPanelLogin));
 	}  
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerLoginBotoia(ControladorPanelLogin controladorPanelMenu2) {
+	private ActionListener listenerLoginBotoia(ControladorPanelLogin controladorPanelLogin) {
 		return new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
-				if(TF_Usuarioa.getText().equals("1") && TF_Pasahitza.getText().equals("1")) {
-					controladorPanelMenu2.sakatuPanelJatetxBotoia();
-				} else if(TF_Usuarioa.getText().equals("2") && TF_Pasahitza.getText().equals("2")) {
-					controladorPanelMenu2.sakatuPanelKafetegiaBotoia();
-				}else if(TF_Usuarioa.getText().equals("3") && TF_Pasahitza.getText().equals("3")){
-					controladorPanelMenu2.sakatuPanelTabernaBotoia();
+				/*if(TF_Erabiltzailea.getText().equals("1") && TF_Pasahitza.getText().equals("1")) {
+					controladorPanelLogin.sakatuPanelJatetxBotoia();
+				} else if(TF_Erabiltzailea.getText().equals("2") && TF_Pasahitza.getText().equals("2")) {
+					controladorPanelLogin.sakatuPanelKafetegiaBotoia();
+				}else if(TF_Erabiltzailea.getText().equals("3") && TF_Pasahitza.getText().equals("3")){
+					controladorPanelLogin.sakatuPanelTabernaBotoia();
 				}else {
 					JOptionPane.showMessageDialog(null, "Aukera hau ez du balio", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}*/
+				String pasahitza = TF_Pasahitza.getText();
+				String erabiltzailea = TF_Erabiltzailea.getText();
+				String kk = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
+				if(kk.equals("Ona")) {
+					controladorPanelLogin.sakatuPanelJatetxBotoia();
 				}
 			}
 		};
