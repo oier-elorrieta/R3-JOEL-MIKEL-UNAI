@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import Controlador.ControladorPanelErregistratu;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
  
 @SuppressWarnings("serial")
 public class PanelErregistratu extends JPanel {

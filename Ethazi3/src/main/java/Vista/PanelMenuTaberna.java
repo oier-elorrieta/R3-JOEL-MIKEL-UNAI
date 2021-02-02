@@ -45,8 +45,8 @@ public class PanelMenuTaberna extends JPanel {
 		btnSarratu.setBounds(350, 259, 90, 30);
 		add(btnSarratu);
 		
-		btnHasiera = new JButton("Hasiera");
-		btnHasiera.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		btnHasiera = new JButton("DESLOGEATU");
+		btnHasiera.setFont(new Font("Tahoma", Font.ITALIC, 8));
 		btnHasiera.setBounds(10, 259, 90, 30);
 		add(btnHasiera);
 

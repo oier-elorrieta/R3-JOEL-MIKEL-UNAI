@@ -7,11 +7,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;  
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 import Controlador.ControladorPanelLogin;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.JOptionPane;
  
 @SuppressWarnings("serial")
 public class PanelLogin extends JPanel {
@@ -27,7 +29,7 @@ public class PanelLogin extends JPanel {
 	private JLabel LB_Pasahitza;
 	
 	private JTextField TF_Usuarioa;
-	private JTextField TF_Pasahitza;
+	private JPasswordField TF_Pasahitza;
 
 	// *****************************************************************************************************************************************************************************************************
 	
@@ -60,7 +62,7 @@ public class PanelLogin extends JPanel {
 		add(TF_Usuarioa);
 		TF_Usuarioa.setColumns(10);
 		
-		TF_Pasahitza = new JTextField();
+		TF_Pasahitza = new JPasswordField();
 		TF_Pasahitza.setColumns(10);
 		TF_Pasahitza.setBounds(135, 120, 170, 19);
 		add(TF_Pasahitza);
@@ -95,8 +97,17 @@ public class PanelLogin extends JPanel {
 	
 	private ActionListener listenerLoginBotoia(ControladorPanelLogin controladorPanelMenu2) {
 		return new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.sakatuPanelJatetxBotoia();
+				if(TF_Usuarioa.getText().equals("1") && TF_Pasahitza.getText().equals("1")) {
+					controladorPanelMenu2.sakatuPanelJatetxBotoia();
+				} else if(TF_Usuarioa.getText().equals("2") && TF_Pasahitza.getText().equals("2")) {
+					controladorPanelMenu2.sakatuPanelKafetegiaBotoia();
+				}else if(TF_Usuarioa.getText().equals("3") && TF_Pasahitza.getText().equals("3")){
+					controladorPanelMenu2.sakatuPanelTabernaBotoia();
+				}else {
+					JOptionPane.showMessageDialog(null, "Aukera hau ez du balio", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		};
 	} 
