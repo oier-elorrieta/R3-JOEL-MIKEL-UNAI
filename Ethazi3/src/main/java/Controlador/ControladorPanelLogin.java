@@ -1,24 +1,28 @@
 package Controlador;
 
-import Vista.PanelHasiera; 
+import Vista.PanelLogin; 
 import Vista.Vista;
 
-public class ControladorPanelHasiera {
+public class ControladorPanelLogin {
 
 	private Vista vista;
 	private Controlador controlador;
-	private PanelHasiera panelLogin;
+	private PanelLogin panelLogin;
 
-	public ControladorPanelHasiera(Vista vista, Controlador controlador) {
+	public ControladorPanelLogin(Vista vista, Controlador controlador) {
 		this.vista = vista;
 		this.controlador = controlador;	
 	}
 
 	public void ikusiPanelLogin() {
-		this.panelLogin = new PanelHasiera(this);
+		this.panelLogin = new PanelLogin(this);
 		this.vista.ikusiPanela(this.panelLogin);
 	}
-
+	
+	public void sakatuPanelErregistratuBotoia() {
+		this.controlador.nabegatzenPanelErregistratu();
+	}
+	
 	public void sakatuPanelTabernaBotoia() {
 		this.controlador.nabegatzenPanelMenu3();
 	}
