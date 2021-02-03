@@ -130,7 +130,7 @@ public class PanelErregistratu extends JPanel {
 				String dni = TF_DNI.getText();
 				String nif = TF_NIF.getText();
 				try {
-					controladorPanelErregistratu.sakatuErregistratuBotoia(izena, abizena, pasahitza, dni, nif);
+					controladorPanelErregistratu.sakatuErregistratuBotoia(dni, izena, abizena, pasahitza, nif);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} catch (ClassNotFoundException e) {

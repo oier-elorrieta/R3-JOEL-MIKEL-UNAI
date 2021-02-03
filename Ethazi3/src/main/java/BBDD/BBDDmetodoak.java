@@ -32,23 +32,28 @@ public class BBDDmetodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		
-		String query1 = ("SELECT * FROM usuario;"); 
+		String query1 = ("SELECT DNI,Contraseña FROM usuario;"); 
 		
-		String kk = "";                      
+		String kk = "";
+		
 		try {
 			ResultSet re; 
 			PreparedStatement p;
 
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
-			if(re.next()) {
-				System.out.println(re.getString("Nombre"));
-				if(re.getString("Nombre").equalsIgnoreCase(erabiltzailea) && re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
-					kk = "Ona"; 	
-				}else if(re.getString("Nombre").equalsIgnoreCase(erabiltzailea) || !re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
+			if(re.next()) {			
+				System.out.println(re.getString("DNI"));
+				
+				if(re.getString("DNI").equalsIgnoreCase(erabiltzailea) && re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
+					kk = "Ona";
+	
+				}else if(re.getString("DNI").equalsIgnoreCase(erabiltzailea) || !re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
 					JOptionPane.showMessageDialog(null, "Pasahitza ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
-				}else if(!re.getString("Nombre").equalsIgnoreCase(erabiltzailea) /*|| re.getString("Contraseña").equalsIgnoreCase(pasahitza)*/) {
+					
+				}else if(!re.getString("DNI").equalsIgnoreCase(erabiltzailea) /*|| re.getString("Contraseña").equalsIgnoreCase(pasahitza)*/) {
 					JOptionPane.showMessageDialog(null, "Erabiltzaile hau ez dago logeatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
+					
 				}else {
 					JOptionPane.showMessageDialog(null, "Ez zaude logeatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
 				} 
