@@ -34,7 +34,7 @@ public class BBDDmetodoak {
 		
 		String query1 = ("SELECT * FROM usuario;"); 
 		
-		String kk = "";
+		String kk = "";                      
 		try {
 			ResultSet re; 
 			PreparedStatement p;

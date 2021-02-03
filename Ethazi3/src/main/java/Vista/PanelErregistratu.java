@@ -31,7 +31,7 @@ public class PanelErregistratu extends JPanel {
 
 	private JLabel LB_DNI;
 	private JLabel LB_NIF;
-	private JLabel LB_Pasahitza_1;
+	private JLabel LB_Abizena;
 	private JLabel LB_Izena;
 	private JTextField TF_DNI;
 	private JTextField TF_NIF;
@@ -87,7 +87,7 @@ public class PanelErregistratu extends JPanel {
 		TF_NIF = new JTextField();
 		TF_NIF.setColumns(10);
 		TF_NIF.setBounds(250, 120, 190, 19);
-		add(TF_NIF);
+		add(TF_NIF); 
 		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -99,9 +99,9 @@ public class PanelErregistratu extends JPanel {
 		LB_Pasahitza.setBounds(10, 210, 190, 13);
 		add(LB_Pasahitza);
 
-		LB_Pasahitza_1 = new JLabel("Abizena:");
-		LB_Pasahitza_1.setBounds(10, 96, 190, 13);
-		add(LB_Pasahitza_1);
+		LB_Abizena = new JLabel("Abizena:");
+		LB_Abizena.setBounds(10, 96, 190, 13);
+		add(LB_Abizena);
 
 		LB_Izena = new JLabel("Izena:");
 		LB_Izena.setBounds(10, 37, 190, 13);
