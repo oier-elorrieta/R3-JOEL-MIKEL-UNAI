@@ -29,8 +29,12 @@ public class PanelErregistratu extends JPanel {
 	private JTextField TF_Erabiltzailea;
 	private JTextField TF_Pasahitza;
 
+	private JLabel LB_DNI;
+	private JLabel LB_NIF;
 	private JLabel LB_Pasahitza_1;
 	private JLabel LB_Izena;
+	private JTextField TF_DNI;
+	private JTextField TF_NIF;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -50,48 +54,66 @@ public class PanelErregistratu extends JPanel {
 		add(btnSarratu);
 
 		btnErregistratu = new JButton("Erregistratu");
-		btnErregistratu.setBounds(160, 264, 115, 21);
+		btnErregistratu.setBounds(250, 182, 190, 21);
 		add(btnErregistratu);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		TF_Izena = new JTextField();
-		TF_Izena.setBounds(135, 60, 170, 19);
+		TF_Izena.setBounds(10, 61, 190, 19);
 		add(TF_Izena);
 		TF_Izena.setColumns(10);
 
 		TF_Abizena = new JTextField();
 		TF_Abizena.setColumns(10);
-		TF_Abizena.setBounds(135, 120, 170, 19);
+		TF_Abizena.setBounds(10, 120, 190, 19);
 		add(TF_Abizena);
 
 		TF_Erabiltzailea = new JTextField();
 		TF_Erabiltzailea.setColumns(10);
-		TF_Erabiltzailea.setBounds(135, 180, 170, 19);
+		TF_Erabiltzailea.setBounds(10, 182, 190, 19);
 		add(TF_Erabiltzailea);
 
 		TF_Pasahitza = new JTextField();
 		TF_Pasahitza.setColumns(10);
-		TF_Pasahitza.setBounds(135, 235, 170, 19);
+		TF_Pasahitza.setBounds(10, 234, 190, 19);
 		add(TF_Pasahitza);
 
+		TF_DNI = new JTextField();
+		TF_DNI.setColumns(10);
+		TF_DNI.setBounds(250, 61, 190, 19);
+		add(TF_DNI);
+		
+		TF_NIF = new JTextField();
+		TF_NIF.setColumns(10);
+		TF_NIF.setBounds(250, 120, 190, 19);
+		add(TF_NIF);
+		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		LB_Erabiltzailea = new JLabel("Erabiltzailea:");
-		LB_Erabiltzailea.setBounds(135, 157, 170, 13);
+		LB_Erabiltzailea.setBounds(10, 156, 190, 13);
 		add(LB_Erabiltzailea);
 
 		LB_Pasahitza = new JLabel("Pasahitza:");
-		LB_Pasahitza.setBounds(135, 212, 170, 13);
+		LB_Pasahitza.setBounds(10, 210, 190, 13);
 		add(LB_Pasahitza);
 
 		LB_Pasahitza_1 = new JLabel("Abizena:");
-		LB_Pasahitza_1.setBounds(135, 97, 170, 13);
+		LB_Pasahitza_1.setBounds(10, 96, 190, 13);
 		add(LB_Pasahitza_1);
 
 		LB_Izena = new JLabel("Izena:");
-		LB_Izena.setBounds(135, 37, 170, 13);
+		LB_Izena.setBounds(10, 37, 190, 13);
 		add(LB_Izena);
+		
+		LB_NIF = new JLabel("NIF:");
+		LB_NIF.setBounds(250, 95, 190, 13);
+		add(LB_NIF);
+		
+		LB_DNI = new JLabel("DNI:");
+		LB_DNI.setBounds(250, 36, 190, 13);
+		add(LB_DNI);
 
 		initializeEvents();
 	}
@@ -112,8 +134,10 @@ public class PanelErregistratu extends JPanel {
 				String abizena = TF_Abizena.getText();
 				String pasahitza = TF_Pasahitza.getText();
 				String erabiltzailea = TF_Erabiltzailea.getText();
+				String dni = TF_DNI.getText();
+				String nif = TF_NIF.getText();
 				try {
-					controladorPanelErregistratu.sakatuErregistratuBotoia(izena, abizena, erabiltzailea, pasahitza);
+					controladorPanelErregistratu.sakatuErregistratuBotoia(izena, abizena, erabiltzailea, pasahitza, dni, nif);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -26,9 +26,9 @@ public class ControladorPanelErregistratu {
 		this.vista.ikusiPanela(this.panelErregistratu);
 	}
 	
-	public String sakatuErregistratuBotoia(String izena, String abizena, String pasahitza, String erabiltzailea) throws SQLException, ClassNotFoundException {
+	public String sakatuErregistratuBotoia(String izena, String abizena, String pasahitza, String erabiltzailea, String dni, String nif) throws SQLException, ClassNotFoundException {
 		this.controlador.nabegatzenPanelLogin();
-		return BBDDmetodoak.sartuDatuak(izena,abizena,pasahitza,erabiltzailea);
+		return BBDDmetodoak.sartuDatuak(izena,abizena,pasahitza,erabiltzailea, dni, nif);
 	}
 	
 	public void sakatuAtzeraBotoia() {

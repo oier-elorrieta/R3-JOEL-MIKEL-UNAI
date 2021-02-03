@@ -11,10 +11,10 @@ import javax.swing.JOptionPane;
 
 public class BBDDmetodoak { 
 
-	public static String sartuDatuak(String izena, String abizena, String pasahitza, String erabiltzailea) throws SQLException, ClassNotFoundException {
+	public static String sartuDatuak(String izena, String abizena, String pasahitza, String erabiltzailea, String dni, String nif) throws SQLException, ClassNotFoundException {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("INSERT INTO Usuario VALUES ('"+erabiltzailea+"','"+izena+"','"+abizena+"','"+pasahitza+"')");
+		String query1 = ("INSERT INTO Usuario VALUES ('"+izena+"','"+abizena+"','"+pasahitza+"','"+dni+"')");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();			
@@ -32,7 +32,7 @@ public class BBDDmetodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		
-		String query1 = ("SELECT nombre,contraseña FROM usuario;"); 
+		String query1 = ("SELECT * FROM usuario;"); 
 		
 		String kk = "";
 		try {
@@ -51,7 +51,7 @@ public class BBDDmetodoak {
 					JOptionPane.showMessageDialog(null, "Erabiltzaile hau ez dago logeatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}else {
 					JOptionPane.showMessageDialog(null, "Ez zaude logeatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
-				}
+				} 
 			}
 		}catch(SQLException e) {
 			System.out.println("Errorea konexioan");
