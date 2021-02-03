@@ -23,7 +23,7 @@ import javax.swing.JRadioButton;
 @SuppressWarnings("serial")
 public class PanelEskaera extends JPanel {
 
-	private ControladorPanelEskaera controladorPanelPedidos;
+	private ControladorPanelEskaera controladorPanelEskaera;
 
 	private JTextField TF_Titulua;
 	private JTextField TF_Fecha;
@@ -50,8 +50,8 @@ public class PanelEskaera extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public PanelEskaera(ControladorPanelEskaera controladorPanelPedidos) {
-		this.controladorPanelPedidos = controladorPanelPedidos;
+	public PanelEskaera(ControladorPanelEskaera controladorPanelEskaera) {
+		this.controladorPanelEskaera = controladorPanelEskaera;
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
@@ -168,7 +168,7 @@ public class PanelEskaera extends JPanel {
 		CB_Produktoak.setBounds(30, 68, 214, 20);
 		add(CB_Produktoak);
 
-		produktuak = controladorPanelPedidos.ComboBoxaSakatu();
+		produktuak = controladorPanelEskaera.ComboBoxaSakatu();
 		for (int i = 0; i < produktuak.length; i++) {
 			CB_Produktoak.addItem(produktuak[i]);
 		}
@@ -180,46 +180,46 @@ public class PanelEskaera extends JPanel {
 	// *****************************************************************************************************************************************************************************************************
 
 	private void initializeEvents() {
-		this.btnAurrera.addActionListener(listenerLaburpeneraBotoia(this.controladorPanelPedidos));
-		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelPedidos));
-		this.CB_Produktoak.addActionListener(listenerComboBox(this.controladorPanelPedidos));
-		this.btnSegi.addActionListener(listenerSegiBotoia(this.controladorPanelPedidos));
+		this.btnAurrera.addActionListener(listenerLaburpeneraBotoia(this.controladorPanelEskaera));
+		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelEskaera));
+		this.CB_Produktoak.addActionListener(listenerComboBox(this.controladorPanelEskaera));
+		this.btnSegi.addActionListener(listenerSegiBotoia(this.controladorPanelEskaera));
 		this.RB_Helbide.addActionListener(listenerRadioButton());
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerLaburpeneraBotoia(ControladorPanelEskaera controladorPanelPedidos) {
+	private ActionListener listenerLaburpeneraBotoia(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelPedidos.sakatuLaburpeneraBotoia();
+				controladorPanelEskaera.sakatuLaburpeneraBotoia();
 			}
 		};
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerAtzeraBotoia(ControladorPanelEskaera controladorPanelPedidos) {
+	private ActionListener listenerAtzeraBotoia(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelPedidos.sakatuAtzeraBotoia();
+				controladorPanelEskaera.sakatuAtzeraBotoia();
 			}
 		};
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerSegiBotoia(ControladorPanelEskaera controladorPanelPedidos) {
+	private ActionListener listenerSegiBotoia(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
 				if (kantitatea != 0) {
-					controladorPanelPedidos.sartu(aukera, kantitatea);
+					controladorPanelEskaera.sartu(aukera, kantitatea);
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
-				String diruTotala = String.valueOf(controladorPanelPedidos.diruTotala());
+				String diruTotala = String.valueOf(controladorPanelEskaera.diruTotala());
 				TF_Totala.setText(diruTotala);
 			}
 		};
@@ -227,11 +227,11 @@ public class PanelEskaera extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerComboBox(ControladorPanelEskaera controladorPanelPedidos) {
+	private ActionListener listenerComboBox(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
-				ImageIcon argazkia = (ImageIcon) controladorPanelPedidos.argazkiaAukeratu(aukera);
+				ImageIcon argazkia = (ImageIcon) controladorPanelEskaera.argazkiaAukeratu(aukera);
 				argazkiak.setIcon(argazkia);
 			}
 		};

@@ -29,15 +29,15 @@ public class ControladorPanelLogin {
 	}
 	
 	public void sakatuPanelTabernaBotoia() {
-		this.controlador.nabegatzenPanelMenu3();
+		this.controlador.nabegatzenPanelTaberna();
 	}
 	
 	public void sakatuPanelKafetegiaBotoia() {
-		this.controlador.nabegatzenPanelMenu2();
+		this.controlador.nabegatzenPanelKafetegia();
 	}
 	
-	public void sakatuPanelJatetxBotoia() {
-		this.controlador.nabegatzenPanelMenu();
+	public void sakatuPanelJatetxeBotoia() {
+		this.controlador.nabegatzenPanelJatetxea();
 	}
 	
 	public void sakatuAtzeraBotoia() {
@@ -46,7 +46,6 @@ public class ControladorPanelLogin {
 	
 	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
 		return BBDDmetodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
-		
 	}
 }
 

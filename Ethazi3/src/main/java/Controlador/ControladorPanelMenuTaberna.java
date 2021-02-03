@@ -7,16 +7,16 @@ public class ControladorPanelMenuTaberna {
 
 	private Vista vista;
 	private Controlador controlador;
-	private PanelMenuTaberna panelMenu2;
+	private PanelMenuTaberna panelMenuTaberna;
 
 	public ControladorPanelMenuTaberna(Vista vista, Controlador controlador) {
 		this.vista = vista;
 		this.controlador = controlador;	
 	}
 
-	public void ikusiPanelMenu2() {
-		this.panelMenu2 = new PanelMenuTaberna(this);
-		this.vista.ikusiPanela(this.panelMenu2);
+	public void ikusipanelMenuTaberna() {
+		this.panelMenuTaberna = new PanelMenuTaberna(this);
+		this.vista.ikusiPanela(this.panelMenuTaberna);
 	}
 
 	public void sakatuFakturaPanelaIkustekoBotoia() {

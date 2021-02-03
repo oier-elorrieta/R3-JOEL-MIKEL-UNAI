@@ -13,9 +13,9 @@ public class Controlador {
 	private BBDDKonexioa BBDD;
 	
 	private ControladorPanelLogin controladorPanelLogin;
-	private ControladorPanelMenuJatetxea controladorPanelMenu;	
-	private ControladorPanelMenuTaberna controladorPanelMenu2;	
-	private ControladorPanelMenuKafetegia controladorPanelMenu3;	
+	private ControladorPanelMenuJatetxea controladorPanelJatetxea;	
+	private ControladorPanelMenuTaberna controladorPanelTaberna;	
+	private ControladorPanelMenuKafetegia controladorPanelKafetegia;	
 	private ControladorPanelFaktura controladorPanelFaktura;
 	private ControladorPanelTicket controladorPanelTicket;
 	private ControladorPanelLaburpena controladorPanelLaburpena;
@@ -28,9 +28,9 @@ public class Controlador {
 		this.BBDD = BBDD;
 		this.controladorPanelLogin = new ControladorPanelLogin(this.vista, this, this.BBDD);
 		this.controladorPanelErregistratu = new ControladorPanelErregistratu(this.vista, this, this.BBDD);
-		this.controladorPanelMenu = new ControladorPanelMenuJatetxea(this.vista, this);
-		this.controladorPanelMenu2 = new ControladorPanelMenuTaberna(this.vista, this);
-		this.controladorPanelMenu3 = new ControladorPanelMenuKafetegia(this.vista, this);
+		this.controladorPanelJatetxea = new ControladorPanelMenuJatetxea(this.vista, this);
+		this.controladorPanelTaberna = new ControladorPanelMenuTaberna(this.vista, this);
+		this.controladorPanelKafetegia = new ControladorPanelMenuKafetegia(this.vista, this);
 		this.controladorPanelFaktura = new ControladorPanelFaktura(this.modelo, this.vista, this);
 		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
 		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this);
@@ -46,16 +46,16 @@ public class Controlador {
 		this.controladorPanelErregistratu.ikusiPanelErregistratu();
 	}
 	
-	public void nabegatzenPanelMenu() {
-		this.controladorPanelMenu.ikusiPanelMenu();
+	public void nabegatzenPanelJatetxea() {
+		this.controladorPanelJatetxea.ikusipanelMenuJatetxea();
 	}
 	
-	public void nabegatzenPanelMenu2() {
-		this.controladorPanelMenu2.ikusiPanelMenu2();
+	public void nabegatzenPanelTaberna() {
+		this.controladorPanelTaberna.ikusipanelMenuTaberna();
 	}
 	
-	public void nabegatzenPanelMenu3() {
-		this.controladorPanelMenu3.ikusiPanelMenu3();
+	public void nabegatzenPanelKafetegia() {
+		this.controladorPanelKafetegia.ikusipanelMenuKafetegia();
 	}
 	
 	public void nabegatzenPanelFaktura() { 

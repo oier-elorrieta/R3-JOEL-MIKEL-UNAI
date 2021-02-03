@@ -17,8 +17,7 @@ public class BBDDmetodoak {
 		String query1 = ("INSERT INTO Usuario VALUES ('"+izena+"','"+abizena+"','"+pasahitza+"','"+dni+"','"+nif+"')");
 		try {
 			Statement s;
-			s = konekzioa.createStatement();			
-			System.out.println("vs");
+			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
 			System.out.println("ondo");
 		}catch(SQLException e) {
@@ -32,9 +31,9 @@ public class BBDDmetodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		
-		String query1 = ("SELECT DNI,Contraseña FROM usuario;"); 
+		String query1 = ("SELECT DNI,Contraseña,NIF FROM usuario where dni = '"+erabiltzailea+"';"); 
 		
-		String kk = "";
+		String NIF = null;
 		
 		try {
 			ResultSet re; 
@@ -44,26 +43,18 @@ public class BBDDmetodoak {
 			re = p.executeQuery();
 			if(re.next()) {			
 				System.out.println(re.getString("DNI"));
-				
 				if(re.getString("DNI").equalsIgnoreCase(erabiltzailea) && re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
-					kk = "Ona";
-	
-				}else if(re.getString("DNI").equalsIgnoreCase(erabiltzailea) || !re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
-					JOptionPane.showMessageDialog(null, "Pasahitza ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
-					
-				}else if(!re.getString("DNI").equalsIgnoreCase(erabiltzailea) /*|| re.getString("Contraseña").equalsIgnoreCase(pasahitza)*/) {
-					JOptionPane.showMessageDialog(null, "Erabiltzaile hau ez dago logeatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
-					
-				}else {
-					JOptionPane.showMessageDialog(null, "Ez zaude logeatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
-				} 
-			}
+					NIF = re.getString("NIF");	
+				}else if(re.getString("DNI").equalsIgnoreCase(erabiltzailea) && !re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
+					JOptionPane.showMessageDialog(null, "Pasahitza ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);	
+				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Ez zaude logeatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
+			} 
 		}catch(SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-		return kk;
-
+		return NIF;
 	}
-
 }
