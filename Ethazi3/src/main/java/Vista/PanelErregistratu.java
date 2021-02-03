@@ -136,27 +136,27 @@ public class PanelErregistratu extends JPanel {
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				}			
-				controladorPanelErregistratu.sakatuSarratuBotoia();
+				controladorPanelErregistratu.sakatuErregistratuBotoia();
 			}
 		};
 	} 
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerSarratuBotoia(ControladorPanelErregistratu controladorPanelMenu2) {
+	private ActionListener listenerSarratuBotoia(ControladorPanelErregistratu controladorPanelErregistratu) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.sakatuSarratuBotoia();
+				controladorPanelErregistratu.sakatuSarratuBotoia();
 			}
 		};
 	} 
 	
 	// *****************************************************************************************************************************************************************************************************
 
-		private ActionListener listenerAtzeraBotoia(ControladorPanelErregistratu controladorPanelMenu2) {
+		private ActionListener listenerAtzeraBotoia(ControladorPanelErregistratu controladorPanelErregistratu) {
 			return new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					controladorPanelMenu2.sakatuAtzeraBotoia();
+					controladorPanelErregistratu.sakatuAtzeraBotoia();
 				}
 			};
 		} 

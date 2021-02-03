@@ -38,6 +38,10 @@ public class ControladorPanelErregistratu {
 	public void sakatuSarratuBotoia() {
 		this.controlador.itxi();
 	}
+	
+	public void sakatuErregistratuBotoia() {
+		this.controlador.nabegatzenPanelLogin();
+	}
 }
 
 
