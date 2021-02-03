@@ -13,7 +13,6 @@ import Controlador.ControladorPanelLogin;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.JOptionPane;
  
 @SuppressWarnings("serial")
 public class PanelLogin extends JPanel {
@@ -24,11 +23,11 @@ public class PanelLogin extends JPanel {
 	private JButton btnLogin;
 	private JButton btnErregistratu;
 
-	private JLabel LB_Erabiltzailea;
+	private JLabel LB_DNI;
 	private JLabel LB_1;
 	private JLabel LB_Pasahitza;
 	
-	private JTextField TF_Erabiltzailea;
+	private JTextField TF_DNI;
 	private JPasswordField TF_Pasahitza;
 
 	// *****************************************************************************************************************************************************************************************************
@@ -49,19 +48,21 @@ public class PanelLogin extends JPanel {
 		add(btnSarratu);
 		
 		btnLogin = new JButton("Login");
+		btnLogin.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		btnLogin.setBounds(165, 170, 115, 21);
 		add(btnLogin);
 		
 		btnErregistratu = new JButton("Erregistratu");
+		btnErregistratu.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		btnErregistratu.setBounds(165, 220, 115, 21);
 		add(btnErregistratu);
 		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		TF_Erabiltzailea = new JTextField();
-		TF_Erabiltzailea.setBounds(135, 60, 170, 19);
-		add(TF_Erabiltzailea);
-		TF_Erabiltzailea.setColumns(10);
+		TF_DNI = new JTextField();
+		TF_DNI.setBounds(135, 60, 170, 19);
+		add(TF_DNI);
+		TF_DNI.setColumns(10);
 		
 		TF_Pasahitza = new JPasswordField();
 		TF_Pasahitza.setColumns(10);
@@ -70,9 +71,9 @@ public class PanelLogin extends JPanel {
 		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		LB_Erabiltzailea = new JLabel("Erabiltzailea:");
-		LB_Erabiltzailea.setBounds(135, 37, 170, 13);
-		add(LB_Erabiltzailea);
+		LB_DNI = new JLabel("DNI:");
+		LB_DNI.setBounds(135, 37, 170, 13);
+		add(LB_DNI);
 		
 		LB_Pasahitza = new JLabel("Pasahitza:");
 		LB_Pasahitza.setBounds(135, 97, 170, 13);
@@ -110,7 +111,7 @@ public class PanelLogin extends JPanel {
 					JOptionPane.showMessageDialog(null, "Aukera hau ez du balio", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}*/
 				String pasahitza = TF_Pasahitza.getText();
-				String erabiltzailea = TF_Erabiltzailea.getText();
+				String erabiltzailea = TF_DNI.getText();
 				String kk = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 				if(kk.equals("Ona")) {
 					controladorPanelLogin.sakatuPanelJatetxBotoia();

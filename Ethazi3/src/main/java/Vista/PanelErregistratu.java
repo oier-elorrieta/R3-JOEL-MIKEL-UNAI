@@ -20,15 +20,13 @@ public class PanelErregistratu extends JPanel {
 
 	private JButton btnSarratu;
 	private JButton btnErregistratu;
-
-	private JLabel LB_Erabiltzailea;
-	private JLabel LB_Pasahitza;
+	private JButton btnAtzera;
 
 	private JTextField TF_Izena;
 	private JTextField TF_Abizena;
-	private JTextField TF_Erabiltzailea;
 	private JTextField TF_Pasahitza;
-
+	
+	private JLabel LB_Pasahitza;
 	private JLabel LB_DNI;
 	private JLabel LB_NIF;
 	private JLabel LB_Abizena;
@@ -50,13 +48,19 @@ public class PanelErregistratu extends JPanel {
 
 		btnSarratu = new JButton("SARRATU ");
 		btnSarratu.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnSarratu.setBounds(350, 259, 90, 30);
+		btnSarratu.setBounds(250, 236, 190, 21);
 		add(btnSarratu);
 
 		btnErregistratu = new JButton("Erregistratu");
-		btnErregistratu.setBounds(250, 182, 190, 21);
+		btnErregistratu.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		btnErregistratu.setBounds(250, 118, 190, 21);
 		add(btnErregistratu);
 
+		btnAtzera = new JButton("Atzera");
+		btnAtzera.setFont(new Font("Tahoma", Font.ITALIC, 11));
+		btnAtzera.setBounds(250, 181, 190, 21);
+		add(btnAtzera);
+		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		TF_Izena = new JTextField();
@@ -69,34 +73,23 @@ public class PanelErregistratu extends JPanel {
 		TF_Abizena.setBounds(10, 120, 190, 19);
 		add(TF_Abizena);
 
-		TF_Erabiltzailea = new JTextField();
-		TF_Erabiltzailea.setColumns(10);
-		TF_Erabiltzailea.setBounds(10, 182, 190, 19);
-		add(TF_Erabiltzailea);
-
 		TF_Pasahitza = new JTextField();
 		TF_Pasahitza.setColumns(10);
-		TF_Pasahitza.setBounds(10, 234, 190, 19);
+		TF_Pasahitza.setBounds(10, 236, 190, 19);
 		add(TF_Pasahitza);
 
 		TF_DNI = new JTextField();
 		TF_DNI.setColumns(10);
-		TF_DNI.setBounds(250, 61, 190, 19);
+		TF_DNI.setBounds(10, 182, 190, 19);
 		add(TF_DNI);
 		
 		TF_NIF = new JTextField();
 		TF_NIF.setColumns(10);
-		TF_NIF.setBounds(250, 120, 190, 19);
-		add(TF_NIF); 
-		
-		// _______________________________________________________________________________________________________________________________________________________________________________
-
-		LB_Erabiltzailea = new JLabel("Erabiltzailea:");
-		LB_Erabiltzailea.setBounds(10, 156, 190, 13);
-		add(LB_Erabiltzailea);
+		TF_NIF.setBounds(250, 61, 190, 19);
+		add(TF_NIF);
 
 		LB_Pasahitza = new JLabel("Pasahitza:");
-		LB_Pasahitza.setBounds(10, 210, 190, 13);
+		LB_Pasahitza.setBounds(10, 212, 190, 13);
 		add(LB_Pasahitza);
 
 		LB_Abizena = new JLabel("Abizena:");
@@ -108,11 +101,11 @@ public class PanelErregistratu extends JPanel {
 		add(LB_Izena);
 		
 		LB_NIF = new JLabel("NIF:");
-		LB_NIF.setBounds(250, 95, 190, 13);
+		LB_NIF.setBounds(250, 37, 190, 13);
 		add(LB_NIF);
 		
 		LB_DNI = new JLabel("DNI:");
-		LB_DNI.setBounds(250, 36, 190, 13);
+		LB_DNI.setBounds(10, 158, 190, 13);
 		add(LB_DNI);
 
 		initializeEvents();
@@ -123,6 +116,7 @@ public class PanelErregistratu extends JPanel {
 	private void initializeEvents() {
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelErregistratu));
 		this.btnErregistratu.addActionListener(listenerErregistratuBotoia(this.controladorPanelErregistratu));
+		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelErregistratu));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -133,19 +127,16 @@ public class PanelErregistratu extends JPanel {
 				String izena = TF_Izena.getText();
 				String abizena = TF_Abizena.getText();
 				String pasahitza = TF_Pasahitza.getText();
-				String erabiltzailea = TF_Erabiltzailea.getText();
 				String dni = TF_DNI.getText();
 				String nif = TF_NIF.getText();
 				try {
-					controladorPanelErregistratu.sakatuErregistratuBotoia(izena, abizena, erabiltzailea, pasahitza, dni, nif);
+					controladorPanelErregistratu.sakatuErregistratuBotoia(izena, abizena, pasahitza, dni, nif);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}			
-				controladorPanelErregistratu.sakatuAtzeraBotoia();
+				controladorPanelErregistratu.sakatuSarratuBotoia();
 			}
 		};
 	} 
@@ -155,8 +146,18 @@ public class PanelErregistratu extends JPanel {
 	private ActionListener listenerSarratuBotoia(ControladorPanelErregistratu controladorPanelMenu2) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.sakatuAtzeraBotoia();
+				controladorPanelMenu2.sakatuSarratuBotoia();
 			}
 		};
 	} 
+	
+	// *****************************************************************************************************************************************************************************************************
+
+		private ActionListener listenerAtzeraBotoia(ControladorPanelErregistratu controladorPanelMenu2) {
+			return new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					controladorPanelMenu2.sakatuAtzeraBotoia();
+				}
+			};
+		} 
 }

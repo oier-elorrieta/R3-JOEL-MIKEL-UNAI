@@ -26,12 +26,16 @@ public class ControladorPanelErregistratu {
 		this.vista.ikusiPanela(this.panelErregistratu);
 	}
 	
-	public String sakatuErregistratuBotoia(String izena, String abizena, String pasahitza, String erabiltzailea, String dni, String nif) throws SQLException, ClassNotFoundException {
+	public String sakatuErregistratuBotoia(String izena, String abizena, String pasahitza, String dni, String nif) throws SQLException, ClassNotFoundException {
 		this.controlador.nabegatzenPanelLogin();
-		return BBDDmetodoak.sartuDatuak(izena,abizena,pasahitza,erabiltzailea, dni, nif);
+		return BBDDmetodoak.sartuDatuak(izena,abizena,pasahitza, dni, nif);
 	}
 	
 	public void sakatuAtzeraBotoia() {
+		this.controlador.nabegatzenPanelLogin();
+	}
+	
+	public void sakatuSarratuBotoia() {
 		this.controlador.itxi();
 	}
 }

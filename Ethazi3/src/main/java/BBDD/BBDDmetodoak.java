@@ -11,10 +11,10 @@ import javax.swing.JOptionPane;
 
 public class BBDDmetodoak { 
 
-	public static String sartuDatuak(String izena, String abizena, String pasahitza, String erabiltzailea, String dni, String nif) throws SQLException, ClassNotFoundException {
+	public static String sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) throws SQLException, ClassNotFoundException {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("INSERT INTO Usuario VALUES ('"+izena+"','"+abizena+"','"+pasahitza+"','"+dni+"')");
+		String query1 = ("INSERT INTO Usuario VALUES ('"+izena+"','"+abizena+"','"+pasahitza+"','"+dni+"','"+nif+"')");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();			
