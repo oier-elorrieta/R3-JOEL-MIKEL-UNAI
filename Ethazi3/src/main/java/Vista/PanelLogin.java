@@ -114,7 +114,9 @@ public class PanelLogin extends JPanel {
 					}else if(NIF.charAt(8)=='R') {
 						controladorPanelLogin.sakatuPanelJatetxeBotoia();
 					}
+					
 				}
+				controladorPanelLogin.NIF(erabiltzailea, pasahitza);
 			}
 		};
 	} 

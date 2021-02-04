@@ -51,4 +51,8 @@ public class ControladorPanelTicket {
 	public ImageIcon argazkiaAukeratu(String aukera) {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
+	
+	public String gordeTicket() {
+		return this.modelo.sartuTicket();
+	}
 }

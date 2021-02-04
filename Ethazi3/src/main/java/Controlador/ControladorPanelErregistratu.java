@@ -1,9 +1,8 @@
 package Controlador;
  
 import java.sql.SQLException;
-
-import BBDD.BBDDKonexioa;
-import BBDD.BBDDmetodoak; 
+ 
+import Modelo.Modelo;
 import Vista.PanelErregistratu; 
 import Vista.Vista;
 
@@ -11,14 +10,13 @@ public class ControladorPanelErregistratu {
 
 	private Vista vista;
 	private Controlador controlador;
+	private Modelo modelo;
 	private PanelErregistratu panelErregistratu;
-	@SuppressWarnings("unused")
-	private BBDDKonexioa BBDD;
 
-	public ControladorPanelErregistratu(Vista vista, Controlador controlador, BBDDKonexioa BBDD) {
+	public ControladorPanelErregistratu(Vista vista, Controlador controlador, Modelo modelo) {
 		this.vista = vista;
-		this.controlador = controlador;
-		this.BBDD = BBDD;                                                                                 
+		this.controlador = controlador;    
+		this.modelo = modelo;
 	}
 
 	public void ikusiPanelErregistratu() {
@@ -28,7 +26,7 @@ public class ControladorPanelErregistratu {
 	
 	public String sakatuErregistratuBotoia(String izena, String abizena, String pasahitza, String dni, String nif) throws SQLException, ClassNotFoundException {
 		this.controlador.nabegatzenPanelLogin();
-		return BBDDmetodoak.sartuDatuak(izena,abizena,pasahitza, dni, nif);
+		return this.modelo.sartuDatuak(izena,abizena,pasahitza, dni, nif);
 	}
 	
 	public void sakatuAtzeraBotoia() {

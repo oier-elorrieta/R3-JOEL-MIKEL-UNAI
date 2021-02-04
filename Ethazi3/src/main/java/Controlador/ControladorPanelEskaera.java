@@ -49,5 +49,12 @@ public class ControladorPanelEskaera {
 	
 	public ImageIcon argazkiaAukeratu(String aukera) {
 		return this.modelo.argazkiaAukeratu(aukera);
+	} 
+	public String gordeTicketa() {
+		return this.modelo.sartuTicket();
+	}
+
+	public String gordeEskaera() {
+		return this.modelo.sartuEskaera();
 	}
 }

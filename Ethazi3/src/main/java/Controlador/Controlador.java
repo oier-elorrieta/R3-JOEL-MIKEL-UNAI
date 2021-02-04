@@ -1,6 +1,5 @@
 package Controlador;
 
-import BBDD.BBDDKonexioa;
 import Modelo.Modelo;
 import Vista.Vista;
 
@@ -10,7 +9,6 @@ public class Controlador {
 	
 	private Vista vista;
 	
-	private BBDDKonexioa BBDD;
 	
 	private ControladorPanelLogin controladorPanelLogin;
 	private ControladorPanelMenuJatetxea controladorPanelJatetxea;	
@@ -22,12 +20,11 @@ public class Controlador {
 	private ControladorPanelEskaera controladorPanelPedidos; 
 	private ControladorPanelErregistratu controladorPanelErregistratu; 
 
-	public Controlador(Modelo modelo, Vista vista, BBDDKonexioa BBDD) {
+	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
-		this.vista = vista; 
-		this.BBDD = BBDD;
-		this.controladorPanelLogin = new ControladorPanelLogin(this.vista, this, this.BBDD);
-		this.controladorPanelErregistratu = new ControladorPanelErregistratu(this.vista, this, this.BBDD);
+		this.vista = vista;
+		this.controladorPanelLogin = new ControladorPanelLogin(this.vista, this, this.modelo);
+		this.controladorPanelErregistratu = new ControladorPanelErregistratu(this.vista, this, this.modelo);
 		this.controladorPanelJatetxea = new ControladorPanelMenuJatetxea(this.vista, this);
 		this.controladorPanelTaberna = new ControladorPanelMenuTaberna(this.vista, this);
 		this.controladorPanelKafetegia = new ControladorPanelMenuKafetegia(this.vista, this);
