@@ -116,7 +116,7 @@ public class PanelLogin extends JPanel {
 					}
 					
 				}
-				controladorPanelLogin.NIF(erabiltzailea, pasahitza);
+				//controladorPanelLogin.NIF(erabiltzailea, pasahitza);
 			}
 		};
 	} 

@@ -32,29 +32,28 @@ public class Modelo {
 	public ImageIcon argazkiaAukeratu(String aukera) {
 		return metodoak.argazkiaAukeratu(aukera);
 	}
-	
+
 	public ArrayList<Karritoa> kk(ArrayList<Karritoa> karroa) {
 		return karroa;
 	}
 	
+	// *****************************************************************************************************************************************************************
+	
+	private String NIF = null;
+
 	public String sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) throws ClassNotFoundException, SQLException {
 		return metodoak.sartuDatuak(izena, abizena, pasahitza, dni, nif);
 	}
-	
+
 	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
-		return metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
+		NIF = metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
+		return NIF;
 	}
-	
-	private String NIF = null;
-	
-	public String NIF(String erabiltzailea, String pasahitza) {
-		return NIF = metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
-	}
-	
+
 	public String sartuTicket() {
 		return metodoak.sartuTicket(NIF, diruTotala());
 	}
-	
+
 	public String sartuEskaera() {
 		return metodoak.sartuEskaera(NIF, diruTotala());
 	}

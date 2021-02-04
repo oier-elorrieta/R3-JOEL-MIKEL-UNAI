@@ -161,7 +161,7 @@ public class metodoak {
 	public static String sartuTicket (String NIF, double diruTotala) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		 		
-		String query1 = ("INSERT INTO operaciones VALUES ('258794', '2021-02-04','"+diruTotala+"','"+NIF+"')");
+		String query1 = ("INSERT INTO operaciones VALUES ('858794', '2021-02-04','"+diruTotala+"','"+NIF+"')");
 		
 		try {
 			Statement s;
@@ -178,7 +178,7 @@ public class metodoak {
 	public static String sartuEskaera (String NIF, double diruTotala) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("INSERT INTO pedidos VALUES ('258794', 'elorrieta')");
+		String query1 = ("INSERT INTO pedidos VALUES ('858794', 'elorrieta')");
 		
 		try {
 			Statement s;
