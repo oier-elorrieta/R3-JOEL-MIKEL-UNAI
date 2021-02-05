@@ -107,7 +107,9 @@ public class PanelLogin extends JPanel {
 
 				String Tipo = controladorPanelLogin.konprobatuLokala(erabiltzailea);
 				String kk = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
-
+				controladorPanelLogin.konprobatuNIF(erabiltzailea);
+				
+				
 				if (kk.equals("ondo")) {
 
 					if (Tipo.equals("Bar")) {

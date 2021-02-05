@@ -167,10 +167,34 @@ public class metodoak {
 	
 	// *****************************************************************************************************************************************************************************************************
 
+	public static String komprobatuNIF(String erabiltzailea) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		String query1 = ("SELECT NIF FROM usuario where dni = '" + erabiltzailea + "'");
+		
+		String NIF = null;
+
+		try {
+			ResultSet re;
+			PreparedStatement p;
+
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				NIF = re.getString("NIF");
+			} 
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return NIF;
+	}
+	
+	
 	public static String sartuTicket(String NIF, double diruTotala) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("INSERT INTO operaciones VALUES ('858794', '2021-02-04','" + diruTotala + "','" + NIF + "')");
+		String query1 = ("INSERT INTO operaciones VALUES ('851794', '2021-02-04','" + diruTotala + "','" + NIF + "')");
 
 		try {
 			Statement s;
@@ -214,7 +238,7 @@ public class metodoak {
 	public static String sartuEskaera(String NIF, double diruTotala) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("INSERT INTO pedidos VALUES ('858794', 'elorrieta')");
+		String query1 = ("INSERT INTO pedidos VALUES ('851794', 'elorrieta')");
 
 		try {
 			Statement s;

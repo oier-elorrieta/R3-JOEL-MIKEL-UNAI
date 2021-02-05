@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.Modelo;
+import Modelo.metodoak;
 import Vista.PanelLogin; 
 import Vista.Vista;
 
@@ -50,9 +51,9 @@ public class ControladorPanelLogin {
 		return this.modelo.komprobatuLokala(erabiltzailea);
 	} 
 	
-	/*public String NIF(String erabiltzailea, String pasahitza) {
-		return this.modelo.NIF(erabiltzailea, pasahitza);	
-	}*/
+	public String konprobatuNIF(String erabiltzailea) {
+		return this.modelo.konprobatuNIF(erabiltzailea);
+	}
 }
 
 

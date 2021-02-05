@@ -52,7 +52,7 @@ public class ControladorPanelTicket {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 	
-	public String gordeTicket(String NIF) {
-		return this.modelo.sartuTicket(NIF);
+	public String gordeTicket() {
+		return this.modelo.sartuTicket();
 	}
 }

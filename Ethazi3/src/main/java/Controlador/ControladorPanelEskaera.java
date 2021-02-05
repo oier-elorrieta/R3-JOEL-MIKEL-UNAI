@@ -50,11 +50,11 @@ public class ControladorPanelEskaera {
 	public ImageIcon argazkiaAukeratu(String aukera) {
 		return this.modelo.argazkiaAukeratu(aukera);
 	} 
-	public String gordeTicketa(String NIF) {
-		return this.modelo.sartuTicket(NIF);
+	public String gordeTicketa() {
+		return this.modelo.sartuTicket();
 	}
 
-	public String gordeEskaera(String NIF) {
-		return this.modelo.sartuEskaera(NIF);
+	public String gordeEskaera() {
+		return this.modelo.sartuEskaera();
 	}
 }

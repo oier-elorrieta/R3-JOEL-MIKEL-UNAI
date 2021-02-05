@@ -176,7 +176,7 @@ public class PanelTicket extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorPanelTicket.sakatuLaburpeneraBotoia();
-				//controladorPanelTicket.gordeTicket();
+				controladorPanelTicket.gordeTicket();
 			}
 		};
 	}
