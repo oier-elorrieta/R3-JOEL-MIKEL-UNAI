@@ -55,4 +55,8 @@ public class ControladorPanelTicket {
 	public String gordeTicket() {
 		return this.modelo.sartuTicket();
 	}
+	
+	public String gehituTransferentziaZenbakia(String zenbakia) {
+		return this.modelo.gehituTransferentziaZenbakia(zenbakia);
+	}
 }

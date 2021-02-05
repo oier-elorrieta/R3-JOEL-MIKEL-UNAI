@@ -13,8 +13,8 @@ public class Modelo {
 		return metodoak.sartuSalgaiak();
 	}
 
-	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
-		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa); 
+	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru) {
+		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa);
 	}
 
 	public String pantailaratu() {
@@ -25,7 +25,7 @@ public class Modelo {
 		return metodoak.diruTotala(karroa);
 	}
 
-	public ArrayList<Karritoa> ezabatu(){
+	public ArrayList<Karritoa> ezabatu() {
 		return metodoak.ezabatuArraya(karroa);
 	}
 
@@ -36,15 +36,21 @@ public class Modelo {
 	public ArrayList<Karritoa> kk(ArrayList<Karritoa> karroa) {
 		return karroa;
 	}
-	
+
+	public String gehituTransferentziaZenbakia(String zenbakia) {
+		return metodoak.gehituTransferentziaZenbakia(zenbakia);
+	}
+
 	// *****************************************************************************************************************************************************************
+
 	private String NIF = null;
 	
 	public String sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) throws ClassNotFoundException, SQLException {
+
 		return metodoak.sartuDatuak(izena, abizena, pasahitza, dni, nif);
 	}
 
-	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {	
+	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
 		return metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	}
 

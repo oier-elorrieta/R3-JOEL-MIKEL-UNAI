@@ -50,6 +50,8 @@ public class PanelFaktura extends JPanel {
 	private JSpinner NºUnidades;
 	private String[] produktuak;
 
+	private String Zenbakia = "0";
+	
 	// *****************************************************************************************************************************************************************************************************
 
 	public PanelFaktura(ControladorPanelFaktura controladorPanelFaktura) {
@@ -85,7 +87,7 @@ public class PanelFaktura extends JPanel {
 		TF_Lokala.setEditable(false);
 		add(TF_Lokala);
 
-		TF_TransferentziaZenbakia = new JTextField("x");
+		TF_TransferentziaZenbakia = new JTextField(Zenbakia);
 		TF_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_TransferentziaZenbakia.setBounds(226, 36, 75, 20);
 		TF_TransferentziaZenbakia.setColumns(10);
@@ -223,6 +225,7 @@ public class PanelFaktura extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.sakatuLaburpeneraBotoia();
+				controladorPanelFaktura.gehituTransferentziaZenbakia(Zenbakia);
 			}
 		};
 	}

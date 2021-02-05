@@ -57,4 +57,8 @@ public class ControladorPanelEskaera {
 	public String gordeEskaera() {
 		return this.modelo.sartuEskaera();
 	}
+	
+	public String gehituTransferentziaZenbakia(String zenbakia) {
+		return this.modelo.gehituTransferentziaZenbakia(zenbakia);
+	}
 }
