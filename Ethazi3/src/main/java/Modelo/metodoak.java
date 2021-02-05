@@ -136,8 +136,8 @@ public class metodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("SELECT DNI,Contraseña,NIF FROM usuario where dni = '" + erabiltzailea + "';");
-
+		String query1 = ("SELECT DNI,Contraseña FROM usuario where dni = '" + erabiltzailea + "'");
+		String kk = null;
 		try {
 			ResultSet re;
 			PreparedStatement p;
@@ -148,40 +148,22 @@ public class metodoak {
 				System.out.println(re.getString("DNI"));
 				if (re.getString("DNI").equalsIgnoreCase(erabiltzailea)
 						&& re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
+						kk = "ondo";
 				} else if (re.getString("DNI").equalsIgnoreCase(erabiltzailea)
 						&& !re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
 					JOptionPane.showMessageDialog(null, "Pasahitza ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
+					kk = "pasahitza";
 				}
 			} else {
 				JOptionPane.showMessageDialog(null, "Ez zaude logeatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
+				kk = "erabiltzailea";
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-		return query1;
+		return kk;
 	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-		public static String komprobatuNIF(String erabiltzailea) {
-			Connection konekzioa = BBDDKonexioa.getConexion();
-
-			String query1 = ("select U.NIF from usuario U join local L on U.NIF=L.NIF where DNI = '"+erabiltzailea+"'");
-
-			System.out.println(query1);
-			
-			try {
-				Statement s;
-				s = konekzioa.createStatement();
-				s.executeUpdate(query1);
-				System.out.println("ondo");
-			} catch (SQLException e) {
-				System.out.println("Errorea konexioan");
-				e.printStackTrace();
-			}
-			return query1;
-		}
 	
 	// *****************************************************************************************************************************************************************************************************
 
@@ -204,21 +186,27 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String komprobatuLokala(String NIF) {
+	public static String komprobatuLokala(String erabiltzailea) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("select Tipo from local where NIF = '" + NIF + "'");
+		String query1 = ("select Tipo from usuario U join local L on U.NIF=L.NIF where DNI = '"+erabiltzailea+"';");
+		
+		String Tipo = null;
 
 		try {
-			Statement s;
-			s = konekzioa.createStatement();
-			s.executeUpdate(query1);
-			System.out.println("ondo");
+			ResultSet re;
+			PreparedStatement p;
+
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				 Tipo = re.getString("Tipo");
+			} 
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-		return query1;
+		return Tipo;
 	}
 
 	// *****************************************************************************************************************************************************************************************************

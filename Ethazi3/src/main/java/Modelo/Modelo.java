@@ -47,8 +47,8 @@ public class Modelo {
 		return metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	}
 
-	public String komprobatuLokala(String NIF) {
-		return metodoak.komprobatuLokala(NIF);
+	public String komprobatuLokala(String erabiltzailea) {
+		return metodoak.komprobatuLokala(erabiltzailea);
 	}
 	
 	public String sartuTicket(String NIF) {

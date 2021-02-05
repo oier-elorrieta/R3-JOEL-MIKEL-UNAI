@@ -101,22 +101,31 @@ public class PanelLogin extends JPanel {
 		return new ActionListener() {
 			@SuppressWarnings({ "deprecation" })
 			public void actionPerformed(ActionEvent arg0) {
+				
 				String pasahitza = TF_Pasahitza.getText();
 				String erabiltzailea = TF_DNI.getText();
 
-				try {
-					controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
+				String Tipo = controladorPanelLogin.konprobatuLokala(erabiltzailea);
+				String kk = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 
-					String NIF = controladorPanelLogin.konprobatuNIF(erabiltzailea);
+				if (kk.equals("ondo")) {
 
-					if (controladorPanelLogin.konprobatuLokala(NIF).equals("Bar")) {
+					if (Tipo.equals("Bar")) {
+
 						controladorPanelLogin.sakatuPanelTabernaBotoia();
-					} else if (controladorPanelLogin.konprobatuLokala(NIF).equals("Cafetería")) {
+					} else if (Tipo.equals("Cafetería")) {
+
 						controladorPanelLogin.sakatuPanelKafetegiaBotoia();
-					} else if (controladorPanelLogin.konprobatuLokala(NIF).equals("Restaurante")) {
+					} else if (Tipo.equals("Restaurante")) {
+
 						controladorPanelLogin.sakatuPanelJatetxeBotoia();
 					}
-				} catch (Exception e) {
+
+					System.out.println(Tipo);
+				}
+
+				else {
+
 					controladorPanelLogin.ikusiPanelLogin();
 				}
 
