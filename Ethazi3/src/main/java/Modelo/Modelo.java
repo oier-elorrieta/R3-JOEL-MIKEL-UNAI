@@ -39,22 +39,23 @@ public class Modelo {
 	
 	// *****************************************************************************************************************************************************************
 	
-	private String NIF = null;
-
 	public String sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) throws ClassNotFoundException, SQLException {
 		return metodoak.sartuDatuak(izena, abizena, pasahitza, dni, nif);
 	}
 
-	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
-		NIF = metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
-		return NIF;
+	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {	
+		return metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	}
 
-	public String sartuTicket() {
+	public String komprobatuLokala(String NIF) {
+		return metodoak.komprobatuLokala(NIF);
+	}
+	
+	public String sartuTicket(String NIF) {
 		return metodoak.sartuTicket(NIF, diruTotala());
 	}
 
-	public String sartuEskaera() {
+	public String sartuEskaera(String NIF) {
 		return metodoak.sartuEskaera(NIF, diruTotala());
 	}
 }

@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;  
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
@@ -93,7 +93,7 @@ public class PanelLogin extends JPanel {
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelLogin));
 		this.btnLogin.addActionListener(listenerLoginBotoia(this.controladorPanelLogin));
 		this.btnErregistratu.addActionListener(listenerErregistratuBotoia(this.controladorPanelLogin));
-	}  
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -103,23 +103,26 @@ public class PanelLogin extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				String pasahitza = TF_Pasahitza.getText();
 				String erabiltzailea = TF_DNI.getText();
-				String NIF = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
-				if(NIF == null){
-					controladorPanelLogin.ikusiPanelLogin();
-				}else {
-					if(NIF.charAt(8)=='B') {
+
+				try {
+					controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
+
+					String NIF = controladorPanelLogin.konprobatuNIF(erabiltzailea);
+
+					if (controladorPanelLogin.konprobatuLokala(NIF).equals("Bar")) {
 						controladorPanelLogin.sakatuPanelTabernaBotoia();
-					}else if(NIF.charAt(8)=='C') {
+					} else if (controladorPanelLogin.konprobatuLokala(NIF).equals("Cafetería")) {
 						controladorPanelLogin.sakatuPanelKafetegiaBotoia();
-					}else if(NIF.charAt(8)=='R') {
+					} else if (controladorPanelLogin.konprobatuLokala(NIF).equals("Restaurante")) {
 						controladorPanelLogin.sakatuPanelJatetxeBotoia();
 					}
-					
+				} catch (Exception e) {
+					controladorPanelLogin.ikusiPanelLogin();
 				}
-				//controladorPanelLogin.NIF(erabiltzailea, pasahitza);
+
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -139,5 +142,5 @@ public class PanelLogin extends JPanel {
 				controladorPanelLogin.sakatuAtzeraBotoia();
 			}
 		};
-	} 
+	}
 }

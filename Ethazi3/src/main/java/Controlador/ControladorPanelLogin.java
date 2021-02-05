@@ -46,6 +46,14 @@ public class ControladorPanelLogin {
 		return this.modelo.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	} 
 	
+	public String konprobatuLokala(String NIF) {
+		return this.modelo.komprobatuLokala(NIF);
+	} 
+	
+	public String konprobatuNIF(String erabiltzailea) {
+		return this.modelo.komprobatuLokala(erabiltzailea);
+	} 
+	
 	/*public String NIF(String erabiltzailea, String pasahitza) {
 		return this.modelo.NIF(erabiltzailea, pasahitza);	
 	}*/

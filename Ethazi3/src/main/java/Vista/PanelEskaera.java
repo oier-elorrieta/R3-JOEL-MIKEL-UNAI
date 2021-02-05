@@ -193,8 +193,8 @@ public class PanelEskaera extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelEskaera.sakatuLaburpeneraBotoia();
-				controladorPanelEskaera.gordeTicketa();
-				controladorPanelEskaera.gordeEskaera();
+				//controladorPanelEskaera.gordeTicketa();
+				//controladorPanelEskaera.gordeEskaera();
 			}
 		};
 	}
