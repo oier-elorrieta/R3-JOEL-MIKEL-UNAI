@@ -51,4 +51,8 @@ public class ControladorPanelFaktura {
 	public ImageIcon argazkiaAukeratu(String aukera) {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
+	
+	public String gehituTransferentziaZenbakia(String zenbakia) {
+		return this.modelo.gehituTransferentziaZenbakia(zenbakia);
+	}
 }

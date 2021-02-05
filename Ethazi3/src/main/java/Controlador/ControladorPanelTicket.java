@@ -55,4 +55,8 @@ public class ControladorPanelTicket {
 	public String gordeTicket(String NIF) {
 		return this.modelo.sartuTicket(NIF);
 	}
+	
+	public String gehituTransferentziaZenbakia(String zenbakia) {
+		return this.modelo.gehituTransferentziaZenbakia(zenbakia);
+	}
 }

@@ -47,6 +47,7 @@ public class PanelEskaera extends JPanel {
 	private JSpinner NºUnidades;
 	private String[] produktuak;
 
+	private String Zenbakia = "0";
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -83,7 +84,7 @@ public class PanelEskaera extends JPanel {
 		TF_Lokala.setEditable(false);
 		add(TF_Lokala);
 
-		TF_TransferentziaZenbakia = new JTextField("x");
+		TF_TransferentziaZenbakia = new JTextField(Zenbakia);
 		TF_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_TransferentziaZenbakia.setBounds(226, 36, 75, 20);
 		TF_TransferentziaZenbakia.setColumns(10);
@@ -193,6 +194,7 @@ public class PanelEskaera extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelEskaera.sakatuLaburpeneraBotoia();
+				controladorPanelEskaera.gehituTransferentziaZenbakia(Zenbakia);
 				//controladorPanelEskaera.gordeTicketa();
 				//controladorPanelEskaera.gordeEskaera();
 			}
