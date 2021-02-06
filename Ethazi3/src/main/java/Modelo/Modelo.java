@@ -37,7 +37,7 @@ public class Modelo {
 		return karroa;
 	}
 	
-	private int TransferentziaZbk = 1;
+	private int TransferentziaZbk = -1;
 	
 	public int gehituTransferentziaZenbakia() {
 		TransferentziaZbk =  metodoak.gehituTransferentziaZenbakia(TransferentziaZbk);
@@ -80,5 +80,9 @@ public class Modelo {
 	public String konprobatuNIF(String erabiltzailea) {
 		NIF = metodoak.komprobatuNIF(erabiltzailea);
 		return NIF;
+	}
+	
+	public String komprobatuLokalarenIzena() {
+		return metodoak.komprobatuLokalarenIzena(NIF);
 	}
 }

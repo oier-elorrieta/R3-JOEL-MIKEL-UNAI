@@ -60,7 +60,7 @@ public class PanelLaburpena extends JPanel {
 		LB_3_.setBounds(10, 275, 430, 14);
 		add(LB_3_);
 
-		LB_Nombre = new JLabel("NOMBRE");
+		LB_Nombre = new JLabel(controladorPanelLaburpena.komprobatuLokalarenIzena());
 		LB_Nombre.setHorizontalAlignment(SwingConstants.CENTER);
 		LB_Nombre.setBounds(10, 47, 430, 14);
 		add(LB_Nombre);

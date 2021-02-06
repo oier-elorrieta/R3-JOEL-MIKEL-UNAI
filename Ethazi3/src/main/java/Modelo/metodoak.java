@@ -178,6 +178,7 @@ public class metodoak {
 	// *****************************************************************************************************************************************************************************************************
 
 	public static String komprobatuNIF(String erabiltzailea) {
+		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
 		String query1 = ("SELECT NIF FROM usuario where dni = '" + erabiltzailea + "'");
@@ -301,4 +302,30 @@ public class metodoak {
 
 		return query1;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+
+		public static String komprobatuLokalarenIzena(String NIF) {
+			Connection konekzioa = BBDDKonexioa.getConexion();
+
+			String query1 = ("SELECT nombre FROM local where NIF = '" + NIF + "'");
+
+			String LokalarenIzena = null;
+
+			try {
+				ResultSet re;
+				PreparedStatement p;
+
+				p = konekzioa.prepareStatement(query1);
+				re = p.executeQuery();
+				if (re.next()) {
+					LokalarenIzena = re.getString("nombre");
+				}
+			} catch (SQLException e) {
+				System.out.println("Errorea konexioan");
+				e.printStackTrace();
+			}
+			return LokalarenIzena;
+		}
+	
 }
