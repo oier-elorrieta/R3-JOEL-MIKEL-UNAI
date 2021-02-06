@@ -11,14 +11,14 @@ public class Controlador {
 	
 	
 	private ControladorPanelLogin controladorPanelLogin;
+	private ControladorPanelErregistratu controladorPanelErregistratu; 
 	private ControladorPanelMenuJatetxea controladorPanelJatetxea;	
 	private ControladorPanelMenuTaberna controladorPanelTaberna;	
 	private ControladorPanelMenuKafetegia controladorPanelKafetegia;	
 	private ControladorPanelFaktura controladorPanelFaktura;
 	private ControladorPanelTicket controladorPanelTicket;
-	private ControladorPanelLaburpena controladorPanelLaburpena;
 	private ControladorPanelEskaera controladorPanelPedidos; 
-	private ControladorPanelErregistratu controladorPanelErregistratu; 
+	private ControladorPanelLaburpena controladorPanelLaburpena;
 
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
@@ -30,8 +30,8 @@ public class Controlador {
 		this.controladorPanelKafetegia = new ControladorPanelMenuKafetegia(this.vista, this);
 		this.controladorPanelFaktura = new ControladorPanelFaktura(this.modelo, this.vista, this);
 		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
-		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this);
 		this.controladorPanelPedidos = new ControladorPanelEskaera(this.modelo, this.vista, this); 
+		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this);
 		this.nabegatzenPanelLogin();
 	}
 	
@@ -63,12 +63,12 @@ public class Controlador {
 		this.controladorPanelTicket.ikusiPanelTicket();
 	}
 	
-	public void nabegatzenPanelLaburpena() { 
-		this.controladorPanelLaburpena.ikusiPanelLaburpena();
-	}
-	
 	public void nabegatzenPanelPedidos() {
 		this.controladorPanelPedidos.ikusiPanelPedidos();
+	}
+	
+	public void nabegatzenPanelLaburpena() { 
+		this.controladorPanelLaburpena.ikusiPanelLaburpena();
 	}
 	
 	public void itxi() {

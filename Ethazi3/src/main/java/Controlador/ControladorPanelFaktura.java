@@ -31,11 +31,6 @@ public class ControladorPanelFaktura {
 		this.controlador.nabegatzenPanelLaburpena();
 	}
 	
-	public void sakatuAtzeraBotoia() {
-		this.controlador.nabegatzenPanelLogin();
-		this.modelo.ezabatu();
-	}
-	
 	public String[] ComboBoxaSakatu() {
 		return this.modelo.produktuakJaso();
 	}
@@ -62,14 +57,17 @@ public class ControladorPanelFaktura {
 	
 	public void sakatuPanelTabernaBotoia() {
 		this.controlador.nabegatzenPanelTaberna();
+		this.modelo.ezabatu();
 	}
 
 	public void sakatuPanelKafetegiaBotoia() {
 		this.controlador.nabegatzenPanelKafetegia();
+		this.modelo.ezabatu();
 	}
 
 	public void sakatuPanelJatetxeBotoia() {
 		this.controlador.nabegatzenPanelJatetxea();
+		this.modelo.ezabatu();
 	}
 	
 	public String konprobatuLokala() {

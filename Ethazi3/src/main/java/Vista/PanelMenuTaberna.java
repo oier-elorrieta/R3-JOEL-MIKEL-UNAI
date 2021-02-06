@@ -13,7 +13,7 @@ import Controlador.ControladorPanelMenuTaberna;
 @SuppressWarnings("serial")
 public class PanelMenuTaberna extends JPanel {
 
-	private ControladorPanelMenuTaberna controladorPanelMenu2;
+	private ControladorPanelMenuTaberna controladorPanelMenuTaberna;
 	
 	private JButton btnFaktura;
 	private JButton btnTicket;
@@ -22,9 +22,9 @@ public class PanelMenuTaberna extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 	
-	public PanelMenuTaberna(ControladorPanelMenuTaberna controladorPanelMenu2) {
+	public PanelMenuTaberna(ControladorPanelMenuTaberna controladorPanelMenuTaberna) {
 
-		this.controladorPanelMenu2 = controladorPanelMenu2;
+		this.controladorPanelMenuTaberna = controladorPanelMenuTaberna;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		setBounds(0, 0, 450, 300);
@@ -38,7 +38,6 @@ public class PanelMenuTaberna extends JPanel {
 		btnFaktura.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		btnFaktura.setBounds(230, 95, 210, 113);
 		add(btnFaktura);
-
 
 		btnSarratu = new JButton("SARRATU ");
 		btnSarratu.setFont(new Font("Tahoma", Font.ITALIC, 11));
@@ -56,48 +55,48 @@ public class PanelMenuTaberna extends JPanel {
 	// *****************************************************************************************************************************************************************************************************
 	
 	private void initializeEvents() {
-		this.btnFaktura.addActionListener(listenerFakturaBotoia(this.controladorPanelMenu2));
-		this.btnTicket.addActionListener(listenerTicketBotoia(this.controladorPanelMenu2));
-		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelMenu2));
-		this.btnHasiera.addActionListener(listenerHasieraBotoia(this.controladorPanelMenu2));
+		this.btnFaktura.addActionListener(listenerFakturaBotoia(this.controladorPanelMenuTaberna));
+		this.btnTicket.addActionListener(listenerTicketBotoia(this.controladorPanelMenuTaberna));
+		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelMenuTaberna));
+		this.btnHasiera.addActionListener(listenerHasieraBotoia(this.controladorPanelMenuTaberna));
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerFakturaBotoia(ControladorPanelMenuTaberna controladorPanelMenu2) {
+	private ActionListener listenerFakturaBotoia(ControladorPanelMenuTaberna controladorPanelMenuTaberna) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.sakatuFakturaPanelaIkustekoBotoia();
+				controladorPanelMenuTaberna.sakatuFakturaPanelaIkustekoBotoia();
 			}
 		};
 	} 
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerTicketBotoia(ControladorPanelMenuTaberna controladorPanelMenu2) {
+	private ActionListener listenerTicketBotoia(ControladorPanelMenuTaberna controladorPanelMenuTaberna) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.sakatuTicketPanelaIkustekoBotoia();
+				controladorPanelMenuTaberna.sakatuTicketPanelaIkustekoBotoia();
 			}
 		};
 	} 
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerSarratuBotoia(ControladorPanelMenuTaberna controladorPanelMenu2) {
+	private ActionListener listenerSarratuBotoia(ControladorPanelMenuTaberna controladorPanelMenuTaberna) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.sakatuAtzeraBotoia();
+				controladorPanelMenuTaberna.sakatuAtzeraBotoia();
 			}
 		};
 	} 
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerHasieraBotoia(ControladorPanelMenuTaberna controladorPanelMenu2) {
+	private ActionListener listenerHasieraBotoia(ControladorPanelMenuTaberna controladorPanelMenuTaberna) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu2.sakatuHasieraBotoia();
+				controladorPanelMenuTaberna.sakatuHasieraBotoia();
 			}
 		};
 	}

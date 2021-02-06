@@ -31,12 +31,12 @@ public class ControladorPanelMenuKafetegia {
 		this.controlador.nabegatzenPanelPedidos();
 	}
 	
-	public void sakatuAtzeraBotoia() {
-		this.controlador.itxi();
-	}
-	
 	public void sakatuHasieraBotoia() {
 		this.controlador.nabegatzenPanelLogin();
+	}
+	
+	public void sakatuAtzeraBotoia() {
+		this.controlador.itxi();
 	}
 }
 

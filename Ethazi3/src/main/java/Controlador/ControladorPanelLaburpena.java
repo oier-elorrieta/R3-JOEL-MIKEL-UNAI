@@ -21,12 +21,6 @@ public class ControladorPanelLaburpena {
 		this.panelLaburpena = new PanelLaburpena(this);
 		this.vista.ikusiPanela(this.panelLaburpena);
 	}
-	
-	public void accionadoBottonMostrarPanelMenu() throws InterruptedException {
-		Thread.sleep(1350);
-		this.controlador.nabegatzenPanelLogin(); 
-		this.modelo.ezabatu();
-	}
 	 
 	public String pantailaratu() {
 		return this.modelo.pantailaratu();
@@ -38,14 +32,17 @@ public class ControladorPanelLaburpena {
 	
 	public void sakatuPanelTabernaBotoia() {
 		this.controlador.nabegatzenPanelTaberna();
+		this.modelo.ezabatu();
 	}
 
 	public void sakatuPanelKafetegiaBotoia() {
 		this.controlador.nabegatzenPanelKafetegia();
+		this.modelo.ezabatu();
 	}
 
 	public void sakatuPanelJatetxeBotoia() {
 		this.controlador.nabegatzenPanelJatetxea();
+		this.modelo.ezabatu();
 	}
 	
 	public String konprobatuLokala() {

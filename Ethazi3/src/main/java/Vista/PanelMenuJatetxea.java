@@ -14,7 +14,7 @@ import Controlador.ControladorPanelMenuJatetxea;
 @SuppressWarnings("serial")
 public class PanelMenuJatetxea extends JPanel {
 
-	private ControladorPanelMenuJatetxea controladorPanelMenu;
+	private ControladorPanelMenuJatetxea controladorPanelJatetxea;
 	
 	private JButton btnFaktura;
 	private JButton btnTicket;
@@ -25,9 +25,9 @@ public class PanelMenuJatetxea extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 	
-	public PanelMenuJatetxea(ControladorPanelMenuJatetxea controladorPanelMenu) {
+	public PanelMenuJatetxea(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
 
-		this.controladorPanelMenu = controladorPanelMenu;
+		this.controladorPanelJatetxea = controladorPanelJatetxea;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		setBounds(0, 0, 450, 300);
@@ -69,59 +69,59 @@ public class PanelMenuJatetxea extends JPanel {
 	// *****************************************************************************************************************************************************************************************************
 	
 	private void initializeEvents() {
-		this.btnFaktura.addActionListener(listenerFakturaBotoia(this.controladorPanelMenu));
-		this.btnTicket.addActionListener(listenerTicketBotoia(this.controladorPanelMenu));
-		this.btnEskaera.addActionListener(listenerEskaeraBotoia(this.controladorPanelMenu));
-		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelMenu));
-		this.btnHasiera.addActionListener(listenerHasieraBotoia(this.controladorPanelMenu));
+		this.btnFaktura.addActionListener(listenerFakturaBotoia(this.controladorPanelJatetxea));
+		this.btnTicket.addActionListener(listenerTicketBotoia(this.controladorPanelJatetxea));
+		this.btnEskaera.addActionListener(listenerEskaeraBotoia(this.controladorPanelJatetxea));
+		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelJatetxea));
+		this.btnHasiera.addActionListener(listenerHasieraBotoia(this.controladorPanelJatetxea));
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerFakturaBotoia(ControladorPanelMenuJatetxea controladorPanelMenu) {
+	private ActionListener listenerFakturaBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu.sakatuFakturaPanelaIkustekoBotoia();
+				controladorPanelJatetxea.sakatuFakturaPanelaIkustekoBotoia();
 			}
 		};
 	} 
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerTicketBotoia(ControladorPanelMenuJatetxea controladorPanelMenu) {
+	private ActionListener listenerTicketBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu.sakatuTicketPanelaIkustekoBotoia();
+				controladorPanelJatetxea.sakatuTicketPanelaIkustekoBotoia();
 			}
 		};
 	} 
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerEskaeraBotoia(ControladorPanelMenuJatetxea controladorPanelMenu) {
+	private ActionListener listenerEskaeraBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu.sakatuEskaeraPanelaIkustekoBotoia();
+				controladorPanelJatetxea.sakatuEskaeraPanelaIkustekoBotoia();
 			}
 		};
 	} 
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerSarratuBotoia(ControladorPanelMenuJatetxea controladorPanelMenu) {
+	private ActionListener listenerSarratuBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu.sakatuAtzeraBotoia();
+				controladorPanelJatetxea.sakatuAtzeraBotoia();
 			}
 		};
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	private ActionListener listenerHasieraBotoia(ControladorPanelMenuJatetxea controladorPanelMenu) {
+	private ActionListener listenerHasieraBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenu.sakatuHasieraBotoia();
+				controladorPanelJatetxea.sakatuHasieraBotoia();
 			}
 		};
 	}

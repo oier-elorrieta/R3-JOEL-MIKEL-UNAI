@@ -10,6 +10,7 @@ import Vista.PanelEskaera;
 import Vista.Vista;
 
 public class ControladorPanelEskaera {
+
 	private Modelo modelo;
 	private Vista vista;
 	private Controlador controlador;
@@ -18,7 +19,7 @@ public class ControladorPanelEskaera {
 	public ControladorPanelEskaera(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
 		this.vista = vista;
-		this.controlador = controlador;	
+		this.controlador = controlador;
 	}
 
 	public void ikusiPanelPedidos() {
@@ -29,48 +30,47 @@ public class ControladorPanelEskaera {
 	public void sakatuLaburpeneraBotoia() {
 		this.controlador.nabegatzenPanelLaburpena();
 	}
-	
-	public void sakatuAtzeraBotoia() {
-		this.controlador.nabegatzenPanelLogin();
-		this.modelo.ezabatu();
-	}
-	
+
 	public String[] ComboBoxaSakatu() {
 		return this.modelo.produktuakJaso();
 	}
-	
-	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
-		return this.modelo.sartu(elikagaia, kopuru); 
-	} 
-	
+
+	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru) {
+		return this.modelo.sartu(elikagaia, kopuru);
+	}
+
 	public double diruTotala() {
 		return this.modelo.diruTotala();
 	}
-	
+
 	public ImageIcon argazkiaAukeratu(String aukera) {
 		return this.modelo.argazkiaAukeratu(aukera);
-	}  
+	}
+
 	public String gordeEskaera(String helbidea) {
 		return this.modelo.sartuEskaera(helbidea);
 	}
-	
+
 	public int gehituTransferentziaZenbakia() {
 		return this.modelo.gehituTransferentziaZenbakia();
 	}
-	
+
 	public void sakatuPanelTabernaBotoia() {
 		this.controlador.nabegatzenPanelTaberna();
+		this.modelo.ezabatu();
 	}
 
 	public void sakatuPanelKafetegiaBotoia() {
 		this.controlador.nabegatzenPanelKafetegia();
+		this.modelo.ezabatu();
 	}
 
 	public void sakatuPanelJatetxeBotoia() {
 		this.controlador.nabegatzenPanelJatetxea();
+		this.modelo.ezabatu();
 	}
-	
+
 	public String konprobatuLokala() {
 		return this.modelo.komprobatuLokala2();
-	} 
+	}
 }

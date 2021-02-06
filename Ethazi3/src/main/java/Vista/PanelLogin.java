@@ -105,35 +105,25 @@ public class PanelLogin extends JPanel {
 				String pasahitza = TF_Pasahitza.getText();
 				String erabiltzailea = TF_DNI.getText();
 				
-				String cc = controladorPanelLogin.konprobatuNIF(erabiltzailea);
+				String NIF = controladorPanelLogin.konprobatuNIF(erabiltzailea);
+				String LokalaMota = controladorPanelLogin.konprobatuLokala(NIF);
+				String ErroreaLogeatzean = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 				
-				String Tipo = controladorPanelLogin.konprobatuLokala(cc);
-				
-				String kk = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
-				
-				
-				
-				if (kk.equals("ondo")) {
-
-					if (Tipo.equals("Bar")) {
-
+				if (ErroreaLogeatzean.equals("EZ")) {
+					
+					if (LokalaMota.equals("Bar")) {
 						controladorPanelLogin.sakatuPanelTabernaBotoia();
-					} else if (Tipo.equals("Cafetería")) {
-
+					} else if (LokalaMota.equals("Cafetería")) {
 						controladorPanelLogin.sakatuPanelKafetegiaBotoia();
-					} else if (Tipo.equals("Restaurante")) {
-
+					} else if (LokalaMota.equals("Restaurante")) {
 						controladorPanelLogin.sakatuPanelJatetxeBotoia();
 					}
-
-					System.out.println(Tipo);
-				}
-
-				else {
-
+					
+					System.out.println(LokalaMota);
+					
+				} else {
 					controladorPanelLogin.ikusiPanelLogin();
 				}
-
 			}
 		};
 	}

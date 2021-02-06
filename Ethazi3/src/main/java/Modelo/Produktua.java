@@ -3,8 +3,9 @@ package Modelo;
 public class Produktua {
 	
 	private String izena;
-	private int data;
 	private String mota;
+	
+	private int data;
 	private int unitatePrezioa;
 	private int erosPrezioa;
 	

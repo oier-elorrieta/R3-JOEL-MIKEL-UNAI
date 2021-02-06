@@ -7,7 +7,7 @@ import Vista.PanelErregistratu;
 import Vista.Vista;
 
 public class ControladorPanelErregistratu {
-
+	
 	private Vista vista;
 	private Controlador controlador;
 	private Modelo modelo;
@@ -29,16 +29,16 @@ public class ControladorPanelErregistratu {
 		return this.modelo.sartuDatuak(izena,abizena,pasahitza, dni, nif);
 	}
 	
+	public void sakatuErregistratuBotoia() {
+		this.controlador.nabegatzenPanelLogin();
+	}
+	
 	public void sakatuAtzeraBotoia() {
 		this.controlador.nabegatzenPanelLogin();
 	}
 	
 	public void sakatuSarratuBotoia() {
 		this.controlador.itxi();
-	}
-	
-	public void sakatuErregistratuBotoia() {
-		this.controlador.nabegatzenPanelLogin();
 	}
 }
 

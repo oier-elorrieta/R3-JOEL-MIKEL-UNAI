@@ -51,7 +51,7 @@ public class PanelFaktura extends JPanel {
 	private String[] produktuak;
 
 	private int TransferentziaZenbakia;
-	
+
 	// *****************************************************************************************************************************************************************************************************
 
 	public PanelFaktura(ControladorPanelFaktura controladorPanelFaktura) {
@@ -86,7 +86,7 @@ public class PanelFaktura extends JPanel {
 		TF_Lokala.setColumns(10);
 		TF_Lokala.setEditable(false);
 		add(TF_Lokala);
-		
+
 		TransferentziaZenbakia = controladorPanelFaktura.gehituTransferentziaZenbakia();
 
 		TF_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
@@ -105,14 +105,14 @@ public class PanelFaktura extends JPanel {
 
 		TF_Izena = new JTextField("x");
 		TF_Izena.setHorizontalAlignment(SwingConstants.CENTER);
-		TF_Izena.setBounds(61, 173, 183, 20);	
-		TF_Izena.setColumns(10); 
+		TF_Izena.setBounds(61, 173, 183, 20);
+		TF_Izena.setColumns(10);
 		add(TF_Izena);
 
 		TF_Abizena = new JTextField("x");
 		TF_Abizena.setHorizontalAlignment(SwingConstants.CENTER);
-		TF_Abizena.setBounds(61, 204, 183, 20);		
-		TF_Abizena.setColumns(10); 
+		TF_Abizena.setBounds(61, 204, 183, 20);
+		TF_Abizena.setColumns(10);
 		add(TF_Abizena);
 
 		TF_NIF = new JTextField("x");
@@ -200,7 +200,6 @@ public class PanelFaktura extends JPanel {
 		CB_Produktoak.setBounds(30, 68, 214, 20);
 		add(CB_Produktoak);
 
-
 		produktuak = controladorPanelFaktura.ComboBoxaSakatu();
 		for (int i = 0; i < produktuak.length; i++) {
 			CB_Produktoak.addItem(produktuak[i]);
@@ -225,9 +224,9 @@ public class PanelFaktura extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.sakatuLaburpeneraBotoia();
-				String izena = TF_Izena.getText();
-				String abizena = TF_Abizena.getText();
-				controladorPanelFaktura.sartuFaktura(izena, abizena);
+				String Izena = TF_Izena.getText();
+				String Abizena = TF_Abizena.getText();
+				controladorPanelFaktura.sartuFaktura(Izena, Abizena);
 			}
 		};
 	}
@@ -237,13 +236,14 @@ public class PanelFaktura extends JPanel {
 	private ActionListener listenerAtzeraBotoia(ControladorPanelFaktura controladorPanelFaktura) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(controladorPanelFaktura.konprobatuLokala().equals("Restaurante")) {
+				if (controladorPanelFaktura.konprobatuLokala().equals("Restaurante")) {
 					controladorPanelFaktura.sakatuPanelJatetxeBotoia();
-				}else if(controladorPanelFaktura.konprobatuLokala().equals("Bar")) {
+				} else if (controladorPanelFaktura.konprobatuLokala().equals("Bar")) {
 					controladorPanelFaktura.sakatuPanelTabernaBotoia();
-				}else {
+				} else {
 					controladorPanelFaktura.sakatuPanelKafetegiaBotoia();
-				}			}
+				}
+			}
 		};
 	}
 
@@ -259,6 +259,7 @@ public class PanelFaktura extends JPanel {
 				}
 				NºUnidades.setValue("0");
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
+				
 				String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
 				TF_Totala.setText(diruTotala);
 			}

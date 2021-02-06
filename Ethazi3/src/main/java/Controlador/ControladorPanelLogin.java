@@ -38,10 +38,6 @@ public class ControladorPanelLogin {
 		this.controlador.nabegatzenPanelJatetxea();
 	}
 
-	public void sakatuAtzeraBotoia() {
-		this.controlador.itxi();
-	}
-
 	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
 		return this.modelo.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	} 
@@ -53,6 +49,11 @@ public class ControladorPanelLogin {
 	public String konprobatuNIF(String erabiltzailea) {
 		return this.modelo.konprobatuNIF(erabiltzailea);
 	}
+	
+	public void sakatuAtzeraBotoia() {
+		this.controlador.itxi();
+	}
+
 }
 
 

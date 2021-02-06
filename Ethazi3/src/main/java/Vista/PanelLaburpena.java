@@ -25,7 +25,7 @@ public class PanelLaburpena extends JPanel {
 	private JLabel LB_Direccion;
 	private JLabel LB_Total;
 	private JLabel LB_TotalCant;
-	private JLabel lblLaburpen;
+	private JLabel LB_Laburpen;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -80,10 +80,10 @@ public class PanelLaburpena extends JPanel {
 		LB_TotalCant.setBounds(285, 259, 145, 10);
 		add(LB_TotalCant);
 
-		lblLaburpen = new JLabel(emaitza);
-		lblLaburpen.setVerticalAlignment(SwingConstants.TOP);
-		lblLaburpen.setBounds(40, 108, 370, 143);
-		add(lblLaburpen);
+		LB_Laburpen = new JLabel(emaitza);
+		LB_Laburpen.setVerticalAlignment(SwingConstants.TOP);
+		LB_Laburpen.setBounds(40, 108, 370, 143);
+		add(LB_Laburpen);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 

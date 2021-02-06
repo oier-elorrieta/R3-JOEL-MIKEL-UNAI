@@ -25,15 +25,15 @@ public class PanelErregistratu extends JPanel {
 	private JTextField TF_Izena;
 	private JTextField TF_Abizena;
 	private JTextField TF_Pasahitza;
+	private JTextField TF_DNI;
+	private JTextField TF_NIF;
 	
 	private JLabel LB_Pasahitza;
 	private JLabel LB_DNI;
 	private JLabel LB_NIF;
 	private JLabel LB_Abizena;
 	private JLabel LB_Izena;
-	private JTextField TF_DNI;
-	private JTextField TF_NIF;
-
+	
 	// *****************************************************************************************************************************************************************************************************
 
 	public PanelErregistratu(ControladorPanelErregistratu controladorPanelErregistratu) {
@@ -88,6 +88,8 @@ public class PanelErregistratu extends JPanel {
 		TF_NIF.setBounds(250, 61, 190, 19);
 		add(TF_NIF);
 
+		// _______________________________________________________________________________________________________________________________________________________________________________
+		
 		LB_Pasahitza = new JLabel("Pasahitza:");
 		LB_Pasahitza.setBounds(10, 212, 190, 13);
 		add(LB_Pasahitza);
@@ -124,13 +126,13 @@ public class PanelErregistratu extends JPanel {
 	private ActionListener listenerErregistratuBotoia(ControladorPanelErregistratu controladorPanelErregistratu) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) { 
-				String izena = TF_Izena.getText();
-				String abizena = TF_Abizena.getText();
-				String pasahitza = TF_Pasahitza.getText();
-				String dni = TF_DNI.getText();
-				String nif = TF_NIF.getText();
+				String Izena = TF_Izena.getText();
+				String Abizena = TF_Abizena.getText();
+				String Pasahitza = TF_Pasahitza.getText();
+				String DNI = TF_DNI.getText();
+				String NIF = TF_NIF.getText();
 				try {
-					controladorPanelErregistratu.sakatuErregistratuBotoia(dni, izena, abizena, pasahitza, nif);
+					controladorPanelErregistratu.sakatuErregistratuBotoia(DNI, Izena, Abizena, Pasahitza, NIF);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} catch (ClassNotFoundException e) {

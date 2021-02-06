@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-
 public class metodoak {
 
 	public static Produktua[] objektuak() {
@@ -116,15 +115,15 @@ public class metodoak {
 	}
 
 	// *****************************************************************************************************************************************************************************************************
-	// ***********************************DATU BASE METODOAK************************************************************************************************************************************************
+	// ***********************************DATU_BASE_METODOAK************************************************************************************************************************************************
 	// *****************************************************************************************************************************************************************************************************
 
 	public static String sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif)
 			throws SQLException, ClassNotFoundException {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("INSERT INTO Usuario VALUES ('" + izena + "','" + abizena + "','" + pasahitza + "','" + dni
-				+ "','" + nif + "')");
+		
+		String query1 = ("INSERT INTO Usuario VALUES ('" + izena + "','" + abizena + "','" + pasahitza + "','" + dni+ "','" + nif + "')");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
@@ -134,6 +133,7 @@ public class metodoak {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
+		
 		return query1;
 	}
 
@@ -144,32 +144,34 @@ public class metodoak {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
 		String query1 = ("SELECT DNI,Contraseña FROM usuario where dni = '" + erabiltzailea + "'");
-		String kk = null;
+		String ErroreaLogeatzean = null;
+		
 		try {
 			ResultSet re;
 			PreparedStatement p;
 
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
+			
 			if (re.next()) {
 				System.out.println(re.getString("DNI"));
-				if (re.getString("DNI").equalsIgnoreCase(erabiltzailea)
-						&& re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
-					kk = "ondo";
-				} else if (re.getString("DNI").equalsIgnoreCase(erabiltzailea)
-						&& !re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
+				if (re.getString("DNI").equalsIgnoreCase(erabiltzailea) && re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
+					ErroreaLogeatzean = "EZ";
+				} else if (re.getString("DNI").equalsIgnoreCase(erabiltzailea) && !re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
 					JOptionPane.showMessageDialog(null, "Pasahitza ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
-					kk = "pasahitza";
+					ErroreaLogeatzean = "Bai, pasahitza txarto";
 				}
 			} else {
 				JOptionPane.showMessageDialog(null, "Ez zaude logeatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
-				kk = "erabiltzailea";
+				ErroreaLogeatzean = "Bai, erabiltzailea txarto";
 			}
+			
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-		return kk;
+		
+		return ErroreaLogeatzean;
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -189,7 +191,7 @@ public class metodoak {
 			re = p.executeQuery();
 			if (re.next()) {
 				NIF = re.getString("NIF");
-			} 
+			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
@@ -197,11 +199,13 @@ public class metodoak {
 		return NIF;
 	}
 
+	// *****************************************************************************************************************************************************************************************************
 
 	public static String sartuTicket(String NIF, double diruTotala, int TransferentziaZbk) {
+		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("INSERT INTO operaciones VALUES ('"+TransferentziaZbk+"', '2021-02-04','" + diruTotala + "','" + NIF + "')");
+		String query1 = ("INSERT INTO operaciones VALUES ('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
 
 		try {
 			Statement s;
@@ -212,16 +216,17 @@ public class metodoak {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
+		
 		return query1;
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
 	public static String komprobatuLokala(String NIF) {
+		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("select Tipo from local where NIF = '"+NIF+"';");
-
+		String query1 = ("select Tipo from local where NIF = '" + NIF + "';");
 		String Tipo = null;
 
 		try {
@@ -232,62 +237,67 @@ public class metodoak {
 			re = p.executeQuery();
 			if (re.next()) {
 				Tipo = re.getString("Tipo");
-			} 
+			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
+		
 		return Tipo;
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
 	public static String sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk) {
+		
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		
-		String query1 = ("INSERT INTO operaciones VALUES ('"+TransferentziaZbk+"', '2021-02-04','" + diruTotala + "','" + NIF + "')");
-		
-		String query2 = ("INSERT INTO pedidos VALUES ('"+TransferentziaZbk+"', '"+helbidea+"')");
 
+		String query1 = ("INSERT INTO operaciones VALUES ('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
 
+		String query2 = ("INSERT INTO pedidos VALUES ('" + TransferentziaZbk + "', '" + helbidea + "')");
 
 		try {
-			Statement s;
-			s = konekzioa.createStatement();
-			s.executeUpdate(query1); 
-			Statement st;
-			st = konekzioa.createStatement();
-			st.executeUpdate(query2); 
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
-			e.printStackTrace();
-		}
-		return query1;
-	}
-
-	public static String sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
-		
-		String query1 = ("INSERT INTO operaciones VALUES ('"+TransferentziaZbk+"', '2021-02-04','" + diruTotala + "','" + NIF + "')");
-
-		String query2 = ("INSERT INTO niffactura VALUES ('"+TransferentziaZbk+"', '"+izena+"', '"+abizena+"')");
-		
-		//String query3 = ("INSERT INTO factura VALUES ('"+TransferentziaZbk+"', '"+NIF+"');");
-
-		try { 
 			Statement s;
 			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
 			Statement st;
 			st = konekzioa.createStatement();
 			st.executeUpdate(query2);
-			/*Statement smt;
-			smt = konekzioa.createStatement();
-			smt.executeUpdate(query3);*/
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
+
+		return query1;
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	public static String sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk) {
+		
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		String query1 = ("INSERT INTO operaciones VALUES ('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
+
+		String query2 = ("INSERT INTO niffactura VALUES ('" + TransferentziaZbk + "', '" + izena + "', '" + abizena+ "')");
+
+		// String query3 = ("INSERT INTO factura VALUES ('"+TransferentziaZbk+"','"+NIF+"');");
+
+		try {
+			Statement s;
+			s = konekzioa.createStatement();
+			s.executeUpdate(query1);
+			Statement st;
+			st = konekzioa.createStatement();
+			st.executeUpdate(query2);
+			/*
+			 * Statement smt; smt = konekzioa.createStatement(); smt.executeUpdate(query3);
+			 */
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+
 		return query1;
 	}
 }

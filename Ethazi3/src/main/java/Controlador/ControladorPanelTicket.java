@@ -62,14 +62,17 @@ public class ControladorPanelTicket {
 	
 	public void sakatuPanelTabernaBotoia() {
 		this.controlador.nabegatzenPanelTaberna();
+		this.modelo.ezabatu();
 	}
 
 	public void sakatuPanelKafetegiaBotoia() {
 		this.controlador.nabegatzenPanelKafetegia();
+		this.modelo.ezabatu();
 	}
 
 	public void sakatuPanelJatetxeBotoia() {
 		this.controlador.nabegatzenPanelJatetxea();
+		this.modelo.ezabatu();
 	}
 	
 	public String konprobatuLokala() {
