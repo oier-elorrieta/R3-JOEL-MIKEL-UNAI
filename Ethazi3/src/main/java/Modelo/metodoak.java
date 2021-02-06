@@ -88,7 +88,8 @@ public class metodoak {
 	// *****************************************************************************************************************************************************************************************************
 
 	public static int gehituTransferentziaZenbakia(int zbk) {
-		return zbk++;
+		zbk++;
+		return zbk;
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -279,9 +280,9 @@ public class metodoak {
 
 		String query1 = ("INSERT INTO operaciones VALUES ('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
 
-		String query2 = ("INSERT INTO niffactura VALUES ('" + TransferentziaZbk + "', '" + izena + "', '" + abizena+ "')");
+		String query2 = ("INSERT INTO niffactura VALUES ('" + NIF + "', '" + izena + "', '" + abizena+ "')");
 
-		// String query3 = ("INSERT INTO factura VALUES ('"+TransferentziaZbk+"','"+NIF+"');");
+		String query3 = ("INSERT INTO factura VALUES ('"+TransferentziaZbk+"','"+NIF+"');");
 
 		try {
 			Statement s;
@@ -290,9 +291,9 @@ public class metodoak {
 			Statement st;
 			st = konekzioa.createStatement();
 			st.executeUpdate(query2);
-			/*
-			 * Statement smt; smt = konekzioa.createStatement(); smt.executeUpdate(query3);
-			 */
+			Statement smt; 
+			smt = konekzioa.createStatement();
+			smt.executeUpdate(query3);			
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
