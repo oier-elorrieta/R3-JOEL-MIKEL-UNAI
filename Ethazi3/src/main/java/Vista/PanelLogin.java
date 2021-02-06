@@ -104,10 +104,13 @@ public class PanelLogin extends JPanel {
 				
 				String pasahitza = TF_Pasahitza.getText();
 				String erabiltzailea = TF_DNI.getText();
-
-				String Tipo = controladorPanelLogin.konprobatuLokala(erabiltzailea);
+				
+				String cc = controladorPanelLogin.konprobatuNIF(erabiltzailea);
+				
+				String Tipo = controladorPanelLogin.konprobatuLokala(cc);
+				
 				String kk = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
-				controladorPanelLogin.konprobatuNIF(erabiltzailea);
+				
 				
 				
 				if (kk.equals("ondo")) {

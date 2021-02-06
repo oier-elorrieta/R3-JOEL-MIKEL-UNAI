@@ -189,7 +189,13 @@ public class PanelTicket extends JPanel {
 	private ActionListener listenerAtzeraBotoia(ControladorPanelTicket ControladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ControladorPanelTicket.sakatuAtzeraBotoia();
+				if(controladorPanelTicket.konprobatuLokala().equals("Restaurante")) {
+					controladorPanelTicket.sakatuPanelJatetxeBotoia();
+				}else if(controladorPanelTicket.konprobatuLokala().equals("Bar")) {
+					controladorPanelTicket.sakatuPanelTabernaBotoia();
+				}else {
+					controladorPanelTicket.sakatuPanelKafetegiaBotoia();
+				}
 			}
 		};
 	}

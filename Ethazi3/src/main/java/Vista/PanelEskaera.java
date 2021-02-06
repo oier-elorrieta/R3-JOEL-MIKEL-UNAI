@@ -46,10 +46,8 @@ public class PanelEskaera extends JPanel {
 	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
 	private JSpinner NºUnidades;
 	private String[] produktuak;
-	
-	private int TransferentziaZenbakia;
 
-	
+	private int TransferentziaZenbakia;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -85,9 +83,9 @@ public class PanelEskaera extends JPanel {
 		TF_Lokala.setColumns(10);
 		TF_Lokala.setEditable(false);
 		add(TF_Lokala);
-		
+
 		TransferentziaZenbakia = controladorPanelEskaera.gehituTransferentziaZenbakia();
-		
+
 		TF_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
 		TF_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_TransferentziaZenbakia.setBounds(226, 36, 75, 20);
@@ -97,14 +95,14 @@ public class PanelEskaera extends JPanel {
 
 		TF_Totala = new JTextField("x");
 		TF_Totala.setHorizontalAlignment(SwingConstants.CENTER);
-		TF_Totala.setBounds(61, 267, 183, 20);	
+		TF_Totala.setBounds(61, 267, 183, 20);
 		TF_Totala.setColumns(10);
 		TF_Totala.setEditable(false);
 		add(TF_Totala);
 
 		TF_Helbide = new JTextField("");
 		TF_Helbide.setHorizontalAlignment(SwingConstants.CENTER);
-		TF_Helbide.setBounds(87, 233, 157, 20);	
+		TF_Helbide.setBounds(87, 233, 157, 20);
 		TF_Helbide.setColumns(10);
 		TF_Helbide.setEnabled(false);
 		add(TF_Helbide);
@@ -163,7 +161,7 @@ public class PanelEskaera extends JPanel {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		final String numbers[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+		final String numbers[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
 		SpinnerModel model1 = new SpinnerListModel(numbers);
 
 		NºUnidades = new JSpinner(model1);
@@ -198,7 +196,7 @@ public class PanelEskaera extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelEskaera.sakatuLaburpeneraBotoia();
-				controladorPanelEskaera.gordeEskaera(TF_Helbide.getText());				
+				controladorPanelEskaera.gordeEskaera(TF_Helbide.getText());
 			}
 		};
 	}
@@ -208,7 +206,13 @@ public class PanelEskaera extends JPanel {
 	private ActionListener listenerAtzeraBotoia(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelEskaera.sakatuAtzeraBotoia();
+				if(controladorPanelEskaera.konprobatuLokala().equals("Restaurante")) {
+					controladorPanelEskaera.sakatuPanelJatetxeBotoia();
+				}else if(controladorPanelEskaera.konprobatuLokala().equals("Bar")) {
+					controladorPanelEskaera.sakatuPanelTabernaBotoia();
+				}else {
+					controladorPanelEskaera.sakatuPanelKafetegiaBotoia();
+				}
 			}
 		};
 	}

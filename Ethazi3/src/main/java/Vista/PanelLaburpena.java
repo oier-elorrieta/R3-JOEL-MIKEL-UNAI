@@ -3,15 +3,15 @@ package Vista;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import Controlador.ControladorPanelLaburpena; 
+import Controlador.ControladorPanelLaburpena;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener; 
+import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
-public class PanelLaburpena extends JPanel{
+public class PanelLaburpena extends JPanel {
 
 	private ControladorPanelLaburpena controladorPanelLaburpena;
 
@@ -36,7 +36,7 @@ public class PanelLaburpena extends JPanel{
 		setLayout(null);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
 		String emaitza = controladorPanelLaburpena.pantailaratu();
 		double diruTotala = controladorPanelLaburpena.diruTotala();
 
@@ -75,7 +75,7 @@ public class PanelLaburpena extends JPanel{
 		LB_Total.setBounds(10, 259, 155, 20);
 		add(LB_Total);
 
-		LB_TotalCant = new JLabel(diruTotala+"€");
+		LB_TotalCant = new JLabel(diruTotala + "€");
 		LB_TotalCant.setHorizontalAlignment(SwingConstants.RIGHT);
 		LB_TotalCant.setBounds(285, 259, 145, 10);
 		add(LB_TotalCant);
@@ -89,7 +89,7 @@ public class PanelLaburpena extends JPanel{
 
 		btnSegi = new JButton("\u2714");
 		btnSegi.setBounds(415, 0, 44, 23);
-		add(btnSegi);		
+		add(btnSegi);
 
 		initializeEvents();
 	}
@@ -105,11 +105,15 @@ public class PanelLaburpena extends JPanel{
 	private ActionListener listenerBotonHasierara(ControladorPanelLaburpena controladorPanelLaburpena) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					controladorPanelLaburpena.accionadoBottonMostrarPanelMenu();
-				} catch (InterruptedException e) { 
-					e.printStackTrace();
+
+				if (controladorPanelLaburpena.konprobatuLokala().equals("Restaurante")) {
+					controladorPanelLaburpena.sakatuPanelJatetxeBotoia();
+				} else if (controladorPanelLaburpena.konprobatuLokala().equals("Bar")) {
+					controladorPanelLaburpena.sakatuPanelTabernaBotoia();
+				} else {
+					controladorPanelLaburpena.sakatuPanelKafetegiaBotoia();
 				}
+
 			}
 		};
 	}

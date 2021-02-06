@@ -59,4 +59,20 @@ public class ControladorPanelFaktura {
 	public int gehituTransferentziaZenbakia() {
 		return this.modelo.gehituTransferentziaZenbakia();
 	}
+	
+	public void sakatuPanelTabernaBotoia() {
+		this.controlador.nabegatzenPanelTaberna();
+	}
+
+	public void sakatuPanelKafetegiaBotoia() {
+		this.controlador.nabegatzenPanelKafetegia();
+	}
+
+	public void sakatuPanelJatetxeBotoia() {
+		this.controlador.nabegatzenPanelJatetxea();
+	}
+	
+	public String konprobatuLokala() {
+		return this.modelo.komprobatuLokala2();
+	}
 }

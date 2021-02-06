@@ -61,6 +61,10 @@ public class Modelo {
 		return metodoak.komprobatuLokala(erabiltzailea);
 	}
 	
+	public String komprobatuLokala2() {
+		return metodoak.komprobatuLokala(NIF);
+	}
+	
 	public String sartuTicket() {
 		return metodoak.sartuTicket(NIF, diruTotala(), TransferentziaZbk);
 	}

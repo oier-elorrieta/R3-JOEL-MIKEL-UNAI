@@ -237,8 +237,13 @@ public class PanelFaktura extends JPanel {
 	private ActionListener listenerAtzeraBotoia(ControladorPanelFaktura controladorPanelFaktura) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelFaktura.sakatuAtzeraBotoia();
-			}
+				if(controladorPanelFaktura.konprobatuLokala().equals("Restaurante")) {
+					controladorPanelFaktura.sakatuPanelJatetxeBotoia();
+				}else if(controladorPanelFaktura.konprobatuLokala().equals("Bar")) {
+					controladorPanelFaktura.sakatuPanelTabernaBotoia();
+				}else {
+					controladorPanelFaktura.sakatuPanelKafetegiaBotoia();
+				}			}
 		};
 	}
 
