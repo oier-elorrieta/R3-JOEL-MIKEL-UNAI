@@ -49,16 +49,12 @@ public class ControladorPanelEskaera {
 	
 	public ImageIcon argazkiaAukeratu(String aukera) {
 		return this.modelo.argazkiaAukeratu(aukera);
-	} 
-	public String gordeTicketa() {
-		return this.modelo.sartuTicket();
-	}
-
-	public String gordeEskaera() {
-		return this.modelo.sartuEskaera();
+	}  
+	public String gordeEskaera(String helbidea) {
+		return this.modelo.sartuEskaera(helbidea);
 	}
 	
-	public String gehituTransferentziaZenbakia(String zenbakia) {
-		return this.modelo.gehituTransferentziaZenbakia(zenbakia);
+	public int gehituTransferentziaZenbakia() {
+		return this.modelo.gehituTransferentziaZenbakia();
 	}
 }

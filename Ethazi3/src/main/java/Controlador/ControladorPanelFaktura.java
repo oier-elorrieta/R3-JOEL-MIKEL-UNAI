@@ -52,7 +52,11 @@ public class ControladorPanelFaktura {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 	
-	public String gehituTransferentziaZenbakia(String zenbakia) {
-		return this.modelo.gehituTransferentziaZenbakia(zenbakia);
+	public String sartuFaktura(String izena, String abizena) {
+		return this.modelo.sartuFaktura(izena, abizena);
+	} 
+	
+	public int gehituTransferentziaZenbakia() {
+		return this.modelo.gehituTransferentziaZenbakia();
 	}
 }

@@ -36,9 +36,12 @@ public class Modelo {
 	public ArrayList<Karritoa> kk(ArrayList<Karritoa> karroa) {
 		return karroa;
 	}
-
-	public String gehituTransferentziaZenbakia(String zenbakia) {
-		return metodoak.gehituTransferentziaZenbakia(zenbakia);
+	
+	private int TransferentziaZbk = 1;
+	
+	public int gehituTransferentziaZenbakia() {
+		TransferentziaZbk =  metodoak.gehituTransferentziaZenbakia(TransferentziaZbk);
+		return TransferentziaZbk;
 	}
 
 	// *****************************************************************************************************************************************************************
@@ -59,12 +62,17 @@ public class Modelo {
 	}
 	
 	public String sartuTicket() {
-		return metodoak.sartuTicket(NIF, diruTotala());
+		return metodoak.sartuTicket(NIF, diruTotala(), TransferentziaZbk);
 	}
 
-	public String sartuEskaera() {
-		return metodoak.sartuEskaera(NIF, diruTotala());
+	public String sartuEskaera(String helbidea) {
+		return metodoak.sartuEskaera(NIF, diruTotala(), helbidea, TransferentziaZbk);
 	}
+	
+	public String sartuFaktura(String izena, String abizena) {
+		return metodoak.sartuFaktura(NIF, izena, abizena, diruTotala(), TransferentziaZbk);
+	} 
+	
 	public String konprobatuNIF(String erabiltzailea) {
 		NIF = metodoak.komprobatuNIF(erabiltzailea);
 		return NIF;

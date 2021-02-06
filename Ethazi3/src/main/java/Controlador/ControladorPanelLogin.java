@@ -1,7 +1,6 @@
 package Controlador;
 
 import Modelo.Modelo;
-import Modelo.metodoak;
 import Vista.PanelLogin; 
 import Vista.Vista;
 

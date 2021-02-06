@@ -50,7 +50,7 @@ public class PanelFaktura extends JPanel {
 	private JSpinner NºUnidades;
 	private String[] produktuak;
 
-	private String Zenbakia = "0";
+	private int TransferentziaZenbakia;
 	
 	// *****************************************************************************************************************************************************************************************************
 
@@ -86,8 +86,10 @@ public class PanelFaktura extends JPanel {
 		TF_Lokala.setColumns(10);
 		TF_Lokala.setEditable(false);
 		add(TF_Lokala);
+		
+		TransferentziaZenbakia = controladorPanelFaktura.gehituTransferentziaZenbakia();
 
-		TF_TransferentziaZenbakia = new JTextField(Zenbakia);
+		TF_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
 		TF_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_TransferentziaZenbakia.setBounds(226, 36, 75, 20);
 		TF_TransferentziaZenbakia.setColumns(10);
@@ -104,15 +106,13 @@ public class PanelFaktura extends JPanel {
 		TF_Izena = new JTextField("x");
 		TF_Izena.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Izena.setBounds(61, 173, 183, 20);	
-		TF_Izena.setColumns(10);
-		TF_Izena.setEditable(false);
+		TF_Izena.setColumns(10); 
 		add(TF_Izena);
 
 		TF_Abizena = new JTextField("x");
 		TF_Abizena.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Abizena.setBounds(61, 204, 183, 20);		
-		TF_Abizena.setColumns(10);
-		TF_Abizena.setEditable(false);
+		TF_Abizena.setColumns(10); 
 		add(TF_Abizena);
 
 		TF_NIF = new JTextField("x");
@@ -225,7 +225,9 @@ public class PanelFaktura extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.sakatuLaburpeneraBotoia();
-				controladorPanelFaktura.gehituTransferentziaZenbakia(Zenbakia);
+				String izena = TF_Izena.getText();
+				String abizena = TF_Abizena.getText();
+				controladorPanelFaktura.sartuFaktura(izena, abizena);
 			}
 		};
 	}

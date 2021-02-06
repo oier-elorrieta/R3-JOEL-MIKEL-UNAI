@@ -56,7 +56,7 @@ public class ControladorPanelTicket {
 		return this.modelo.sartuTicket();
 	}
 	
-	public String gehituTransferentziaZenbakia(String zenbakia) {
-		return this.modelo.gehituTransferentziaZenbakia(zenbakia);
+	public int gehituTransferentziaZenbakia() {
+		return this.modelo.gehituTransferentziaZenbakia();
 	}
 }
