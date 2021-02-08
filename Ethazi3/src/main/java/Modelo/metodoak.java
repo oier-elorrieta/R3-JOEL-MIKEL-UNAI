@@ -306,6 +306,7 @@ public class metodoak {
 	// *****************************************************************************************************************************************************************************************************
 
 		public static String komprobatuLokalarenIzena(String NIF) {
+			
 			Connection konekzioa = BBDDKonexioa.getConexion();
 
 			String query1 = ("SELECT nombre FROM local where NIF = '" + NIF + "'");

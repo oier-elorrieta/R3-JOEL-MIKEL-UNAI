@@ -49,7 +49,6 @@ public class Modelo {
 	private String NIF = null;
 	
 	public String sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) throws ClassNotFoundException, SQLException {
-
 		return metodoak.sartuDatuak(izena, abizena, pasahitza, dni, nif);
 	}
 
