@@ -73,7 +73,8 @@ public class PanelTicket extends JPanel {
 		TF_Fecha.setEditable(false);
 		add(TF_Fecha);
 
-		TF_Lokala = new JTextField("x");
+		TF_Lokala = new JTextField(controladorPanelTicket.komprobatuLokalarenIzena());
+		TF_Lokala.setFont(new Font("Tahoma", Font.ITALIC, 9));
 		TF_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Lokala.setBounds(61, 36, 75, 20);
 		TF_Lokala.setColumns(10);

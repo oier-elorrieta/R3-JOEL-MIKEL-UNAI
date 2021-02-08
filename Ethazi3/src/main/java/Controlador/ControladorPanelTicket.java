@@ -78,4 +78,8 @@ public class ControladorPanelTicket {
 	public String konprobatuLokala() {
 		return this.modelo.komprobatuLokala2();
 	}
+	
+	public String komprobatuLokalarenIzena() {
+		return this.modelo.komprobatuLokalarenIzena();
+	}
 }
