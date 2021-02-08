@@ -65,16 +65,16 @@ public class Modelo {
 		return metodoak.komprobatuLokala(NIF);
 	}
 	
-	public String sartuTicket() {
-		return metodoak.sartuTicket(NIF, diruTotala(), TransferentziaZbk);
+	public void sartuTicket() {
+		metodoak.sartuTicket(NIF, diruTotala(), TransferentziaZbk);
 	}
 
-	public String sartuEskaera(String helbidea) {
-		return metodoak.sartuEskaera(NIF, diruTotala(), helbidea, TransferentziaZbk);
+	public void sartuEskaera(String helbidea) {
+		metodoak.sartuEskaera(NIF, diruTotala(), helbidea, TransferentziaZbk);
 	}
 	
-	public String sartuFaktura(String izena, String abizena) {
-		return metodoak.sartuFaktura(NIF, izena, abizena, diruTotala(), TransferentziaZbk);
+	public void sartuFaktura(String izena, String abizena) {
+		metodoak.sartuFaktura(NIF, izena, abizena, diruTotala(), TransferentziaZbk);
 	} 
 	
 	public String konprobatuNIF(String erabiltzailea) {

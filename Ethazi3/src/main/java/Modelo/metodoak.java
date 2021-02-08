@@ -203,7 +203,7 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String sartuTicket(String NIF, double diruTotala, int TransferentziaZbk) {
+	public static void sartuTicket(String NIF, double diruTotala, int TransferentziaZbk) {
 		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
@@ -217,9 +217,7 @@ public class metodoak {
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
-		}
-		
-		return query1;
+		} 
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -250,7 +248,7 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk) {
+	public static void sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk) {
 		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
@@ -269,13 +267,11 @@ public class metodoak {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-
-		return query1;
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk) {
+	public static void sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk) {
 		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
@@ -298,9 +294,7 @@ public class metodoak {
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
-		}
-
-		return query1;
+		} 
 	}
 	
 	// *****************************************************************************************************************************************************************************************************

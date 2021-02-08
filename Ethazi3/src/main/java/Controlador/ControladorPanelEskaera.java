@@ -47,8 +47,8 @@ public class ControladorPanelEskaera {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 
-	public String gordeEskaera(String helbidea) {
-		return this.modelo.sartuEskaera(helbidea);
+	public void gordeEskaera(String helbidea) {
+		this.modelo.sartuEskaera(helbidea);
 	}
 
 	public int gehituTransferentziaZenbakia() {

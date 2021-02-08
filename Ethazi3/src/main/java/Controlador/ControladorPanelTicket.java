@@ -52,8 +52,8 @@ public class ControladorPanelTicket {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 	
-	public String gordeTicket() {
-		return this.modelo.sartuTicket();
+	public void gordeTicket() {
+		this.modelo.sartuTicket();
 	}
 	
 	public int gehituTransferentziaZenbakia() {

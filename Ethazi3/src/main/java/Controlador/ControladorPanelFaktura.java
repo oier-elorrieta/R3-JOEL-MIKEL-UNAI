@@ -47,8 +47,8 @@ public class ControladorPanelFaktura {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 	
-	public String sartuFaktura(String izena, String abizena) {
-		return this.modelo.sartuFaktura(izena, abizena);
+	public void sartuFaktura(String izena, String abizena) {
+		this.modelo.sartuFaktura(izena, abizena);
 	} 
 	
 	public int gehituTransferentziaZenbakia() {
