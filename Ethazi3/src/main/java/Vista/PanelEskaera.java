@@ -77,7 +77,8 @@ public class PanelEskaera extends JPanel {
 		TF_Fecha.setEditable(false);
 		add(TF_Fecha);
 
-		TF_Lokala = new JTextField("x");
+		TF_Lokala = new JTextField(controladorPanelEskaera.komprobatuLokalarenIzena());
+		TF_Lokala.setFont(new Font("Tahoma", Font.ITALIC, 9));
 		TF_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Lokala.setBounds(61, 36, 75, 20);
 		TF_Lokala.setColumns(10);
@@ -93,7 +94,7 @@ public class PanelEskaera extends JPanel {
 		TF_TransferentziaZenbakia.setEditable(false);
 		add(TF_TransferentziaZenbakia);
 
-		TF_Totala = new JTextField("x");
+		TF_Totala = new JTextField("0.0");
 		TF_Totala.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Totala.setBounds(61, 267, 183, 20);
 		TF_Totala.setColumns(10);

@@ -80,7 +80,8 @@ public class PanelFaktura extends JPanel {
 		TF_Fecha.setEditable(false);
 		add(TF_Fecha);
 
-		TF_Lokala = new JTextField("x");
+		TF_Lokala = new JTextField(controladorPanelFaktura.komprobatuLokalarenIzena());
+		TF_Lokala.setFont(new Font("Tahoma", Font.ITALIC, 9));
 		TF_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Lokala.setBounds(61, 36, 75, 20);
 		TF_Lokala.setColumns(10);
@@ -96,7 +97,7 @@ public class PanelFaktura extends JPanel {
 		TF_TransferentziaZenbakia.setEditable(false);
 		add(TF_TransferentziaZenbakia);
 
-		TF_Totala = new JTextField("x");
+		TF_Totala = new JTextField("0.0");
 		TF_Totala.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_Totala.setBounds(61, 267, 183, 20);
 		TF_Totala.setColumns(10);
@@ -224,9 +225,7 @@ public class PanelFaktura extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.sakatuLaburpeneraBotoia();
-				String Izena = TF_Izena.getText();
-				String Abizena = TF_Abizena.getText();
-				controladorPanelFaktura.sartuFaktura(Izena, Abizena);
+				controladorPanelFaktura.sartuFaktura(TF_Izena.getText(),TF_Abizena.getText());
 				controladorPanelFaktura.gehituTransferentziaZenbakia();
 			}
 		};

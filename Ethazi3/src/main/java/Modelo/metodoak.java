@@ -119,7 +119,7 @@ public class metodoak {
 	// ***********************************DATU_BASE_METODOAK************************************************************************************************************************************************
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif)
+	public static void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif)
 			throws SQLException, ClassNotFoundException {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
@@ -134,8 +134,6 @@ public class metodoak {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-		
-		return query1;
 	}
 
 	// *****************************************************************************************************************************************************************************************************

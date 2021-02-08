@@ -52,8 +52,8 @@ public class Modelo {
 
 	private String NIF = null;
 
-	public String sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) throws ClassNotFoundException, SQLException {
-		return metodoak.sartuDatuak(izena, abizena, pasahitza, dni, nif);
+	public void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) throws ClassNotFoundException, SQLException {
+		metodoak.sartuDatuak(izena, abizena, pasahitza, dni, nif);
 	}
 
 	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
