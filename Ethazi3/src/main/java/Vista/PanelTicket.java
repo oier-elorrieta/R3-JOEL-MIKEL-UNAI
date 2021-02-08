@@ -44,7 +44,7 @@ public class PanelTicket extends JPanel {
 	private String[] produktuak;
 
 	private int TransferentziaZenbakia;
-	
+
 	// *****************************************************************************************************************************************************************************************************
 
 	public PanelTicket(ControladorPanelTicket controladorPanelTicket) {
@@ -80,8 +80,8 @@ public class PanelTicket extends JPanel {
 		TF_Lokala.setEditable(false);
 		add(TF_Lokala);
 
-		TransferentziaZenbakia = controladorPanelTicket.gehituTransferentziaZenbakia();
-		
+		TransferentziaZenbakia = controladorPanelTicket.TransferentziaZenbakia();
+
 		TF_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
 		TF_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_TransferentziaZenbakia.setBounds(226, 36, 75, 20);
@@ -180,6 +180,7 @@ public class PanelTicket extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorPanelTicket.sakatuLaburpeneraBotoia();
 				controladorPanelTicket.gordeTicket();
+				controladorPanelTicket.gehituTransferentziaZenbakia();
 			}
 		};
 	}

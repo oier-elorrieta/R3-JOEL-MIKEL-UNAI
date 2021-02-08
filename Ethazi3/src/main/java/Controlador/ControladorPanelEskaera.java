@@ -50,6 +50,10 @@ public class ControladorPanelEskaera {
 	public void gordeEskaera(String helbidea) {
 		this.modelo.sartuEskaera(helbidea);
 	}
+	
+	public int TransferentziaZenbakia() {
+		return this.modelo.TranferentziaZbk();
+	}
 
 	public int gehituTransferentziaZenbakia() {
 		return this.modelo.gehituTransferentziaZenbakia();

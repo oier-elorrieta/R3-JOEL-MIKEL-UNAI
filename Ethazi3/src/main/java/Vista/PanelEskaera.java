@@ -84,7 +84,7 @@ public class PanelEskaera extends JPanel {
 		TF_Lokala.setEditable(false);
 		add(TF_Lokala);
 
-		TransferentziaZenbakia = controladorPanelEskaera.gehituTransferentziaZenbakia();
+		TransferentziaZenbakia = controladorPanelEskaera.TransferentziaZenbakia();
 
 		TF_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
 		TF_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
@@ -197,6 +197,7 @@ public class PanelEskaera extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelEskaera.sakatuLaburpeneraBotoia();
 				controladorPanelEskaera.gordeEskaera(TF_Helbide.getText());
+				controladorPanelEskaera.gehituTransferentziaZenbakia();
 			}
 		};
 	}

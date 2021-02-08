@@ -87,7 +87,7 @@ public class PanelFaktura extends JPanel {
 		TF_Lokala.setEditable(false);
 		add(TF_Lokala);
 
-		TransferentziaZenbakia = controladorPanelFaktura.gehituTransferentziaZenbakia();
+		TransferentziaZenbakia = controladorPanelFaktura.TransferentziaZenbakia();
 
 		TF_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
 		TF_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
@@ -227,6 +227,7 @@ public class PanelFaktura extends JPanel {
 				String Izena = TF_Izena.getText();
 				String Abizena = TF_Abizena.getText();
 				controladorPanelFaktura.sartuFaktura(Izena, Abizena);
+				controladorPanelFaktura.gehituTransferentziaZenbakia();
 			}
 		};
 	}
