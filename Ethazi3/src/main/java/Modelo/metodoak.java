@@ -142,7 +142,7 @@ public class metodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("SELECT DNI,Contraseña FROM usuario where dni = '" + erabiltzailea + "'");
+		String query1 = (Kontsultak.SelectErabiltzailea + "'" + erabiltzailea + "'");
 		String ErroreaLogeatzean = null;
 		
 		try {
@@ -179,7 +179,7 @@ public class metodoak {
 		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("SELECT NIF FROM usuario where dni = '" + erabiltzailea + "'");
+		String query1 = (Kontsultak.SelectNIF + "'" + erabiltzailea + "'");
 
 		String NIF = null;
 
@@ -205,7 +205,7 @@ public class metodoak {
 		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("INSERT INTO operaciones VALUES ('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.InsertOperaciones +"('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
 
 		try {
 			Statement s;
@@ -224,7 +224,7 @@ public class metodoak {
 		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("select Tipo from local where NIF = '" + NIF + "';");
+		String query1 = (Kontsultak.SelectTipoLokala + "'" + NIF + "';");
 		String Tipo = null;
 
 		try {
@@ -250,9 +250,9 @@ public class metodoak {
 		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("INSERT INTO operaciones VALUES ('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.InsertOperaciones + "('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
 
-		String query2 = ("INSERT INTO pedidos VALUES ('" + TransferentziaZbk + "', '" + helbidea + "')");
+		String query2 = (Kontsultak.InsertEskaera + "('" + TransferentziaZbk + "', '" + helbidea + "')");
 
 		try {
 			Statement s;
@@ -273,11 +273,11 @@ public class metodoak {
 		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("INSERT INTO operaciones VALUES ('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.InsertOperaciones + "('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
 
-		String query2 = ("INSERT INTO niffactura VALUES ('" + NIF + "', '" + izena + "', '" + abizena+ "')");
+		String query2 = (Kontsultak.InsertNifFaktura + "('" + NIF + "', '" + izena + "', '" + abizena+ "')");
 
-		String query3 = ("INSERT INTO factura VALUES ('"+TransferentziaZbk+"','"+NIF+"');");
+		String query3 = (Kontsultak.InsertFactura + "('"+TransferentziaZbk+"','"+NIF+"');");
 
 		try {
 			Statement s;
@@ -301,7 +301,7 @@ public class metodoak {
 			
 			Connection konekzioa = BBDDKonexioa.getConexion();
 
-			String query1 = ("SELECT nombre FROM local where NIF = '" + NIF + "'");
+			String query1 = (Kontsultak.SelectLokalarenIzena + "'" + NIF + "'");
 
 			String LokalarenIzena = null;
 

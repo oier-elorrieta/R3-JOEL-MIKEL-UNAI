@@ -153,6 +153,7 @@ public class PanelEskaera extends JPanel {
 		btnSegi = new JButton("\u2714\uFE0F");
 		btnSegi.setHorizontalAlignment(SwingConstants.TRAILING);
 		btnSegi.setBounds(388, 232, 57, 23);
+		btnSegi.setEnabled(false);
 		add(btnSegi);
 
 		RB_Helbide = new JRadioButton("Helbide");
@@ -230,6 +231,8 @@ public class PanelEskaera extends JPanel {
 					controladorPanelEskaera.sartu(aukera, kantitatea);
 				}
 				NºUnidades.setValue("0");
+				btnSegi.setEnabled(false);
+				CB_Produktoak.setSelectedItem(null);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				String diruTotala = String.valueOf(controladorPanelEskaera.diruTotala());
 				TF_Totala.setText(diruTotala);
@@ -244,6 +247,9 @@ public class PanelEskaera extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
 				ImageIcon argazkia = (ImageIcon) controladorPanelEskaera.argazkiaAukeratu(aukera);
+				if (CB_Produktoak.getSelectedItem() != null) { 
+					btnSegi.setEnabled(true);	
+				}
 				argazkiak.setIcon(argazkia);
 			}
 		};

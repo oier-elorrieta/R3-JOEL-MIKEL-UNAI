@@ -81,4 +81,8 @@ public class ControladorPanelFaktura {
 	public String komprobatuLokalarenIzena() {
 		return this.modelo.komprobatuLokalarenIzena();
 	}
+	
+	public String komprobatuNIF() {
+		return this.modelo.NIF();
+	}
 }

@@ -33,10 +33,6 @@ public class Modelo {
 		return metodoak.argazkiaAukeratu(aukera);
 	}
 
-	public ArrayList<Karritoa> kk(ArrayList<Karritoa> karroa) {
-		return karroa;
-	}
-
 	private int TransferentziaZbk = 1;
 
 	public int TranferentziaZbk() {
@@ -52,6 +48,10 @@ public class Modelo {
 
 	private String NIF = null;
 
+	public String NIF() {
+		return NIF;
+	}
+	
 	public void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) throws ClassNotFoundException, SQLException {
 		metodoak.sartuDatuak(izena, abizena, pasahitza, dni, nif);
 	}

@@ -142,6 +142,7 @@ public class PanelTicket extends JPanel {
 		btnSegi = new JButton("\u2714\uFE0F");
 		btnSegi.setHorizontalAlignment(SwingConstants.TRAILING);
 		btnSegi.setBounds(388, 232, 57, 23);
+		btnSegi.setEnabled(false);
 		add(btnSegi);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
@@ -176,19 +177,19 @@ public class PanelTicket extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerLaburpeneraBotoia(ControladorPanelTicket ControladorPanelTicket) {
+	private ActionListener listenerLaburpeneraBotoia(ControladorPanelTicket controladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ControladorPanelTicket.sakatuLaburpeneraBotoia();
-				controladorPanelTicket.gordeTicket();
-				controladorPanelTicket.gehituTransferentziaZenbakia();
+					controladorPanelTicket.sakatuLaburpeneraBotoia();
+					controladorPanelTicket.gordeTicket();
+					controladorPanelTicket.gehituTransferentziaZenbakia();				
 			}
 		};
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerAtzeraBotoia(ControladorPanelTicket ControladorPanelTicket) {
+	private ActionListener listenerAtzeraBotoia(ControladorPanelTicket controladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(controladorPanelTicket.konprobatuLokala().equals("Restaurante")) {
@@ -213,6 +214,8 @@ public class PanelTicket extends JPanel {
 					controladorPanelTicket.sartu(aukera, kantitatea);
 				}
 				NºUnidades.setValue("0");
+				btnSegi.setEnabled(false);
+				CB_Produktoak.setSelectedItem(null);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				String diruTotala = String.valueOf(controladorPanelTicket.diruTotala());
 				TF_Totala.setText(diruTotala);
@@ -227,6 +230,9 @@ public class PanelTicket extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
 				ImageIcon argazkia = (ImageIcon) controladorPanelTicket.argazkiaAukeratu(aukera);
+				if (CB_Produktoak.getSelectedItem() != null) { 
+					btnSegi.setEnabled(true);	
+				}
 				argazkiak.setIcon(argazkia);
 			}
 		};

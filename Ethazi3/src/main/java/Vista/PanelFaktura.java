@@ -116,7 +116,8 @@ public class PanelFaktura extends JPanel {
 		TF_Abizena.setColumns(10);
 		add(TF_Abizena);
 
-		TF_NIF = new JTextField("x");
+		TF_NIF = new JTextField(controladorPanelFaktura.komprobatuNIF());
+		TF_NIF.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		TF_NIF.setHorizontalAlignment(SwingConstants.CENTER);
 		TF_NIF.setBounds(61, 233, 183, 20);
 		TF_NIF.setColumns(10);
@@ -186,6 +187,7 @@ public class PanelFaktura extends JPanel {
 		btnSegi = new JButton("\u2714\uFE0F");
 		btnSegi.setHorizontalAlignment(SwingConstants.TRAILING);
 		btnSegi.setBounds(388, 232, 57, 23);
+		btnSegi.setEnabled(false);
 		add(btnSegi);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
@@ -258,6 +260,8 @@ public class PanelFaktura extends JPanel {
 					controladorPanelFaktura.sartu(aukera, kantitatea);
 				}
 				NºUnidades.setValue("0");
+				btnSegi.setEnabled(false);
+				CB_Produktoak.setSelectedItem(null);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 				
 				String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
@@ -273,6 +277,9 @@ public class PanelFaktura extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) CB_Produktoak.getSelectedItem();
 				ImageIcon argazkia = (ImageIcon) controladorPanelFaktura.argazkiaAukeratu(aukera);
+				if (CB_Produktoak.getSelectedItem() != null) { 
+					btnSegi.setEnabled(true);	
+				}
 				argazkiak.setIcon(argazkia);
 			}
 		};
