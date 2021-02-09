@@ -38,7 +38,7 @@ public class ControladorPanelErregistratu {
 	
 	public void sakatuSarratuBotoia() {
 		this.controlador.itxi();
-	}
+	} 
 }
 
 

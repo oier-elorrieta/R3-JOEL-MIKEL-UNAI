@@ -9,7 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
-import Controlador.ControladorPanelLogin;
+import Controlador.ControladorPanelLogin; 
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -101,16 +102,13 @@ public class PanelLogin extends JPanel {
 		return new ActionListener() {
 			@SuppressWarnings({ "deprecation" })
 			public void actionPerformed(ActionEvent arg0) {
-				
 				String pasahitza = tf_Pasahitza.getText();
 				String erabiltzailea = tf_DNI.getText();
-				
-				String nif = controladorPanelLogin.konprobatuNIF(erabiltzailea);
-				String lokalaMota = controladorPanelLogin.konprobatuLokala(nif);
+				controladorPanelLogin.sartuErabiltzaile(erabiltzailea, pasahitza); 
+				String lokalaMota = controladorPanelLogin.konprobatuLokala();
 				String erroreaLogeatzean = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
-				
+
 				if (erroreaLogeatzean.equals("EZ")) {
-					
 					if (lokalaMota.equals("Bar")) {
 						controladorPanelLogin.sakatuPanelTabernaBotoia();
 					} else if (lokalaMota.equals("Cafetería")) {
@@ -118,9 +116,6 @@ public class PanelLogin extends JPanel {
 					} else if (lokalaMota.equals("Restaurante")) {
 						controladorPanelLogin.sakatuPanelJatetxeBotoia();
 					}
-					
-					System.out.println(lokalaMota);
-					
 				} else {
 					controladorPanelLogin.ikusiPanelLogin();
 				}

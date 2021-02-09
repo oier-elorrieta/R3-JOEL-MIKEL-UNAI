@@ -8,6 +8,10 @@ public class Modelo {
 
 	private ArrayList<Karritoa> karroa = new ArrayList<Karritoa>();
 
+	private Erabiltzaile usuarioak[] = new Erabiltzaile[1];
+
+	// *****************************************************************************************************************************************************************
+
 	public String[] produktuakJaso() {
 		return metodoak.sartuSalgaiak();
 	}
@@ -32,59 +36,45 @@ public class Modelo {
 		return metodoak.argazkiaAukeratu(aukera);
 	}
 
-	private int TransferentziaZbk = 1;
-
-	public int TranferentziaZbk() {
-		return TransferentziaZbk;
-	}
-
-	public int gehituTransferentziaZenbakia() {
-		TransferentziaZbk =	metodoak.gehituTransferentziaZenbakia(TransferentziaZbk);
-		return TransferentziaZbk;
-	}
-
 	// *****************************************************************************************************************************************************************
 
-	private String NIF = null;
-
-	public String NIF() {
-		return NIF;
-	}
-	
 	public void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) throws ClassNotFoundException, SQLException {
 		metodoak.sartuDatuak(izena, abizena, pasahitza, dni, nif);
 	}
 
+	public Erabiltzaile[] sartuErabiltzailea(String erabiltzailea, String pasahitza) {
+		return metodoak.sartuErabiltzailea(erabiltzailea, pasahitza, usuarioak);
+	}
+
+	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
+		return metodoak.jasoTransakzioZbk();
+	}
+	
 	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
 		return metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	}
 
-	public String konprobatuLokala(String erabiltzailea) {
-		return metodoak.konprobatuLokala(erabiltzailea);
+	public String konprobatuNIF () {
+		return metodoak.konprobatuNIF(usuarioak[0].getErabiltzailea());
 	}
 
-	public String konprobatuLokala2() {
-		return metodoak.konprobatuLokala(NIF);
+	public String konprobatuLokala() {
+		return metodoak.konprobatuLokala(usuarioak[0].getErabiltzailea());
 	}
 
-	public void sartuTicket() {
-		metodoak.sartuTicket(NIF, diruTotala(), TransferentziaZbk);
+	public void sartuTicket() throws ClassNotFoundException, SQLException {
+		metodoak.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk());
 	}
 
-	public void sartuEskaera(String helbidea) {
-		metodoak.sartuEskaera(NIF, diruTotala(), helbidea, TransferentziaZbk);
+	public void sartuEskaera(String helbidea) throws ClassNotFoundException, SQLException {
+		metodoak.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk());
 	}
 
-	public void sartuFaktura(String izena, String abizena) {
-		metodoak.sartuFaktura(NIF, izena, abizena, diruTotala(), TransferentziaZbk);
+	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
+		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk());
 	} 
 
-	public String konprobatuNIF(String erabiltzailea) {
-		NIF = metodoak.konprobatuNIF(erabiltzailea);
-		return NIF;
-	}
-
 	public String konprobatuLokalarenIzena() {
-		return metodoak.konprobatuLokalarenIzena(NIF);
-	}
+		return metodoak.konprobatuLokalarenIzena(konprobatuNIF());
+	} 
 }

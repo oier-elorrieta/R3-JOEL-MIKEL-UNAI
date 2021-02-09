@@ -119,21 +119,59 @@ public class metodoak {
 	// ***********************************DATU_BASE_METODOAK************************************************************************************************************************************************
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif)
-			throws SQLException, ClassNotFoundException {
+	public static void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		
-		String query1 = ("INSERT INTO Usuario VALUES ('" + izena + "','" + abizena + "','" + pasahitza + "','" + dni+ "','" + nif + "')");
+
+		String query1 = (Kontsultak.insertDatuak +"('" + izena + "', '" + abizena + "','" + pasahitza+ "','" + dni + "', '" + nif + "')"); 
+
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
-			System.out.println("ondo");
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	public static Erabiltzaile[] sartuErabiltzailea(String erabiltzailea, String pasahitza, Erabiltzaile usuarioak[]) {
+
+		Erabiltzaile e1 = new Erabiltzaile(erabiltzailea, pasahitza);
+		usuarioak[0] = e1;
+		return usuarioak;
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	public static int jasoTransakzioZbk() throws SQLException, ClassNotFoundException {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		String query1 = ("SELECT max(NumTrans) from operaciones;");
+		int TransakzioZbk = 0;
+
+		try {
+			ResultSet re;
+			PreparedStatement p;
+
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				if(re.getInt("max(NumTrans)") == 0) {
+					TransakzioZbk = 1;
+				}else {
+					TransakzioZbk = re.getInt("max(NumTrans)");
+					TransakzioZbk++;
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return TransakzioZbk;
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -142,44 +180,43 @@ public class metodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.SelectErabiltzailea + "'" + erabiltzailea + "'");
-		String ErroreaLogeatzean = null;
-		
+		String query1 = (Kontsultak.selectErabiltzailea + "'" + erabiltzailea + "'");
+		String erroreaLogeatzean = null;
+
 		try {
 			ResultSet re;
 			PreparedStatement p;
 
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
-			
+
 			if (re.next()) {
-				System.out.println(re.getString("DNI"));
 				if (re.getString("DNI").equalsIgnoreCase(erabiltzailea) && re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
-					ErroreaLogeatzean = "EZ";
+					erroreaLogeatzean = "EZ";
 				} else if (re.getString("DNI").equalsIgnoreCase(erabiltzailea) && !re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
 					JOptionPane.showMessageDialog(null, "Pasahitza ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
-					ErroreaLogeatzean = "Bai, pasahitza txarto";
+					erroreaLogeatzean = "Bai, pasahitza txarto";
 				}
 			} else {
 				JOptionPane.showMessageDialog(null, "Ez zaude logeatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
-				ErroreaLogeatzean = "Bai, erabiltzailea txarto";
+				erroreaLogeatzean = "Bai, erabiltzailea txarto";
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-		
-		return ErroreaLogeatzean;
+
+		return erroreaLogeatzean;
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
 	public static String konprobatuNIF(String erabiltzailea) {
-		
+
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.SelectNIF + "'" + erabiltzailea + "'");
+		String query1 = (Kontsultak.selectNIF + "'" + erabiltzailea + "'");
 
 		String NIF = null;
 
@@ -202,16 +239,15 @@ public class metodoak {
 	// *****************************************************************************************************************************************************************************************************
 
 	public static void sartuTicket(String NIF, double diruTotala, int TransferentziaZbk) {
-		
+
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.InsertOperaciones +"('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.insertOperaciones +"('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
 
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
-			System.out.println("ondo");
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
@@ -220,12 +256,12 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String konprobatuLokala(String NIF) {
-		
+	public static String konprobatuLokala(String erabiltzailea) {
+
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.SelectTipoLokala + "'" + NIF + "';");
-		String Tipo = null;
+		String query1 = (Kontsultak.selectLokalaMota + "'" + erabiltzailea + "')");
+		String Tipo = null; 
 
 		try {
 			ResultSet re;
@@ -240,19 +276,19 @@ public class metodoak {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-		
+		System.out.println(Tipo);
 		return Tipo;
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
 	public static void sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk) {
-		
+
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.InsertOperaciones + "('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
 
-		String query2 = (Kontsultak.InsertEskaera + "('" + TransferentziaZbk + "', '" + helbidea + "')");
+		String query2 = (Kontsultak.insertEskaera + "('" + TransferentziaZbk + "', '" + helbidea + "')");
 
 		try {
 			Statement s;
@@ -270,14 +306,14 @@ public class metodoak {
 	// *****************************************************************************************************************************************************************************************************
 
 	public static void sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk) {
-		
+
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.InsertOperaciones + "('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
 
-		String query2 = (Kontsultak.InsertNifFaktura + "('" + NIF + "', '" + izena + "', '" + abizena+ "')");
+		String query2 = (Kontsultak.insertNifFaktura + "('" + NIF + "', '" + izena + "', '" + abizena+ "')");
 
-		String query3 = (Kontsultak.InsertFactura + "('"+TransferentziaZbk+"','"+NIF+"');");
+		String query3 = (Kontsultak.insertFactura + "('"+TransferentziaZbk+"','"+NIF+"');");
 
 		try {
 			Statement s;
@@ -294,31 +330,31 @@ public class metodoak {
 			e.printStackTrace();
 		} 
 	}
-	
+
 	// *****************************************************************************************************************************************************************************************************
 
-		public static String konprobatuLokalarenIzena(String NIF) {
-			
-			Connection konekzioa = BBDDKonexioa.getConexion();
+	public static String konprobatuLokalarenIzena(String NIF) {
 
-			String query1 = (Kontsultak.SelectLokalarenIzena + "'" + NIF + "'");
+		Connection konekzioa = BBDDKonexioa.getConexion();
 
-			String LokalarenIzena = null;
+		String query1 = (Kontsultak.selectLokalarenIzena + "'" + NIF + "'");
 
-			try {
-				ResultSet re;
-				PreparedStatement p;
+		String LokalarenIzena = null;
 
-				p = konekzioa.prepareStatement(query1);
-				re = p.executeQuery();
-				if (re.next()) {
-					LokalarenIzena = re.getString("nombre");
-				}
-			} catch (SQLException e) {
-				System.out.println("Errorea konexioan");
-				e.printStackTrace();
+		try {
+			ResultSet re;
+			PreparedStatement p;
+
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				LokalarenIzena = re.getString("nombre");
 			}
-			return LokalarenIzena;
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
 		}
-	
+		return LokalarenIzena;
+	}
+
 }

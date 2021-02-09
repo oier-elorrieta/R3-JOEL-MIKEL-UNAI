@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -85,7 +86,11 @@ public class PanelEskaera extends JPanel {
 		tf_Lokala.setEditable(false);
 		add(tf_Lokala);
 
-		TransferentziaZenbakia = controladorPanelEskaera.TransferentziaZenbakia();
+		try {
+			TransferentziaZenbakia = controladorPanelEskaera.jasoTransakzioZbk();
+		} catch (ClassNotFoundException | SQLException e) { 
+			e.printStackTrace();
+		}
 
 		tf_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
 		tf_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
@@ -198,8 +203,11 @@ public class PanelEskaera extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelEskaera.sakatuLaburpeneraBotoia();
-				controladorPanelEskaera.gordeEskaera(tf_Helbide.getText());
-				controladorPanelEskaera.gehituTransferentziaZenbakia();
+				try {
+					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText());
+				} catch (ClassNotFoundException | SQLException e) { 
+					e.printStackTrace();
+				}
 			}
 		};
 	}

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -81,7 +82,11 @@ public class PanelTicket extends JPanel {
 		tf_Lokala.setEditable(false);
 		add(tf_Lokala);
 
-		TransferentziaZenbakia = controladorPanelTicket.TransferentziaZenbakia();
+		try {
+			TransferentziaZenbakia = controladorPanelTicket.jasoTransakzioZbk();
+		} catch (ClassNotFoundException | SQLException e) { 
+			e.printStackTrace();
+		}
 
 		tf_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
 		tf_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
@@ -172,7 +177,7 @@ public class PanelTicket extends JPanel {
 		this.btnAurrera.addActionListener(listenerLaburpeneraBotoia(this.controladorPanelTicket));
 		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelTicket));
 		this.cb_Produktoak.addActionListener(listenerComboBox(this.controladorPanelTicket));
-		this.btnSegi.addActionListener(listenerSegiBotoia());
+		this.btnSegi.addActionListener(listenerSegiBotoia(this.controladorPanelTicket));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -181,8 +186,11 @@ public class PanelTicket extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 					controladorPanelTicket.sakatuLaburpeneraBotoia();
-					controladorPanelTicket.gordeTicket();
-					controladorPanelTicket.gehituTransferentziaZenbakia();				
+					try {
+						controladorPanelTicket.gordeTicket();
+					} catch (ClassNotFoundException | SQLException e) { 
+						e.printStackTrace();
+					} 			
 			}
 		};
 	}
@@ -205,7 +213,7 @@ public class PanelTicket extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerSegiBotoia() {
+	private ActionListener listenerSegiBotoia(ControladorPanelTicket controladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) cb_Produktoak.getSelectedItem();

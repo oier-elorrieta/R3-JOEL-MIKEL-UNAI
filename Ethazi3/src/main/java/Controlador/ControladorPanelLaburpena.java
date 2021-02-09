@@ -46,7 +46,7 @@ public class ControladorPanelLaburpena {
 	}
 	
 	public String konprobatuLokala() {
-		return this.modelo.konprobatuLokala2();
+		return this.modelo.konprobatuLokala();
 	}
 	
 	public String konprobatuLokalarenIzena() {

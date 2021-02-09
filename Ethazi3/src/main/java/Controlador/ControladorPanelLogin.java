@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.Erabiltzaile;
 import Modelo.Modelo;
 import Vista.PanelLogin; 
 import Vista.Vista;
@@ -41,19 +42,18 @@ public class ControladorPanelLogin {
 	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
 		return this.modelo.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	} 
-	
-	public String konprobatuLokala(String erabiltzailea) {
-		return this.modelo.konprobatuLokala(erabiltzailea);
+
+	public String konprobatuLokala() {
+		return this.modelo.konprobatuLokala();
 	} 
-	
-	public String konprobatuNIF(String erabiltzailea) {
-		return this.modelo.konprobatuNIF(erabiltzailea);
-	}
-	
+
 	public void sakatuAtzeraBotoia() {
 		this.controlador.itxi();
 	}
-
+	
+	public Erabiltzaile[] sartuErabiltzaile(String erabiltzailea, String pasahitza) {
+		return this.modelo.sartuErabiltzailea(erabiltzailea, pasahitza);
+	}
 }
 
 

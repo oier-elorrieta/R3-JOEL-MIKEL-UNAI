@@ -2,6 +2,7 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -47,7 +48,6 @@ public class PanelFaktura extends JPanel {
 	private JButton btnSegi;
 
 	private JComboBox<String> cb_Produktoak = new JComboBox<String>();
-	private JSpinner NºUnidades;
 	private JSpinner nºunidades;
 	private String[] produktuak;
 
@@ -89,7 +89,11 @@ public class PanelFaktura extends JPanel {
 		tf_Lokala.setEditable(false);
 		add(tf_Lokala);
 
-		TransferentziaZenbakia = controladorPanelFaktura.TransferentziaZenbakia();
+		try {
+			TransferentziaZenbakia = controladorPanelFaktura.jasoTransakzioZbk();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 
 		tf_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
 		tf_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
@@ -105,19 +109,19 @@ public class PanelFaktura extends JPanel {
 		tf_Totala.setEditable(false);
 		add(tf_Totala);
 
-		tf_Izena = new JTextField("x");
+		tf_Izena = new JTextField();
 		tf_Izena.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Izena.setBounds(61, 173, 183, 20);
 		tf_Izena.setColumns(10);
 		add(tf_Izena);
 
-		tf_Abizena = new JTextField("x");
+		tf_Abizena = new JTextField();
 		tf_Abizena.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Abizena.setBounds(61, 204, 183, 20);
 		tf_Abizena.setColumns(10);
 		add(tf_Abizena);
 
-		tf_NIF = new JTextField(controladorPanelFaktura.komprobatuNIF());
+		tf_NIF = new JTextField(controladorPanelFaktura.ikusiNIF());
 		tf_NIF.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		tf_NIF.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_NIF.setBounds(61, 233, 183, 20);
@@ -193,7 +197,7 @@ public class PanelFaktura extends JPanel {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		NºUnidades = new JSpinner();
+		nºunidades = new JSpinner();
 		final String numbers[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
 		SpinnerModel model1 = new SpinnerListModel(numbers);
 
@@ -219,7 +223,7 @@ public class PanelFaktura extends JPanel {
 		this.btnAurrera.addActionListener(listenerLaburpeneraBotoia(this.controladorPanelFaktura));
 		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelFaktura));
 		this.cb_Produktoak.addActionListener(listenerComboBox(this.controladorPanelFaktura));
-		this.btnSegi.addActionListener(listenerSegiBotoia());
+		this.btnSegi.addActionListener(listenerSegiBotoia(this.controladorPanelFaktura));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -228,8 +232,11 @@ public class PanelFaktura extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.sakatuLaburpeneraBotoia();
-				controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText());
-				controladorPanelFaktura.gehituTransferentziaZenbakia();
+				try {
+					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText());
+				} catch (ClassNotFoundException | SQLException e) { 
+					e.printStackTrace();
+				} 
 			}
 		};
 	}
@@ -252,19 +259,19 @@ public class PanelFaktura extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerSegiBotoia() {
+	private ActionListener listenerSegiBotoia(ControladorPanelFaktura controladorPanelFaktura) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) cb_Produktoak.getSelectedItem();
-				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
+				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
 				if (kantitatea != 0) {
 					controladorPanelFaktura.sartu(aukera, kantitatea);
 				}
-				NºUnidades.setValue("0");
+				nºunidades.setValue("0");
 				btnSegi.setEnabled(false);
 				cb_Produktoak.setSelectedItem(null);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
-				
+
 				String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
 				tf_Totala.setText(diruTotala);
 			}

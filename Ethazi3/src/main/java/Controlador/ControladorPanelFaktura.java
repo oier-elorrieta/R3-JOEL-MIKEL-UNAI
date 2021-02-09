@@ -1,5 +1,6 @@
 package Controlador;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import Modelo.Karritoa;
@@ -45,16 +46,20 @@ public class ControladorPanelFaktura {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 	
-	public void sartuFaktura(String izena, String abizena) {
+	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
 		this.modelo.sartuFaktura(izena, abizena);
 	} 
 	
-	public int TransferentziaZenbakia() {
+	/*public int TransferentziaZenbakia() {
 		return this.modelo.TranferentziaZbk();
 	}
 	
 	public int gehituTransferentziaZenbakia() {
 		return this.modelo.gehituTransferentziaZenbakia();
+	}*/
+	
+	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
+		return this.modelo.jasoTransakzioZbk();
 	}
 	
 	public void sakatuPanelTabernaBotoia() {
@@ -73,14 +78,14 @@ public class ControladorPanelFaktura {
 	}
 	
 	public String konprobatuLokala() {
-		return this.modelo.konprobatuLokala2();
+		return this.modelo.konprobatuLokala();
 	}
 	
 	public String komprobatuLokalarenIzena() {
 		return this.modelo.konprobatuLokalarenIzena();
 	}
 	
-	public String komprobatuNIF() {
-		return this.modelo.NIF();
+	public String ikusiNIF() {
+		return this.modelo.konprobatuNIF();
 	}
 }
