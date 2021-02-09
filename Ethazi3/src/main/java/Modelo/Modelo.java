@@ -2,7 +2,6 @@ package Modelo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 
 public class Modelo {
@@ -60,12 +59,12 @@ public class Modelo {
 		return metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	}
 
-	public String komprobatuLokala(String erabiltzailea) {
-		return metodoak.komprobatuLokala(erabiltzailea);
+	public String konprobatuLokala(String erabiltzailea) {
+		return metodoak.konprobatuLokala(erabiltzailea);
 	}
 
-	public String komprobatuLokala2() {
-		return metodoak.komprobatuLokala(NIF);
+	public String konprobatuLokala2() {
+		return metodoak.konprobatuLokala(NIF);
 	}
 
 	public void sartuTicket() {
@@ -81,11 +80,11 @@ public class Modelo {
 	} 
 
 	public String konprobatuNIF(String erabiltzailea) {
-		NIF = metodoak.komprobatuNIF(erabiltzailea);
+		NIF = metodoak.konprobatuNIF(erabiltzailea);
 		return NIF;
 	}
 
-	public String komprobatuLokalarenIzena() {
-		return metodoak.komprobatuLokalarenIzena(NIF);
+	public String konprobatuLokalarenIzena() {
+		return metodoak.konprobatuLokalarenIzena(NIF);
 	}
 }

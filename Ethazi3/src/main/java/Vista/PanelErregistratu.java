@@ -22,17 +22,17 @@ public class PanelErregistratu extends JPanel {
 	private JButton btnErregistratu;
 	private JButton btnAtzera;
 
-	private JTextField TF_Izena;
-	private JTextField TF_Abizena;
-	private JTextField TF_Pasahitza;
-	private JTextField TF_DNI;
-	private JTextField TF_NIF;
+	private JTextField tf_Izena;
+	private JTextField tf_Abizena;
+	private JTextField tf_Pasahitza;
+	private JTextField tf_DNI;
+	private JTextField tf_NIF;
 	
-	private JLabel LB_Pasahitza;
-	private JLabel LB_DNI;
-	private JLabel LB_NIF;
-	private JLabel LB_Abizena;
-	private JLabel LB_Izena;
+	private JLabel lb_Pasahitza;
+	private JLabel lb_DNI;
+	private JLabel lb_NIF;
+	private JLabel lb_Abizena;
+	private JLabel lb_Izena;
 	
 	// *****************************************************************************************************************************************************************************************************
 
@@ -63,52 +63,52 @@ public class PanelErregistratu extends JPanel {
 		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		TF_Izena = new JTextField();
-		TF_Izena.setBounds(10, 61, 190, 19);
-		add(TF_Izena);
-		TF_Izena.setColumns(10);
+		tf_Izena = new JTextField();
+		tf_Izena.setBounds(10, 61, 190, 19);
+		add(tf_Izena);
+		tf_Izena.setColumns(10);
 
-		TF_Abizena = new JTextField();
-		TF_Abizena.setColumns(10);
-		TF_Abizena.setBounds(10, 120, 190, 19);
-		add(TF_Abizena);
+		tf_Abizena = new JTextField();
+		tf_Abizena.setColumns(10);
+		tf_Abizena.setBounds(10, 120, 190, 19);
+		add(tf_Abizena);
 
-		TF_Pasahitza = new JTextField();
-		TF_Pasahitza.setColumns(10);
-		TF_Pasahitza.setBounds(10, 236, 190, 19);
-		add(TF_Pasahitza);
+		tf_Pasahitza = new JTextField();
+		tf_Pasahitza.setColumns(10);
+		tf_Pasahitza.setBounds(10, 236, 190, 19);
+		add(tf_Pasahitza);
 
-		TF_DNI = new JTextField();
-		TF_DNI.setColumns(10);
-		TF_DNI.setBounds(10, 182, 190, 19);
-		add(TF_DNI);
+		tf_DNI = new JTextField();
+		tf_DNI.setColumns(10);
+		tf_DNI.setBounds(10, 182, 190, 19);
+		add(tf_DNI);
 		
-		TF_NIF = new JTextField();
-		TF_NIF.setColumns(10);
-		TF_NIF.setBounds(250, 61, 190, 19);
-		add(TF_NIF);
+		tf_NIF = new JTextField();
+		tf_NIF.setColumns(10);
+		tf_NIF.setBounds(250, 61, 190, 19);
+		add(tf_NIF);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		LB_Pasahitza = new JLabel("Pasahitza:");
-		LB_Pasahitza.setBounds(10, 212, 190, 13);
-		add(LB_Pasahitza);
+		lb_Pasahitza = new JLabel("Pasahitza:");
+		lb_Pasahitza.setBounds(10, 212, 190, 13);
+		add(lb_Pasahitza);
 
-		LB_Abizena = new JLabel("Abizena:");
-		LB_Abizena.setBounds(10, 96, 190, 13);
-		add(LB_Abizena);
+		lb_Abizena = new JLabel("Abizena:");
+		lb_Abizena.setBounds(10, 96, 190, 13);
+		add(lb_Abizena);
 
-		LB_Izena = new JLabel("Izena:");
-		LB_Izena.setBounds(10, 37, 190, 13);
-		add(LB_Izena);
+		lb_Izena = new JLabel("Izena:");
+		lb_Izena.setBounds(10, 37, 190, 13);
+		add(lb_Izena);
 		
-		LB_NIF = new JLabel("NIF:");
-		LB_NIF.setBounds(250, 37, 190, 13);
-		add(LB_NIF);
+		lb_NIF = new JLabel("NIF:");
+		lb_NIF.setBounds(250, 37, 190, 13);
+		add(lb_NIF);
 		
-		LB_DNI = new JLabel("DNI:");
-		LB_DNI.setBounds(10, 158, 190, 13);
-		add(LB_DNI);
+		lb_DNI = new JLabel("DNI:");
+		lb_DNI.setBounds(10, 158, 190, 13);
+		add(lb_DNI);
 
 		initializeEvents();
 	}
@@ -126,13 +126,13 @@ public class PanelErregistratu extends JPanel {
 	private ActionListener listenerErregistratuBotoia(ControladorPanelErregistratu controladorPanelErregistratu) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) { 
-				String Izena = TF_Izena.getText();
-				String Abizena = TF_Abizena.getText();
-				String Pasahitza = TF_Pasahitza.getText();
-				String DNI = TF_DNI.getText();
-				String NIF = TF_NIF.getText();
+				String izena = tf_Izena.getText();
+				String abizena = tf_Abizena.getText();
+				String pasahitza = tf_Pasahitza.getText();
+				String dni = tf_DNI.getText();
+				String nif = tf_NIF.getText();
 				try {
-					controladorPanelErregistratu.sakatuErregistratuBotoia(DNI, Izena, Abizena, Pasahitza, NIF);
+					controladorPanelErregistratu.sakatuErregistratuBotoia(dni, izena, abizena, pasahitza, nif);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} catch (ClassNotFoundException e) {

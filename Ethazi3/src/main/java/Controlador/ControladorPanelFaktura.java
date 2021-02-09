@@ -1,9 +1,7 @@
 package Controlador;
 
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
-
 import Modelo.Karritoa;
 import Modelo.Modelo;
 import Vista.PanelFaktura; 
@@ -75,11 +73,11 @@ public class ControladorPanelFaktura {
 	}
 	
 	public String konprobatuLokala() {
-		return this.modelo.komprobatuLokala2();
+		return this.modelo.konprobatuLokala2();
 	}
 	
 	public String komprobatuLokalarenIzena() {
-		return this.modelo.komprobatuLokalarenIzena();
+		return this.modelo.konprobatuLokalarenIzena();
 	}
 	
 	public String komprobatuNIF() {

@@ -185,7 +185,7 @@ public class ModeloTest {
 		
 		String query2 = ("SELECT NIF FROM local LIMIT 1");
 
-		String LehenengoNIF = null;
+		String lehenengoNIF = null;
 
 		try {
 			ResultSet rs;
@@ -194,7 +194,7 @@ public class ModeloTest {
 			q = konekzioa.prepareStatement(query2);
 			rs = q.executeQuery();
 			if (rs.next()) {
-				LehenengoNIF = rs.getString("NIF");
+				lehenengoNIF = rs.getString("NIF");
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
@@ -203,7 +203,7 @@ public class ModeloTest {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		String query1 = ("SELECT nombre FROM local where NIF = '" + LehenengoNIF + "'");
+		String query1 = ("SELECT nombre FROM local where NIF = '" + lehenengoNIF + "'");
 
 		String esperotakoa = null;
 
@@ -223,7 +223,7 @@ public class ModeloTest {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		assertEquals(esperotakoa, metodoak.komprobatuLokalarenIzena(LehenengoNIF));
+		assertEquals(esperotakoa, metodoak.konprobatuLokalarenIzena(lehenengoNIF));
 
 	}
 
@@ -238,7 +238,7 @@ public class ModeloTest {
 		
 		String query2 = ("SELECT NIF FROM local LIMIT 1");
 
-		String LehenengoNIF = null;
+		String lehenengoNIF = null;
  
 		try {
 			ResultSet rs;
@@ -247,7 +247,7 @@ public class ModeloTest {
 			q = konekzioa.prepareStatement(query2);
 			rs = q.executeQuery();
 			if (rs.next()) {
-				LehenengoNIF = rs.getString("NIF");
+				lehenengoNIF = rs.getString("NIF");
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
@@ -256,7 +256,7 @@ public class ModeloTest {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		String query1 = ("select Tipo from local where NIF = '"+LehenengoNIF+"';");
+		String query1 = ("select Tipo from local where NIF = '"+lehenengoNIF+"';");
 		String esperotakoa = null;
 
 		try {
@@ -275,7 +275,7 @@ public class ModeloTest {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________ç
 		
-		assertEquals(esperotakoa, metodoak.komprobatuLokala(LehenengoNIF));
+		assertEquals(esperotakoa, metodoak.konprobatuLokala(lehenengoNIF));
 
 	}
 
@@ -290,7 +290,7 @@ public class ModeloTest {
 		
 		String query2 = ("SELECT DNI FROM usuario LIMIT 1");
 
-		String LehenengoDNI = null;
+		String lehenengoDNI = null;
  
 		try {
 			ResultSet rs;
@@ -299,7 +299,7 @@ public class ModeloTest {
 			q = konekzioa.prepareStatement(query2);
 			rs = q.executeQuery();
 			if (rs.next()) {
-				LehenengoDNI = rs.getString("DNI");
+				lehenengoDNI = rs.getString("DNI");
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
@@ -308,7 +308,7 @@ public class ModeloTest {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		String query1 = ("SELECT NIF FROM usuario where dni = '"+LehenengoDNI+"'");
+		String query1 = ("SELECT NIF FROM usuario where dni = '"+lehenengoDNI+"'");
 
 		String esperotakoa = null;
 
@@ -328,7 +328,7 @@ public class ModeloTest {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		assertEquals(esperotakoa, metodoak.komprobatuNIF(LehenengoDNI));
+		assertEquals(esperotakoa, metodoak.konprobatuNIF(lehenengoDNI));
 
 	}
 
@@ -343,7 +343,7 @@ public class ModeloTest {
 		
 		String query2 = ("SELECT DNI FROM usuario LIMIT 1");
 
-		String LehenengoDNI = null;
+		String lehenengoDNI = null;
  
 		try {
 			ResultSet rs;
@@ -352,7 +352,7 @@ public class ModeloTest {
 			q = konekzioa.prepareStatement(query2);
 			rs = q.executeQuery();
 			if (rs.next()) {
-				LehenengoDNI = rs.getString("DNI");
+				lehenengoDNI = rs.getString("DNI");
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
@@ -363,7 +363,7 @@ public class ModeloTest {
 
 		String query3 = ("SELECT Contraseña FROM usuario LIMIT 1");
 
-		String LehenengoPasahitza = null;
+		String lehenengoPasahitza = null;
  
 		try {
 			ResultSet rs;
@@ -372,7 +372,7 @@ public class ModeloTest {
 			q = konekzioa.prepareStatement(query3);
 			rs = q.executeQuery();
 			if (rs.next()) {
-				LehenengoPasahitza = rs.getString("Contraseña");
+				lehenengoPasahitza = rs.getString("Contraseña");
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
@@ -381,7 +381,7 @@ public class ModeloTest {
 		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		String query1 = ("SELECT DNI,Contraseña FROM usuario where dni = '"+LehenengoDNI+"'");
+		String query1 = ("SELECT DNI,Contraseña FROM usuario where dni = '"+lehenengoDNI+"'");
 		String esperotakoa = null;
 
 		try {
@@ -393,11 +393,11 @@ public class ModeloTest {
 
 			if (re.next()) {
 				System.out.println(re.getString("DNI"));
-				if (re.getString("DNI").equalsIgnoreCase(LehenengoDNI)
-						&& re.getString("Contraseña").equalsIgnoreCase(LehenengoPasahitza)) {
+				if (re.getString("DNI").equalsIgnoreCase(lehenengoDNI)
+						&& re.getString("Contraseña").equalsIgnoreCase(lehenengoPasahitza)) {
 					esperotakoa = "EZ";
-				} else if (re.getString("DNI").equalsIgnoreCase(LehenengoDNI)
-						&& !re.getString("Contraseña").equalsIgnoreCase(LehenengoPasahitza)) {
+				} else if (re.getString("DNI").equalsIgnoreCase(lehenengoDNI)
+						&& !re.getString("Contraseña").equalsIgnoreCase(lehenengoPasahitza)) {
 					esperotakoa = "Bai, pasahitza txarto";
 				}
 			} else {
@@ -411,7 +411,7 @@ public class ModeloTest {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
-		assertEquals(esperotakoa, metodoak.konprobatuErabiltzailea(LehenengoDNI, LehenengoPasahitza));
+		assertEquals(esperotakoa, metodoak.konprobatuErabiltzailea(lehenengoDNI, lehenengoPasahitza));
 
 	}
 }

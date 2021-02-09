@@ -1,9 +1,7 @@
 package Controlador;
 
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
-
 import Modelo.Karritoa; 
 import Modelo.Modelo;  
 import Vista.PanelTicket;
@@ -80,10 +78,10 @@ public class ControladorPanelTicket {
 	}
 
 	public String konprobatuLokala() {
-		return this.modelo.komprobatuLokala2();
+		return this.modelo.konprobatuLokala2();
 	}
 	
-	public String komprobatuLokalarenIzena() {
-		return this.modelo.komprobatuLokalarenIzena();
+	public String konprobatuLokalarenIzena() {
+		return this.modelo.konprobatuLokalarenIzena();
 	}
 }

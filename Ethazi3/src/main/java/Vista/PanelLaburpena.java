@@ -17,15 +17,15 @@ public class PanelLaburpena extends JPanel {
 
 	private JButton btnSegi;
 
-	private JLabel LB_1_;
-	private JLabel LB_2_;
-	private JLabel LB_3_;
-	private JLabel LB_Erosketa;
-	private JLabel LB_Nombre;
-	private JLabel LB_Direccion;
-	private JLabel LB_Total;
-	private JLabel LB_TotalCant;
-	private JLabel LB_Laburpen;
+	private JLabel lb_1_;
+	private JLabel lb_2_;
+	private JLabel lb_3_;
+	private JLabel lb_Erosketa;
+	private JLabel lb_Nombre;
+	private JLabel lb_Direccion;
+	private JLabel lb_Total;
+	private JLabel lb_TotalCant;
+	private JLabel lb_Laburpen;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -42,48 +42,48 @@ public class PanelLaburpena extends JPanel {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		LB_Erosketa = new JLabel("EROSKETA");
-		LB_Erosketa.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		LB_Erosketa.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_Erosketa.setBounds(10, 11, 430, 30);
-		add(LB_Erosketa);
+		lb_Erosketa = new JLabel("EROSKETA");
+		lb_Erosketa.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lb_Erosketa.setHorizontalAlignment(SwingConstants.CENTER);
+		lb_Erosketa.setBounds(10, 11, 430, 30);
+		add(lb_Erosketa);
 
-		LB_1_ = new JLabel("_____________________________________________________________");
-		LB_1_.setBounds(10, 27, 430, 14);
-		add(LB_1_);
+		lb_1_ = new JLabel("_____________________________________________________________");
+		lb_1_.setBounds(10, 27, 430, 14);
+		add(lb_1_);
 
-		LB_2_ = new JLabel("_____________________________________________________________");
-		LB_2_.setBounds(10, 83, 430, 14);
-		add(LB_2_);
+		lb_2_ = new JLabel("_____________________________________________________________");
+		lb_2_.setBounds(10, 83, 430, 14);
+		add(lb_2_);
 
-		LB_3_ = new JLabel("_____________________________________________________________");
-		LB_3_.setBounds(10, 275, 430, 14);
-		add(LB_3_);
+		lb_3_ = new JLabel("_____________________________________________________________");
+		lb_3_.setBounds(10, 275, 430, 14);
+		add(lb_3_);
 
-		LB_Nombre = new JLabel(controladorPanelLaburpena.komprobatuLokalarenIzena());
-		LB_Nombre.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_Nombre.setBounds(10, 47, 430, 14);
-		add(LB_Nombre);
+		lb_Nombre = new JLabel(controladorPanelLaburpena.konprobatuLokalarenIzena());
+		lb_Nombre.setHorizontalAlignment(SwingConstants.CENTER);
+		lb_Nombre.setBounds(10, 47, 430, 14);
+		add(lb_Nombre);
 
-		LB_Direccion = new JLabel("DIRECCION");
-		LB_Direccion.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_Direccion.setBounds(10, 72, 430, 14);
-		add(LB_Direccion);
+		lb_Direccion = new JLabel("DIRECCION");
+		lb_Direccion.setHorizontalAlignment(SwingConstants.CENTER);
+		lb_Direccion.setBounds(10, 72, 430, 14);
+		add(lb_Direccion);
 
-		LB_Total = new JLabel("TOTAL EUR: ");
-		LB_Total.setHorizontalAlignment(SwingConstants.LEFT);
-		LB_Total.setBounds(10, 259, 155, 20);
-		add(LB_Total);
+		lb_Total = new JLabel("TOTAL EUR: ");
+		lb_Total.setHorizontalAlignment(SwingConstants.LEFT);
+		lb_Total.setBounds(10, 259, 155, 20);
+		add(lb_Total);
 
-		LB_TotalCant = new JLabel(diruTotala + "€");
-		LB_TotalCant.setHorizontalAlignment(SwingConstants.RIGHT);
-		LB_TotalCant.setBounds(285, 259, 145, 10);
-		add(LB_TotalCant);
+		lb_TotalCant = new JLabel(diruTotala + "€");
+		lb_TotalCant.setHorizontalAlignment(SwingConstants.RIGHT);
+		lb_TotalCant.setBounds(285, 259, 145, 10);
+		add(lb_TotalCant);
 
-		LB_Laburpen = new JLabel(emaitza);
-		LB_Laburpen.setVerticalAlignment(SwingConstants.TOP);
-		LB_Laburpen.setBounds(40, 108, 370, 143);
-		add(LB_Laburpen);
+		lb_Laburpen = new JLabel(emaitza);
+		lb_Laburpen.setVerticalAlignment(SwingConstants.TOP);
+		lb_Laburpen.setBounds(40, 108, 370, 143);
+		add(lb_Laburpen);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 

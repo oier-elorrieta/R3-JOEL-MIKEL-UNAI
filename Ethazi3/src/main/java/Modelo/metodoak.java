@@ -175,7 +175,7 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String komprobatuNIF(String erabiltzailea) {
+	public static String konprobatuNIF(String erabiltzailea) {
 		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
@@ -220,7 +220,7 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String komprobatuLokala(String NIF) {
+	public static String konprobatuLokala(String NIF) {
 		
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
@@ -297,7 +297,7 @@ public class metodoak {
 	
 	// *****************************************************************************************************************************************************************************************************
 
-		public static String komprobatuLokalarenIzena(String NIF) {
+		public static String konprobatuLokalarenIzena(String NIF) {
 			
 			Connection konekzioa = BBDDKonexioa.getConexion();
 

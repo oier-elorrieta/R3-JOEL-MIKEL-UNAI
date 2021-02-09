@@ -23,12 +23,12 @@ public class PanelLogin extends JPanel {
 	private JButton btnLogin;
 	private JButton btnErregistratu;
 
-	private JLabel LB_DNI;
-	private JLabel LB_1;
-	private JLabel LB_Pasahitza;
+	private JLabel lb_DNI;
+	private JLabel lb_1;
+	private JLabel lb_Pasahitza;
 
-	private JTextField TF_DNI;
-	private JPasswordField TF_Pasahitza;
+	private JTextField tf_DNI;
+	private JPasswordField tf_Pasahitza;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -59,30 +59,30 @@ public class PanelLogin extends JPanel {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		TF_DNI = new JTextField();
-		TF_DNI.setBounds(135, 60, 170, 19);
-		add(TF_DNI);
-		TF_DNI.setColumns(10);
+		tf_DNI = new JTextField();
+		tf_DNI.setBounds(135, 60, 170, 19);
+		add(tf_DNI);
+		tf_DNI.setColumns(10);
 
-		TF_Pasahitza = new JPasswordField();
-		TF_Pasahitza.setColumns(10);
-		TF_Pasahitza.setBounds(135, 120, 170, 19);
-		add(TF_Pasahitza);
+		tf_Pasahitza = new JPasswordField();
+		tf_Pasahitza.setColumns(10);
+		tf_Pasahitza.setBounds(135, 120, 170, 19);
+		add(tf_Pasahitza);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		LB_DNI = new JLabel("DNI:");
-		LB_DNI.setBounds(135, 37, 170, 13);
-		add(LB_DNI);
+		lb_DNI = new JLabel("DNI:");
+		lb_DNI.setBounds(135, 37, 170, 13);
+		add(lb_DNI);
 
-		LB_Pasahitza = new JLabel("Pasahitza:");
-		LB_Pasahitza.setBounds(135, 97, 170, 13);
-		add(LB_Pasahitza);
+		lb_Pasahitza = new JLabel("Pasahitza:");
+		lb_Pasahitza.setBounds(135, 97, 170, 13);
+		add(lb_Pasahitza);
 
-		LB_1 = new JLabel("*********************************");
-		LB_1.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_1.setBounds(10, 201, 430, 13);
-		add(LB_1);
+		lb_1 = new JLabel("*********************************");
+		lb_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lb_1.setBounds(10, 201, 430, 13);
+		add(lb_1);
 
 		initializeEvents();
 	}
@@ -102,24 +102,24 @@ public class PanelLogin extends JPanel {
 			@SuppressWarnings({ "deprecation" })
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String pasahitza = TF_Pasahitza.getText();
-				String erabiltzailea = TF_DNI.getText();
+				String pasahitza = tf_Pasahitza.getText();
+				String erabiltzailea = tf_DNI.getText();
 				
-				String NIF = controladorPanelLogin.konprobatuNIF(erabiltzailea);
-				String LokalaMota = controladorPanelLogin.konprobatuLokala(NIF);
-				String ErroreaLogeatzean = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
+				String nif = controladorPanelLogin.konprobatuNIF(erabiltzailea);
+				String lokalaMota = controladorPanelLogin.konprobatuLokala(nif);
+				String erroreaLogeatzean = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 				
-				if (ErroreaLogeatzean.equals("EZ")) {
+				if (erroreaLogeatzean.equals("EZ")) {
 					
-					if (LokalaMota.equals("Bar")) {
+					if (lokalaMota.equals("Bar")) {
 						controladorPanelLogin.sakatuPanelTabernaBotoia();
-					} else if (LokalaMota.equals("Cafetería")) {
+					} else if (lokalaMota.equals("Cafetería")) {
 						controladorPanelLogin.sakatuPanelKafetegiaBotoia();
-					} else if (LokalaMota.equals("Restaurante")) {
+					} else if (lokalaMota.equals("Restaurante")) {
 						controladorPanelLogin.sakatuPanelJatetxeBotoia();
 					}
 					
-					System.out.println(LokalaMota);
+					System.out.println(lokalaMota);
 					
 				} else {
 					controladorPanelLogin.ikusiPanelLogin();

@@ -43,7 +43,7 @@ public class ControladorPanelLogin {
 	} 
 	
 	public String konprobatuLokala(String erabiltzailea) {
-		return this.modelo.komprobatuLokala(erabiltzailea);
+		return this.modelo.konprobatuLokala(erabiltzailea);
 	} 
 	
 	public String konprobatuNIF(String erabiltzailea) {
