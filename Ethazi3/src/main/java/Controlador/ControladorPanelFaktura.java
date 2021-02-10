@@ -50,14 +50,6 @@ public class ControladorPanelFaktura {
 		this.modelo.sartuFaktura(izena, abizena);
 	} 
 	
-	/*public int TransferentziaZenbakia() {
-		return this.modelo.TranferentziaZbk();
-	}
-	
-	public int gehituTransferentziaZenbakia() {
-		return this.modelo.gehituTransferentziaZenbakia();
-	}*/
-	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
 		return this.modelo.jasoTransakzioZbk();
 	}

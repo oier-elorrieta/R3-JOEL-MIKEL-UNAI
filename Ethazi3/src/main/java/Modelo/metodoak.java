@@ -6,41 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class metodoak {
-
-	public static Produktua[] objektuak() {
-
-		Produktua sidra = new Produktua("Sidra", 0, "Edaria", 3, 1);
-		Produktua kafea = new Produktua("Kafea", 0, "Edaria", 3, 1);
-		Produktua ura = new Produktua("Ura", 0, "Edaria", 3, 1);
-		Produktua zukua = new Produktua("Zukua", 0, "Edaria", 3, 1);
-		Produktua garagardoa = new Produktua("Garagardoa", 0, "Edaria", 3, 1);
-		Produktua ardoa = new Produktua("Ardoa", 0, "Edaria", 3, 1);
-		Produktua txakoli = new Produktua("Txakoli", 0, "Edaria", 3, 1);
-		Produktua tortilla = new Produktua("Patata tortilla", 0, "Janaria", 3, 1);
-		Produktua gilda = new Produktua("Gilda", 0, "Janaria", 3, 1);
-		Produktua colacao = new Produktua("Colacao", 0, "Edaria", 3, 1);
-		Produktua elikagaiak[] = new Produktua[10];
-
-		elikagaiak[0] = sidra;
-		elikagaiak[1] = kafea;
-		elikagaiak[2] = ura;
-		elikagaiak[3] = zukua;
-		elikagaiak[4] = garagardoa;
-		elikagaiak[5] = ardoa;
-		elikagaiak[6] = txakoli;
-		elikagaiak[7] = tortilla;
-		elikagaiak[8] = gilda;
-		elikagaiak[9] = colacao;
-
-		return elikagaiak;
-	}
-
-	// *****************************************************************************************************************************************************************************************************
 
 	public static ArrayList<Karritoa> sartuProduktuaArrayan(String elikagaia, int kopuru, ArrayList<Karritoa> karroa) {
 		double dirua = sartuDirua(elikagaia, kopuru);
@@ -64,7 +34,7 @@ public class metodoak {
 	public static String[] sartuSalgaiak() {
 		Produktua elikagaiak[] = objektuak();
 
-		String produktoIzena[] = new String[10];
+		String produktoIzena[] = new String[produktuKantitatea()];
 		for (int i = 0; i < produktoIzena.length; i++) {
 			produktoIzena[i] = elikagaiak[i].getIzena();
 		}
@@ -78,7 +48,7 @@ public class metodoak {
 		double dirua = 0;
 		for (int i = 0; i < elikagaiak.length; i++) {
 			if (elikagaiak[i].getIzena().equalsIgnoreCase(aukera)) {
-				dirua = kantitatea * elikagaiak[i].getUnitatePrezioa();
+				dirua = kantitatea * elikagaiak[i].getSaltzekoPrezioa();
 				break;
 			}
 		}
@@ -117,6 +87,68 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 	// ***********************************DATU_BASE_METODOAK************************************************************************************************************************************************
+	// *****************************************************************************************************************************************************************************************************
+
+	public static Produktua[] objektuak() {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		int produktuKantitate = produktuKantitatea();
+
+		String query1 = (Kontsultak.selectProduktuak);
+
+		Produktua elikagaiak[] = new Produktua[produktuKantitate];
+		int kont = 0;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			while(re.next()) {
+				String izena = re.getString("Nombre");
+				Date data = re.getDate("Fec_Cad");
+				String mota = re.getString("Tipo");
+				double saltzekoPrezioa = re.getDouble("Precio_Venta");
+				double erosPrezioa = re.getDouble("Precio_Compra");
+				String fabrikantea = re.getString("N_Fabricante");
+				System.out.println(saltzekoPrezioa);
+				Produktua p1 = new Produktua(izena, (java.sql.Date) data, mota, saltzekoPrezioa, erosPrezioa, fabrikantea);
+				elikagaiak[kont] = p1;
+				kont++;
+				System.out.println(p1.toString());
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return elikagaiak;
+	}
+
+	//******************************************************************************************************************************************************************************************************
+
+	public static int produktuKantitatea() {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		String query1 = (Kontsultak.selectProduktuKantitatea);
+		int i = 0;
+
+		try {
+			ResultSet re;
+			PreparedStatement p;
+
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if(re.next()) {
+				i = re.getInt("count(nombre)");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return i;
+	}
+
 	// *****************************************************************************************************************************************************************************************************
 
 	public static void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) {
