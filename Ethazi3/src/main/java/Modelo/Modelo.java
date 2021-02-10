@@ -8,7 +8,7 @@ public class Modelo {
 
 	private ArrayList<Karritoa> karroa = new ArrayList<Karritoa>();
 
-	private Erabiltzaile usuarioak[] = new Erabiltzaile[1];
+	private Erabiltzaile usuarioa = new Erabiltzaile(null, null);
 
 	// *****************************************************************************************************************************************************************
 
@@ -42,8 +42,8 @@ public class Modelo {
 		metodoak.sartuDatuak(izena, abizena, pasahitza, dni, nif);
 	}
 
-	public Erabiltzaile[] sartuErabiltzailea(String erabiltzailea, String pasahitza) {
-		return metodoak.sartuErabiltzailea(erabiltzailea, pasahitza, usuarioak);
+	public Erabiltzaile sartuErabiltzailea(String erabiltzailea, String pasahitza) {
+		return metodoak.sartuErabiltzailea(erabiltzailea, pasahitza,usuarioa);
 	}
 
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
@@ -55,11 +55,11 @@ public class Modelo {
 	}
 
 	public String konprobatuNIF () {
-		return metodoak.konprobatuNIF(usuarioak[0].getErabiltzailea());
+		return metodoak.konprobatuNIF(usuarioa.getErabiltzailea());
 	}
 
 	public String konprobatuLokala() {
-		return metodoak.konprobatuLokala(usuarioak[0].getErabiltzailea());
+		return metodoak.konprobatuLokala(usuarioa.getErabiltzailea());
 	}
 
 	public void sartuTicket() throws ClassNotFoundException, SQLException {

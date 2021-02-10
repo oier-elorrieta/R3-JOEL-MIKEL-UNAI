@@ -111,12 +111,10 @@ public class metodoak {
 				String mota = re.getString("Tipo");
 				double saltzekoPrezioa = re.getDouble("Precio_Venta");
 				double erosPrezioa = re.getDouble("Precio_Compra");
-				String fabrikantea = re.getString("N_Fabricante");
-				System.out.println(saltzekoPrezioa);
+				String fabrikantea = re.getString("N_Fabricante"); 
 				Produktua p1 = new Produktua(izena, (java.sql.Date) data, mota, saltzekoPrezioa, erosPrezioa, fabrikantea);
 				elikagaiak[kont] = p1;
-				kont++;
-				System.out.println(p1.toString());
+				kont++; 
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
@@ -169,11 +167,10 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static Erabiltzaile[] sartuErabiltzailea(String erabiltzailea, String pasahitza, Erabiltzaile usuarioak[]) {
-
-		Erabiltzaile e1 = new Erabiltzaile(erabiltzailea, pasahitza);
-		usuarioak[0] = e1;
-		return usuarioak;
+	public static Erabiltzaile sartuErabiltzailea(String erabiltzailea, String pasahitza, Erabiltzaile usuarioa) {
+		usuarioa.setErabiltzailea(erabiltzailea);
+		usuarioa.setPasahitza(pasahitza);
+		return usuarioa;
 	}
 
 	// *****************************************************************************************************************************************************************************************************

@@ -51,7 +51,7 @@ public class ControladorPanelLogin {
 		this.controlador.itxi();
 	}
 	
-	public Erabiltzaile[] sartuErabiltzaile(String erabiltzailea, String pasahitza) {
+	public Erabiltzaile sartuErabiltzaile(String erabiltzailea, String pasahitza) {
 		return this.modelo.sartuErabiltzailea(erabiltzailea, pasahitza);
 	}
 }
