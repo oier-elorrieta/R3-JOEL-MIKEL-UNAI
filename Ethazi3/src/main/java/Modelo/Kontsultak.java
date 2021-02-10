@@ -14,6 +14,8 @@ public class Kontsultak {
 	 
 	 static final String selectLokalaMota = selectLokalarenNif + "(SELECT NIF from usuario where DNI = ";
 	 
+	 static final String selectMaxNumTrans="SELECT max(NumTrans) from operaciones;";
+	 
 	// *****************************************************************************************************************************************************************************************************
 	 
 	 static final String insertDatuak = "INSERT INTO usuario VALUES";

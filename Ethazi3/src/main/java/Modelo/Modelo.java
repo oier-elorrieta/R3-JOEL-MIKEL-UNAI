@@ -28,7 +28,7 @@ public class Modelo {
 		return metodoak.diruTotala(karroa);
 	}
 
-	public ArrayList<Karritoa> ezabatu() {
+	public ArrayList<Karritoa> ezabatuProduktuenArraya() {
 		return metodoak.ezabatuArraya(karroa);
 	}
 

@@ -150,7 +150,7 @@ public class metodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("SELECT max(NumTrans) from operaciones;");
+		String query1 = (Kontsultak.selectMaxNumTrans);
 		int TransakzioZbk = 0;
 
 		try {

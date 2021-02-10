@@ -32,7 +32,7 @@ public class ControladorPanelTicket {
 
 	public void sakatuAtzeraBotoia() {
 		this.controlador.nabegatzenPanelLogin();
-		this.modelo.ezabatu();
+		this.modelo.ezabatuProduktuenArraya();
 	}
 
 	public String[] ComboBoxaSakatu() {
@@ -61,17 +61,17 @@ public class ControladorPanelTicket {
 
 	public void sakatuPanelTabernaBotoia() {
 		this.controlador.nabegatzenPanelTaberna();
-		this.modelo.ezabatu();
+		this.modelo.ezabatuProduktuenArraya();
 	}
 
 	public void sakatuPanelKafetegiaBotoia() {
 		this.controlador.nabegatzenPanelKafetegia();
-		this.modelo.ezabatu();
+		this.modelo.ezabatuProduktuenArraya();
 	}
 
 	public void sakatuPanelJatetxeBotoia() {
 		this.controlador.nabegatzenPanelJatetxea();
-		this.modelo.ezabatu();
+		this.modelo.ezabatuProduktuenArraya();
 	}
 
 	public String konprobatuLokala() {
