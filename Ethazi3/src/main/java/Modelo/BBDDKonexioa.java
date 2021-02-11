@@ -1,23 +1,20 @@
-package BBDD;
+package Modelo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 public class BBDDKonexioa {
-
-
-	private static final String CONTROLADOR = "com.mysql.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:33060/ethazi3";
-	private static final String USUARIO = "root";
-	private static final String CLAVE = "elorrieta";
 	
+	private static final String CONTROLADOR = "com.mysql.jdbc.Driver";
+	private static final String USUARIO = "root";
+	private static final String URL = "jdbc:mysql://localhost:33060/ethazi3";
+	private static final String CLAVE = "elorrieta";
 
 	public static Connection getConexion() {
-		
+
 		Connection konekzioa = null;
-		
+
 		try {
 			Class.forName(CONTROLADOR);
 			konekzioa = DriverManager.getConnection(URL, USUARIO, CLAVE);			 
@@ -33,6 +30,7 @@ public class BBDDKonexioa {
 		}
 		return konekzioa;
 	}
+	
 	public static void main(String[] args) {
 		getConexion();
 	}

@@ -1,9 +1,8 @@
 package Controlador;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
-
 import Modelo.Karritoa;
 import Modelo.Modelo;
 import Vista.PanelFaktura; 
@@ -31,11 +30,6 @@ public class ControladorPanelFaktura {
 		this.controlador.nabegatzenPanelLaburpena();
 	}
 	
-	public void sakatuAtzeraBotoia() {
-		this.controlador.nabegatzenPanelLogin();
-		this.modelo.ezabatu();
-	}
-	
 	public String[] ComboBoxaSakatu() {
 		return this.modelo.produktuakJaso();
 	}
@@ -50,5 +44,40 @@ public class ControladorPanelFaktura {
 	
 	public ImageIcon argazkiaAukeratu(String aukera) {
 		return this.modelo.argazkiaAukeratu(aukera);
+	}
+	
+	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuFaktura(izena, abizena);
+	} 
+	
+	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
+		return this.modelo.jasoTransakzioZbk();
+	}
+	
+	public void sakatuPanelTabernaBotoia() {
+		this.controlador.nabegatzenPanelTaberna();
+		this.modelo.ezabatuProduktuenArraya();
+	}
+
+	public void sakatuPanelKafetegiaBotoia() {
+		this.controlador.nabegatzenPanelKafetegia();
+		this.modelo.ezabatuProduktuenArraya();
+	}
+
+	public void sakatuPanelJatetxeBotoia() {
+		this.controlador.nabegatzenPanelJatetxea();
+		this.modelo.ezabatuProduktuenArraya();
+	}
+	
+	public String konprobatuLokala() {
+		return this.modelo.konprobatuLokala();
+	}
+	
+	public String komprobatuLokalarenIzena() {
+		return this.modelo.konprobatuLokalarenIzena();
+	}
+	
+	public String ikusiNIF() {
+		return this.modelo.konprobatuNIF();
 	}
 }

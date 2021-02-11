@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,111 +24,119 @@ import javax.swing.JRadioButton;
 @SuppressWarnings("serial")
 public class PanelEskaera extends JPanel {
 
-	private ControladorPanelEskaera controladorPanelPedidos;
+	private ControladorPanelEskaera controladorPanelEskaera;
 
-	private JTextField TF_Titulua;
-	private JTextField TF_Fecha;
-	private JTextField TF_Lokala;
-	private JTextField TF_TransferentziaZenbakia;
-	private JTextField TF_Totala;
-	private JTextField TF_Helbide;
+	private JTextField tf_Titulua;
+	private JTextField tf_Fecha;
+	private JTextField tf_Lokala;
+	private JTextField tf_TransferentziaZenbakia;
+	private JTextField tf_Totala;
+	private JTextField tf_Helbide;
 
-	private JLabel LB_Data;
-	private JLabel LB_Lokala;
-	private JLabel LB_TransferentziaZenbakia;
-	private JLabel LB_Totala;
+	private JLabel lb_Data;
+	private JLabel lb_Lokala;
+	private JLabel lb_TransferentziaZenbakia;
+	private JLabel lb_Totala;
 	private JLabel argazkiak;
 
 	private JButton btnAtzera;
 	private JButton btnAurrera;
 	private JButton btnSegi;
-	private JRadioButton RB_Helbide;
+	private JRadioButton rb_Helbide;
 
-	private JComboBox<String> CB_Produktoak = new JComboBox<String>();
-	private JSpinner NºUnidades;
+	private JComboBox<String> cb_Produktoak = new JComboBox<String>();
+	private JSpinner nºunidades;
 	private String[] produktuak;
 
+	private int TransferentziaZenbakia;
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public PanelEskaera(ControladorPanelEskaera controladorPanelPedidos) {
-		this.controladorPanelPedidos = controladorPanelPedidos;
+	public PanelEskaera(ControladorPanelEskaera controladorPanelEskaera) {
+		this.controladorPanelEskaera = controladorPanelEskaera;
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		TF_Titulua = new JTextField();
-		TF_Titulua.setFont(new Font("Tahoma", Font.BOLD, 12));
-		TF_Titulua.setForeground(new Color(255, 255, 255));
-		TF_Titulua.setBounds(10, 5, 432, 20);
-		TF_Titulua.setBackground(new Color(0, 0, 255));
-		TF_Titulua.setHorizontalAlignment(SwingConstants.LEFT);
-		TF_Titulua.setText(" \u2666\uFE0F Eskaera Kalkuloak \u2666\uFE0F");
-		TF_Titulua.setColumns(10);
-		TF_Titulua.setEditable(false);
-		add(TF_Titulua);
+		tf_Titulua = new JTextField();
+		tf_Titulua.setFont(new Font("Tahoma", Font.BOLD, 12));
+		tf_Titulua.setForeground(new Color(255, 255, 255));
+		tf_Titulua.setBounds(10, 5, 432, 20);
+		tf_Titulua.setBackground(new Color(0, 0, 255));
+		tf_Titulua.setHorizontalAlignment(SwingConstants.LEFT);
+		tf_Titulua.setText(" \u2666\uFE0F Eskaera Kalkuloak \u2666\uFE0F");
+		tf_Titulua.setColumns(10);
+		tf_Titulua.setEditable(false);
+		add(tf_Titulua);
 
-		TF_Fecha = new JTextField();
-		TF_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
-		TF_Fecha.setBounds(367, 36, 75, 20);
-		TF_Fecha.setColumns(10);
-		TF_Fecha.setEditable(false);
-		add(TF_Fecha);
+		tf_Fecha = new JTextField();
+		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
+		tf_Fecha.setBounds(367, 36, 75, 20);
+		tf_Fecha.setColumns(10);
+		tf_Fecha.setEditable(false);
+		add(tf_Fecha);
 
-		TF_Lokala = new JTextField("x");
-		TF_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
-		TF_Lokala.setBounds(61, 36, 75, 20);
-		TF_Lokala.setColumns(10);
-		TF_Lokala.setEditable(false);
-		add(TF_Lokala);
+		tf_Lokala = new JTextField(controladorPanelEskaera.konprobatuLokalarenIzena());
+		tf_Lokala.setFont(new Font("Tahoma", Font.ITALIC, 9));
+		tf_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
+		tf_Lokala.setBounds(61, 36, 75, 20);
+		tf_Lokala.setColumns(10);
+		tf_Lokala.setEditable(false);
+		add(tf_Lokala);
 
-		TF_TransferentziaZenbakia = new JTextField("x");
-		TF_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
-		TF_TransferentziaZenbakia.setBounds(226, 36, 75, 20);
-		TF_TransferentziaZenbakia.setColumns(10);
-		TF_TransferentziaZenbakia.setEditable(false);
-		add(TF_TransferentziaZenbakia);
+		try {
+			TransferentziaZenbakia = controladorPanelEskaera.jasoTransakzioZbk();
+		} catch (ClassNotFoundException | SQLException e) { 
+			e.printStackTrace();
+		}
 
-		TF_Totala = new JTextField("x");
-		TF_Totala.setHorizontalAlignment(SwingConstants.CENTER);
-		TF_Totala.setBounds(61, 267, 183, 20);	
-		TF_Totala.setColumns(10);
-		TF_Totala.setEditable(false);
-		add(TF_Totala);
+		tf_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
+		tf_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
+		tf_TransferentziaZenbakia.setBounds(226, 36, 75, 20);
+		tf_TransferentziaZenbakia.setColumns(10);
+		tf_TransferentziaZenbakia.setEditable(false);
+		add(tf_TransferentziaZenbakia);
 
-		TF_Helbide = new JTextField("");
-		TF_Helbide.setHorizontalAlignment(SwingConstants.CENTER);
-		TF_Helbide.setBounds(87, 233, 157, 20);	
-		TF_Helbide.setColumns(10);
-		TF_Helbide.setEnabled(false);
-		add(TF_Helbide);
+		tf_Totala = new JTextField("0.0");
+		tf_Totala.setHorizontalAlignment(SwingConstants.CENTER);
+		tf_Totala.setBounds(61, 267, 183, 20);
+		tf_Totala.setColumns(10);
+		tf_Totala.setEditable(false);
+		add(tf_Totala);
+
+		tf_Helbide = new JTextField("");
+		tf_Helbide.setHorizontalAlignment(SwingConstants.CENTER);
+		tf_Helbide.setBounds(87, 233, 157, 20);
+		tf_Helbide.setColumns(10);
+		tf_Helbide.setEnabled(false);
+		add(tf_Helbide);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		LB_Data = new JLabel("Data:");
-		LB_Data.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		LB_Data.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_Data.setBounds(328, 39, 46, 14);
-		add(LB_Data);
+		lb_Data = new JLabel("Data:");
+		lb_Data.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lb_Data.setHorizontalAlignment(SwingConstants.CENTER);
+		lb_Data.setBounds(328, 39, 46, 14);
+		add(lb_Data);
 
-		LB_Lokala = new JLabel("Lokala:");
-		LB_Lokala.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		LB_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_Lokala.setBounds(20, 39, 46, 14);
-		add(LB_Lokala);
+		lb_Lokala = new JLabel("Lokala:");
+		lb_Lokala.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lb_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
+		lb_Lokala.setBounds(20, 39, 46, 14);
+		add(lb_Lokala);
 
-		LB_TransferentziaZenbakia = new JLabel("Trans Zbk:");
-		LB_TransferentziaZenbakia.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		LB_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_TransferentziaZenbakia.setBounds(170, 39, 57, 14);
-		add(LB_TransferentziaZenbakia);
+		lb_TransferentziaZenbakia = new JLabel("Trans Zbk:");
+		lb_TransferentziaZenbakia.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lb_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
+		lb_TransferentziaZenbakia.setBounds(170, 39, 57, 14);
+		add(lb_TransferentziaZenbakia);
 
-		LB_Totala = new JLabel("Totala:");
-		LB_Totala.setHorizontalAlignment(SwingConstants.CENTER);
-		LB_Totala.setBounds(20, 270, 46, 14);
-		add(LB_Totala);
+		lb_Totala = new JLabel("Totala:");
+		lb_Totala.setHorizontalAlignment(SwingConstants.CENTER);
+		lb_Totala.setBounds(20, 270, 46, 14);
+		add(lb_Totala);
 
 		argazkiak = new JLabel();
 		argazkiak.setBounds(254, 67, 188, 154);
@@ -149,30 +158,31 @@ public class PanelEskaera extends JPanel {
 		btnSegi = new JButton("\u2714\uFE0F");
 		btnSegi.setHorizontalAlignment(SwingConstants.TRAILING);
 		btnSegi.setBounds(388, 232, 57, 23);
+		btnSegi.setEnabled(false);
 		add(btnSegi);
 
-		RB_Helbide = new JRadioButton("Helbide");
-		RB_Helbide.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		RB_Helbide.setBounds(20, 233, 60, 20);
-		add(RB_Helbide);
+		rb_Helbide = new JRadioButton("Helbide");
+		rb_Helbide.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		rb_Helbide.setBounds(20, 233, 60, 20);
+		add(rb_Helbide);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		final String numbers[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+		final String numbers[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
 		SpinnerModel model1 = new SpinnerListModel(numbers);
 
-		NºUnidades = new JSpinner(model1);
-		NºUnidades.setBounds(254, 233, 120, 20);
-		add(NºUnidades);
+		nºunidades = new JSpinner(model1);
+		nºunidades.setBounds(254, 233, 120, 20);
+		add(nºunidades);
 
-		CB_Produktoak.setBounds(30, 68, 214, 20);
-		add(CB_Produktoak);
+		cb_Produktoak.setBounds(30, 68, 214, 20);
+		add(cb_Produktoak);
 
-		produktuak = controladorPanelPedidos.ComboBoxaSakatu();
+		produktuak = controladorPanelEskaera.ComboBoxaSakatu();
 		for (int i = 0; i < produktuak.length; i++) {
-			CB_Produktoak.addItem(produktuak[i]);
+			cb_Produktoak.addItem(produktuak[i]);
 		}
-		CB_Produktoak.setSelectedItem(null);
+		cb_Produktoak.setSelectedItem(null);
 
 		initializeEvents();
 	}
@@ -180,58 +190,74 @@ public class PanelEskaera extends JPanel {
 	// *****************************************************************************************************************************************************************************************************
 
 	private void initializeEvents() {
-		this.btnAurrera.addActionListener(listenerLaburpeneraBotoia(this.controladorPanelPedidos));
-		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelPedidos));
-		this.CB_Produktoak.addActionListener(listenerComboBox(this.controladorPanelPedidos));
-		this.btnSegi.addActionListener(listenerSegiBotoia(this.controladorPanelPedidos));
-		this.RB_Helbide.addActionListener(listenerRadioButton());
+		this.btnAurrera.addActionListener(listenerLaburpeneraBotoia(this.controladorPanelEskaera));
+		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelEskaera));
+		this.cb_Produktoak.addActionListener(listenerComboBox(this.controladorPanelEskaera));
+		this.btnSegi.addActionListener(listenerSegiBotoia(this.controladorPanelEskaera));
+		this.rb_Helbide.addActionListener(listenerRadioButton());
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerLaburpeneraBotoia(ControladorPanelEskaera controladorPanelPedidos) {
+	private ActionListener listenerLaburpeneraBotoia(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelPedidos.sakatuLaburpeneraBotoia();
-			}
-		};
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	private ActionListener listenerAtzeraBotoia(ControladorPanelEskaera controladorPanelPedidos) {
-		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelPedidos.sakatuAtzeraBotoia();
-			}
-		};
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	private ActionListener listenerSegiBotoia(ControladorPanelEskaera controladorPanelPedidos) {
-		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String aukera = (String) CB_Produktoak.getSelectedItem();
-				int kantitatea = Integer.parseInt(NºUnidades.getValue().toString());
-				if (kantitatea != 0) {
-					controladorPanelPedidos.sartu(aukera, kantitatea);
+				controladorPanelEskaera.sakatuLaburpeneraBotoia();
+				try {
+					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText());
+				} catch (ClassNotFoundException | SQLException e) { 
+					e.printStackTrace();
 				}
-				NºUnidades.setValue("0");
-				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
-				String diruTotala = String.valueOf(controladorPanelPedidos.diruTotala());
-				TF_Totala.setText(diruTotala);
 			}
 		};
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
-	private ActionListener listenerComboBox(ControladorPanelEskaera controladorPanelPedidos) {
+	private ActionListener listenerAtzeraBotoia(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String aukera = (String) CB_Produktoak.getSelectedItem();
-				ImageIcon argazkia = (ImageIcon) controladorPanelPedidos.argazkiaAukeratu(aukera);
+				if(controladorPanelEskaera.konprobatuLokala().equals("Restaurante")) {
+					controladorPanelEskaera.sakatuPanelJatetxeBotoia();
+				}else if(controladorPanelEskaera.konprobatuLokala().equals("Bar")) {
+					controladorPanelEskaera.sakatuPanelTabernaBotoia();
+				}else {
+					controladorPanelEskaera.sakatuPanelKafetegiaBotoia();
+				}
+			}
+		};
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	private ActionListener listenerSegiBotoia(ControladorPanelEskaera controladorPanelEskaera) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String aukera = (String) cb_Produktoak.getSelectedItem();
+				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
+				if (kantitatea != 0) {
+					controladorPanelEskaera.sartu(aukera, kantitatea);
+				}
+				nºunidades.setValue("0");
+				btnSegi.setEnabled(false);
+				cb_Produktoak.setSelectedItem(null);
+				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
+				String diruTotala = String.valueOf(controladorPanelEskaera.diruTotala());
+				tf_Totala.setText(diruTotala);
+			}
+		};
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	private ActionListener listenerComboBox(ControladorPanelEskaera controladorPanelEskaera) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String aukera = (String) cb_Produktoak.getSelectedItem();
+				ImageIcon argazkia = (ImageIcon) controladorPanelEskaera.argazkiaAukeratu(aukera);
+				if (cb_Produktoak.getSelectedItem() != null) { 
+					btnSegi.setEnabled(true);	
+				}
 				argazkiak.setIcon(argazkia);
 			}
 		};
@@ -242,10 +268,10 @@ public class PanelEskaera extends JPanel {
 	private ActionListener listenerRadioButton() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (RB_Helbide.isSelected() == false) {
-					TF_Helbide.setEnabled(false);
+				if (rb_Helbide.isSelected() == false) {
+					tf_Helbide.setEnabled(false);
 				} else {
-					TF_Helbide.setEnabled(true);
+					tf_Helbide.setEnabled(true);
 				}
 			}
 		};
