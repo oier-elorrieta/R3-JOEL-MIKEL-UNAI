@@ -2,9 +2,6 @@ package Modelo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import javax.swing.ImageIcon;
 
 public class Modelo {
@@ -65,6 +62,10 @@ public class Modelo {
 		return metodoak.konprobatuLokala(usuarioa.getErabiltzailea());
 	}
 	
+	public String konprobatuLokalarenIzena() {
+		return metodoak.konprobatuLokalarenIzena(konprobatuNIF());
+	}
+	
 	public void sartuTicket(int año, int mes, int dia) throws ClassNotFoundException, SQLException {
 		metodoak.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	}
@@ -77,7 +78,7 @@ public class Modelo {
 		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	} 
 
-	public String konprobatuLokalarenIzena() {
-		return metodoak.konprobatuLokalarenIzena(konprobatuNIF());
+	public void gehituStocka(String nom_Produktua, int kantitatea, String nif){
+		metodoak.gehituStocka(nom_Produktua, kantitatea, nif);
 	} 
 }

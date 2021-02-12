@@ -80,11 +80,9 @@ public class PanelMenuJatetxea extends JPanel {
 		this.btnEskaera.addActionListener(listenerEskaeraBotoia(this.controladorPanelJatetxea));
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelJatetxea));
 		this.btnHasiera.addActionListener(listenerHasieraBotoia(this.controladorPanelJatetxea));
-<<<<<<< HEAD
 		this.btnHornikuntza.addActionListener(listenerHornikuntzaBotoia(this.controladorPanelJatetxea));
-=======
 		this.btnKomanda.addActionListener(listenerKomandaBotoia(this.controladorPanelJatetxea));
->>>>>>> 2d6284915c19372c01197d675517627950c2b350
+
 	}
 	
 	// *****************************************************************************************************************************************************************************************************

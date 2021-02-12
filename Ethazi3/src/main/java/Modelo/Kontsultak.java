@@ -23,7 +23,7 @@ public class Kontsultak {
 	// *****************************************************************************************************************************************************************************************************
 
 	static final String insertDatuak = "INSERT INTO usuario VALUES";
-
+	
 	static final String insertOperaciones = "INSERT INTO operaciones VALUES";
 
 	static final String insertNifFaktura = "INSERT INTO niffactura VALUES";
@@ -31,4 +31,8 @@ public class Kontsultak {
 	static final String insertFactura = "INSERT INTO factura VALUES";
                      
 	static final String insertEskaera = "INSERT INTO pedidos VALUES";
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	static final String updateStock = "update vende set Stock = Stock + ";
 }

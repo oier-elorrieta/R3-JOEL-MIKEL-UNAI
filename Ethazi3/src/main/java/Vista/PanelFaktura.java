@@ -10,8 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
@@ -21,6 +21,7 @@ import Controlador.ControladorPanelFaktura;
 
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 
 @SuppressWarnings("serial")
 public class PanelFaktura extends JPanel {
@@ -50,6 +51,7 @@ public class PanelFaktura extends JPanel {
 	private JButton btnSegi;
 
 	private JComboBox<String> cb_Produktoak = new JComboBox<String>();
+	private JFormattedTextField tf;
 	private JSpinner nºunidades;
 	private String[] produktuak;
 
@@ -209,13 +211,18 @@ public class PanelFaktura extends JPanel {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		nºunidades = new JSpinner();
-		final String numbers[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
-		SpinnerModel model1 = new SpinnerListModel(numbers);
-
-		nºunidades = new JSpinner(model1);
+		int min = 0;
+		int max = 100;
+		int step = 1;
+		int initValue = 0;
+		SpinnerModel model = new SpinnerNumberModel(initValue, min, max, step);
+		
+		nºunidades = new JSpinner(model);
 		nºunidades.setBounds(254, 233, 120, 20);
 		add(nºunidades);
+		
+		tf = ((JSpinner.DefaultEditor) nºunidades.getEditor()).getTextField();
+	    tf.setEditable(false);
 
 		cb_Produktoak.setBounds(30, 68, 214, 20);
 		add(cb_Produktoak);

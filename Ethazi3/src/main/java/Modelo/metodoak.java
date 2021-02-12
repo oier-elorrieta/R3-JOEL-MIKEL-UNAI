@@ -305,7 +305,6 @@ public class metodoak {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-		System.out.println(Tipo);
 		return Tipo;
 	}
 
@@ -385,5 +384,23 @@ public class metodoak {
 		}
 		return LokalarenIzena;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+
+		public static void gehituStocka(String nomProduktua, int kantitatea, String nif) {
+
+			Connection konekzioa = BBDDKonexioa.getConexion();
+
+			String query1 = (Kontsultak.updateStock +""+kantitatea+" where NIFLocal = '"+nif+"' and NomProducto='"+nomProduktua+"';"); 
+
+			try {
+				Statement s;
+				s = konekzioa.createStatement();
+				s.executeUpdate(query1);
+			} catch (SQLException e) {
+				System.out.println("Errorea konexioan");
+				e.printStackTrace();
+			}
+		}
 
 }

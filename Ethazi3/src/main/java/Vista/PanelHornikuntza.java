@@ -8,7 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import Controlador.ControladorPanelHornikuntza;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 
 @SuppressWarnings("serial")
 public class PanelHornikuntza extends JPanel {
@@ -20,6 +23,7 @@ public class PanelHornikuntza extends JPanel {
 	private JButton btnSegi;
 	
 	private JComboBox<String> cb_Produktoak = new JComboBox<String>();
+	private JFormattedTextField tf;
 	private JSpinner spinner;
 	private String[] produktuak;
 	
@@ -45,6 +49,8 @@ public class PanelHornikuntza extends JPanel {
 		btnAtzera.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		add(btnAtzera);
 		
+		// _______________________________________________________________________________________________________________________________________________________________________________
+		
 		cb_Produktoak.setBounds(10, 25, 430, 20);
 		add(cb_Produktoak);
 
@@ -58,8 +64,17 @@ public class PanelHornikuntza extends JPanel {
 		btnSegi.setBounds(351, 234, 89, 23);
 		add(btnSegi);
 		
-		spinner = new JSpinner();
+		int min = 0;
+		int max = 100;
+		int step = 1;
+		int initValue = 0;
+		SpinnerModel model = new SpinnerNumberModel(initValue, min, max, step);
+		
+		spinner = new JSpinner(model);
 		spinner.setBounds(10, 234, 331, 23);
+		tf = ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField();
+	    tf.setEditable(false);
+
 		add(spinner);
 
 		initializeEvents();
@@ -68,10 +83,32 @@ public class PanelHornikuntza extends JPanel {
 	// *****************************************************************************************************************************************************************************************************
 
 	private void initializeEvents() {
+		this.btnSegi.addActionListener(listenerSegiBotoia(this.controladorPanelHornikuntza));
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelHornikuntza));
 		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelHornikuntza));
 	}
 
+	// *****************************************************************************************************************************************************************************************************
+
+		private ActionListener listenerSegiBotoia(ControladorPanelHornikuntza controladorPanelHornikuntza) {
+			return new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (controladorPanelHornikuntza.konprobatuLokala().equals("Restaurante")) {
+						controladorPanelHornikuntza.sakatuPanelJatetxeBotoia();
+					} else if (controladorPanelHornikuntza.konprobatuLokala().equals("Bar")) {
+						controladorPanelHornikuntza.sakatuPanelTabernaBotoia();
+					} else {
+						controladorPanelHornikuntza.sakatuPanelKafetegiaBotoia();
+					}
+					
+					String nomProduktua = (String) cb_Produktoak.getSelectedItem();
+					int kantitatea = Integer.parseInt(spinner.getValue().toString());
+					String nif = controladorPanelHornikuntza.konprobatuNIF();
+					controladorPanelHornikuntza.gehituStocka(nomProduktua, kantitatea, nif);
+				}
+			};
+		} 
+	
 	// *****************************************************************************************************************************************************************************************************
 
 	private ActionListener listenerSarratuBotoia(ControladorPanelHornikuntza controladorPanelHornikuntza) {

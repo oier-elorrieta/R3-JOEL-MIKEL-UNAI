@@ -48,6 +48,14 @@ public class ControladorPanelHornikuntza {
 		return this.modelo.konprobatuLokala();
 	}
 	
+	public void gehituStocka(String nomProduktua, int kantitatea, String nif) {
+		this.modelo.gehituStocka(nomProduktua, kantitatea, nif);
+	}
+	
+	public String konprobatuNIF() {
+		return this.modelo.konprobatuNIF();
+	}
+	
 	public void sakatuAtzeraBotoia() {
 		this.controlador.itxi();
 	}
