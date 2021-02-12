@@ -31,6 +31,10 @@ public class ControladorPanelMenuTaberna {
 		this.controlador.nabegatzenPanelLogin();
 	}
 	
+	public void sakatuHornikuntzaBotoia() {
+		this.controlador.nabegatzenPanelHornikuntza();
+	}
+	
 	public void sakatuAtzeraBotoia() {
 		this.controlador.itxi();
 	}

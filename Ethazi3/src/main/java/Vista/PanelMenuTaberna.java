@@ -19,6 +19,7 @@ public class PanelMenuTaberna extends JPanel {
 	private JButton btnTicket;
 	private JButton btnSarratu;
 	private JButton btnHasiera;
+	private JButton btnHornikuntza;
 
 	// *****************************************************************************************************************************************************************************************************
 	
@@ -31,12 +32,12 @@ public class PanelMenuTaberna extends JPanel {
 
 		btnTicket = new JButton("TICKET");
 		btnTicket.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnTicket.setBounds(10, 95, 210, 113); 
+		btnTicket.setBounds(10, 11, 210, 113); 
 		add(btnTicket);
 
 		btnFaktura = new JButton("FAKTURA");
 		btnFaktura.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnFaktura.setBounds(230, 95, 210, 113);
+		btnFaktura.setBounds(230, 11, 210, 113);
 		add(btnFaktura);
 
 		btnSarratu = new JButton("SARRATU ");
@@ -48,6 +49,11 @@ public class PanelMenuTaberna extends JPanel {
 		btnHasiera.setFont(new Font("Tahoma", Font.ITALIC, 8));
 		btnHasiera.setBounds(10, 259, 90, 30);
 		add(btnHasiera);
+		
+		btnHornikuntza = new JButton("+");
+		btnHornikuntza.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnHornikuntza.setBounds(123, 135, 210, 113);
+		add(btnHornikuntza);
 
 		initializeEvents();
 	}
@@ -59,6 +65,7 @@ public class PanelMenuTaberna extends JPanel {
 		this.btnTicket.addActionListener(listenerTicketBotoia(this.controladorPanelMenuTaberna));
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelMenuTaberna));
 		this.btnHasiera.addActionListener(listenerHasieraBotoia(this.controladorPanelMenuTaberna));
+		this.btnHornikuntza.addActionListener(listenerHornikuntzaBotoia(this.controladorPanelMenuTaberna));
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
@@ -90,6 +97,16 @@ public class PanelMenuTaberna extends JPanel {
 			}
 		};
 	} 
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+		private ActionListener listenerHornikuntzaBotoia(ControladorPanelMenuTaberna controladorPanelMenuTaberna) {
+			return new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					controladorPanelMenuTaberna.sakatuHornikuntzaBotoia();
+				}
+			};
+		} 
 	
 	// *****************************************************************************************************************************************************************************************************
 	

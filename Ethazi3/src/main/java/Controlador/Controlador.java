@@ -14,7 +14,8 @@ public class Controlador {
 	private ControladorPanelErregistratu controladorPanelErregistratu; 
 	private ControladorPanelMenuJatetxea controladorPanelJatetxea;	
 	private ControladorPanelMenuTaberna controladorPanelTaberna;	
-	private ControladorPanelMenuKafetegia controladorPanelKafetegia;	
+	private ControladorPanelMenuKafetegia controladorPanelKafetegia;
+	private ControladorPanelHornikuntza controladorPanelHornikuntza;
 	private ControladorPanelFaktura controladorPanelFaktura;
 	private ControladorPanelTicket controladorPanelTicket;
 	private ControladorPanelEskaera controladorPanelPedidos; 
@@ -29,6 +30,7 @@ public class Controlador {
 		this.controladorPanelTaberna = new ControladorPanelMenuTaberna(this.vista, this);
 		this.controladorPanelKafetegia = new ControladorPanelMenuKafetegia(this.vista, this);
 		this.controladorPanelFaktura = new ControladorPanelFaktura(this.modelo, this.vista, this);
+		this.controladorPanelHornikuntza = new ControladorPanelHornikuntza(this.vista, this, this.modelo);
 		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
 		this.controladorPanelPedidos = new ControladorPanelEskaera(this.modelo, this.vista, this); 
 		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this);
@@ -57,6 +59,10 @@ public class Controlador {
 	
 	public void nabegatzenPanelFaktura() { 
 		this.controladorPanelFaktura.ikusiPanelFaktura();
+	}
+	
+	public void nabegatzenPanelHornikuntza() { 
+		this.controladorPanelHornikuntza.ikusiPanelHornikuntza();
 	}
 	
 	public void nabegatzenPanelTicket() { 
