@@ -34,5 +34,7 @@ public class Kontsultak {
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	static final String updateStock = "update vende set Stock = Stock + ";
+	static final String updateGehituStock = "update vende set Stock = Stock + ";
+	
+	static final String updateKenduStock = "update vende set Stock = Stock - ";
 }

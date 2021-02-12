@@ -105,16 +105,17 @@ public class metodoak {
 
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
-			while(re.next()) {
+			while (re.next()) {
 				String izena = re.getString("Nombre");
 				Date data = re.getDate("Fec_Cad");
 				String mota = re.getString("Tipo");
 				double saltzekoPrezioa = re.getDouble("Precio_Venta");
 				double erosPrezioa = re.getDouble("Precio_Compra");
-				String fabrikantea = re.getString("N_Fabricante"); 
-				Produktua p1 = new Produktua(izena, (java.sql.Date) data, mota, saltzekoPrezioa, erosPrezioa, fabrikantea);
+				String fabrikantea = re.getString("N_Fabricante");
+				Produktua p1 = new Produktua(izena, (java.sql.Date) data, mota, saltzekoPrezioa, erosPrezioa,
+						fabrikantea);
 				elikagaiak[kont] = p1;
-				kont++; 
+				kont++;
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
@@ -123,7 +124,7 @@ public class metodoak {
 		return elikagaiak;
 	}
 
-	//******************************************************************************************************************************************************************************************************
+	// ******************************************************************************************************************************************************************************************************
 
 	public static int produktuKantitatea() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
@@ -137,7 +138,7 @@ public class metodoak {
 
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
-			if(re.next()) {
+			if (re.next()) {
 				i = re.getInt("count(nombre)");
 			}
 		} catch (SQLException e) {
@@ -153,7 +154,8 @@ public class metodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.insertDatuak +"('" + izena + "', '" + abizena + "','" + pasahitza+ "','" + dni + "', '" + nif + "')"); 
+		String query1 = (Kontsultak.insertDatuak + "('" + izena + "', '" + abizena + "','" + pasahitza + "','" + dni
+				+ "', '" + nif + "')");
 
 		try {
 			Statement s;
@@ -189,9 +191,9 @@ public class metodoak {
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			if (re.next()) {
-				if(re.getInt("max(NumTrans)") == 0) {
+				if (re.getInt("max(NumTrans)") == 0) {
 					TransakzioZbk = 1;
-				}else {
+				} else {
 					TransakzioZbk = re.getInt("max(NumTrans)");
 					TransakzioZbk++;
 				}
@@ -220,9 +222,11 @@ public class metodoak {
 			re = p.executeQuery();
 
 			if (re.next()) {
-				if (re.getString("DNI").equalsIgnoreCase(erabiltzailea) && re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
+				if (re.getString("DNI").equalsIgnoreCase(erabiltzailea)
+						&& re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
 					erroreaLogeatzean = "EZ";
-				} else if (re.getString("DNI").equalsIgnoreCase(erabiltzailea) && !re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
+				} else if (re.getString("DNI").equalsIgnoreCase(erabiltzailea)
+						&& !re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
 					JOptionPane.showMessageDialog(null, "Pasahitza ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
 					erroreaLogeatzean = "Bai, pasahitza txarto";
 				}
@@ -271,7 +275,8 @@ public class metodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.insertOperaciones +"('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/" + dia + "','" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/"
+				+ dia + "','" + diruTotala + "','" + NIF + "')");
 
 		try {
 			Statement s;
@@ -280,7 +285,7 @@ public class metodoak {
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
-		} 
+		}
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -290,7 +295,7 @@ public class metodoak {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
 		String query1 = (Kontsultak.selectLokalaMota + "'" + erabiltzailea + "')");
-		String Tipo = null; 
+		String Tipo = null;
 
 		try {
 			ResultSet re;
@@ -310,11 +315,13 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk, int año, int mes , int dia) {
+	public static void sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk, int año,
+			int mes, int dia) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/" + dia + "','" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/"
+				+ dia + "','" + diruTotala + "','" + NIF + "')");
 
 		String query2 = (Kontsultak.insertEskaera + "('" + TransferentziaZbk + "', '" + helbidea + "')");
 
@@ -333,15 +340,17 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk, int año, int mes , int dia) {
+	public static void sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk,
+			int año, int mes, int dia) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/" + dia + "' ,'" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/"
+				+ dia + "' ,'" + diruTotala + "','" + NIF + "')");
 
-		String query2 = (Kontsultak.insertNifFaktura + "('" + NIF + "', '" + izena + "', '" + abizena+ "')");
+		String query2 = (Kontsultak.insertNifFaktura + "('" + NIF + "', '" + izena + "', '" + abizena + "')");
 
-		String query3 = (Kontsultak.insertFactura + "('"+TransferentziaZbk+"','"+NIF+"');");
+		String query3 = (Kontsultak.insertFactura + "('" + TransferentziaZbk + "','" + NIF + "');");
 
 		try {
 			Statement s;
@@ -350,13 +359,13 @@ public class metodoak {
 			Statement st;
 			st = konekzioa.createStatement();
 			st.executeUpdate(query2);
-			Statement smt; 
+			Statement smt;
 			smt = konekzioa.createStatement();
-			smt.executeUpdate(query3);			
+			smt.executeUpdate(query3);
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
-		} 
+		}
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -384,23 +393,41 @@ public class metodoak {
 		}
 		return LokalarenIzena;
 	}
-	
+
 	// *****************************************************************************************************************************************************************************************************
 
-		public static void gehituStocka(String nomProduktua, int kantitatea, String nif) {
+	public static void gehituStocka(String nomProduktua, int kantitatea, String nif) {
 
-			Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = BBDDKonexioa.getConexion();
 
-			String query1 = (Kontsultak.updateStock +""+kantitatea+" where NIFLocal = '"+nif+"' and NomProducto='"+nomProduktua+"';"); 
+		String query1 = (Kontsultak.updateGehituStock + "" + kantitatea + " where NIFLocal = '" + nif + "' and NomProducto='" + nomProduktua + "';");
 
-			try {
-				Statement s;
-				s = konekzioa.createStatement();
-				s.executeUpdate(query1);
-			} catch (SQLException e) {
-				System.out.println("Errorea konexioan");
-				e.printStackTrace();
-			}
+		try {
+			Statement s;
+			s = konekzioa.createStatement();
+			s.executeUpdate(query1);
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
 		}
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	public static void kenduStocka(String nomProduktua, int kantitatea, String nif) {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		String query1 = (Kontsultak.updateKenduStock + "" + kantitatea + " where NIFLocal = '" + nif + "' and NomProducto='" + nomProduktua + "';");
+
+		try {
+			Statement s;
+			s = konekzioa.createStatement();
+			s.executeUpdate(query1);
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+	}
 
 }

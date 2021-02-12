@@ -235,17 +235,23 @@ public class PanelTicket extends JPanel {
 	private ActionListener listenerSegiBotoia(ControladorPanelTicket controladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				String aukera = (String) cb_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
+				
 				if (kantitatea != 0) { 
 					controladorPanelTicket.sartu(aukera, kantitatea);
 				}
-				nºunidades.setValue("0");
+				
+				String diruTotala = String.valueOf(controladorPanelTicket.diruTotala());
+				tf_Totala.setText(diruTotala);
+				
+				controladorPanelTicket.kenduStocka(aukera, kantitatea, controladorPanelTicket.konprobatuNIF());
+				
+				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);
 				cb_Produktoak.setSelectedItem(null);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
-				String diruTotala = String.valueOf(controladorPanelTicket.diruTotala());
-				tf_Totala.setText(diruTotala);
 			}
 		};
 	}

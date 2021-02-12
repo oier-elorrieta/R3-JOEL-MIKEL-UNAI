@@ -81,4 +81,8 @@ public class Modelo {
 	public void gehituStocka(String nom_Produktua, int kantitatea, String nif){
 		metodoak.gehituStocka(nom_Produktua, kantitatea, nif);
 	} 
+	
+	public void kenduStocka(String nom_Produktua, int kantitatea, String nif){
+		metodoak.kenduStocka(nom_Produktua, kantitatea, nif);
+	} 
 }

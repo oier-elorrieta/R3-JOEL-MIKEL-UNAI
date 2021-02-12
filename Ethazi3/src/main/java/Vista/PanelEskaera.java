@@ -253,17 +253,22 @@ public class PanelEskaera extends JPanel {
 	private ActionListener listenerSegiBotoia(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				String aukera = (String) cb_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
 				if (kantitatea != 0) {
 					controladorPanelEskaera.sartu(aukera, kantitatea);
 				}
-				nºunidades.setValue("0");
+				
+				String diruTotala = String.valueOf(controladorPanelEskaera.diruTotala());
+				tf_Totala.setText(diruTotala);
+				
+				controladorPanelEskaera.kenduStocka(aukera, kantitatea, controladorPanelEskaera.konprobatuNIF());
+				
+				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);
 				cb_Produktoak.setSelectedItem(null);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
-				String diruTotala = String.valueOf(controladorPanelEskaera.diruTotala());
-				tf_Totala.setText(diruTotala);
 			}
 		};
 	}

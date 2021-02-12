@@ -76,4 +76,12 @@ public class ControladorPanelEskaera {
 	public String konprobatuLokalarenIzena() {
 		return this.modelo.konprobatuLokalarenIzena();
 	}
+	
+	public String konprobatuNIF() {
+		return this.modelo.konprobatuNIF();
+	}
+	
+	public void kenduStocka(String nomProduktua, int kantitatea, String nif) {
+		this.modelo.kenduStocka(nomProduktua, kantitatea, nif);
+	}
 }
