@@ -46,8 +46,8 @@ public class ControladorPanelEskaera {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 
-	public void gordeEskaera(String helbidea) throws ClassNotFoundException, SQLException {
-		this.modelo.sartuEskaera(helbidea);
+	public void gordeEskaera(String helbidea, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuEskaera(helbidea, año, mes, dia);
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {

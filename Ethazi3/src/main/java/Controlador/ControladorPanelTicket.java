@@ -51,8 +51,8 @@ public class ControladorPanelTicket {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 
-	public void gordeTicket() throws ClassNotFoundException, SQLException {
-		this.modelo.sartuTicket();
+	public void gordeTicket(int año, int mes, int dia) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuTicket(año, mes, dia);
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {

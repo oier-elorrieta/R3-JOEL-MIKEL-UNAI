@@ -267,11 +267,11 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuTicket(String NIF, double diruTotala, int TransferentziaZbk) {
+	public static void sartuTicket(String NIF, double diruTotala, int TransferentziaZbk, int año, int mes, int dia) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.insertOperaciones +"('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.insertOperaciones +"('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/" + dia + "','" + diruTotala+ "','" + NIF + "')");
 
 		try {
 			Statement s;
@@ -311,11 +311,11 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk) {
+	public static void sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk, int año, int mes , int dia) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/" + dia + "','" + diruTotala+ "','" + NIF + "')");
 
 		String query2 = (Kontsultak.insertEskaera + "('" + TransferentziaZbk + "', '" + helbidea + "')");
 
@@ -334,11 +334,11 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk) {
+	public static void sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk, int año, int mes , int dia) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '2021-02-04','" + diruTotala+ "','" + NIF + "')");
+		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/" + dia + "' ,'" + diruTotala+ "','" + NIF + "')");
 
 		String query2 = (Kontsultak.insertNifFaktura + "('" + NIF + "', '" + izena + "', '" + abizena+ "')");
 

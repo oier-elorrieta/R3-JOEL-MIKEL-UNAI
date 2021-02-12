@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -45,6 +47,9 @@ public class PanelTicket extends JPanel {
 	private String[] produktuak;
 
 	private int TransferentziaZenbakia;
+	private int año;
+	private int mes;
+	private int dia;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -53,6 +58,12 @@ public class PanelTicket extends JPanel {
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
+		
+		Calendar fecha = new GregorianCalendar();
+
+		año = fecha.get(Calendar.YEAR);
+		mes = fecha.get(Calendar.MONTH);
+		dia = fecha.get(Calendar.DAY_OF_MONTH);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -66,8 +77,8 @@ public class PanelTicket extends JPanel {
 		tf_Titulua.setColumns(10);
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
-
-		tf_Fecha = new JTextField();
+		
+		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + año); 
 		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Fecha.setBounds(367, 36, 75, 20);
 		tf_Fecha.setColumns(10);
@@ -187,7 +198,7 @@ public class PanelTicket extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 					controladorPanelTicket.sakatuLaburpeneraBotoia();
 					try {
-						controladorPanelTicket.gordeTicket();
+						controladorPanelTicket.gordeTicket(año, mes, dia);
 					} catch (ClassNotFoundException | SQLException e) { 
 						e.printStackTrace();
 					} 			

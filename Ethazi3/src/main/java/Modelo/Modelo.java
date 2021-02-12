@@ -2,13 +2,16 @@ package Modelo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import javax.swing.ImageIcon;
 
 public class Modelo {
 
 	private ArrayList<Karritoa> karroa = new ArrayList<Karritoa>();
 
-	private Erabiltzaile usuarioa = new Erabiltzaile(null, null);
+	private Erabiltzaile usuarioa = new Erabiltzaile(null, null);													
 
 	// *****************************************************************************************************************************************************************
 
@@ -61,17 +64,17 @@ public class Modelo {
 	public String konprobatuLokala() {
 		return metodoak.konprobatuLokala(usuarioa.getErabiltzailea());
 	}
-
-	public void sartuTicket() throws ClassNotFoundException, SQLException {
-		metodoak.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk());
+	
+	public void sartuTicket(int año, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoak.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	}
 
-	public void sartuEskaera(String helbidea) throws ClassNotFoundException, SQLException {
-		metodoak.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk());
+	public void sartuEskaera(String helbidea, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoak.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk(), año, mes , dia);
 	}
 
-	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
-		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk());
+	public void sartuFaktura(String izena, String abizena, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	} 
 
 	public String konprobatuLokalarenIzena() {
