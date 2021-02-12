@@ -22,7 +22,6 @@ public class PanelLaburpena extends JPanel {
 	private JLabel lb_3_;
 	private JLabel lb_Erosketa;
 	private JLabel lb_Nombre;
-	private JLabel lb_Direccion;
 	private JLabel lb_Total;
 	private JLabel lb_TotalCant;
 	private JLabel lb_Laburpen;
@@ -53,11 +52,11 @@ public class PanelLaburpena extends JPanel {
 		add(lb_1_);
 
 		lb_2_ = new JLabel("_____________________________________________________________");
-		lb_2_.setBounds(10, 83, 430, 14);
+		lb_2_.setBounds(10, 51, 430, 14);
 		add(lb_2_);
 
 		lb_3_ = new JLabel("_____________________________________________________________");
-		lb_3_.setBounds(10, 275, 430, 14);
+		lb_3_.setBounds(10, 248, 430, 14);
 		add(lb_3_);
 
 		lb_Nombre = new JLabel(controladorPanelLaburpena.konprobatuLokalarenIzena());
@@ -65,30 +64,25 @@ public class PanelLaburpena extends JPanel {
 		lb_Nombre.setBounds(10, 47, 430, 14);
 		add(lb_Nombre);
 
-		lb_Direccion = new JLabel("DIRECCION");
-		lb_Direccion.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_Direccion.setBounds(10, 72, 430, 14);
-		add(lb_Direccion);
-
 		lb_Total = new JLabel("TOTAL EUR: ");
 		lb_Total.setHorizontalAlignment(SwingConstants.LEFT);
-		lb_Total.setBounds(10, 259, 155, 20);
+		lb_Total.setBounds(10, 245, 155, 20);
 		add(lb_Total);
 
 		lb_TotalCant = new JLabel(diruTotala + "€");
 		lb_TotalCant.setHorizontalAlignment(SwingConstants.RIGHT);
-		lb_TotalCant.setBounds(285, 259, 145, 10);
+		lb_TotalCant.setBounds(283, 250, 145, 10);
 		add(lb_TotalCant);
 
 		lb_Laburpen = new JLabel(emaitza);
 		lb_Laburpen.setVerticalAlignment(SwingConstants.TOP);
-		lb_Laburpen.setBounds(40, 108, 370, 143);
+		lb_Laburpen.setBounds(40, 75, 370, 143);
 		add(lb_Laburpen);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		btnSegi = new JButton("\u2714");
-		btnSegi.setBounds(415, 0, 44, 23);
+		btnSegi.setBounds(10, 270, 305, 20);
 		add(btnSegi);
 
 		initializeEvents();

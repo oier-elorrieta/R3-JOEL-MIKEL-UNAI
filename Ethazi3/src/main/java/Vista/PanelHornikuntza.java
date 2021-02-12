@@ -24,7 +24,7 @@ public class PanelHornikuntza extends JPanel {
 	
 	private JComboBox<String> cb_Produktoak = new JComboBox<String>();
 	private JFormattedTextField tf;
-	private JSpinner spinner;
+	private JSpinner nºunidades;
 	private String[] produktuak;
 	
 	// *****************************************************************************************************************************************************************************************************
@@ -70,12 +70,12 @@ public class PanelHornikuntza extends JPanel {
 		int initValue = 0;
 		SpinnerModel model = new SpinnerNumberModel(initValue, min, max, step);
 		
-		spinner = new JSpinner(model);
-		spinner.setBounds(10, 234, 331, 23);
-		tf = ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField();
+		nºunidades = new JSpinner(model);
+		nºunidades.setBounds(10, 234, 331, 23);
+		tf = ((JSpinner.DefaultEditor) nºunidades.getEditor()).getTextField();
 	    tf.setEditable(false);
 
-		add(spinner);
+		add(nºunidades);
 
 		initializeEvents();
 	}
@@ -102,7 +102,7 @@ public class PanelHornikuntza extends JPanel {
 					}
 					
 					String nomProduktua = (String) cb_Produktoak.getSelectedItem();
-					int kantitatea = Integer.parseInt(spinner.getValue().toString());
+					int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
 					String nif = controladorPanelHornikuntza.konprobatuNIF();
 					controladorPanelHornikuntza.gehituStocka(nomProduktua, kantitatea, nif);
 				}
