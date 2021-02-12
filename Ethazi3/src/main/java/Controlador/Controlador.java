@@ -19,6 +19,7 @@ public class Controlador {
 	private ControladorPanelTicket controladorPanelTicket;
 	private ControladorPanelEskaera controladorPanelPedidos; 
 	private ControladorPanelLaburpena controladorPanelLaburpena;
+	private ControladorPanelKomanda controladorPanelKomanda;
 
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
@@ -32,6 +33,7 @@ public class Controlador {
 		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
 		this.controladorPanelPedidos = new ControladorPanelEskaera(this.modelo, this.vista, this); 
 		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this);
+		this.controladorPanelKomanda = new ControladorPanelKomanda(this.modelo, this.vista, this);
 		this.nabegatzenPanelLogin();
 	}
 	
@@ -69,6 +71,10 @@ public class Controlador {
 	
 	public void nabegatzenPanelLaburpena() { 
 		this.controladorPanelLaburpena.ikusiPanelLaburpena();
+	}
+	
+	public void nabegatzenPanelKomanda() {
+		this.controladorPanelKomanda.ikusiPanelKomanda();
 	}
 	
 	public void itxi() {

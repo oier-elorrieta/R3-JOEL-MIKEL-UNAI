@@ -38,6 +38,10 @@ public class ControladorPanelMenuJatetxea {
 	public void sakatuAtzeraBotoia() {
 		this.controlador.itxi();
 	}
+	
+	public void sakatuKomandaPanelaIkustekoBotoia() {
+		this.controlador.nabegatzenPanelKomanda();
+	}
 }
 
 

@@ -74,6 +74,7 @@ public class PanelMenuJatetxea extends JPanel {
 		this.btnEskaera.addActionListener(listenerEskaeraBotoia(this.controladorPanelJatetxea));
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelJatetxea));
 		this.btnHasiera.addActionListener(listenerHasieraBotoia(this.controladorPanelJatetxea));
+		this.btnKomanda.addActionListener(listenerKomandaBotoia(this.controladorPanelJatetxea));
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
@@ -122,6 +123,16 @@ public class PanelMenuJatetxea extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelJatetxea.sakatuHasieraBotoia();
+			}
+		};
+	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerKomandaBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelJatetxea.sakatuKomandaPanelaIkustekoBotoia();
 			}
 		};
 	}
