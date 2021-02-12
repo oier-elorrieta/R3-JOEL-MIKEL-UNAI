@@ -29,6 +29,6 @@ public class Kontsultak {
 	static final String insertNifFaktura = "INSERT INTO niffactura VALUES";
 
 	static final String insertFactura = "INSERT INTO factura VALUES";
-
+                     
 	static final String insertEskaera = "INSERT INTO pedidos VALUES";
 }
