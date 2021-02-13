@@ -17,6 +17,8 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import Controlador.ControladorPanelFaktura;
 
 import javax.swing.JSpinner;
@@ -68,7 +70,7 @@ public class PanelFaktura extends JPanel {
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		
+
 		Calendar fecha = new GregorianCalendar();
 
 		año = fecha.get(Calendar.YEAR);
@@ -87,7 +89,7 @@ public class PanelFaktura extends JPanel {
 		tf_Titulua.setColumns(10);
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
-		
+
 		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + año); 
 		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Fecha.setBounds(367, 36, 75, 20);
@@ -201,6 +203,7 @@ public class PanelFaktura extends JPanel {
 		btnAurrera = new JButton(" Aurrera");
 		btnAurrera.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnAurrera.setBounds(254, 266, 92, 23);
+		btnAurrera.setEnabled(false);
 		add(btnAurrera);
 
 		btnSegi = new JButton("\u2714\uFE0F");
@@ -216,13 +219,13 @@ public class PanelFaktura extends JPanel {
 		int step = 1;
 		int initValue = 0;
 		SpinnerModel model = new SpinnerNumberModel(initValue, min, max, step);
-		
+
 		nºunidades = new JSpinner(model);
 		nºunidades.setBounds(254, 233, 120, 20);
 		add(nºunidades);
-		
+
 		tf = ((JSpinner.DefaultEditor) nºunidades.getEditor()).getTextField();
-	    tf.setEditable(false);
+		tf.setEditable(false);
 
 		cb_Produktoak.setBounds(30, 68, 214, 20);
 		add(cb_Produktoak);
@@ -281,18 +284,23 @@ public class PanelFaktura extends JPanel {
 	private ActionListener listenerSegiBotoia(ControladorPanelFaktura controladorPanelFaktura) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				String aukera = (String) cb_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
-				if (kantitatea != 0) {
-					controladorPanelFaktura.sartu(aukera, kantitatea);
-				}
+				int stockKantitatea = controladorPanelFaktura.begiratuStock(aukera, controladorPanelFaktura.konprobatuNIF());
+				btnAurrera.setEnabled(true);
+				if (kantitatea > stockKantitatea) {
+					JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}else {
+					if (kantitatea != 0) {
+						controladorPanelFaktura.sartu(aukera, kantitatea);
+					}
 
-				String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
-				tf_Totala.setText(diruTotala);
-				
-				controladorPanelFaktura.kenduStocka(aukera, kantitatea, controladorPanelFaktura.konprobatuNIF());
-				
+					String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
+					tf_Totala.setText(diruTotala);
+
+					controladorPanelFaktura.kenduStocka(aukera, kantitatea, controladorPanelFaktura.konprobatuNIF());
+				}
 				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);
 				cb_Produktoak.setSelectedItem(null);

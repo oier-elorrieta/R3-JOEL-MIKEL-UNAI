@@ -85,4 +85,15 @@ public class Modelo {
 	public void kenduStocka(String nom_Produktua, int kantitatea, String nif){
 		metodoak.kenduStocka(nom_Produktua, kantitatea, nif);
 	} 
+	public boolean begiratuDNI(String dni) {
+		return metodoak.begiratuDNI(dni);
+	}
+	
+	public boolean begiratuNIF(String nif) {
+		return metodoak.begiratuNIF(nif);
+	}
+	
+	public int begiratuStock(String produktua,String nif) {
+		return metodoak.begiratuStock(produktua, nif);
+	}
 }

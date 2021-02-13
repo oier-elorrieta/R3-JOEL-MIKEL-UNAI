@@ -167,6 +167,73 @@ public class metodoak {
 		}
 	}
 
+	public static boolean begiratuDNI(String dni) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = ("SELECT dni from usuario");
+		boolean badago = false;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			while (re.next()) { 
+				if(dni.equals(re.getString("DNI"))) {
+					badago = true;
+					break;
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		} 
+		return badago;
+	}
+
+	public static boolean begiratuNIF(String nif) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = ("SELECT nif from local");
+		boolean ondoDago = false;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			while (re.next()) { 
+				if(nif.equals(re.getString("NIF"))) {
+					ondoDago = false;
+				}else {
+					ondoDago = true;
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		} 
+		return ondoDago;
+	}
+
+	public static int begiratuStock(String produktua, String nif) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = ("SELECT stock from vende where NomProducto = '" + produktua + "' and nifLocal = '"+ nif +"' "); 
+		int produktuKantitatea = 0;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) { 
+				produktuKantitatea = re.getInt("Stock"); 
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+			System.out.println(produktuKantitatea);
+		} 
+		return produktuKantitatea;
+	}
 	// *****************************************************************************************************************************************************************************************************
 
 	public static Erabiltzaile sartuErabiltzailea(String erabiltzailea, String pasahitza, Erabiltzaile usuarioa) {
