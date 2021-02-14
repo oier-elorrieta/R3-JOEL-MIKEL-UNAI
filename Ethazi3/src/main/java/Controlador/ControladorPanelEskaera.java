@@ -29,6 +29,10 @@ public class ControladorPanelEskaera {
 	public void sakatuLaburpeneraBotoia() {
 		this.controlador.nabegatzenPanelLaburpena();
 	}
+	
+	public double diruProduktua(String aukera, int kantitatea) {
+		return this.modelo.diruProduktua(aukera, kantitatea);
+	}
 
 	public String[] ComboBoxaSakatu() {
 		return this.modelo.produktuakJaso();
@@ -49,7 +53,7 @@ public class ControladorPanelEskaera {
 	public void gordeEskaera(String helbidea, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
 		this.modelo.sartuEskaera(helbidea, año, mes, dia);
 	}
-	
+
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
 		return this.modelo.jasoTransakzioZbk();
 	}
@@ -69,22 +73,34 @@ public class ControladorPanelEskaera {
 		this.modelo.ezabatuProduktuenArraya();
 	}
 
+	public void sartuNumTrans(int numTrans) {
+		this.modelo.sartuNumTrans(numTrans);
+	}
+	
+	public void kenduNumTrans(int numTrans) {
+		this.modelo.kenduNumTrans(numTrans);
+	}
+
 	public String konprobatuLokala() {
 		return this.modelo.konprobatuLokala();
 	}
-	
+
 	public String konprobatuLokalarenIzena() {
 		return this.modelo.konprobatuLokalarenIzena();
 	}
-	
+
 	public String konprobatuNIF() {
 		return this.modelo.konprobatuNIF();
 	}
-	
+
 	public void kenduStocka(String nomProduktua, int kantitatea, String nif) {
 		this.modelo.kenduStocka(nomProduktua, kantitatea, nif);
 	}
 	
+	public void sartuProduktua(String produktua, int numTrans, int nUnidades, double precio) {
+		this.modelo.sartuProduktua(produktua, numTrans, nUnidades, precio);
+	}
+
 	public int begiratuStock(String produktua, String nif) {
 		return this.modelo.begiratuStock(produktua, nif);
 	}

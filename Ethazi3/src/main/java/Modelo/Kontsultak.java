@@ -24,7 +24,9 @@ public class Kontsultak {
 
 	static final String insertDatuak = "INSERT INTO usuario VALUES";
 	
-	static final String insertOperaciones = "INSERT INTO operaciones VALUES";
+	static final String insertTiene = "INSERT INTO tiene VALUES";
+	
+	static final String insertOperacionesNumTrans = "INSERT INTO operaciones(NumTrans) VALUES";
 
 	static final String insertNifFaktura = "INSERT INTO niffactura VALUES";
 
@@ -34,7 +36,13 @@ public class Kontsultak {
 	
 	// *****************************************************************************************************************************************************************************************************
 	
-	static final String updateGehituStock = "update vende set Stock = Stock + ";
+	static final String updateGehituStock = "UPDATE vende set Stock = Stock + ";
 	
-	static final String updateKenduStock = "update vende set Stock = Stock - ";
+	static final String updateKenduStock = "UPDATE vende set Stock = Stock - ";
+	
+	static final String updateOperaciones = "UPDATE operaciones set ";
+	
+	// *****************************************************************************************************************************************************************************************************
+
+	static final String deleteOperacionesNumTrans = "DELETE FROM operaciones where NumTrans =";
 }

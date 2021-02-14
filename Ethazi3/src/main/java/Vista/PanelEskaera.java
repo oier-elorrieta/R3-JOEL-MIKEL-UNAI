@@ -58,7 +58,6 @@ public class PanelEskaera extends JPanel {
 	private int mes;
 	private int dia;
 
-
 	// *****************************************************************************************************************************************************************************************************
 
 	public PanelEskaera(ControladorPanelEskaera controladorPanelEskaera) {
@@ -103,7 +102,7 @@ public class PanelEskaera extends JPanel {
 
 		try {
 			TransferentziaZenbakia = controladorPanelEskaera.jasoTransakzioZbk();
-		} catch (ClassNotFoundException | SQLException e) { 
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -206,6 +205,8 @@ public class PanelEskaera extends JPanel {
 		}
 		cb_Produktoak.setSelectedItem(null);
 
+		controladorPanelEskaera.sartuNumTrans(TransferentziaZenbakia);
+
 		initializeEvents();
 	}
 
@@ -227,7 +228,7 @@ public class PanelEskaera extends JPanel {
 				controladorPanelEskaera.sakatuLaburpeneraBotoia();
 				try {
 					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText(), año, mes, dia);
-				} catch (ClassNotFoundException | SQLException e) { 
+				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
 			}
@@ -239,13 +240,15 @@ public class PanelEskaera extends JPanel {
 	private ActionListener listenerAtzeraBotoia(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(controladorPanelEskaera.konprobatuLokala().equals("Restaurante")) {
+				if (controladorPanelEskaera.konprobatuLokala().equals("Restaurante")) {
 					controladorPanelEskaera.sakatuPanelJatetxeBotoia();
-				}else if(controladorPanelEskaera.konprobatuLokala().equals("Bar")) {
+				} else if (controladorPanelEskaera.konprobatuLokala().equals("Bar")) {
 					controladorPanelEskaera.sakatuPanelTabernaBotoia();
-				}else {
+				} else {
 					controladorPanelEskaera.sakatuPanelKafetegiaBotoia();
 				}
+
+				controladorPanelEskaera.kenduNumTrans(TransferentziaZenbakia);
 			}
 		};
 	}
@@ -258,19 +261,23 @@ public class PanelEskaera extends JPanel {
 
 				String aukera = (String) cb_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
-				int stockKantitatea = controladorPanelEskaera.begiratuStock(aukera, controladorPanelEskaera.konprobatuNIF());
+				int stockKantitatea = controladorPanelEskaera.begiratuStock(aukera,
+						controladorPanelEskaera.konprobatuNIF());
 				btnAurrera.setEnabled(true);
 				if (kantitatea > stockKantitatea) {
-					JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR", JOptionPane.ERROR_MESSAGE);
-				}else {
+					JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
 					if (kantitatea != 0) {
 						controladorPanelEskaera.sartu(aukera, kantitatea);
+						controladorPanelEskaera.sartuProduktua(aukera, TransferentziaZenbakia, kantitatea, controladorPanelEskaera.diruProduktua(aukera, kantitatea));
 					}
 
 					String diruTotala = String.valueOf(controladorPanelEskaera.diruTotala());
 					tf_Totala.setText(diruTotala);
 
 					controladorPanelEskaera.kenduStocka(aukera, kantitatea, controladorPanelEskaera.konprobatuNIF());
+
 				}
 				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);
@@ -287,8 +294,8 @@ public class PanelEskaera extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) cb_Produktoak.getSelectedItem();
 				ImageIcon argazkia = (ImageIcon) controladorPanelEskaera.argazkiaAukeratu(aukera);
-				if (cb_Produktoak.getSelectedItem() != null) { 
-					btnSegi.setEnabled(true);	
+				if (cb_Produktoak.getSelectedItem() != null) {
+					btnSegi.setEnabled(true);
 				}
 				argazkiak.setIcon(argazkia);
 			}

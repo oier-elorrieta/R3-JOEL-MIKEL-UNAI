@@ -177,8 +177,8 @@ public class metodoak {
 
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
-			while (re.next()) { 
-				if(dni.equals(re.getString("DNI"))) {
+			while (re.next()) {
+				if (dni.equals(re.getString("DNI"))) {
 					badago = true;
 					break;
 				}
@@ -186,7 +186,7 @@ public class metodoak {
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
-		} 
+		}
 		return badago;
 	}
 
@@ -200,23 +200,24 @@ public class metodoak {
 
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
-			while (re.next()) { 
-				if(nif.equals(re.getString("NIF"))) {
+			while (re.next()) {
+				if (nif.equals(re.getString("NIF"))) {
 					ondoDago = false;
-				}else {
+				} else {
 					ondoDago = true;
 				}
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
-		} 
+		}
 		return ondoDago;
 	}
 
 	public static int begiratuStock(String produktua, String nif) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("SELECT stock from vende where NomProducto = '" + produktua + "' and nifLocal = '"+ nif +"' "); 
+		String query1 = ("SELECT stock from vende where NomProducto = '" + produktua + "' and nifLocal = '" + nif
+				+ "' ");
 		int produktuKantitatea = 0;
 		try {
 			ResultSet re;
@@ -224,14 +225,14 @@ public class metodoak {
 
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
-			if (re.next()) { 
-				produktuKantitatea = re.getInt("Stock"); 
+			if (re.next()) {
+				produktuKantitatea = re.getInt("Stock");
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 			System.out.println(produktuKantitatea);
-		} 
+		}
 		return produktuKantitatea;
 	}
 	// *****************************************************************************************************************************************************************************************************
@@ -342,9 +343,8 @@ public class metodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/"
-				+ dia + "','" + diruTotala + "','" + NIF + "')");
-
+		String query1 = (Kontsultak.updateOperaciones + "Fecha = "+año+"/"+mes+"/"+dia+", Total_Operaciones = "+diruTotala+", NIF = '" + NIF + "' where NumTrans = "+TransferentziaZbk+"");
+	
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
@@ -352,6 +352,7 @@ public class metodoak {
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
+			
 		}
 	}
 
@@ -382,13 +383,66 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
+		public static void sartuProduktua(String produktua, int numTrans, int nUnidades, double precio) {
+
+			Connection konekzioa = BBDDKonexioa.getConexion();
+
+			String query1 = (Kontsultak.insertTiene + "('"+produktua+"'," + numTrans + "," + nUnidades + "," + precio + ")");
+
+			try {
+				Statement s;
+				s = konekzioa.createStatement();
+				s.executeUpdate(query1);
+			} catch (SQLException e) {
+				System.out.println("Errorea konexioan");
+				e.printStackTrace();
+			}
+		}
+	
+	// *****************************************************************************************************************************************************************************************************
+
+	public static void sartuNumTrans(int numTrans) {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		String query1 = (Kontsultak.insertOperacionesNumTrans + "(" + numTrans + ")");
+
+		try {
+			Statement s;
+			s = konekzioa.createStatement();
+			s.executeUpdate(query1);
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	public static void kenduNumTrans(int numTrans) {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		String query1 = (Kontsultak.deleteOperacionesNumTrans + numTrans );
+
+		try {
+			Statement s;
+			s = konekzioa.createStatement();
+			s.executeUpdate(query1);
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
 	public static void sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk, int año,
 			int mes, int dia) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/"
-				+ dia + "','" + diruTotala + "','" + NIF + "')");
+		String query1 = (Kontsultak.updateOperaciones + "Fecha = "+año+"/"+mes+"/"+dia+", Total_Operaciones = "+diruTotala+", NIF = '" + NIF + "' where NumTrans = "+TransferentziaZbk+"");
 
 		String query2 = (Kontsultak.insertEskaera + "('" + TransferentziaZbk + "', '" + helbidea + "')");
 
@@ -412,8 +466,7 @@ public class metodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/"
-				+ dia + "' ,'" + diruTotala + "','" + NIF + "')");
+		String query1 = (Kontsultak.updateOperaciones + "Fecha = "+año+"/"+mes+"/"+dia+", Total_Operaciones = "+diruTotala+", NIF = '" + NIF + "' where NumTrans = "+TransferentziaZbk+"");
 
 		String query2 = (Kontsultak.insertNifFaktura + "('" + NIF + "', '" + izena + "', '" + abizena + "')");
 
@@ -467,7 +520,8 @@ public class metodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.updateGehituStock + "" + kantitatea + " where NIFLocal = '" + nif + "' and NomProducto='" + nomProduktua + "';");
+		String query1 = (Kontsultak.updateGehituStock + "" + kantitatea + " where NIFLocal = '" + nif
+				+ "' and NomProducto='" + nomProduktua + "';");
 
 		try {
 			Statement s;
@@ -485,7 +539,8 @@ public class metodoak {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.updateKenduStock + "" + kantitatea + " where NIFLocal = '" + nif + "' and NomProducto='" + nomProduktua + "';");
+		String query1 = (Kontsultak.updateKenduStock + "" + kantitatea + " where NIFLocal = '" + nif
+				+ "' and NomProducto='" + nomProduktua + "';");
 
 		try {
 			Statement s;

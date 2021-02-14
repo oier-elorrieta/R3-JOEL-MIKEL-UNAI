@@ -236,6 +236,8 @@ public class PanelFaktura extends JPanel {
 		}
 		cb_Produktoak.setSelectedItem(null);
 
+		controladorPanelFaktura.sartuNumTrans(TransferentziaZenbakia);
+		
 		initializeEvents();
 	}
 
@@ -275,6 +277,8 @@ public class PanelFaktura extends JPanel {
 				} else {
 					controladorPanelFaktura.sakatuPanelKafetegiaBotoia();
 				}
+				
+				controladorPanelFaktura.kenduNumTrans(TransferentziaZenbakia);
 			}
 		};
 	}
@@ -294,6 +298,7 @@ public class PanelFaktura extends JPanel {
 				}else {
 					if (kantitatea != 0) {
 						controladorPanelFaktura.sartu(aukera, kantitatea);
+						controladorPanelFaktura.sartuProduktua(aukera, TransferentziaZenbakia, kantitatea, controladorPanelFaktura.diruProduktua(aukera, kantitatea));
 					}
 
 					String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());

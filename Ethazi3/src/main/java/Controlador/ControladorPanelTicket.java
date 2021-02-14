@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import Modelo.Karritoa; 
-import Modelo.Modelo;  
+import Modelo.Modelo;
 import Vista.PanelTicket;
 import Vista.Vista;
 
@@ -33,6 +33,18 @@ public class ControladorPanelTicket {
 	public void sakatuAtzeraBotoia() {
 		this.controlador.nabegatzenPanelLogin();
 		this.modelo.ezabatuProduktuenArraya();
+	}
+	
+	public double diruProduktua(String aukera, int kantitatea) {
+		return this.modelo.diruProduktua(aukera, kantitatea);
+	}
+	
+	public void sartuNumTrans(int numTrans) {
+		this.modelo.sartuNumTrans(numTrans);
+	}
+	
+	public void kenduNumTrans(int numTrans) {
+		this.modelo.kenduNumTrans(numTrans);
 	}
 
 	public String[] ComboBoxaSakatu() {
@@ -90,6 +102,9 @@ public class ControladorPanelTicket {
 		this.modelo.kenduStocka(nomProduktua, kantitatea, nif);
 	}
 	
+	public void sartuProduktua(String produktua, int numTrans, int nUnidades, double precio) {
+		this.modelo.sartuProduktua(produktua, numTrans, nUnidades, precio);
+	}
 
 	public int begiratuStock(String produktua, String nif) {
 		return this.modelo.begiratuStock(produktua, nif);

@@ -27,6 +27,10 @@ public class Modelo {
 	public double diruTotala() {
 		return metodoak.diruTotala(karroa);
 	}
+	
+	public double diruProduktua(String aukera, int kantitatea) {
+		return metodoak.sartuDirua(aukera, kantitatea);
+	}
 
 	public ArrayList<Karritoa> ezabatuProduktuenArraya() {
 		return metodoak.ezabatuArraya(karroa);
@@ -77,6 +81,14 @@ public class Modelo {
 	public void sartuFaktura(String izena, String abizena, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
 		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	} 
+	
+	public void sartuNumTrans(int numTrans)  {
+		metodoak.sartuNumTrans(numTrans);
+	}
+	
+	public void kenduNumTrans(int numTrans)  {
+		metodoak.kenduNumTrans(numTrans);
+	}
 
 	public void gehituStocka(String nom_Produktua, int kantitatea, String nif){
 		metodoak.gehituStocka(nom_Produktua, kantitatea, nif);
@@ -85,6 +97,11 @@ public class Modelo {
 	public void kenduStocka(String nom_Produktua, int kantitatea, String nif){
 		metodoak.kenduStocka(nom_Produktua, kantitatea, nif);
 	} 
+	
+	public void sartuProduktua(String produktua, int numTrans, int nUnidades, double precio) {
+		metodoak.sartuProduktua(produktua, numTrans, nUnidades, precio);
+	}
+	
 	public boolean begiratuDNI(String dni) {
 		return metodoak.begiratuDNI(dni);
 	}
