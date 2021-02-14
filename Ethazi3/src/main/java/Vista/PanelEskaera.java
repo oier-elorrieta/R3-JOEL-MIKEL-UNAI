@@ -205,7 +205,7 @@ public class PanelEskaera extends JPanel {
 		}
 		cb_Produktoak.setSelectedItem(null);
 
-		controladorPanelEskaera.sartuNumTrans(TransferentziaZenbakia);
+		controladorPanelEskaera.sartuNumTrans(TransferentziaZenbakia, año, mes, dia);
 
 		initializeEvents();
 	}
@@ -227,7 +227,7 @@ public class PanelEskaera extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelEskaera.sakatuLaburpeneraBotoia();
 				try {
-					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText(), año, mes, dia);
+					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText());
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}

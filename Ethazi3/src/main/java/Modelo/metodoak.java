@@ -339,11 +339,11 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuTicket(String NIF, double diruTotala, int TransferentziaZbk, int año, int mes, int dia) {
+	public static void sartuTicket(String NIF, double diruTotala, int TransferentziaZbk) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.updateOperaciones + "Fecha = "+año+"/"+mes+"/"+dia+", Total_Operaciones = "+diruTotala+", NIF = '" + NIF + "' where NumTrans = "+TransferentziaZbk+"");
+		String query1 = (Kontsultak.updateOperaciones + " Total_Operaciones = "+diruTotala+", NIF = '" + NIF + "' where NumTrans = "+(TransferentziaZbk-1)+"");
 	
 		try {
 			Statement s;
@@ -352,7 +352,6 @@ public class metodoak {
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
-			
 		}
 	}
 
@@ -401,11 +400,11 @@ public class metodoak {
 	
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuNumTrans(int numTrans) {
+	public static void sartuNumTrans(int numTrans, int año, int mes, int dia) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.insertOperacionesNumTrans + "(" + numTrans + ")");
+		String query1 = (Kontsultak.insertOperacionesNumTrans + "(" + numTrans + ", '"+año+"/"+mes+"/"+dia+"')");
 
 		try {
 			Statement s;
@@ -437,12 +436,11 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk, int año,
-			int mes, int dia) {
+	public static void sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.updateOperaciones + "Fecha = "+año+"/"+mes+"/"+dia+", Total_Operaciones = "+diruTotala+", NIF = '" + NIF + "' where NumTrans = "+TransferentziaZbk+"");
+		String query1 = (Kontsultak.updateOperaciones + " Total_Operaciones = "+diruTotala+", NIF = '" + NIF + "' where NumTrans = "+(TransferentziaZbk-1)+"");
 
 		String query2 = (Kontsultak.insertEskaera + "('" + TransferentziaZbk + "', '" + helbidea + "')");
 
@@ -461,12 +459,11 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk,
-			int año, int mes, int dia) {
+	public static void sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = (Kontsultak.updateOperaciones + "Fecha = "+año+"/"+mes+"/"+dia+", Total_Operaciones = "+diruTotala+", NIF = '" + NIF + "' where NumTrans = "+TransferentziaZbk+"");
+		String query1 = (Kontsultak.updateOperaciones + " Total_Operaciones = "+diruTotala+", NIF = '" + NIF + "' where NumTrans = "+(TransferentziaZbk-1)+"");
 
 		String query2 = (Kontsultak.insertNifFaktura + "('" + NIF + "', '" + izena + "', '" + abizena + "')");
 

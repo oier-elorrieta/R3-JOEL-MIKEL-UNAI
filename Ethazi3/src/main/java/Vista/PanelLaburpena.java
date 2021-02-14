@@ -38,7 +38,8 @@ public class PanelLaburpena extends JPanel {
 
 		String emaitza = controladorPanelLaburpena.pantailaratu();
 		double diruTotala = controladorPanelLaburpena.diruTotala();
-
+		
+		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		lb_Erosketa = new JLabel("EROSKETA");

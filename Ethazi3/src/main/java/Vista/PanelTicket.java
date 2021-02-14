@@ -189,7 +189,7 @@ public class PanelTicket extends JPanel {
 		}
 		cb_Produktoak.setSelectedItem(null);
 
-		controladorPanelTicket.sartuNumTrans(TransferentziaZenbakia);
+		controladorPanelTicket.sartuNumTrans(TransferentziaZenbakia, año, mes, dia);
 
 		initializeEvents();
 	}
@@ -210,7 +210,7 @@ public class PanelTicket extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelTicket.sakatuLaburpeneraBotoia();
 				try {
-					controladorPanelTicket.gordeTicket(año, mes, dia);
+					controladorPanelTicket.gordeTicket();
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}

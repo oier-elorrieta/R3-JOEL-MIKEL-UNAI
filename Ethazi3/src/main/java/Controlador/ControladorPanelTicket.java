@@ -39,8 +39,8 @@ public class ControladorPanelTicket {
 		return this.modelo.diruProduktua(aukera, kantitatea);
 	}
 	
-	public void sartuNumTrans(int numTrans) {
-		this.modelo.sartuNumTrans(numTrans);
+	public void sartuNumTrans(int numTrans, int año, int mes, int dia) {
+		this.modelo.sartuNumTrans(numTrans, año, mes, dia);
 	}
 	
 	public void kenduNumTrans(int numTrans) {
@@ -63,8 +63,8 @@ public class ControladorPanelTicket {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 
-	public void gordeTicket(int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		this.modelo.sartuTicket(año, mes, dia);
+	public void gordeTicket() throws ClassNotFoundException, SQLException {
+		this.modelo.sartuTicket();
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {

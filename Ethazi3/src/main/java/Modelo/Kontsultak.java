@@ -26,7 +26,7 @@ public class Kontsultak {
 	
 	static final String insertTiene = "INSERT INTO tiene VALUES";
 	
-	static final String insertOperacionesNumTrans = "INSERT INTO operaciones(NumTrans) VALUES";
+	static final String insertOperacionesNumTrans = "INSERT INTO operaciones(NumTrans, Fecha) VALUES";
 
 	static final String insertNifFaktura = "INSERT INTO niffactura VALUES";
 

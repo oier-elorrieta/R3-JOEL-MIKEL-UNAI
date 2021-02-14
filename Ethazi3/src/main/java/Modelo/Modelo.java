@@ -70,20 +70,20 @@ public class Modelo {
 		return metodoak.konprobatuLokalarenIzena(konprobatuNIF());
 	}
 	
-	public void sartuTicket(int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		metodoak.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
+	public void sartuTicket() throws ClassNotFoundException, SQLException {
+		metodoak.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk());
 	}
 
-	public void sartuEskaera(String helbidea, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		metodoak.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk(), año, mes , dia);
+	public void sartuEskaera(String helbidea) throws ClassNotFoundException, SQLException {
+		metodoak.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk());
 	}
 
-	public void sartuFaktura(String izena, String abizena, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
+	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
+		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk());
 	} 
 	
-	public void sartuNumTrans(int numTrans)  {
-		metodoak.sartuNumTrans(numTrans);
+	public void sartuNumTrans(int numTrans, int año, int mes, int dia)  {
+		metodoak.sartuNumTrans(numTrans, año, mes, dia);
 	}
 	
 	public void kenduNumTrans(int numTrans)  {

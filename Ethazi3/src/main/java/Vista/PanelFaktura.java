@@ -236,7 +236,7 @@ public class PanelFaktura extends JPanel {
 		}
 		cb_Produktoak.setSelectedItem(null);
 
-		controladorPanelFaktura.sartuNumTrans(TransferentziaZenbakia);
+		controladorPanelFaktura.sartuNumTrans(TransferentziaZenbakia, año, mes, dia);
 		
 		initializeEvents();
 	}
@@ -257,7 +257,7 @@ public class PanelFaktura extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.sakatuLaburpeneraBotoia();
 				try {
-					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText(), año, mes, dia);
+					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText());
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				} 

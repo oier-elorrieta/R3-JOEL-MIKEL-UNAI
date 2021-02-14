@@ -50,8 +50,8 @@ public class ControladorPanelEskaera {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 
-	public void gordeEskaera(String helbidea, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		this.modelo.sartuEskaera(helbidea, año, mes, dia);
+	public void gordeEskaera(String helbidea) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuEskaera(helbidea);
 	}
 
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
@@ -73,8 +73,8 @@ public class ControladorPanelEskaera {
 		this.modelo.ezabatuProduktuenArraya();
 	}
 
-	public void sartuNumTrans(int numTrans) {
-		this.modelo.sartuNumTrans(numTrans);
+	public void sartuNumTrans(int numTrans, int año, int mes, int dia) {
+		this.modelo.sartuNumTrans(numTrans, año, mes, dia);
 	}
 	
 	public void kenduNumTrans(int numTrans) {
