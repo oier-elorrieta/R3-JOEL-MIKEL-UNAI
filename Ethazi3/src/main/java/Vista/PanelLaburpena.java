@@ -9,6 +9,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 @SuppressWarnings("serial")
 public class PanelLaburpena extends JPanel {
@@ -28,18 +29,17 @@ public class PanelLaburpena extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public PanelLaburpena(ControladorPanelLaburpena controladorPanelLaburpena) {
+	public PanelLaburpena(ControladorPanelLaburpena controladorPanelLaburpena){
 
 		this.controladorPanelLaburpena = controladorPanelLaburpena;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-
+		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		String emaitza = controladorPanelLaburpena.pantailaratu();
 		double diruTotala = controladorPanelLaburpena.diruTotala();
-		
-		
+
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		lb_Erosketa = new JLabel("EROSKETA");
@@ -101,6 +101,14 @@ public class PanelLaburpena extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
+				int i = 0;
+				try {
+					controladorPanelLaburpena.sartuTiene(i);
+				} catch (ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
+				
+				
 				if (controladorPanelLaburpena.konprobatuLokala().equals("Restaurante")) {
 					controladorPanelLaburpena.sakatuPanelJatetxeBotoia();
 				} else if (controladorPanelLaburpena.konprobatuLokala().equals("Bar")) {

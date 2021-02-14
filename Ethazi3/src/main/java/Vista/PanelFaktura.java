@@ -236,8 +236,6 @@ public class PanelFaktura extends JPanel {
 		}
 		cb_Produktoak.setSelectedItem(null);
 
-		controladorPanelFaktura.sartuNumTrans(TransferentziaZenbakia, año, mes, dia);
-		
 		initializeEvents();
 	}
 
@@ -257,7 +255,7 @@ public class PanelFaktura extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.sakatuLaburpeneraBotoia();
 				try {
-					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText());
+					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText(), año, mes, dia);
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				} 
@@ -277,8 +275,6 @@ public class PanelFaktura extends JPanel {
 				} else {
 					controladorPanelFaktura.sakatuPanelKafetegiaBotoia();
 				}
-				
-				controladorPanelFaktura.kenduNumTrans(TransferentziaZenbakia);
 			}
 		};
 	}
@@ -298,7 +294,6 @@ public class PanelFaktura extends JPanel {
 				}else {
 					if (kantitatea != 0) {
 						controladorPanelFaktura.sartu(aukera, kantitatea);
-						controladorPanelFaktura.sartuProduktua(aukera, TransferentziaZenbakia, kantitatea, controladorPanelFaktura.diruProduktua(aukera, kantitatea));
 					}
 
 					String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());

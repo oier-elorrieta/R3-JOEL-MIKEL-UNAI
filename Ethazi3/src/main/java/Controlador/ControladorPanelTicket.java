@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import Modelo.Karritoa; 
-import Modelo.Modelo;
+import Modelo.Modelo;  
 import Vista.PanelTicket;
 import Vista.Vista;
 
@@ -34,18 +34,6 @@ public class ControladorPanelTicket {
 		this.controlador.nabegatzenPanelLogin();
 		this.modelo.ezabatuProduktuenArraya();
 	}
-	
-	public double diruProduktua(String aukera, int kantitatea) {
-		return this.modelo.diruProduktua(aukera, kantitatea);
-	}
-	
-	public void sartuNumTrans(int numTrans, int año, int mes, int dia) {
-		this.modelo.sartuNumTrans(numTrans, año, mes, dia);
-	}
-	
-	public void kenduNumTrans(int numTrans) {
-		this.modelo.kenduNumTrans(numTrans);
-	}
 
 	public String[] ComboBoxaSakatu() {
 		return this.modelo.produktuakJaso();
@@ -63,8 +51,8 @@ public class ControladorPanelTicket {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 
-	public void gordeTicket() throws ClassNotFoundException, SQLException {
-		this.modelo.sartuTicket();
+	public void gordeTicket(int año, int mes, int dia) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuTicket(año, mes, dia);
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
@@ -102,9 +90,6 @@ public class ControladorPanelTicket {
 		this.modelo.kenduStocka(nomProduktua, kantitatea, nif);
 	}
 	
-	public void sartuProduktua(String produktua, int numTrans, int nUnidades, double precio) {
-		this.modelo.sartuProduktua(produktua, numTrans, nUnidades, precio);
-	}
 
 	public int begiratuStock(String produktua, String nif) {
 		return this.modelo.begiratuStock(produktua, nif);

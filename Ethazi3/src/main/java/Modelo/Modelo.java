@@ -20,16 +20,16 @@ public class Modelo {
 		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa);
 	}
 
+	public void sartuTiene(int i) throws ClassNotFoundException, SQLException {
+		metodoak.sartuTiene(i, karroa);
+	}
+	
 	public String pantailaratu() {
 		return metodoak.pantailatuProduktua(karroa);
 	}
 
 	public double diruTotala() {
 		return metodoak.diruTotala(karroa);
-	}
-	
-	public double diruProduktua(String aukera, int kantitatea) {
-		return metodoak.sartuDirua(aukera, kantitatea);
 	}
 
 	public ArrayList<Karritoa> ezabatuProduktuenArraya() {
@@ -70,25 +70,17 @@ public class Modelo {
 		return metodoak.konprobatuLokalarenIzena(konprobatuNIF());
 	}
 	
-	public void sartuTicket() throws ClassNotFoundException, SQLException {
-		metodoak.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk());
+	public void sartuTicket(int año, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoak.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	}
 
-	public void sartuEskaera(String helbidea) throws ClassNotFoundException, SQLException {
-		metodoak.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk());
+	public void sartuEskaera(String helbidea, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoak.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk(), año, mes , dia);
 	}
 
-	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
-		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk());
+	public void sartuFaktura(String izena, String abizena, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	} 
-	
-	public void sartuNumTrans(int numTrans, int año, int mes, int dia)  {
-		metodoak.sartuNumTrans(numTrans, año, mes, dia);
-	}
-	
-	public void kenduNumTrans(int numTrans)  {
-		metodoak.kenduNumTrans(numTrans);
-	}
 
 	public void gehituStocka(String nom_Produktua, int kantitatea, String nif){
 		metodoak.gehituStocka(nom_Produktua, kantitatea, nif);
@@ -97,11 +89,6 @@ public class Modelo {
 	public void kenduStocka(String nom_Produktua, int kantitatea, String nif){
 		metodoak.kenduStocka(nom_Produktua, kantitatea, nif);
 	} 
-	
-	public void sartuProduktua(String produktua, int numTrans, int nUnidades, double precio) {
-		metodoak.sartuProduktua(produktua, numTrans, nUnidades, precio);
-	}
-	
 	public boolean begiratuDNI(String dni) {
 		return metodoak.begiratuDNI(dni);
 	}

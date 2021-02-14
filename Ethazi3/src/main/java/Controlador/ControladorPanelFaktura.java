@@ -25,12 +25,8 @@ public class ControladorPanelFaktura {
 		this.panelFaktura = new PanelFaktura(this);
 		this.vista.ikusiPanela(this.panelFaktura);
 	}
-	
-	public double diruProduktua(String aukera, int kantitatea) {
-		return this.modelo.diruProduktua(aukera, kantitatea);
-	}
 
-	public void sakatuLaburpeneraBotoia() {
+	public void sakatuLaburpeneraBotoia(){
 		this.controlador.nabegatzenPanelLaburpena();
 	}
 	
@@ -50,8 +46,8 @@ public class ControladorPanelFaktura {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 	
-	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
-		this.modelo.sartuFaktura(izena, abizena);
+	public void sartuFaktura(String izena, String abizena, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuFaktura(izena, abizena, año, mes, dia);
 	} 
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
@@ -73,14 +69,6 @@ public class ControladorPanelFaktura {
 		this.modelo.ezabatuProduktuenArraya();
 	}
 	
-	public void sartuNumTrans(int numTrans, int año, int mes, int dia) {
-		this.modelo.sartuNumTrans(numTrans, año, mes, dia);
-	}
-	
-	public void kenduNumTrans(int numTrans) {
-		this.modelo.kenduNumTrans(numTrans);
-	}
-	
 	public String konprobatuLokala() {
 		return this.modelo.konprobatuLokala();
 	}
@@ -95,10 +83,6 @@ public class ControladorPanelFaktura {
 	
 	public void kenduStocka(String nomProduktua, int kantitatea, String nif) {
 		this.modelo.kenduStocka(nomProduktua, kantitatea, nif);
-	}
-	
-	public void sartuProduktua(String produktua, int numTrans, int nUnidades, double precio) {
-		this.modelo.sartuProduktua(produktua, numTrans, nUnidades, precio);
 	}
 	
 	public int begiratuStock(String produktua, String nif) {

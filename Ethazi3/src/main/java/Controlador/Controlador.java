@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.sql.SQLException;
+
 import Modelo.Modelo;
 import Vista.Vista;
 
@@ -75,8 +77,12 @@ public class Controlador {
 		this.controladorPanelPedidos.ikusiPanelPedidos();
 	}
 	
-	public void nabegatzenPanelLaburpena() { 
-		this.controladorPanelLaburpena.ikusiPanelLaburpena();
+	public void nabegatzenPanelLaburpena(){ 
+		try {
+			this.controladorPanelLaburpena.ikusiPanelLaburpena();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void nabegatzenPanelKomanda() {

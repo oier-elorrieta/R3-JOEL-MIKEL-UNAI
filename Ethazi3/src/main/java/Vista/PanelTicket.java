@@ -46,7 +46,7 @@ public class PanelTicket extends JPanel {
 
 	private JComboBox<String> cb_Produktoak = new JComboBox<String>();
 	private JFormattedTextField tf;
-	private JSpinner nºunidades;
+	private JSpinner nºunidades; 
 	private String[] produktuak;
 
 	private int TransferentziaZenbakia;
@@ -81,7 +81,7 @@ public class PanelTicket extends JPanel {
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
 
-		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + año);
+		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + año); 
 		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Fecha.setBounds(367, 36, 75, 20);
 		tf_Fecha.setColumns(10);
@@ -98,7 +98,7 @@ public class PanelTicket extends JPanel {
 
 		try {
 			TransferentziaZenbakia = controladorPanelTicket.jasoTransakzioZbk();
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) { 
 			e.printStackTrace();
 		}
 
@@ -159,6 +159,7 @@ public class PanelTicket extends JPanel {
 		btnAurrera.setEnabled(false);
 		add(btnAurrera);
 
+
 		btnSegi = new JButton("\u2714\uFE0F");
 		btnSegi.setHorizontalAlignment(SwingConstants.TRAILING);
 		btnSegi.setBounds(388, 232, 57, 23);
@@ -184,12 +185,10 @@ public class PanelTicket extends JPanel {
 		add(cb_Produktoak);
 
 		produktuak = controladorPanelTicket.ComboBoxaSakatu();
-		for (int i = 0; i < produktuak.length; i++) {
+		for(int i=0;i < produktuak.length;i++) {
 			cb_Produktoak.addItem(produktuak[i]);
 		}
 		cb_Produktoak.setSelectedItem(null);
-
-		controladorPanelTicket.sartuNumTrans(TransferentziaZenbakia, año, mes, dia);
 
 		initializeEvents();
 	}
@@ -210,10 +209,10 @@ public class PanelTicket extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelTicket.sakatuLaburpeneraBotoia();
 				try {
-					controladorPanelTicket.gordeTicket();
-				} catch (ClassNotFoundException | SQLException e) {
+					controladorPanelTicket.gordeTicket(año, mes, dia);
+				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
-				}
+				} 			
 			}
 		};
 	}
@@ -223,15 +222,13 @@ public class PanelTicket extends JPanel {
 	private ActionListener listenerAtzeraBotoia(ControladorPanelTicket controladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (controladorPanelTicket.konprobatuLokala().equals("Restaurante")) {
+				if(controladorPanelTicket.konprobatuLokala().equals("Restaurante")) {
 					controladorPanelTicket.sakatuPanelJatetxeBotoia();
-				} else if (controladorPanelTicket.konprobatuLokala().equals("Bar")) {
+				}else if(controladorPanelTicket.konprobatuLokala().equals("Bar")) {
 					controladorPanelTicket.sakatuPanelTabernaBotoia();
-				} else {
+				}else {
 					controladorPanelTicket.sakatuPanelKafetegiaBotoia();
 				}
-
-				controladorPanelTicket.kenduNumTrans(TransferentziaZenbakia);
 			}
 		};
 	}
@@ -244,17 +241,13 @@ public class PanelTicket extends JPanel {
 
 				String aukera = (String) cb_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
-				int stockKantitatea = controladorPanelTicket.begiratuStock(aukera,
-						controladorPanelTicket.konprobatuNIF());
+				int stockKantitatea = controladorPanelTicket.begiratuStock(aukera, controladorPanelTicket.konprobatuNIF());
 				btnAurrera.setEnabled(true);
-
 				if (kantitatea > stockKantitatea) {
-					JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR",
-							JOptionPane.ERROR_MESSAGE);
-				} else {
-					if (kantitatea != 0) {
+					JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}else {
+					if (kantitatea != 0) { 
 						controladorPanelTicket.sartu(aukera, kantitatea);
-						controladorPanelTicket.sartuProduktua(aukera, TransferentziaZenbakia, kantitatea, controladorPanelTicket.diruProduktua(aukera, kantitatea));
 					}
 
 					String diruTotala = String.valueOf(controladorPanelTicket.diruTotala());
@@ -277,8 +270,8 @@ public class PanelTicket extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				String aukera = (String) cb_Produktoak.getSelectedItem();
 				ImageIcon argazkia = (ImageIcon) controladorPanelTicket.argazkiaAukeratu(aukera);
-				if (cb_Produktoak.getSelectedItem() != null) {
-					btnSegi.setEnabled(true);
+				if (cb_Produktoak.getSelectedItem() != null) { 
+					btnSegi.setEnabled(true);	
 				}
 				argazkiak.setIcon(argazkia);
 			}
