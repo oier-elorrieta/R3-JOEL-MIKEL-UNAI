@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import javax.swing.JButton;  
 import javax.swing.JPanel;
 import Controlador.ControladorPanelHornikuntza;
@@ -27,6 +31,11 @@ public class PanelHornikuntza extends JPanel {
 	private JSpinner nºunidades;
 	private String[] produktuak;
 	
+	private int año;
+	private int mes;
+	private int dia;	
+	
+	
 	// *****************************************************************************************************************************************************************************************************
 
 	public PanelHornikuntza(ControladorPanelHornikuntza controladorPanelHornikuntza) {
@@ -36,6 +45,13 @@ public class PanelHornikuntza extends JPanel {
 		setBackground(Color.LIGHT_GRAY);
 		setBounds(0, 0, 450, 300);
 		setLayout(null);
+		
+		
+		Calendar fecha = new GregorianCalendar();
+
+		año = fecha.get(Calendar.YEAR);
+		mes = fecha.get(Calendar.MONTH);
+		dia = fecha.get(Calendar.DAY_OF_MONTH);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -105,6 +121,11 @@ public class PanelHornikuntza extends JPanel {
 					int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
 					String nif = controladorPanelHornikuntza.konprobatuNIF();
 					controladorPanelHornikuntza.gehituStocka(nomProduktua, kantitatea, nif);
+					try {
+						controladorPanelHornikuntza.sartuHornikuntza(nomProduktua,año,mes,dia,nif);
+					} catch (ClassNotFoundException | SQLException e) { 
+						e.printStackTrace();
+					}
 				}
 			};
 		} 

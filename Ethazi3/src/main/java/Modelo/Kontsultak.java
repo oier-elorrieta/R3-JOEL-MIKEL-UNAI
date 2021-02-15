@@ -19,6 +19,10 @@ public class Kontsultak {
 	static final String selectLokalaMota = selectLokalarenNif + "(SELECT NIF from usuario where DNI = ";
 
 	static final String selectMaxNumTrans="SELECT max(NumTrans) from operaciones;";
+	
+	static final String selectIzenaFabrikantea = "SELECT Nombre from fabricante where Nombre = ";
+	
+	static final String selectFabrikantea = selectIzenaFabrikantea + "(SELECT N_Fabricante from producto where Nombre = ";
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -33,6 +37,8 @@ public class Kontsultak {
 	static final String insertEskaera = "INSERT INTO pedidos VALUES";
 	
 	static final String insertTiene = "INSERT INTO tiene VALUES";
+	
+	static final String insertHornikuntza = "INSERT INTO aprovisionamiento VALUES";
 	
 	// *****************************************************************************************************************************************************************************************************
 	

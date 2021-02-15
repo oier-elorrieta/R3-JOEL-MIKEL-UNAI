@@ -496,28 +496,89 @@ public class metodoak {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// *****************************************************************************************************************************************************************************************************
 
-		public static void sartuTiene(int i,ArrayList<Karritoa> karroa) throws ClassNotFoundException, SQLException {
+	public static void sartuTiene(int i,ArrayList<Karritoa> karroa) throws ClassNotFoundException, SQLException {
 
-			Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = BBDDKonexioa.getConexion();
 
-			System.out.println(karroa.get(i).getKopuru());
-			
-			while(i < karroa.size()) {
-				String query1 = (Kontsultak.insertTiene + "('"+karroa.get(i).getElikagaia()+"', " + (jasoTransakzioZbk()-1) + ", "+karroa.get(i).getKopuru()+", "+karroa.get(i).getBalioa()+")");
+		kk(karroa); 
 
-				try {
-					Statement s;
-					s = konekzioa.createStatement();
-					s.executeUpdate(query1);
-				} catch (SQLException e) {
-					System.out.println("Errorea konexioan");
-					e.printStackTrace();
-				}
-				i++;
+		while(i < karroa.size()) {
+			String query1 = (Kontsultak.insertTiene + "('"+karroa.get(i).getElikagaia()+"', " + (jasoTransakzioZbk()-1) + ", "+karroa.get(i).getKopuru()+", "+karroa.get(i).getBalioa()+")");
+
+			try {
+				Statement s;
+				s = konekzioa.createStatement();
+				s.executeUpdate(query1);
+			} catch (SQLException e) {
+				System.out.println("Errorea konexioan");
+				e.printStackTrace();
 			}
+			i++;
 		}
+	}
+
+	public static void kk(ArrayList<Karritoa> karroa) {  
+		//Se supone que es un metodo que quita los produkto que esten dobles sumandose sus unidades y precios
+		//Fallos encontrados: si pillas cuatro produktos, siendo dos y dos iguales, los dos primeros lo hace y los dos segundos no suma
+		//Puede que haya mas fallos pero creo que tiene que ser asi o algo muy parecido
+		for (int i = 0;i < karroa.size(); i++) {
+			for (int j = 1;j < karroa.size(); j++) {
+				System.out.println(karroa.size());
+				System.out.println(karroa.get(i).getElikagaia()+"         "+karroa.get(j).getElikagaia());
+				if(karroa.get(i).getElikagaia().equals(karroa.get(j).getElikagaia())) { 
+					karroa.get(i).setBalioa(karroa.get(i).getBalioa()+karroa.get(j).getBalioa()); 
+					karroa.get(i).setKopuru(karroa.get(i).getKopuru()+karroa.get(j).getKopuru());
+					karroa.remove(j);  
+				} 
+			}
+		} 
+		System.out.println(karroa.toString());
+	}
+
+	
+	public static String jasoHornikuntzarakoFabrikantea(String produktua) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String izenaFabrikantea = null;
+		String query1 = (Kontsultak.selectFabrikantea + "'"+produktua+"')");
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery(); 
+			if(re.next()) {
+				izenaFabrikantea = re.getString("Nombre"); 
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return izenaFabrikantea;
+	}
+	
+	public static void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif,double diruTotala) throws ClassNotFoundException, SQLException {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea(produktua);
+		int numTrans = jasoTransakzioZbk();
+		
+		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + año + "/" + (mes + 1) + "/"
+				+ dia + "','" + diruTotala + "','" + nif + "')");
+		String query3 = (Kontsultak.insertHornikuntza + "("+numTrans+",'"+izenaFabrikantea+"')");		
+		try {
+			Statement s;
+			s = konekzioa.createStatement();
+			s.executeUpdate(query2);
+			Statement s1;
+			System.out.println(numTrans);
+			s1 = konekzioa.createStatement();
+			s1.executeUpdate(query3);
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+	}
 
 }

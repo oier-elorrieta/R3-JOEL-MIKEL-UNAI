@@ -1,5 +1,6 @@
 package Controlador;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import Modelo.Karritoa;
 import Modelo.Modelo;
@@ -58,5 +59,9 @@ public class ControladorPanelHornikuntza {
 	
 	public void sakatuAtzeraBotoia() {
 		this.controlador.itxi();
+	}
+	
+	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuHornikuntza(produktua, año, mes, dia, nif);
 	}
 }

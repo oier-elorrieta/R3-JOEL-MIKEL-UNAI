@@ -32,17 +32,19 @@ public class Karritoa {
 		return balioa;
 	}
 	
-	public void setBalioa(int balioa) {
+	public void setBalioa(double balioa) {
 		this.balioa = balioa;
-	}
-
+	}/*
 	@Override 
 	public String toString() {
 		return "<html>"+"<p>"+"x"+kopuru+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 								 +elikagaia+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 								 +balioa+"€"+"&nbsp;<p>"+"<html>";
+	}*/
+	
+	@Override
+	public String toString() {
+		return "Karritoa [elikagaia=" + elikagaia + ", kopuru=" + kopuru + ", balioa=" + balioa + "]";
 	}
-	
-	
 	
 }
