@@ -104,4 +104,12 @@ public class Modelo {
 	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif) throws ClassNotFoundException, SQLException {
 		metodoak.sartuHornikuntza(produktua, año, mes, dia, nif, diruTotala());
 	}
+	
+	public String[] platerrakJaso() {
+		return metodoak.sartuPlaterrak();
+	}
+	
+	public String[] platerMotak(){
+		return metodoak.platerMotak();
+	}
 }

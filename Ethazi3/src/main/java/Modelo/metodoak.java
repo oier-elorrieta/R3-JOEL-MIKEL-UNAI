@@ -124,7 +124,66 @@ public class metodoak {
 		return elikagaiak;
 	}
 
+	public static Platerra[] objektuak2() {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		int platerKantitatea = platerKantitatea();
+		String query1 = ("SELECT * from plato");
+		Platerra platerrak[] = new Platerra[platerKantitatea];
+		int kont = 0;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			while (re.next()) {
+				String platerKodea = re.getString("Cod_Plato");
+				String platerMota = re.getString(2);
+				String izena = re.getString(3);
+				Platerra p1 = new Platerra(platerKodea, platerMota, izena);
+				platerrak[kont] = p1;
+				kont++;
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return platerrak;
+	}
+
+	public static String[] sartuPlaterrak() {
+		Platerra platerrak[] = objektuak2();
+
+		String platerIzena[] = new String[platerKantitatea()];
+		for (int i = 0; i < platerIzena.length; i++) {
+			platerIzena[i] = platerrak[i].getIzena();
+		}
+		return platerIzena;
+	}
+
 	// ******************************************************************************************************************************************************************************************************
+
+	public static int platerKantitatea() {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		String query1 = ("SELECT count(Cod_Plato) from plato");
+		int i = 0;
+
+		try {
+			ResultSet re;
+			PreparedStatement p;
+
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				i = re.getInt("count(Cod_Plato)");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return i;
+	}
 
 	public static int produktuKantitatea() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
@@ -538,7 +597,7 @@ public class metodoak {
 		System.out.println(karroa.toString());
 	}
 
-	
+
 	public static String jasoHornikuntzarakoFabrikantea(String produktua) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = null;
@@ -557,13 +616,13 @@ public class metodoak {
 		}
 		return izenaFabrikantea;
 	}
-	
+
 	public static void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif,double diruTotala) throws ClassNotFoundException, SQLException {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea(produktua);
 		int numTrans = jasoTransakzioZbk();
-		
+
 		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + año + "/" + (mes + 1) + "/"
 				+ dia + "','" + diruTotala + "','" + nif + "')");
 		String query3 = (Kontsultak.insertHornikuntza + "("+numTrans+",'"+izenaFabrikantea+"')");		
@@ -579,6 +638,27 @@ public class metodoak {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
+	}
+
+	public static String[] platerMotak() {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = ("SELECT distinct TipoDePlato from plato");
+		String platerMotak[] = new String[3];
+		int i = 0;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery(); 
+			while(re.next()) {
+				platerMotak[i]= re.getString("TipoDePlato");
+				i++;
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return platerMotak;
 	}
 
 }

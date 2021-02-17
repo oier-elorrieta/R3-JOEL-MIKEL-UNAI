@@ -43,11 +43,12 @@ public class PanelKomanda extends JPanel {
 	private JRadioButton rdbtnLehenengoa;
 	private JRadioButton rdbtnBigarrena;
 	private JRadioButton rdbtnPostre;
-	
+
 	private JComboBox<String> cb_Produktoak = new JComboBox<String>();
 	private JComboBox<String> cb_Mota = new JComboBox<String>();
 	private JSpinner nºunidades;
 	private String[] produktuak;
+	private String[] platerMotak;
 
 	private int TransferentziaZenbakia;
 	private int año;
@@ -89,7 +90,7 @@ public class PanelKomanda extends JPanel {
 		tf_Fecha.setEditable(false);
 		add(tf_Fecha);
 
-		tf_Lokala = new JTextField();
+		tf_Lokala = new JTextField(controladorPanelKomanda.konprobatuLokalarenIzena());
 		tf_Lokala.setFont(new Font("Tahoma", Font.ITALIC, 9));
 		tf_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Lokala.setBounds(61, 36, 75, 20);
@@ -166,17 +167,17 @@ public class PanelKomanda extends JPanel {
 		add(btnSegi);
 
 		rdbtnLehenengoa = new JRadioButton("Lehenengoa");
-		rdbtnLehenengoa.setBounds(33, 108, 211, 21);
+		rdbtnLehenengoa.setBounds(30, 108, 211, 21);
 		add(rdbtnLehenengoa);
-		
+
 		rdbtnBigarrena = new JRadioButton("Bigarrena");
 		rdbtnBigarrena.setBounds(30, 152, 214, 21);
 		add(rdbtnBigarrena);
-		
+
 		rdbtnPostre = new JRadioButton("Postre");
 		rdbtnPostre.setBounds(30, 200, 211, 21);
 		add(rdbtnPostre);
-		
+
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		int min = 0;
@@ -189,18 +190,25 @@ public class PanelKomanda extends JPanel {
 		nºunidades.setBounds(254, 233, 120, 20);
 		add(nºunidades);
 
+		cb_Produktoak = new JComboBox<String>();
 		cb_Produktoak.setBounds(30, 68, 214, 20);
 		add(cb_Produktoak);
 
-		produktuak = controladorPanelKomanda.ComboBoxaSakatu();
+		produktuak = controladorPanelKomanda.platerrakJaso();
 		for (int i = 0; i < produktuak.length; i++) {
 			cb_Produktoak.addItem(produktuak[i]);
 		}
 		cb_Produktoak.setSelectedItem(null);
-		
+
 		cb_Mota = new JComboBox<String>();
 		cb_Mota.setBounds(30, 233, 214, 20);
 		add(cb_Mota);
+		
+		platerMotak = controladorPanelKomanda.platerMotak();
+		for (int i = 0; i < platerMotak.length; i++) {
+			cb_Mota.addItem(platerMotak[i]);
+		}
+		cb_Mota.setSelectedItem(null);
 
 		initializeEvents();
 	}
@@ -212,6 +220,9 @@ public class PanelKomanda extends JPanel {
 		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelKomanda));
 		this.cb_Produktoak.addActionListener(listenerComboBox(this.controladorPanelKomanda));
 		this.btnSegi.addActionListener(listenerSegiBotoia(this.controladorPanelKomanda));
+		this.rdbtnLehenengoa.addActionListener(listenerRdbbtnLehenengoa(this.controladorPanelKomanda));
+		this.rdbtnBigarrena.addActionListener(listenerRdbtnBigarrena(this.controladorPanelKomanda));
+		this.rdbtnPostre.addActionListener(listenerRdbtnPostre(this.controladorPanelKomanda));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -256,4 +267,51 @@ public class PanelKomanda extends JPanel {
 			}
 		};
 	}
+
+
+	private ActionListener listenerRdbbtnLehenengoa(ControladorPanelKomanda controladorPanelKomanda) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {			
+				if(rdbtnLehenengoa.isSelected() == true) {
+					rdbtnBigarrena.setEnabled(false);
+					rdbtnPostre.setEnabled(false);
+				}else {
+					rdbtnLehenengoa.setEnabled(true);
+					rdbtnBigarrena.setEnabled(true);
+					rdbtnPostre.setEnabled(true);
+				}
+			}
+		};
+	}
+
+	private ActionListener listenerRdbtnBigarrena(ControladorPanelKomanda controladorPanelKomanda) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {			
+				if(rdbtnBigarrena.isSelected() == true) {
+					rdbtnLehenengoa.setEnabled(false);
+					rdbtnPostre.setEnabled(false);
+				}else {
+					rdbtnLehenengoa.setEnabled(true);
+					rdbtnBigarrena.setEnabled(true);
+					rdbtnPostre.setEnabled(true);
+				}
+			}
+		};
+	}
+
+	private ActionListener listenerRdbtnPostre(ControladorPanelKomanda controladorPanelKomanda) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {			
+				if(rdbtnPostre.isSelected() == true){
+					rdbtnBigarrena.setEnabled(false);
+					rdbtnLehenengoa.setEnabled(false);
+				}else {
+					rdbtnLehenengoa.setEnabled(true);
+					rdbtnBigarrena.setEnabled(true);
+					rdbtnPostre.setEnabled(true);
+				}
+			}
+		};
+	}
+
 }

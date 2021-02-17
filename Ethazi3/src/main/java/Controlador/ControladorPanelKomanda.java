@@ -37,9 +37,9 @@ public class ControladorPanelKomanda {
 		this.modelo.ezabatuProduktuenArraya();
 	}
 	
-	public String[] ComboBoxaSakatu() {
+	/*public String[] ComboBoxaSakatu() {
 		return this.modelo.produktuakJaso();
-	}
+	}*/
 	
 	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
 		return this.modelo.sartu(elikagaia, kopuru); 
@@ -78,5 +78,12 @@ public class ControladorPanelKomanda {
 	
 	public String konprobatuLokalarenIzena() {
 		return this.modelo.konprobatuLokalarenIzena();
+	}
+	public String[] platerrakJaso() {
+		return this.modelo.platerrakJaso();
+	}
+	
+	public String[] platerMotak() {
+		return this.modelo.platerMotak();
 	}
 }
