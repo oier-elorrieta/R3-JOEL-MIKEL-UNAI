@@ -661,4 +661,85 @@ public class metodoak {
 		return platerMotak;
 	}
 
+	public static String[] platerMota(String platerMota, String tipoa) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = ("SELECT nombre from plato where TipoDePlato = '"+platerMota+"' and TipoPosicion = '"+tipoa+"'");
+		String platerMotak[] = new String[zenbatPlaterMotaBakoitzeko(platerMota)];
+		int i = 0;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery(); 
+			while(re.next()) {
+				platerMotak[i]= re.getString("Nombre");
+				i++;
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return platerMotak;
+	}
+
+	public static int zenbatPlaterMotaBakoitzeko(String platerMota) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = ("SELECT count('"+platerMota+"') from plato where TipoDePlato = '"+platerMota+"';");
+		int i = 0;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery(); 
+			if(re.next()) {
+				i= re.getInt("count('"+platerMota+"')");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return i;
+	}
+
+	public static String jasoPlaterKodea(String platerra) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = ("SELECT Cod_Plato FROM plato where Nombre = '"+platerra+"'");
+		String platerKodea = null;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery(); 
+			if(re.next()) {
+				platerKodea = re.getString("Cod_Plato");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return platerKodea;
+	}
+
+	public static void sartuKomanda(String platerKodea, int kantitatea, double prezioa, int numTrans, String nif, int año, int mes, int dia){
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + año + "/" + (mes + 1) + "/"
+				+ dia + "','" + prezioa + "','" + nif + "')");
+		String query2 = ("INSERT INTO comanda VALUES('"+numTrans+"')");
+		String query3 = ("INSERT INTO incluye VALUES('"+numTrans+"', '"+platerKodea+"', '"+kantitatea+"', '"+prezioa+"')");
+		try {
+			Statement s;
+			s = konekzioa.createStatement();
+			s.executeUpdate(query1);
+			Statement s1;
+			s1 = konekzioa.createStatement();
+			s1.executeUpdate(query2);
+			Statement s2;
+			s2 = konekzioa.createStatement();
+			s2.executeUpdate(query3);
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+	} 
+
 }

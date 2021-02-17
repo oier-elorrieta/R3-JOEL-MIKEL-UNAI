@@ -112,4 +112,15 @@ public class Modelo {
 	public String[] platerMotak(){
 		return metodoak.platerMotak();
 	}
+	
+	public String[] platerMota(String platerMota, String tipoa){
+		return metodoak.platerMota(platerMota, tipoa);
+	}
+	public String platerKodea(String platerra){
+		return metodoak.jasoPlaterKodea(platerra);
+	}
+	
+	public void sartuKomanda(String platerKodea, int kantitatea, int año, int mes, int dia) throws ClassNotFoundException, SQLException{
+		metodoak.sartuKomanda(platerKodea,kantitatea, diruTotala(), jasoTransakzioZbk(),konprobatuNIF(), año, mes, dia);
+	} 
 }

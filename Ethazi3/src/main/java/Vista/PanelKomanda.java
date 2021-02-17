@@ -162,20 +162,22 @@ public class PanelKomanda extends JPanel {
 
 		btnSegi = new JButton("\u2714\uFE0F");
 		btnSegi.setHorizontalAlignment(SwingConstants.TRAILING);
-		btnSegi.setBounds(388, 232, 57, 23);
-		btnSegi.setEnabled(false);
+		btnSegi.setBounds(388, 232, 57, 23); 
 		add(btnSegi);
 
 		rdbtnLehenengoa = new JRadioButton("Lehenengoa");
 		rdbtnLehenengoa.setBounds(30, 108, 211, 21);
+		rdbtnLehenengoa.setEnabled(false);
 		add(rdbtnLehenengoa);
 
 		rdbtnBigarrena = new JRadioButton("Bigarrena");
 		rdbtnBigarrena.setBounds(30, 152, 214, 21);
+		rdbtnBigarrena.setEnabled(false);
 		add(rdbtnBigarrena);
 
 		rdbtnPostre = new JRadioButton("Postre");
 		rdbtnPostre.setBounds(30, 200, 211, 21);
+		rdbtnPostre.setEnabled(false);
 		add(rdbtnPostre);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
@@ -203,7 +205,7 @@ public class PanelKomanda extends JPanel {
 		cb_Mota = new JComboBox<String>();
 		cb_Mota.setBounds(30, 233, 214, 20);
 		add(cb_Mota);
-		
+
 		platerMotak = controladorPanelKomanda.platerMotak();
 		for (int i = 0; i < platerMotak.length; i++) {
 			cb_Mota.addItem(platerMotak[i]);
@@ -223,6 +225,7 @@ public class PanelKomanda extends JPanel {
 		this.rdbtnLehenengoa.addActionListener(listenerRdbbtnLehenengoa(this.controladorPanelKomanda));
 		this.rdbtnBigarrena.addActionListener(listenerRdbtnBigarrena(this.controladorPanelKomanda));
 		this.rdbtnPostre.addActionListener(listenerRdbtnPostre(this.controladorPanelKomanda));
+		this.cb_Mota.addActionListener(listenerPlaterrak(this.controladorPanelKomanda));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -255,6 +258,23 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerSegiBotoia(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String izena = (String) cb_Produktoak.getSelectedItem();
+				String platerKodea = controladorPanelKomanda.platerKodea(izena);
+				//String platerMota = (String) cb_Mota.getSelectedItem();
+				int kantitatea = (int) nºunidades.getValue();
+				try {
+					controladorPanelKomanda.sartuKomanda(platerKodea,kantitatea, año, mes, dia);
+				} catch (ClassNotFoundException | SQLException e) { 
+					e.printStackTrace();
+				}
+				rdbtnLehenengoa.setEnabled(false);
+				rdbtnLehenengoa.setSelected(false);
+				rdbtnBigarrena.setEnabled(false);
+				rdbtnBigarrena.setSelected(false);
+				rdbtnPostre.setEnabled(false);
+				rdbtnPostre.setSelected(false);
+				cb_Mota.setSelectedItem(null);
+				cb_Produktoak.setSelectedItem(null);
 			}
 		};
 	}
@@ -272,14 +292,38 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerRdbbtnLehenengoa(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {			
-				if(rdbtnLehenengoa.isSelected() == true) {
+				cb_Produktoak.removeAllItems();
+				String platerMota = (String) cb_Mota.getSelectedItem();
+				String tipoa = "Primero";
+				if(cb_Mota.getSelectedItem().equals("Vegano") && rdbtnLehenengoa.isSelected() == true) {
+					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+					for (int i = 0; i < produktuak.length; i++) {
+						cb_Produktoak.addItem(produktuak[i]);
+					} 
+					cb_Produktoak.setSelectedItem(null);
 					rdbtnBigarrena.setEnabled(false);
 					rdbtnPostre.setEnabled(false);
+				}else if (cb_Mota.getSelectedItem().equals("Vegetariano") && rdbtnLehenengoa.isSelected() == true) {
+					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+					for (int i = 0; i < produktuak.length; i++) {
+						cb_Produktoak.addItem(produktuak[i]);
+					}
+					rdbtnBigarrena.setEnabled(false);
+					rdbtnPostre.setEnabled(false);
+					cb_Produktoak.setSelectedItem(null);
+				}else if (cb_Mota.getSelectedItem().equals("Normal") && rdbtnLehenengoa.isSelected() == true) {
+					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+					for (int i = 0; i < produktuak.length; i++) {
+						cb_Produktoak.addItem(produktuak[i]);
+					} 
+					rdbtnBigarrena.setEnabled(false);
+					rdbtnPostre.setEnabled(false);
+					cb_Produktoak.setSelectedItem(null);
 				}else {
 					rdbtnLehenengoa.setEnabled(true);
 					rdbtnBigarrena.setEnabled(true);
 					rdbtnPostre.setEnabled(true);
-				}
+				} 
 			}
 		};
 	}
@@ -287,14 +331,38 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerRdbtnBigarrena(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {			
-				if(rdbtnBigarrena.isSelected() == true) {
+				cb_Produktoak.removeAllItems();
+				String platerMota = (String) cb_Mota.getSelectedItem();
+				String tipoa = "Segundo";
+				if(cb_Mota.getSelectedItem().equals("Vegano") && rdbtnBigarrena.isSelected() == true) {
+					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+					for (int i = 0; i < produktuak.length; i++) {
+						cb_Produktoak.addItem(produktuak[i]);
+					} 
+					cb_Produktoak.setSelectedItem(null);
 					rdbtnLehenengoa.setEnabled(false);
 					rdbtnPostre.setEnabled(false);
+				}else if (cb_Mota.getSelectedItem().equals("Vegetariano") && rdbtnBigarrena.isSelected() == true) {
+					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+					for (int i = 0; i < produktuak.length; i++) {
+						cb_Produktoak.addItem(produktuak[i]);
+					}
+					rdbtnLehenengoa.setEnabled(false);
+					rdbtnPostre.setEnabled(false);
+					cb_Produktoak.setSelectedItem(null);
+				}else if (cb_Mota.getSelectedItem().equals("Normal") && rdbtnBigarrena.isSelected() == true) {
+					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+					for (int i = 0; i < produktuak.length; i++) {
+						cb_Produktoak.addItem(produktuak[i]);
+					} 
+					rdbtnLehenengoa.setEnabled(false);
+					rdbtnPostre.setEnabled(false);
+					cb_Produktoak.setSelectedItem(null);
 				}else {
 					rdbtnLehenengoa.setEnabled(true);
 					rdbtnBigarrena.setEnabled(true);
 					rdbtnPostre.setEnabled(true);
-				}
+				} 
 			}
 		};
 	}
@@ -302,14 +370,51 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerRdbtnPostre(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {			
-				if(rdbtnPostre.isSelected() == true){
+				cb_Produktoak.removeAllItems();
+				String platerMota = (String) cb_Mota.getSelectedItem();
+				String tipoa = "Postre";
+				if(cb_Mota.getSelectedItem().equals("Vegano") && rdbtnPostre.isSelected() == true) {
+					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+					for (int i = 0; i < produktuak.length; i++) {
+						cb_Produktoak.addItem(produktuak[i]);
+					} 
+					cb_Produktoak.setSelectedItem(null);
+					rdbtnBigarrena.setEnabled(false);
+					rdbtnLehenengoa.setEnabled(false);
+				}else if (cb_Mota.getSelectedItem().equals("Vegetariano") && rdbtnPostre.isSelected() == true) {
+					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+					for (int i = 0; i < produktuak.length; i++) {
+						cb_Produktoak.addItem(produktuak[i]);
+					}
+					cb_Produktoak.setSelectedItem(null);
+					rdbtnBigarrena.setEnabled(false);
+					rdbtnLehenengoa.setEnabled(false);
+				}else if (cb_Mota.getSelectedItem().equals("Normal") && rdbtnPostre.isSelected() == true) {
+					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+					for (int i = 0; i < produktuak.length; i++) {
+						cb_Produktoak.addItem(produktuak[i]);
+					} 
+					cb_Produktoak.setSelectedItem(null);
 					rdbtnBigarrena.setEnabled(false);
 					rdbtnLehenengoa.setEnabled(false);
 				}else {
 					rdbtnLehenengoa.setEnabled(true);
 					rdbtnBigarrena.setEnabled(true);
 					rdbtnPostre.setEnabled(true);
-				}
+				} 
+			}
+		};
+	}
+
+	private ActionListener listenerPlaterrak(ControladorPanelKomanda controladorPanelKomanda) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) { 
+				rdbtnLehenengoa.setEnabled(true);
+				rdbtnBigarrena.setEnabled(true);
+				rdbtnPostre.setEnabled(true);
+				rdbtnLehenengoa.setSelected(false); 
+				rdbtnBigarrena.setSelected(false);
+				rdbtnPostre.setSelected(false);
 			}
 		};
 	}

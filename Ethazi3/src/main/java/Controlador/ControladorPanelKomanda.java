@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 import Modelo.Karritoa;
-import Modelo.Modelo;
+import Modelo.Modelo; 
 import Vista.PanelKomanda;
 import Vista.Vista;
 
@@ -86,4 +86,16 @@ public class ControladorPanelKomanda {
 	public String[] platerMotak() {
 		return this.modelo.platerMotak();
 	}
+	
+	public String[] platerMota(String platerMota, String tipoa) {
+		return this.modelo.platerMota(platerMota, tipoa);
+	}
+	
+	public String platerKodea(String platerra){
+		return this.modelo.platerKodea(platerra);
+	}
+	
+	public void sartuKomanda(String platerKodea, int kantitatea, int año, int mes, int dia) throws ClassNotFoundException, SQLException{
+		this.modelo.sartuKomanda(platerKodea,kantitatea, año, mes, dia);
+	} 
 }
