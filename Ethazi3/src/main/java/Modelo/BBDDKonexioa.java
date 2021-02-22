@@ -10,12 +10,9 @@ public class BBDDKonexioa {
 	private static final String USUARIO = "root";
 	private static final String URL = "jdbc:mysql://localhost:33060/ethazi3";
 	private static final String CLAVE = "elorrieta";
-<<<<<<< HEAD
+
 	//private static final String URL = "jdbc:mysql://localhost:3306/ethazi3";
 	//private static final String CLAVE = "12345678";
-
-=======
->>>>>>> bb23647a9985a44b8da94850101e6b156b7a7121
 	//private static final String URL = "jdbc:mysql://localhost:3306/ethazi3";
 	//private static final String CLAVE = "12345678";
 

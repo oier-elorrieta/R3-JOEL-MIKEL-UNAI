@@ -344,40 +344,45 @@ public class PanelKomanda extends JPanel {
 	
 	private void kk(String platerMota, String tipoa, int zbk) {
 		cb_Produktoak.removeAllItems();
-		if(cb_Mota.getSelectedItem().equals("Vegano")/*&& rdbtnPostre.isSelected() == true*/) {
+		JRadioButton botoia = kkk(zbk);
+		if(cb_Mota.getSelectedItem().equals("Vegano") && botoia.isSelected() == true) {
 			produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
 			for (int i = 0; i < produktuak.length; i++) {
 				cb_Produktoak.addItem(produktuak[i]);
 			} 
 			cb_Produktoak.setSelectedItem(null);
-			rdbtnBigarrena.setEnabled(false);
-			rdbtnLehenengoa.setEnabled(false);
-			rdbtnPostre.setEnabled(false);
-		}else if (cb_Mota.getSelectedItem().equals("Vegetariano") /*&& rdbtnPostre.isSelected() == true*/) {
+		}else if (cb_Mota.getSelectedItem().equals("Vegetariano") && botoia.isSelected() == true) {
 			produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
 			for (int i = 0; i < produktuak.length; i++) {
 				cb_Produktoak.addItem(produktuak[i]);
 			}
-			cb_Produktoak.setSelectedItem(null);
-			rdbtnBigarrena.setEnabled(false);
-			rdbtnLehenengoa.setEnabled(false);
-
-			rdbtnPostre.setEnabled(false);
-		}else if (cb_Mota.getSelectedItem().equals("Normal")/* && rdbtnPostre.isSelected() == true*/) {
+			cb_Produktoak.setSelectedItem(null); 
+		}else if (cb_Mota.getSelectedItem().equals("Normal") && botoia.isSelected() == true) {
 			produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
 			for (int i = 0; i < produktuak.length; i++) {
 				cb_Produktoak.addItem(produktuak[i]);
 			} 
-			cb_Produktoak.setSelectedItem(null);
-			rdbtnBigarrena.setEnabled(false);
-			rdbtnLehenengoa.setEnabled(false);
-
-			rdbtnPostre.setEnabled(false);
+			cb_Produktoak.setSelectedItem(null); 
 		}else {
 			rdbtnLehenengoa.setEnabled(true);
 			rdbtnBigarrena.setEnabled(true);
 			rdbtnPostre.setEnabled(true);
 		} 
 	}
-
+	
+	private JRadioButton kkk(int zbk) {
+		if (zbk == 1) { 
+			rdbtnBigarrena.setEnabled(false);
+			rdbtnPostre.setEnabled(false);
+			return rdbtnLehenengoa;
+		}else if (zbk == 2) {
+			rdbtnLehenengoa.setEnabled(false);
+			rdbtnPostre.setEnabled(false);
+			return rdbtnBigarrena;
+		}else {
+			rdbtnBigarrena.setEnabled(false);
+			rdbtnLehenengoa.setEnabled(false);
+			return rdbtnPostre;
+		}
+	}
 }
