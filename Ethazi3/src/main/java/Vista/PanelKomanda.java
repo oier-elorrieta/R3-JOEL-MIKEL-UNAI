@@ -291,39 +291,11 @@ public class PanelKomanda extends JPanel {
 
 	private ActionListener listenerRdbbtnLehenengoa(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {			
-				cb_Produktoak.removeAllItems();
+			public void actionPerformed(ActionEvent arg0) { 
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Primero";
-				if(cb_Mota.getSelectedItem().equals("Vegano") && rdbtnLehenengoa.isSelected() == true) {
-					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-					for (int i = 0; i < produktuak.length; i++) {
-						cb_Produktoak.addItem(produktuak[i]);
-					} 
-					cb_Produktoak.setSelectedItem(null);
-					rdbtnBigarrena.setEnabled(false);
-					rdbtnPostre.setEnabled(false);
-				}else if (cb_Mota.getSelectedItem().equals("Vegetariano") && rdbtnLehenengoa.isSelected() == true) {
-					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-					for (int i = 0; i < produktuak.length; i++) {
-						cb_Produktoak.addItem(produktuak[i]);
-					}
-					rdbtnBigarrena.setEnabled(false);
-					rdbtnPostre.setEnabled(false);
-					cb_Produktoak.setSelectedItem(null);
-				}else if (cb_Mota.getSelectedItem().equals("Normal") && rdbtnLehenengoa.isSelected() == true) {
-					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-					for (int i = 0; i < produktuak.length; i++) {
-						cb_Produktoak.addItem(produktuak[i]);
-					} 
-					rdbtnBigarrena.setEnabled(false);
-					rdbtnPostre.setEnabled(false);
-					cb_Produktoak.setSelectedItem(null);
-				}else {
-					rdbtnLehenengoa.setEnabled(true);
-					rdbtnBigarrena.setEnabled(true);
-					rdbtnPostre.setEnabled(true);
-				} 
+				int zbk = 1;
+				kk(platerMota, tipoa, zbk);
 			}
 		};
 	}
@@ -331,38 +303,10 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerRdbtnBigarrena(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {			
-				cb_Produktoak.removeAllItems();
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Segundo";
-				if(cb_Mota.getSelectedItem().equals("Vegano") && rdbtnBigarrena.isSelected() == true) {
-					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-					for (int i = 0; i < produktuak.length; i++) {
-						cb_Produktoak.addItem(produktuak[i]);
-					} 
-					cb_Produktoak.setSelectedItem(null);
-					rdbtnLehenengoa.setEnabled(false);
-					rdbtnPostre.setEnabled(false);
-				}else if (cb_Mota.getSelectedItem().equals("Vegetariano") && rdbtnBigarrena.isSelected() == true) {
-					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-					for (int i = 0; i < produktuak.length; i++) {
-						cb_Produktoak.addItem(produktuak[i]);
-					}
-					rdbtnLehenengoa.setEnabled(false);
-					rdbtnPostre.setEnabled(false);
-					cb_Produktoak.setSelectedItem(null);
-				}else if (cb_Mota.getSelectedItem().equals("Normal") && rdbtnBigarrena.isSelected() == true) {
-					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-					for (int i = 0; i < produktuak.length; i++) {
-						cb_Produktoak.addItem(produktuak[i]);
-					} 
-					rdbtnLehenengoa.setEnabled(false);
-					rdbtnPostre.setEnabled(false);
-					cb_Produktoak.setSelectedItem(null);
-				}else {
-					rdbtnLehenengoa.setEnabled(true);
-					rdbtnBigarrena.setEnabled(true);
-					rdbtnPostre.setEnabled(true);
-				} 
+				int zbk = 2;
+				kk(platerMota, tipoa, zbk);
 			}
 		};
 	}
@@ -370,38 +314,10 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerRdbtnPostre(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {			
-				cb_Produktoak.removeAllItems();
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Postre";
-				if(cb_Mota.getSelectedItem().equals("Vegano") && rdbtnPostre.isSelected() == true) {
-					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-					for (int i = 0; i < produktuak.length; i++) {
-						cb_Produktoak.addItem(produktuak[i]);
-					} 
-					cb_Produktoak.setSelectedItem(null);
-					rdbtnBigarrena.setEnabled(false);
-					rdbtnLehenengoa.setEnabled(false);
-				}else if (cb_Mota.getSelectedItem().equals("Vegetariano") && rdbtnPostre.isSelected() == true) {
-					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-					for (int i = 0; i < produktuak.length; i++) {
-						cb_Produktoak.addItem(produktuak[i]);
-					}
-					cb_Produktoak.setSelectedItem(null);
-					rdbtnBigarrena.setEnabled(false);
-					rdbtnLehenengoa.setEnabled(false);
-				}else if (cb_Mota.getSelectedItem().equals("Normal") && rdbtnPostre.isSelected() == true) {
-					produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-					for (int i = 0; i < produktuak.length; i++) {
-						cb_Produktoak.addItem(produktuak[i]);
-					} 
-					cb_Produktoak.setSelectedItem(null);
-					rdbtnBigarrena.setEnabled(false);
-					rdbtnLehenengoa.setEnabled(false);
-				}else {
-					rdbtnLehenengoa.setEnabled(true);
-					rdbtnBigarrena.setEnabled(true);
-					rdbtnPostre.setEnabled(true);
-				} 
+				int zbk = 3;
+				kk(platerMota, tipoa, zbk);
 			}
 		};
 	}
@@ -415,8 +331,53 @@ public class PanelKomanda extends JPanel {
 				rdbtnLehenengoa.setSelected(false); 
 				rdbtnBigarrena.setSelected(false);
 				rdbtnPostre.setSelected(false);
+				String platerMota = (String) cb_Mota.getSelectedItem();
+				String [] platerMotaArabera = controladorPanelKomanda.platerMotaArabera(platerMota);
+				cb_Produktoak.removeAllItems();
+				for (int i = 0; i < platerMotaArabera.length; i++) {
+					cb_Produktoak.addItem(platerMotaArabera[i]);
+				}
+				cb_Produktoak.setSelectedItem(null);
 			}
 		};
+	}
+	
+	private void kk(String platerMota, String tipoa, int zbk) {
+		cb_Produktoak.removeAllItems();
+		if(cb_Mota.getSelectedItem().equals("Vegano")/*&& rdbtnPostre.isSelected() == true*/) {
+			produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+			for (int i = 0; i < produktuak.length; i++) {
+				cb_Produktoak.addItem(produktuak[i]);
+			} 
+			cb_Produktoak.setSelectedItem(null);
+			rdbtnBigarrena.setEnabled(false);
+			rdbtnLehenengoa.setEnabled(false);
+			rdbtnPostre.setEnabled(false);
+		}else if (cb_Mota.getSelectedItem().equals("Vegetariano") /*&& rdbtnPostre.isSelected() == true*/) {
+			produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+			for (int i = 0; i < produktuak.length; i++) {
+				cb_Produktoak.addItem(produktuak[i]);
+			}
+			cb_Produktoak.setSelectedItem(null);
+			rdbtnBigarrena.setEnabled(false);
+			rdbtnLehenengoa.setEnabled(false);
+
+			rdbtnPostre.setEnabled(false);
+		}else if (cb_Mota.getSelectedItem().equals("Normal")/* && rdbtnPostre.isSelected() == true*/) {
+			produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+			for (int i = 0; i < produktuak.length; i++) {
+				cb_Produktoak.addItem(produktuak[i]);
+			} 
+			cb_Produktoak.setSelectedItem(null);
+			rdbtnBigarrena.setEnabled(false);
+			rdbtnLehenengoa.setEnabled(false);
+
+			rdbtnPostre.setEnabled(false);
+		}else {
+			rdbtnLehenengoa.setEnabled(true);
+			rdbtnBigarrena.setEnabled(true);
+			rdbtnPostre.setEnabled(true);
+		} 
 	}
 
 }

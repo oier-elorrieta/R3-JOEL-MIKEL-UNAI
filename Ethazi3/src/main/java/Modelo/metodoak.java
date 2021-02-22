@@ -681,6 +681,29 @@ public class metodoak {
 		}
 		return platerMotak;
 	}
+	
+	
+	public static String[] platerMotaArabera(String platerMota) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = ("SELECT nombre from plato where TipoDePlato = '"+platerMota+"'");
+		String platerMotak[] = new String[zenbatPlaterMotaBakoitzeko(platerMota)];
+		int i = 0;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery(); 
+			while(re.next()) {
+				platerMotak[i]= re.getString("Nombre");
+				i++;
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return platerMotak;
+	}
+	
 
 	public static int zenbatPlaterMotaBakoitzeko(String platerMota) {
 		Connection konekzioa = BBDDKonexioa.getConexion();

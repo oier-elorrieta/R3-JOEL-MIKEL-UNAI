@@ -37,10 +37,6 @@ public class ControladorPanelKomanda {
 		this.modelo.ezabatuProduktuenArraya();
 	}
 	
-	/*public String[] ComboBoxaSakatu() {
-		return this.modelo.produktuakJaso();
-	}*/
-	
 	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
 		return this.modelo.sartu(elikagaia, kopuru); 
 	}  
@@ -98,4 +94,8 @@ public class ControladorPanelKomanda {
 	public void sartuKomanda(String platerKodea, int kantitatea, int año, int mes, int dia) throws ClassNotFoundException, SQLException{
 		this.modelo.sartuKomanda(platerKodea,kantitatea, año, mes, dia);
 	} 
+	
+	public String[] platerMotaArabera(String platerMota) {
+		return this.modelo.platerMotaArabera(platerMota);
+	}
 }

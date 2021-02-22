@@ -123,4 +123,8 @@ public class Modelo {
 	public void sartuKomanda(String platerKodea, int kantitatea, int año, int mes, int dia) throws ClassNotFoundException, SQLException{
 		metodoak.sartuKomanda(platerKodea,kantitatea, diruTotala(), jasoTransakzioZbk(),konprobatuNIF(), año, mes, dia);
 	} 
+	
+	public String[] platerMotaArabera(String platerMota) {
+		return metodoak.platerMotaArabera(platerMota);
+	}
 }
