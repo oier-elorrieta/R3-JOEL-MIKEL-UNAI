@@ -580,9 +580,6 @@ public class metodoak {
 	}
 
 	public static void kk(ArrayList<Karritoa> karroa) {  
-		//Se supone que es un metodo que quita los produkto que esten dobles sumandose sus unidades y precios
-		//Fallos encontrados: si pillas cuatro produktos, siendo dos y dos iguales, los dos primeros lo hace y los dos segundos no suma
-		//Puede que haya mas fallos pero creo que tiene que ser asi o algo muy parecido
 		for (int i = 0;i < karroa.size(); i++) {
 			for (int j = 1;j < karroa.size(); j++) {
 				System.out.println(karroa.size());
