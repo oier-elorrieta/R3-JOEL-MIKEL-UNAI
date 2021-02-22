@@ -20,8 +20,12 @@ public class Modelo {
 		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa);
 	}
 
-	public void sartuTiene(int i) throws ClassNotFoundException, SQLException {
-		metodoak.sartuTiene(i, karroa);
+	public void sartuTiene(int i)  {
+		try {
+			metodoak.sartuTiene(i, karroa);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public String pantailaratu() {

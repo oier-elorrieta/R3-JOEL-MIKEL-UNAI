@@ -232,7 +232,7 @@ public class PanelKomanda extends JPanel {
 
 	private ActionListener listenerLaburpeneraBotoia(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {			
+			public void actionPerformed(ActionEvent arg0) {	
 			}
 		};
 	}
@@ -284,6 +284,12 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerComboBox(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String aukeratutakoa = (String) cb_Produktoak.getSelectedItem();
+				if(aukeratutakoa == null) {
+					btnSegi.setEnabled(false);
+				}else {
+					btnSegi.setEnabled(true);
+				}
 			}
 		};
 	}
@@ -295,7 +301,7 @@ public class PanelKomanda extends JPanel {
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Primero";
 				int zbk = 1;
-				kk(platerMota, tipoa, zbk);
+				produktuakEtaMotaJaso(platerMota, tipoa, zbk);
 			}
 		};
 	}
@@ -306,7 +312,7 @@ public class PanelKomanda extends JPanel {
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Segundo";
 				int zbk = 2;
-				kk(platerMota, tipoa, zbk);
+				produktuakEtaMotaJaso(platerMota, tipoa, zbk);
 			}
 		};
 	}
@@ -317,7 +323,7 @@ public class PanelKomanda extends JPanel {
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Postre";
 				int zbk = 3;
-				kk(platerMota, tipoa, zbk);
+				produktuakEtaMotaJaso(platerMota, tipoa, zbk);
 			}
 		};
 	}
@@ -342,9 +348,9 @@ public class PanelKomanda extends JPanel {
 		};
 	}
 	
-	private void kk(String platerMota, String tipoa, int zbk) {
+	private void produktuakEtaMotaJaso(String platerMota, String tipoa, int zbk) {
 		cb_Produktoak.removeAllItems();
-		JRadioButton botoia = kkk(zbk);
+		JRadioButton botoia = aukeratutakoBotoia(zbk);
 		if(cb_Mota.getSelectedItem().equals("Vegano") && botoia.isSelected() == true) {
 			produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
 			for (int i = 0; i < produktuak.length; i++) {
@@ -370,7 +376,7 @@ public class PanelKomanda extends JPanel {
 		} 
 	}
 	
-	private JRadioButton kkk(int zbk) {
+	private JRadioButton aukeratutakoBotoia(int zbk) {
 		if (zbk == 1) { 
 			rdbtnBigarrena.setEnabled(false);
 			rdbtnPostre.setEnabled(false);

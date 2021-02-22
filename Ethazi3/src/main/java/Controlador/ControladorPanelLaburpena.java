@@ -1,7 +1,6 @@
 package Controlador;
 
 import java.sql.SQLException;
-
 import Modelo.Modelo;
 import Vista.PanelLaburpena;
 import Vista.Vista;

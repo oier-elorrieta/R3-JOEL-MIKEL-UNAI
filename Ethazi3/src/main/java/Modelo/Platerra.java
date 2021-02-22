@@ -36,7 +36,4 @@ public class Platerra {
 		this.izena = izena;
 	}
 	
-	
-	
-
 }

@@ -2,9 +2,7 @@ package Controlador;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
-
 import Modelo.Karritoa;
 import Modelo.Modelo; 
 import Vista.PanelKomanda;

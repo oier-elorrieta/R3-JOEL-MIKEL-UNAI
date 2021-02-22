@@ -13,8 +13,6 @@ public class BBDDKonexioa {
 
 	//private static final String URL = "jdbc:mysql://localhost:3306/ethazi3";
 	//private static final String CLAVE = "12345678";
-	//private static final String URL = "jdbc:mysql://localhost:3306/ethazi3";
-	//private static final String CLAVE = "12345678";
 
 	public static Connection getConexion() {
 
