@@ -134,7 +134,7 @@ public class PanelHornikuntza extends JPanel {
 				String nif = controladorPanelHornikuntza.konprobatuNIF();
 				controladorPanelHornikuntza.gehituStocka(nomProduktua, kantitatea, nif);
 				try {
-					controladorPanelHornikuntza.sartuHornikuntza(nomProduktua, año, mes, dia, nif);
+					controladorPanelHornikuntza.sartuHornikuntza(nomProduktua, año, mes, dia, nif,kantitatea);
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}

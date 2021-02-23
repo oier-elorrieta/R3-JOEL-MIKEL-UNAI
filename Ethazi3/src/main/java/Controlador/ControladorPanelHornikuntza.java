@@ -61,7 +61,7 @@ public class ControladorPanelHornikuntza {
 		this.controlador.itxi();
 	}
 	
-	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif) throws ClassNotFoundException, SQLException {
-		this.modelo.sartuHornikuntza(produktua, año, mes, dia, nif);
+	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea);
 	}
 }

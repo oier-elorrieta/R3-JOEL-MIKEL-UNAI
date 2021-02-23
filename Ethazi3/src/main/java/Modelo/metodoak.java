@@ -66,6 +66,20 @@ public class metodoak {
 		}
 		return dirua;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	public static double jasoProduktuenPrezioa(String aukera, int kantitatea) {
+		Produktua elikagaiak[] = elikagaiak();
+		double dirua = 0;
+		for (int i = 0; i < elikagaiak.length; i++) {
+			if (elikagaiak[i].getIzena().equalsIgnoreCase(aukera)) {
+				dirua = kantitatea * elikagaiak[i].getErosPrezioa();
+				break;
+			}
+		}
+		return dirua;
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -94,6 +108,12 @@ public class metodoak {
 	// *****************************************************************************************************************************************************************************************************
 
 	public static ImageIcon argazkiaAukeratu(String aukera) {
+		return new ImageIcon("argazkiak/" + aukera + ".jpg");
+	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	public static ImageIcon argazkiaPlaterraAukeratu(String aukera) {
 		return new ImageIcon("argazkiak/" + aukera + ".jpg");
 	}
 
@@ -250,7 +270,7 @@ public class metodoak {
 
 	public static boolean begiratuDNI(String dni) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("SELECT dni from usuario");
+		String query1 = (Kontsultak.selectDNI);
 		boolean badago = false;
 		try {
 			ResultSet re;
@@ -275,7 +295,7 @@ public class metodoak {
 
 	public static boolean begiratuNIF(String nif) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("SELECT nif from local");
+		String query1 = (Kontsultak.selectNIFBakarrik);
 		boolean ondoDago = false;
 		try {
 			ResultSet re;
@@ -301,7 +321,7 @@ public class metodoak {
 	
 	public static int begiratuStock(String produktua, String nif) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("SELECT stock from vende where NomProducto = '" + produktua + "' and nifLocal = '"+ nif +"' "); 
+		String query1 = (Kontsultak.selectStock + " '" + produktua + "' and nifLocal = '"+ nif +"' "); 
 		int produktuKantitatea = 0;
 		try {
 			ResultSet re;
@@ -645,14 +665,15 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 	
-	public static void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif,double diruTotala) throws ClassNotFoundException, SQLException {
+	public static void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif,int kantitatea) throws ClassNotFoundException, SQLException {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea(produktua);
 		int numTrans = jasoTransakzioZbk();
+		double dirua = jasoProduktuenPrezioa(produktua, kantitatea);
 
 		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + año + "/" + (mes + 1) + "/"
-				+ dia + "','" + diruTotala + "','" + nif + "')");
+				+ dia + "','" + dirua + "','" + nif + "')");
 		String query3 = (Kontsultak.insertHornikuntza + "("+numTrans+",'"+izenaFabrikantea+"')");		
 		try {
 			Statement s;
@@ -672,7 +693,7 @@ public class metodoak {
 
 	public static String[] platerMotak() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("SELECT distinct TipoDePlato from plato");
+		String query1 = (Kontsultak.selectPlaterMotak);
 		String platerMotak[] = new String[3];
 		int i = 0;
 		try {
@@ -695,7 +716,7 @@ public class metodoak {
 	
 	public static String[] platerMota(String platerMota, String tipoa) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("SELECT nombre from plato where TipoDePlato = '"+platerMota+"' and TipoPosicion = '"+tipoa+"'");
+		String query1 = (Kontsultak.selectPlaterraMota + " '"+platerMota+"' and TipoPosicion = '"+tipoa+"'");
 		String platerMotak[] = new String[zenbatPlaterMotaBakoitzeko(platerMota)];
 		int i = 0;
 		try {
@@ -718,7 +739,7 @@ public class metodoak {
 	
 	public static String[] platerMotaArabera(String platerMota) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("SELECT nombre from plato where TipoDePlato = '"+platerMota+"'");
+		String query1 = (Kontsultak.selectPlaterraMota + "'"+platerMota+"'");
 		String platerMotak[] = new String[zenbatPlaterMotaBakoitzeko(platerMota)];
 		int i = 0;
 		try {
@@ -762,7 +783,7 @@ public class metodoak {
 
 	public static String jasoPlaterKodea(String platerra) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("SELECT Cod_Plato FROM plato where Nombre = '"+platerra+"'");
+		String query1 = (Kontsultak.selectPlaterKodea + "'"+platerra+"'");
 		String platerKodea = null;
 		try {
 			ResultSet re;
@@ -785,8 +806,8 @@ public class metodoak {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + año + "/" + (mes + 1) + "/"
 				+ dia + "','" + prezioa + "','" + nif + "')");
-		String query2 = ("INSERT INTO comanda VALUES('"+numTrans+"')");
-		String query3 = ("INSERT INTO incluye VALUES('"+numTrans+"', '"+platerKodea+"', '"+kantitatea+"', '"+prezioa+"')");
+		String query2 = (Kontsultak.insertKomanda + "('"+numTrans+"')");
+		String query3 = (Kontsultak.insertIncluye + "('"+numTrans+"', '"+platerKodea+"', '"+kantitatea+"', '"+prezioa+"')");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();

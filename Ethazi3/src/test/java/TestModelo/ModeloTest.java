@@ -15,7 +15,7 @@ import Modelo.metodoak;
 
 public class ModeloTest {
 
-	Produktua elikagaiak[] = metodoak.objektuak();
+	Produktua elikagaiak[] = metodoak.elikagaiak();
 
 	// *****************************************************************************************************************************************************************************************************
 

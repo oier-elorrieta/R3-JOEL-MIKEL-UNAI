@@ -43,6 +43,10 @@ public class Modelo {
 	public ImageIcon argazkiaAukeratu(String aukera) {
 		return metodoak.argazkiaAukeratu(aukera);
 	}
+	
+	public ImageIcon argazkiaPlaterraAukeratu(String aukera) {
+		return metodoak.argazkiaPlaterraAukeratu(aukera);
+	}
 
 	// *****************************************************************************************************************************************************************
 
@@ -105,8 +109,8 @@ public class Modelo {
 		return metodoak.begiratuStock(produktua, nif);
 	}
 	
-	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif) throws ClassNotFoundException, SQLException {
-		metodoak.sartuHornikuntza(produktua, año, mes, dia, nif, diruTotala());
+	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
+		metodoak.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea);
 	}
 	
 	public String[] platerrakJaso() {

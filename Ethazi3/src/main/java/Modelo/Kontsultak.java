@@ -5,6 +5,10 @@ public class Kontsultak {
 	static final String selectProduktuKantitatea = "SELECT count(nombre) from producto";
 
 	static final String selectProduktuak = "SELECT * from producto";
+	
+	static final String selectNIFBakarrik = "SELECT nif from local";
+	
+	static final String selectDNI = "SELECT dni from usuario";
 
 	static final String selectErabiltzailea = "SELECT DNI,Contraseña FROM usuario where dni = " ;
 
@@ -23,6 +27,14 @@ public class Kontsultak {
 	static final String selectIzenaFabrikantea = "SELECT Nombre from fabricante where Nombre = ";
 	
 	static final String selectFabrikantea = selectIzenaFabrikantea + "(SELECT N_Fabricante from producto where Nombre = ";
+	
+	static final String selectStock = "SELECT stock from vende where NomProducto =";
+	
+	static final String selectPlaterraMota = "SELECT nombre from plato where TipoDePlato = ";
+	
+	static final String selectPlaterMotak = "SELECT distinct TipoDePlato from plato";
+	
+	static final String selectPlaterKodea = "SELECT Cod_Plato FROM plato where Nombre = ";
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -39,6 +51,10 @@ public class Kontsultak {
 	static final String insertTiene = "INSERT INTO tiene VALUES";
 	
 	static final String insertHornikuntza = "INSERT INTO aprovisionamiento VALUES";
+	
+	static final String insertKomanda = "INSERT INTO comanda VALUES";
+	
+	static final String insertIncluye = "INSERT INTO incluye VALUES";
 	
 	// *****************************************************************************************************************************************************************************************************
 	

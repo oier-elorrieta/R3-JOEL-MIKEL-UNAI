@@ -4,7 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import Modelo.Karritoa;
-import Modelo.Modelo; 
+import Modelo.Modelo;
+import Modelo.metodoak;
 import Vista.PanelKomanda;
 import Vista.Vista;
 
@@ -43,8 +44,8 @@ public class ControladorPanelKomanda {
 		return this.modelo.diruTotala();
 	}	
 
-	public ImageIcon argazkiaAukeratu(String aukera) {
-		return this.modelo.argazkiaAukeratu(aukera);
+	public ImageIcon argazkiaPlaterraAukeratu(String aukera) {
+		return metodoak.argazkiaPlaterraAukeratu(aukera);
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {

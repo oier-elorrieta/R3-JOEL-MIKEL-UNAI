@@ -260,7 +260,6 @@ public class PanelKomanda extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				String izena = (String) cb_Produktoak.getSelectedItem();
 				String platerKodea = controladorPanelKomanda.platerKodea(izena);
-				//String platerMota = (String) cb_Mota.getSelectedItem();
 				int kantitatea = (int) nºunidades.getValue();
 				try {
 					controladorPanelKomanda.sartuKomanda(platerKodea,kantitatea, año, mes, dia);
@@ -274,7 +273,8 @@ public class PanelKomanda extends JPanel {
 				rdbtnPostre.setEnabled(false);
 				rdbtnPostre.setSelected(false);
 				cb_Mota.setSelectedItem(null);
-				cb_Produktoak.setSelectedItem(null);
+				cb_Produktoak.setSelectedItem(null); 
+				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
 	}
@@ -290,6 +290,8 @@ public class PanelKomanda extends JPanel {
 				}else {
 					btnSegi.setEnabled(true);
 				}
+				ImageIcon argazkia = (ImageIcon) controladorPanelKomanda.argazkiaPlaterraAukeratu(aukeratutakoa);
+				argazkiak.setIcon(argazkia);
 			}
 		};
 	}
@@ -302,6 +304,7 @@ public class PanelKomanda extends JPanel {
 				String tipoa = "Primero";
 				int zbk = 1;
 				produktuakEtaMotaJaso(platerMota, tipoa, zbk);
+				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
 	}
@@ -313,6 +316,7 @@ public class PanelKomanda extends JPanel {
 				String tipoa = "Segundo";
 				int zbk = 2;
 				produktuakEtaMotaJaso(platerMota, tipoa, zbk);
+				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
 	}
@@ -324,6 +328,7 @@ public class PanelKomanda extends JPanel {
 				String tipoa = "Postre";
 				int zbk = 3;
 				produktuakEtaMotaJaso(platerMota, tipoa, zbk);
+				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
 	}
@@ -344,10 +349,11 @@ public class PanelKomanda extends JPanel {
 					cb_Produktoak.addItem(platerMotaArabera[i]);
 				}
 				cb_Produktoak.setSelectedItem(null);
+				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
 	}
-	
+
 	private void produktuakEtaMotaJaso(String platerMota, String tipoa, int zbk) {
 		cb_Produktoak.removeAllItems();
 		JRadioButton botoia = aukeratutakoBotoia(zbk);
@@ -373,9 +379,10 @@ public class PanelKomanda extends JPanel {
 			rdbtnLehenengoa.setEnabled(true);
 			rdbtnBigarrena.setEnabled(true);
 			rdbtnPostre.setEnabled(true);
+			argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 		} 
 	}
-	
+
 	private JRadioButton aukeratutakoBotoia(int zbk) {
 		if (zbk == 1) { 
 			rdbtnBigarrena.setEnabled(false);
