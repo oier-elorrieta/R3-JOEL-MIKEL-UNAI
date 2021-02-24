@@ -100,10 +100,8 @@ public class PanelLaburpena extends JPanel {
 	private ActionListener listenerBotonHasierara(ControladorPanelLaburpena controladorPanelLaburpena) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				int i = 0;
 				try {
-					controladorPanelLaburpena.sartuTiene(i);
+					controladorPanelLaburpena.sartuTiene();
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}

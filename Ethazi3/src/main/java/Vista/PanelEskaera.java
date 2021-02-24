@@ -270,7 +270,7 @@ public class PanelEskaera extends JPanel {
 					String diruTotala = String.valueOf(controladorPanelEskaera.diruTotala());
 					tf_Totala.setText(diruTotala);
 
-					controladorPanelEskaera.kenduStocka(aukera, kantitatea, controladorPanelEskaera.konprobatuNIF());
+					//controladorPanelEskaera.kenduStocka(aukera, kantitatea, controladorPanelEskaera.konprobatuNIF());
 				}
 				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);

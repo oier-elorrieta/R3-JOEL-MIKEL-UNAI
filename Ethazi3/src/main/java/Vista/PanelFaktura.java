@@ -299,7 +299,7 @@ public class PanelFaktura extends JPanel {
 					String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
 					tf_Totala.setText(diruTotala);
 
-					controladorPanelFaktura.kenduStocka(aukera, kantitatea, controladorPanelFaktura.konprobatuNIF());
+					//controladorPanelFaktura.kenduStocka(aukera, kantitatea, controladorPanelFaktura.konprobatuNIF());
 				}
 				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);

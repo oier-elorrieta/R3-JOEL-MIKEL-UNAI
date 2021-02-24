@@ -54,7 +54,7 @@ public class ControladorPanelLaburpena {
 		return this.modelo.konprobatuLokalarenIzena();
 	}
 	
-	public void sartuTiene(int i) throws ClassNotFoundException, SQLException {
-		this.modelo.sartuTiene(i);
+	public void sartuTiene() throws ClassNotFoundException, SQLException {
+		this.modelo.sartuTiene();
 	}
 }

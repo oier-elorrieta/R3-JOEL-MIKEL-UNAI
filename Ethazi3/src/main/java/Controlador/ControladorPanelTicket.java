@@ -86,9 +86,9 @@ public class ControladorPanelTicket {
 		return this.modelo.konprobatuNIF();
 	}
 	
-	public void kenduStocka(String nomProduktua, int kantitatea, String nif) {
+	/*public void kenduStocka(String nomProduktua, int kantitatea, String nif) {
 		this.modelo.kenduStocka(nomProduktua, kantitatea, nif);
-	}
+	}*/
 	
 
 	public int begiratuStock(String produktua, String nif) {

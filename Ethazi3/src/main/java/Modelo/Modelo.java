@@ -20,9 +20,9 @@ public class Modelo {
 		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa);
 	}
 
-	public void sartuTiene(int i)  {
+	public void sartuTiene()  {
 		try {
-			metodoak.sartuTiene(i, karroa);
+			metodoak.sartuTiene(karroa);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -90,13 +90,13 @@ public class Modelo {
 		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	} 
 
-	public void gehituStocka(String nom_Produktua, int kantitatea, String nif){
+	/*public void gehituStocka(String nom_Produktua, int kantitatea, String nif){
 		metodoak.gehituStocka(nom_Produktua, kantitatea, nif);
 	} 
 	
 	public void kenduStocka(String nom_Produktua, int kantitatea, String nif){
 		metodoak.kenduStocka(nom_Produktua, kantitatea, nif);
-	} 
+	} */
 	public boolean begiratuDNI(String dni) {
 		return metodoak.begiratuDNI(dni);
 	}

@@ -132,7 +132,7 @@ public class PanelHornikuntza extends JPanel {
 				String nomProduktua = (String) cb_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
 				String nif = controladorPanelHornikuntza.konprobatuNIF();
-				controladorPanelHornikuntza.gehituStocka(nomProduktua, kantitatea, nif);
+				//controladorPanelHornikuntza.gehituStocka(nomProduktua, kantitatea, nif);
 				try {
 					controladorPanelHornikuntza.sartuHornikuntza(nomProduktua, año, mes, dia, nif,kantitatea);
 				} catch (ClassNotFoundException | SQLException e) {

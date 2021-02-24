@@ -253,7 +253,7 @@ public class PanelTicket extends JPanel {
 					String diruTotala = String.valueOf(controladorPanelTicket.diruTotala());
 					tf_Totala.setText(diruTotala);
 
-					controladorPanelTicket.kenduStocka(aukera, kantitatea, controladorPanelTicket.konprobatuNIF());
+					//controladorPanelTicket.kenduStocka(aukera, kantitatea, controladorPanelTicket.konprobatuNIF());
 				}
 				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);
