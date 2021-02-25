@@ -37,7 +37,7 @@ public class ControladorPanelKomanda {
 	}
 	
 	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
-		return this.modelo.sartu(elikagaia, kopuru); 
+		return this.modelo.sartuPlaterrak(elikagaia, kopuru); 
 	}  
 
 	public double diruTotala() {

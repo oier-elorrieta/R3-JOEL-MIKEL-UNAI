@@ -19,6 +19,10 @@ public class Modelo {
 	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru) {
 		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa);
 	}
+	
+	public ArrayList<Karritoa> sartuPlaterrak(String elikagaia, int kopuru) {
+		return metodoak.sartuPlaterrakArrayan(elikagaia, kopuru, karroa);
+	}
 
 	public void sartuTiene()  {
 		try {

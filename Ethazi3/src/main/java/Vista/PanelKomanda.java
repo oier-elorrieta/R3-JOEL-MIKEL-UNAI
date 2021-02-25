@@ -163,6 +163,7 @@ public class PanelKomanda extends JPanel {
 		btnSegi = new JButton("\u2714\uFE0F");
 		btnSegi.setHorizontalAlignment(SwingConstants.TRAILING);
 		btnSegi.setBounds(388, 232, 57, 23); 
+		btnSegi.setEnabled(false);
 		add(btnSegi);
 
 		rdbtnLehenengoa = new JRadioButton("Lehenengoa");
@@ -194,13 +195,10 @@ public class PanelKomanda extends JPanel {
 
 		cb_Produktoak = new JComboBox<String>();
 		cb_Produktoak.setBounds(30, 68, 214, 20);
-		add(cb_Produktoak);
+		add(cb_Produktoak); 
 
 		produktuak = controladorPanelKomanda.platerrakJaso();
-		for (int i = 0; i < produktuak.length; i++) {
-			cb_Produktoak.addItem(produktuak[i]);
-		}
-		cb_Produktoak.setSelectedItem(null);
+		produktuArrayaPantailaratu(produktuak);
 
 		cb_Mota = new JComboBox<String>();
 		cb_Mota.setBounds(30, 233, 214, 20);
@@ -233,6 +231,7 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerLaburpeneraBotoia(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {	
+				controladorPanelKomanda.sakatuLaburpeneraBotoia();
 			}
 		};
 	}
@@ -266,6 +265,13 @@ public class PanelKomanda extends JPanel {
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				}
+				if (kantitatea != 0) { 
+					controladorPanelKomanda.sartu(izena, kantitatea);
+				}
+
+				String diruTotala = String.valueOf(controladorPanelKomanda.diruTotala());
+				tf_Totala.setText(diruTotala);
+
 				rdbtnLehenengoa.setEnabled(false);
 				rdbtnLehenengoa.setSelected(false);
 				rdbtnBigarrena.setEnabled(false);
@@ -274,6 +280,8 @@ public class PanelKomanda extends JPanel {
 				rdbtnPostre.setSelected(false);
 				cb_Mota.setSelectedItem(null);
 				cb_Produktoak.setSelectedItem(null); 
+				nºunidades.setValue(0);
+				cb_Produktoak.setEnabled(false);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
@@ -336,6 +344,7 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerPlaterrak(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) { 
+				cb_Produktoak.setEnabled(true);
 				rdbtnLehenengoa.setEnabled(true);
 				rdbtnBigarrena.setEnabled(true);
 				rdbtnPostre.setEnabled(true);
@@ -344,43 +353,25 @@ public class PanelKomanda extends JPanel {
 				rdbtnPostre.setSelected(false);
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String [] platerMotaArabera = controladorPanelKomanda.platerMotaArabera(platerMota);
-				cb_Produktoak.removeAllItems();
-				for (int i = 0; i < platerMotaArabera.length; i++) {
-					cb_Produktoak.addItem(platerMotaArabera[i]);
-				}
-				cb_Produktoak.setSelectedItem(null);
+				produktuArrayaPantailaratu(platerMotaArabera);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
 	}
 
 	private void produktuakEtaMotaJaso(String platerMota, String tipoa, int zbk) {
-		cb_Produktoak.removeAllItems();
 		JRadioButton botoia = aukeratutakoBotoia(zbk);
-		if(cb_Mota.getSelectedItem().equals("Vegano") && botoia.isSelected() == true) {
+		if(botoia.isSelected() == true) {
 			produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-			for (int i = 0; i < produktuak.length; i++) {
-				cb_Produktoak.addItem(produktuak[i]);
-			} 
-			cb_Produktoak.setSelectedItem(null);
-		}else if (cb_Mota.getSelectedItem().equals("Vegetariano") && botoia.isSelected() == true) {
-			produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-			for (int i = 0; i < produktuak.length; i++) {
-				cb_Produktoak.addItem(produktuak[i]);
-			}
-			cb_Produktoak.setSelectedItem(null); 
-		}else if (cb_Mota.getSelectedItem().equals("Normal") && botoia.isSelected() == true) {
-			produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
-			for (int i = 0; i < produktuak.length; i++) {
-				cb_Produktoak.addItem(produktuak[i]);
-			} 
-			cb_Produktoak.setSelectedItem(null); 
-		}else {
+			produktuArrayaPantailaratu(produktuak);
+		}else {  
 			rdbtnLehenengoa.setEnabled(true);
 			rdbtnBigarrena.setEnabled(true);
 			rdbtnPostre.setEnabled(true);
+			produktuak = controladorPanelKomanda.platerMotaArabera(platerMota);
+			produktuArrayaPantailaratu(produktuak);
 			argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
-		} 
+		}
 	}
 
 	private JRadioButton aukeratutakoBotoia(int zbk) {
@@ -397,5 +388,13 @@ public class PanelKomanda extends JPanel {
 			rdbtnLehenengoa.setEnabled(false);
 			return rdbtnPostre;
 		}
+	}
+	
+	private void produktuArrayaPantailaratu(String[] produktuak) {
+		cb_Produktoak.removeAllItems();
+		for (int i = 0; i < produktuak.length; i++) {
+			cb_Produktoak.addItem(produktuak[i]);
+		} 
+		cb_Produktoak.setSelectedItem(null);
 	}
 }
