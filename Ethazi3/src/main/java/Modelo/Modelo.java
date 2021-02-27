@@ -26,7 +26,7 @@ public class Modelo {
 
 	public void sartuTiene()  {
 		try {
-			metodoak.sartuTiene(karroa);
+			metodoak.sartuTiene(karroa, jasoTransakzioZbk()); 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -114,7 +114,7 @@ public class Modelo {
 	}
 	
 	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
-		metodoak.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea);
+		metodoak.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea, karroa);
 	}
 	
 	public String[] platerrakJaso() {

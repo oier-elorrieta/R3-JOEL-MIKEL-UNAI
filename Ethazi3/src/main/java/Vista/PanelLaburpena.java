@@ -101,7 +101,7 @@ public class PanelLaburpena extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					controladorPanelLaburpena.sartuTiene();
+					controladorPanelLaburpena.sartuTiene(); 
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}

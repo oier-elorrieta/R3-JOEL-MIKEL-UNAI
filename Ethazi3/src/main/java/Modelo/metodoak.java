@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+
 public class metodoak {
 
 	public static ArrayList<Karritoa> sartuProduktuaArrayan(String elikagaia, int kopuru, ArrayList<Karritoa> karroa) {
@@ -668,66 +669,61 @@ public class metodoak {
 	 */
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuTiene(ArrayList<Karritoa> karroa) throws ClassNotFoundException, SQLException {
+	public static void sartuTiene(ArrayList<Karritoa> karroa, int numTrans) throws ClassNotFoundException, SQLException {
 
 		for (int i = 0; i < karroa.size(); i++) {
+			String elikagaia = karroa.get(i).getElikagaia();
+			int kopurua = karroa.get(i).getKopuru();
+			double prezioa = karroa.get(i).getBalioa();
 
-			String Elikagaia = karroa.get(i).getElikagaia();
-
-			if (komprobatuProduktoa(Elikagaia) == false) {
-				insertTiene(karroa, i);
+			if (komprobatuProduktoa(elikagaia, numTrans) == false) {
+				insertTiene(elikagaia,kopurua, prezioa); 
 			} else {
-				gehituProduktua(karroa, Elikagaia, i);
+				gehituProduktua(elikagaia,kopurua, prezioa, numTrans); 
 			}
 		}
 	}
 
-	public static void insertTiene(ArrayList<Karritoa> karroa, int i) throws ClassNotFoundException, SQLException {
-
+	public static void insertTiene(String elikagaia, int kopurua, double prezioa) throws ClassNotFoundException, SQLException { 
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.insertTiene + "('" + karroa.get(i).getElikagaia() + "', "
-				+ (jasoTransakzioZbk() - 1) + ", " + karroa.get(i).getKopuru() + ", " + karroa.get(i).getBalioa()
-				+ ")");
+		String query1 = (Kontsultak.insertTiene + "('" + elikagaia + "', "+ (jasoTransakzioZbk() - 1) + ", " + kopurua + ", " + prezioa+ ")");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
-			s.executeUpdate(query1);
+			s.executeUpdate(query1); 
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 	}
 
-	public static boolean komprobatuProduktoa(String Elikagaia) {
+	public static boolean komprobatuProduktoa(String Elikagaia, int numTrans) {
 
-		boolean egia = false;
-
+		boolean egia = false; 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
-		String query1 = ("select NomProducto from tiene where NomProducto = '" + Elikagaia + "'");
-		 
+		String query1 = ("select NomProducto,NumTrans from tiene where NomProducto = '" + Elikagaia + "' and NumTrans = '"+(numTrans-1)+"'"); 
+
 		try {
 			ResultSet re;
 			PreparedStatement p;
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
-			if (re.next()) {
-				Elikagaia = re.getString("NomProducto");
+			while (re.next()) { 
 				egia = true;
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
-	
 		return egia;
 	}
 
-	public static void gehituProduktua(ArrayList<Karritoa> karroa, String Elikagaia, int i) {
+	public static void gehituProduktua(String elikagaia, int kopurua, double prezioa, int NumTrans) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
-	
-		String query1 = ("replace Tiene set N_Unidades = N_Unidades + "+karroa.get(i).getKopuru()+ ", Precio = Precio+ "+karroa.get(i).getBalioa()+ " where NomProducto = "+Elikagaia+"");
+
+		String query1 = ("update tiene set N_Unidades = N_Unidades + "+kopurua+", Precio = Precio + "+prezioa+" where NomProducto = '"+elikagaia+"'");
 
 		try {
 			Statement s;
@@ -763,7 +759,7 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuHornikuntza(String produktua, int año, int mes, int dia, String nif, int kantitatea)
+	public static void sartuHornikuntza(String produktua, int año, int mes, int dia, String nif, int kantitatea,ArrayList<Karritoa>karroa)
 			throws ClassNotFoundException, SQLException {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
@@ -774,15 +770,21 @@ public class metodoak {
 
 		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + año + "/" + (mes + 1) + "/" + dia
 				+ "','" + dirua + "','" + nif + "', '" + operazioMota + "')");
+		System.out.println("op");
 		String query3 = (Kontsultak.insertHornikuntza + "(" + numTrans + ",'" + izenaFabrikantea + "')");
+		System.out.println("ap");
+		String query4 = ("insert into tiene values ('"+produktua+"',"+numTrans+","+kantitatea+","+dirua+")");
+		System.out.println("tiwnw7");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
 			s.executeUpdate(query2);
 			Statement s1;
-			System.out.println(numTrans);
 			s1 = konekzioa.createStatement();
 			s1.executeUpdate(query3);
+			Statement s2;
+			s2 = konekzioa.createStatement();
+			s2.executeUpdate(query4);
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
