@@ -93,14 +93,7 @@ public class Modelo {
 	public void sartuFaktura(String izena, String abizena, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
 		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	} 
-
-	/*public void gehituStocka(String nom_Produktua, int kantitatea, String nif){
-		metodoak.gehituStocka(nom_Produktua, kantitatea, nif);
-	} 
 	
-	public void kenduStocka(String nom_Produktua, int kantitatea, String nif){
-		metodoak.kenduStocka(nom_Produktua, kantitatea, nif);
-	} */
 	public boolean begiratuDNI(String dni) {
 		return metodoak.begiratuDNI(dni);
 	}

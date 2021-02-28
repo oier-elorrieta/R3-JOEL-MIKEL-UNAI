@@ -478,7 +478,6 @@ public class metodoak {
 
 		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/"
 				+ dia + "','" + diruTotala + "','" + NIF + "', '" + operazioMota + "')");
-
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
@@ -638,37 +637,6 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	/*
-	 * public static void gehituStocka(String nomProduktua, int kantitatea, String
-	 * nif) {
-	 * 
-	 * Connection konekzioa = BBDDKonexioa.getConexion();
-	 * 
-	 * String query1 = (Kontsultak.updateGehituStock + "" + kantitatea +
-	 * " where NIFLocal = '" + nif + "' and NomProducto='" + nomProduktua + "';");
-	 * 
-	 * try { Statement s; s = konekzioa.createStatement(); s.executeUpdate(query1);
-	 * } catch (SQLException e) { System.out.println("Errorea konexioan");
-	 * e.printStackTrace(); } }
-	 */
-
-	// *****************************************************************************************************************************************************************************************************
-
-	/*
-	 * public static void kenduStocka(String nomProduktua, int kantitatea, String
-	 * nif) {
-	 * 
-	 * Connection konekzioa = BBDDKonexioa.getConexion();
-	 * 
-	 * String query1 = (Kontsultak.updateKenduStock + "" + kantitatea +
-	 * " where NIFLocal = '" + nif + "' and NomProducto='" + nomProduktua + "';");
-	 * 
-	 * try { Statement s; s = konekzioa.createStatement(); s.executeUpdate(query1);
-	 * } catch (SQLException e) { System.out.println("Errorea konexioan");
-	 * e.printStackTrace(); } }
-	 */
-	// *****************************************************************************************************************************************************************************************************
-
 	public static void sartuTiene(ArrayList<Karritoa> karroa, int numTrans) throws ClassNotFoundException, SQLException {
 
 		for (int i = 0; i < karroa.size(); i++) {
@@ -770,11 +738,9 @@ public class metodoak {
 
 		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + año + "/" + (mes + 1) + "/" + dia
 				+ "','" + dirua + "','" + nif + "', '" + operazioMota + "')");
-		System.out.println("op");
 		String query3 = (Kontsultak.insertHornikuntza + "(" + numTrans + ",'" + izenaFabrikantea + "')");
-		System.out.println("ap");
 		String query4 = ("insert into tiene values ('"+produktua+"',"+numTrans+","+kantitatea+","+dirua+")");
-		System.out.println("tiwnw7");
+		
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
