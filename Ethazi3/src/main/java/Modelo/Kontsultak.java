@@ -2,9 +2,9 @@ package Modelo;
 
 public class Kontsultak {
 
-	static final String selectProduktuKantitatea = "SELECT count(nombre) from producto";
+	static final String selectProduktuKantitatea = "SELECT count(nombre) from producto where Tipo = 'Comida' or Tipo = 'Bebida'";
 
-	static final String selectProduktuak = "SELECT * from producto";
+	static final String selectProduktuak = "SELECT * from producto where Tipo = 'Comida' or Tipo = 'Bebida'";
 	
 	static final String selectNIFBakarrik = "SELECT nif from local";
 	

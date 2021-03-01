@@ -40,6 +40,7 @@ public class metodoak {
 	// *****************************************************************************************************************************************************************************************************
 
 	public static String[] sartuSalgaiak() {
+		
 		Produktua elikagaiak[] = elikagaiak();
 
 		String produktoIzena[] = new String[produktuKantitatea()];
@@ -467,7 +468,7 @@ public class metodoak {
 		}
 		return NIF;
 	}
-
+	
 	// *****************************************************************************************************************************************************************************************************
 
 	public static void sartuTicket(String NIF, double diruTotala, int TransferentziaZbk, int año, int mes, int dia) {
