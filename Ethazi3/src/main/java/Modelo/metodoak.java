@@ -207,15 +207,15 @@ public class metodoak {
 			while (re.next()) {
 				String platerKodea = re.getString("Cod_Plato");
 
-				String platerMota = re.getString(2);
+				String platerMota = re.getString("TipoDePlato");
 
-				String izena = re.getString(3);
+				String izena = re.getString("Nombre");
+				
+				String tipoPosicion = re.getString("TipoPosicion");
 
-				double saltzekoPrezioa = re.getDouble(5);
-
-				double erosPrezioa = re.getDouble(6);
-
-				Platerra p1 = new Platerra(platerKodea, platerMota, izena, saltzekoPrezioa, erosPrezioa);
+				double saltzekoPrezioa = re.getDouble("Precio");
+	
+				Platerra p1 = new Platerra(platerKodea, platerMota, izena, tipoPosicion ,saltzekoPrezioa);
 				platerrak[kont] = p1;
 				kont++;
 			}
@@ -654,7 +654,7 @@ public class metodoak {
 
 	public static void insertTiene(String elikagaia, int kopurua, double prezioa) throws ClassNotFoundException, SQLException { 
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.insertTiene + "('" + elikagaia + "', "+ (jasoTransakzioZbk() - 1) + ", " + kopurua + ", " + prezioa+ ")");
+		String query1 = (Kontsultak.insertTiene + "('" + elikagaia + "', "+ (jasoTransakzioZbk() - 1) + ", " + kopurua + ", " + prezioa+ ")");		
 		try {
 			Statement s;
 			s = konekzioa.createStatement();

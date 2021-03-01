@@ -5,15 +5,15 @@ public class Platerra {
 	private String platerKodea;
 	private String platerMota;
 	private String izena;
+	private String tipoPosicion;
 	private double saltzekoPrezioa;
-	private double erosPrezioa;
 	
-	public Platerra(String platerKodea, String platerMota, String izena, double saltzekoPrezioa, double erosPrezioa) { 
+	public Platerra(String platerKodea, String platerMota, String izena, String tipoPosicion, double saltzekoPrezioa) { 
 		this.platerKodea = platerKodea;
 		this.platerMota = platerMota;
 		this.izena = izena;
+		this.tipoPosicion = tipoPosicion;
 		this.saltzekoPrezioa = saltzekoPrezioa;
-		this.erosPrezioa = erosPrezioa;
 	}
 
 	public String getPlaterKodea() {
@@ -40,6 +40,14 @@ public class Platerra {
 		this.izena = izena;
 	}
 
+	public String getTipoPosicion() {
+		return tipoPosicion;
+	}
+
+	public void setTipoPosicion(String tipoPosicion) {
+		this.tipoPosicion = tipoPosicion;
+	}
+
 	public double getSaltzekoPrezioa() {
 		return saltzekoPrezioa;
 	}
@@ -48,18 +56,10 @@ public class Platerra {
 		this.saltzekoPrezioa = saltzekoPrezioa;
 	}
 
-	public double getErosPrezioa() {
-		return erosPrezioa;
-	}
-
-	public void setErosPrezioa(double erosPrezioa) {
-		this.erosPrezioa = erosPrezioa;
-	}
-
 	 
 	public String toString() {
 		return "Platerra [platerKodea=" + platerKodea + ", platerMota=" + platerMota + ", izena=" + izena
-				+ ", saltzekoPrezioa=" + saltzekoPrezioa + ", erosPrezioa=" + erosPrezioa + "]";
+				+ ", tipoPosicion=" + tipoPosicion + ", saltzekoPrezioa=" + saltzekoPrezioa + "]";
 	}
 	
 	
