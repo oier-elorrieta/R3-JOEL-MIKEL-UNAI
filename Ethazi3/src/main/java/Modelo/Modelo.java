@@ -16,12 +16,8 @@ public class Modelo {
 		return metodoak.sartuSalgaiak();
 	}
 
-	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru) {
-		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa);
-	}
-	
-	public ArrayList<Karritoa> sartuPlaterrak(String elikagaia, int kopuru) {
-		return metodoak.sartuPlaterrakArrayan(elikagaia, kopuru, karroa);
+	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru, boolean komanda) {
+		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa, komanda);
 	}
 
 	public void sartuTiene()  {
@@ -31,7 +27,7 @@ public class Modelo {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public String pantailaratu() {
 		return metodoak.pantailatuProduktua(karroa);
 	}
@@ -47,7 +43,7 @@ public class Modelo {
 	public ImageIcon argazkiaAukeratu(String aukera) {
 		return metodoak.argazkiaAukeratu(aukera);
 	}
-	
+
 	public ImageIcon argazkiaPlaterraAukeratu(String aukera) {
 		return metodoak.argazkiaPlaterraAukeratu(aukera);
 	}
@@ -65,7 +61,7 @@ public class Modelo {
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
 		return metodoak.jasoTransakzioZbk();
 	}
-	
+
 	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
 		return metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	}
@@ -77,11 +73,11 @@ public class Modelo {
 	public String konprobatuLokala() {
 		return metodoak.konprobatuLokala(usuarioa.getErabiltzailea());
 	}
-	
+
 	public String konprobatuLokalarenIzena() {
 		return metodoak.konprobatuLokalarenIzena(konprobatuNIF());
 	}
-	
+
 	public void sartuTicket(int año, int mes, int dia) throws ClassNotFoundException, SQLException {
 		metodoak.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	}
@@ -93,43 +89,50 @@ public class Modelo {
 	public void sartuFaktura(String izena, String abizena, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
 		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	} 
-	
+
 	public boolean begiratuDNI(String dni) {
 		return metodoak.begiratuDNI(dni);
 	}
-	
+
 	public boolean begiratuNIF(String nif) {
 		return metodoak.begiratuNIF(nif);
 	}
-	
+
 	public int begiratuStock(String produktua,String nif) {
 		return metodoak.begiratuStock(produktua, nif);
 	}
-	
-	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
-		metodoak.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea, karroa);
+
+	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif, int kantitatea, boolean komanda) throws ClassNotFoundException, SQLException {
+		metodoak.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea, karroa, komanda);
 	}
-	
+
 	public String[] platerrakJaso() {
 		return metodoak.sartuPlaterrak();
 	}
-	
+
 	public String[] platerMotak(){
 		return metodoak.platerMotak();
 	}
-	
+
 	public String[] platerMota(String platerMota, String tipoa){
 		return metodoak.platerMota(platerMota, tipoa);
 	}
-	public String platerKodea(String platerra){
+	public int platerKodea(String platerra){
 		return metodoak.jasoPlaterKodea(platerra);
 	}
-	
-	public void sartuKomanda(String platerKodea, int kantitatea, int año, int mes, int dia) throws ClassNotFoundException, SQLException{
-		metodoak.sartuKomanda(platerKodea,kantitatea, diruTotala(), jasoTransakzioZbk(),konprobatuNIF(), año, mes, dia);
+
+	public void sartuKomanda(int año, int mes, int dia) throws ClassNotFoundException, SQLException{
+		metodoak.sartuKomanda(diruTotala(), metodoak.jasoTransakzioZbk(),konprobatuNIF(), año, mes, dia);
 	} 
-	
+	public void sartuIncluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException {
+		metodoak.sartuIncluye(platerKodea, kantitatea, diruTotala(), konprobatuNIF());
+	}
+
 	public String[] platerMotaArabera(String platerMota) {
 		return metodoak.platerMotaArabera(platerMota);
+	}
+
+	public void ezabatuKomanda() throws ClassNotFoundException, SQLException {
+		metodoak.ezabatuKomanda();
 	}
 }

@@ -6,6 +6,10 @@ public class Kontsultak {
 
 	static final String selectProduktuak = "SELECT * from producto where Tipo = 'Comida' or Tipo = 'Bebida'";
 	
+	static final String selectPlaterKantitatea = "SELECT count(nombre) from producto where Tipo = 'Plato'";
+
+	static final String selectPlaterrak = "SELECT * from producto where Tipo = 'Plato'";
+	
 	static final String selectNIFBakarrik = "SELECT nif from local";
 	
 	static final String selectDNI = "SELECT dni from usuario";

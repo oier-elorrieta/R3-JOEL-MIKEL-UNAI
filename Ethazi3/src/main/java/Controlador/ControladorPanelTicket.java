@@ -39,8 +39,8 @@ public class ControladorPanelTicket {
 		return this.modelo.produktuakJaso();
 	}
 
-	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
-		return this.modelo.sartu(elikagaia, kopuru); 
+	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru, boolean komanda) {
+		return this.modelo.sartu(elikagaia, kopuru, komanda); 
 	}  
 
 	public double diruTotala() {
@@ -84,12 +84,7 @@ public class ControladorPanelTicket {
 	
 	public String konprobatuNIF() {
 		return this.modelo.konprobatuNIF();
-	}
-	
-	/*public void kenduStocka(String nomProduktua, int kantitatea, String nif) {
-		this.modelo.kenduStocka(nomProduktua, kantitatea, nif);
-	}*/
-	
+	} 
 
 	public int begiratuStock(String produktua, String nif) {
 		return this.modelo.begiratuStock(produktua, nif);

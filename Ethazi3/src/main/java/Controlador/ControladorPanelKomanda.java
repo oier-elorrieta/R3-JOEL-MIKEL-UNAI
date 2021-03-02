@@ -36,8 +36,8 @@ public class ControladorPanelKomanda {
 		this.modelo.ezabatuProduktuenArraya();
 	}
 	
-	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
-		return this.modelo.sartuPlaterrak(elikagaia, kopuru); 
+	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru, boolean komanda) {
+		return this.modelo.sartu(elikagaia, kopuru, komanda); 
 	}  
 
 	public double diruTotala() {
@@ -86,15 +86,23 @@ public class ControladorPanelKomanda {
 		return this.modelo.platerMota(platerMota, tipoa);
 	}
 	
-	public String platerKodea(String platerra){
+	public int platerKodea(String platerra){
 		return this.modelo.platerKodea(platerra);
 	}
 	
-	public void sartuKomanda(String platerKodea, int kantitatea, int año, int mes, int dia) throws ClassNotFoundException, SQLException{
-		this.modelo.sartuKomanda(platerKodea,kantitatea, año, mes, dia);
+	public void sartuKomanda(int año, int mes, int dia) throws ClassNotFoundException, SQLException{
+		this.modelo.sartuKomanda(año, mes, dia);
 	} 
+	
+	public void sartuIncluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuIncluye(platerKodea, kantitatea);
+	}
 	
 	public String[] platerMotaArabera(String platerMota) {
 		return this.modelo.platerMotaArabera(platerMota);
+	}
+	
+	public void ezabatuKomanda() throws ClassNotFoundException, SQLException {
+		this.modelo.ezabatuKomanda();
 	}
 }

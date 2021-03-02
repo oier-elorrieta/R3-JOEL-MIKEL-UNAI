@@ -61,6 +61,7 @@ public class PanelFaktura extends JPanel {
 	private int año;
 	private int mes;
 	private int dia;
+	private boolean komanda = false;
 
 
 	// *****************************************************************************************************************************************************************************************************
@@ -293,13 +294,11 @@ public class PanelFaktura extends JPanel {
 					JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}else {
 					if (kantitatea != 0) {
-						controladorPanelFaktura.sartu(aukera, kantitatea);
+						controladorPanelFaktura.sartu(aukera, kantitatea,komanda);
 					}
 
 					String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
-					tf_Totala.setText(diruTotala);
-
-					//controladorPanelFaktura.kenduStocka(aukera, kantitatea, controladorPanelFaktura.konprobatuNIF());
+					tf_Totala.setText(diruTotala); 
 				}
 				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);

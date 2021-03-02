@@ -1,5 +1,4 @@
 package Vista;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -54,6 +53,7 @@ public class PanelKomanda extends JPanel {
 	private int año;
 	private int mes;
 	private int dia;
+	private boolean komanda = true;
 
 
 	// *****************************************************************************************************************************************************************************************************
@@ -232,6 +232,11 @@ public class PanelKomanda extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {	
 				controladorPanelKomanda.sakatuLaburpeneraBotoia();
+				try {
+					controladorPanelKomanda.sartuKomanda(año, mes, dia);
+				} catch (ClassNotFoundException | SQLException e) { 
+					e.printStackTrace();
+				}
 			}
 		};
 	}
@@ -241,6 +246,11 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerAtzeraBotoia(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controladorPanelKomanda.ezabatuKomanda();
+				} catch (ClassNotFoundException | SQLException e) { 
+					e.printStackTrace();
+				}
 				if (controladorPanelKomanda.konprobatuLokala().equals("Restaurante")) {
 					controladorPanelKomanda.sakatuPanelJatetxeBotoia();
 				} else if (controladorPanelKomanda.konprobatuLokala().equals("Bar")) {
@@ -257,16 +267,16 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerSegiBotoia(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String izena = (String) cb_Produktoak.getSelectedItem();
-				String platerKodea = controladorPanelKomanda.platerKodea(izena);
+				String izena = (String) cb_Produktoak.getSelectedItem(); 
+				int platerKodea = controladorPanelKomanda.platerKodea(izena);
 				int kantitatea = (int) nºunidades.getValue();
-				try {
-					controladorPanelKomanda.sartuKomanda(platerKodea,kantitatea, año, mes, dia);
-				} catch (ClassNotFoundException | SQLException e) { 
-					e.printStackTrace();
-				}
 				if (kantitatea != 0) { 
-					controladorPanelKomanda.sartu(izena, kantitatea);
+					controladorPanelKomanda.sartu(izena, kantitatea,komanda);
+					try {
+						controladorPanelKomanda.sartuIncluye(platerKodea, kantitatea);
+					} catch (ClassNotFoundException | SQLException e) { 
+						e.printStackTrace();
+					}
 				}
 
 				String diruTotala = String.valueOf(controladorPanelKomanda.diruTotala());
