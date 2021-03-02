@@ -94,8 +94,12 @@ public class ControladorPanelKomanda {
 		this.modelo.sartuKomanda(año, mes, dia);
 	} 
 	
-	public void sartuIncluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException {
-		this.modelo.sartuIncluye(platerKodea, kantitatea);
+	public void incluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException {
+		this.modelo.incluye(platerKodea, kantitatea);
+	}
+	
+	public void hasieratuOperaciones() throws ClassNotFoundException, SQLException {
+		modelo.hasieratuOperaciones();
 	}
 	
 	public String[] platerMotaArabera(String platerMota) {

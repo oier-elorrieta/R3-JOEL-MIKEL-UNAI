@@ -124,8 +124,12 @@ public class Modelo {
 	public void sartuKomanda(int año, int mes, int dia) throws ClassNotFoundException, SQLException{
 		metodoak.sartuKomanda(diruTotala(), metodoak.jasoTransakzioZbk(),konprobatuNIF(), año, mes, dia);
 	} 
-	public void sartuIncluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException {
-		metodoak.sartuIncluye(platerKodea, kantitatea, diruTotala(), konprobatuNIF());
+	public void incluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException {
+		metodoak.incluye(platerKodea, kantitatea, diruTotala(), konprobatuNIF());
+	}
+	
+	public void hasieratuOperaciones() throws ClassNotFoundException, SQLException {
+		metodoak.hasieratuOperaciones();
 	}
 
 	public String[] platerMotaArabera(String platerMota) {

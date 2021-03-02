@@ -210,6 +210,12 @@ public class PanelKomanda extends JPanel {
 		}
 		cb_Mota.setSelectedItem(null);
 
+		try {
+			controladorPanelKomanda.hasieratuOperaciones();
+		} catch (ClassNotFoundException | SQLException e) { 
+			e.printStackTrace();
+		}
+
 		initializeEvents();
 	}
 
@@ -273,7 +279,7 @@ public class PanelKomanda extends JPanel {
 				if (kantitatea != 0) { 
 					controladorPanelKomanda.sartu(izena, kantitatea,komanda);
 					try {
-						controladorPanelKomanda.sartuIncluye(platerKodea, kantitatea);
+						controladorPanelKomanda.incluye(platerKodea, kantitatea);
 					} catch (ClassNotFoundException | SQLException e) { 
 						e.printStackTrace();
 					}
@@ -399,7 +405,7 @@ public class PanelKomanda extends JPanel {
 			return rdbtnPostre;
 		}
 	}
-	
+
 	private void produktuArrayaPantailaratu(String[] produktuak) {
 		cb_Produktoak.removeAllItems();
 		for (int i = 0; i < produktuak.length; i++) {
