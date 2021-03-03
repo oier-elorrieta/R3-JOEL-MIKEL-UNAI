@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 
 public class metodoak {
 
-	public static ArrayList<Karritoa> sartuProduktuaArrayan(String elikagaia, int kopuru, ArrayList<Karritoa> karroa, boolean komanda) {
-		double dirua = sartuDirua(elikagaia, kopuru, komanda);
+	public static ArrayList<Karritoa> sartuProduktuaArrayan(String elikagaia, int kopuru, ArrayList<Karritoa> karroa) {
+		double dirua = sartuDirua(elikagaia, kopuru);
 		Karritoa Prod = new Karritoa(elikagaia, kopuru, dirua);
 		karroa.add(Prod); 
 		return karroa;
@@ -56,17 +56,9 @@ public class metodoak {
 	}
 	// *****************************************************************************************************************************************************************************************************
 
-	public static double sartuDirua(String aukera, int kantitatea, boolean komanda) {
+	public static double sartuDirua(String aukera, int kantitatea) {
 		Produktua produktuak[] = produktuGuztiak();
-		/*Produktua produktuak[] = new Produktua[produktuKantitatea()+platerKantitatea()];
-		if(komanda == true) {
-			produktuak = platerrak();
-		}else {
-			produktuak = elikagaiak();
-		}*/
-		System.out.println(aukera);
-		System.out.println(komanda);
-		System.out.println(kantitatea);
+
 		double dirua = 0;
 		for (int i = 0; i < produktuak.length; i++) {
 			if (produktuak[i].getIzena().equalsIgnoreCase(aukera)) {
@@ -74,7 +66,6 @@ public class metodoak {
 				break;
 			}
 		}
-		System.out.println("sartudirauaa"+dirua);
 		return dirua;
 	}
 
@@ -82,15 +73,9 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static double jasoProduktuenPrezioa(String aukera, int kantitatea, boolean komanda) {
+	public static double jasoProduktuenPrezioa(String aukera, int kantitatea) {
 		Produktua produktuak[] = produktuGuztiak();
-		/*Produktua produktuak[] = new Produktua[produktuKantitatea()+platerKantitatea()];
-		if(komanda == true) {
-			produktuak = platerrak();
-		}else {
-			produktuak = elikagaiak();
-		}*/
-		double dirua = sartuDirua(aukera, kantitatea, komanda);
+		double dirua = sartuDirua(aukera, kantitatea);
 		for (int i = 0; i < produktuak.length; i++) {
 			if (produktuak[i].getIzena().equalsIgnoreCase(aukera)) {
 				dirua = kantitatea * produktuak[i].getErosPrezioa();
@@ -113,8 +98,7 @@ public class metodoak {
 		double diruTotala = 0;
 		for (int i = 0; i < karroa.size(); i++) {
 			diruTotala = diruTotala + karroa.get(i).getBalioa();
-		}
-		System.out.println("dirutotala"+diruTotala);
+		} 
 		return diruTotala;
 	}
 
@@ -764,13 +748,13 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static void sartuHornikuntza(String produktua, int año, int mes, int dia, String nif, int kantitatea,ArrayList<Karritoa>karroa, boolean komanda)
+	public static void sartuHornikuntza(String produktua, int año, int mes, int dia, String nif, int kantitatea,ArrayList<Karritoa>karroa)
 			throws ClassNotFoundException, SQLException {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea(produktua);
 		int numTrans = jasoTransakzioZbk();
-		double dirua = jasoProduktuenPrezioa(produktua, kantitatea, komanda);
+		double dirua = jasoProduktuenPrezioa(produktua, kantitatea);
 		char operazioMota = 'A';
 
 		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + año + "/" + (mes + 1) + "/" + dia
@@ -927,7 +911,7 @@ public class metodoak {
 		int numTrans = jasoTransakzioZbk();
 		String query1 = ("insert into operaciones (Numtrans) values ("+numTrans+")");
 		String query2 = (Kontsultak.insertKomanda + "('" + numTrans + "')");
-		 
+
 		try {
 			Statement s1;
 			s1 = konekzioa.createStatement();
@@ -940,20 +924,65 @@ public class metodoak {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void incluye(int platerKodea, int kantitatea, double prezioa,String nif) throws ClassNotFoundException, SQLException {
 		int numTrans = jasoTransakzioZbk()-1;
 		if (begiratuIncluye(platerKodea, numTrans) == false) {
 			sartuIncluye(platerKodea, kantitatea, prezioa, nif, numTrans);
 		}
-		if(begiratuOfrece(nif, platerKodea) == false) {
-			insertOfrece(nif, platerKodea);
+	}
+
+	public static int[] kodeak() {
+		Connection konekzioa = BBDDKonexioa.getConexion(); 
+		String query1 = ("select Cod_Plato from incluye where Num_Trans = (select max(NumTrans) from operaciones)");
+		int [] kodeak = new int[aukeratuIncluyeKodeak()];
+		int i = 0;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			while (re.next()) {
+				kodeak[i] = re.getInt("Cod_Plato");
+				i++;
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return kodeak;
+	}
+	public static int aukeratuIncluyeKodeak() {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = ("select count(Cod_Plato) from incluye where Num_Trans = (select max(NumTrans) from operaciones)");
+		int zbk = 0;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			while (re.next()) {
+				zbk = re.getInt("count(Cod_Plato)");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		return zbk;
+	}
+
+	public static void ofrece(String nif) {
+		int [] kodeak = kodeak(); 
+		for(int i = 0; i < kodeak.length; i++) {
+			if(begiratuOfrece(nif, kodeak[i]) == false) {
+				insertOfrece(nif, kodeak[i]);
+			}
 		}
 	}
 
 	public static boolean begiratuIncluye(int platerKodea,int numTrans) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion(); 
-		
+
 		boolean sartutaDago = false;
 		String query1 = ("select * from incluye where Num_Trans = '"+numTrans+"' and Cod_Plato = '"+platerKodea+"'");
 		try {
@@ -970,7 +999,7 @@ public class metodoak {
 		}
 		return sartutaDago;
 	}
-	
+
 	public static void sartuIncluye(int platerKodea, int kantitatea, double prezioa,String nif, int numTrans) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.insertIncluye + "('" + numTrans + "', '" + platerKodea + "', '" + kantitatea

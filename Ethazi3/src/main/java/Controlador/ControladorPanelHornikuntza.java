@@ -29,8 +29,8 @@ public class ControladorPanelHornikuntza {
 		return this.modelo.produktuakJaso();
 	}
 	
-	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru, boolean komanda) {
-		return this.modelo.sartu(elikagaia, kopuru, komanda); 
+	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
+		return this.modelo.sartu(elikagaia, kopuru); 
 	} 
 	
 	public void sakatuPanelTabernaBotoia() {
@@ -57,7 +57,7 @@ public class ControladorPanelHornikuntza {
 		this.controlador.itxi();
 	}
 	
-	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif, int kantitatea, boolean komanda) throws ClassNotFoundException, SQLException {
-		this.modelo.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea, komanda);
+	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea);
 	}
 }

@@ -52,8 +52,7 @@ public class PanelKomanda extends JPanel {
 	private int TransferentziaZenbakia;
 	private int año;
 	private int mes;
-	private int dia;
-	private boolean komanda = true;
+	private int dia; 
 
 
 	// *****************************************************************************************************************************************************************************************************
@@ -243,6 +242,7 @@ public class PanelKomanda extends JPanel {
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				}
+				controladorPanelKomanda.ofrece();
 			}
 		};
 	}
@@ -277,7 +277,7 @@ public class PanelKomanda extends JPanel {
 				int platerKodea = controladorPanelKomanda.platerKodea(izena);
 				int kantitatea = (int) nºunidades.getValue();
 				if (kantitatea != 0) { 
-					controladorPanelKomanda.sartu(izena, kantitatea,komanda);
+					controladorPanelKomanda.sartu(izena, kantitatea);
 					try {
 						controladorPanelKomanda.incluye(platerKodea, kantitatea);
 					} catch (ClassNotFoundException | SQLException e) { 

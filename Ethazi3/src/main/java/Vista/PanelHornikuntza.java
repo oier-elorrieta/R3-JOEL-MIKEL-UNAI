@@ -37,7 +37,6 @@ public class PanelHornikuntza extends JPanel {
 	private int año;
 	private int mes;
 	private int dia;
-	private boolean komanda = false;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -134,7 +133,7 @@ public class PanelHornikuntza extends JPanel {
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
 				String nif = controladorPanelHornikuntza.konprobatuNIF();
 				try {
-					controladorPanelHornikuntza.sartuHornikuntza(nomProduktua, año, mes, dia, nif,kantitatea,komanda);
+					controladorPanelHornikuntza.sartuHornikuntza(nomProduktua, año, mes, dia, nif,kantitatea);
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
