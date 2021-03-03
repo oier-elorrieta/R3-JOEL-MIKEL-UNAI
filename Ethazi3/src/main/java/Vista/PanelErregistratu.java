@@ -131,7 +131,7 @@ public class PanelErregistratu extends JPanel {
 				String abizena = tf_Abizena.getText();
 				String pasahitza = tf_Pasahitza.getText();
 				String dni = tf_DNI.getText();
-				String nif = tf_NIF.getText();
+				String nif = tf_NIF.getText(); 
 				boolean badagoDNI = controladorPanelErregistratu.begiratuDNI(dni);
 				boolean onanif = controladorPanelErregistratu.begiratuNIF(nif);
 				if(badagoDNI == true) {

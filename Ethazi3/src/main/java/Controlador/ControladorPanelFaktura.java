@@ -81,10 +81,6 @@ public class ControladorPanelFaktura {
 		return this.modelo.konprobatuNIF();
 	}
 	
-	/*public void kenduStocka(String nomProduktua, int kantitatea, String nif) {
-		this.modelo.kenduStocka(nomProduktua, kantitatea, nif);
-	}*/
-	
 	public int begiratuStock(String produktua, String nif) {
 		return this.modelo.begiratuStock(produktua, nif);
 	}

@@ -3,16 +3,23 @@ package Modelo;
 public class Kontsultak {
 
 	static final String selectProduktuKantitatea = "SELECT count(nombre) from producto where Tipo = 'Comida' or Tipo = 'Bebida'";
-
-	static final String selectProduktuak = "SELECT * from producto where Tipo = 'Comida' or Tipo = 'Bebida'";
 	
 	static final String selectPlaterKantitatea = "SELECT count(nombre) from producto where Tipo = 'Plato'";
+	
+	static final String selectProduktuak = "SELECT * from producto where Tipo = 'Comida' or Tipo = 'Bebida'";
 
 	static final String selectPlaterrak = "SELECT * from producto where Tipo = 'Plato'";
 	
-	static final String selectNIFBakarrik = "SELECT nif from local";
+	static final String selectProductuakEtaPlaterrak = "select * from producto";
+	
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+	//______________________________________________________________________________________________________________________________________________________________________________________________________
 	
 	static final String selectDNI = "SELECT dni from usuario";
+	
+	static final String selectNIFBakarrik = "SELECT nif from local";
+	
+	static final String selectNifLocal = "SELECT nif from local where NIF = ";
 
 	static final String selectErabiltzailea = "SELECT DNI,Contraseña FROM usuario where dni = " ;
 
@@ -32,13 +39,31 @@ public class Kontsultak {
 	
 	static final String selectFabrikantea = selectIzenaFabrikantea + "(SELECT N_Fabricante from producto where Nombre = ";
 	
-	static final String selectStock = "SELECT stock from vende where NomProducto =";
+	static final String selectStockNomProducto = "SELECT stock from vende where NomProducto =";
 	
 	static final String selectPlaterraMota = "SELECT nombre from plato where TipoDePlato = ";
 	
 	static final String selectPlaterMotak = "SELECT distinct TipoDePlato from plato";
 	
-	static final String selectPlaterKodea = "SELECT Cod_Plato FROM plato where Nombre = ";
+	static final String selectPlaterKodea = "SELECT Cod_Plato FROM plato where Nombre = "; 
+	
+	static final String selectNifFaktura = "SELECT nif from niffactura where nif = ";
+	
+	static final String selectTiene = "select NomProducto,NumTrans from tiene where NomProducto = ";
+	
+	static final String selectIncluye = "select * from incluye where Num_Trans =";
+	
+	static final String selectCountCodPlato = "select count(Cod_Plato) from incluye where Num_Trans =";
+	
+	static final String selectCodPlato = "select Cod_Plato from incluye where Num_Trans = ";
+	
+	static final String selectOfrece = "select * from ofrece where NIFLocal = ";
+	
+	static final String selectStockNifLocal = "SELECT stock from vende where NIFLocal = (";
+	
+	static final String selectNifOperaciones = "select NIF from operaciones where NumTrans =";
+	
+	static final String selectMaxNumTransKomanda = "select max(NumTrans) from comanda";
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -60,13 +85,21 @@ public class Kontsultak {
 	
 	static final String insertIncluye = "INSERT INTO incluye VALUES";
 	
+	static final String insertOfrece = "INSERT INTO ofrece VALUES";
+	
+	static final String insertNumTransOperaciones = "insert into operaciones (NumTrans) values (";
+	
 	// *****************************************************************************************************************************************************************************************************
 	
-	static final String updateTiene = "update vende set Stock = Stock + ";
+	static final String updateOperaciones = "update operaciones set Fecha =";
 	
-	//static final String updateKenduStock = "update vende set Stock = Stock - ";
+	static final String updateTiene = "update tiene set N_Unidades =";
 	
-	// ********************************************
+	static final String updateIncluye = "update incluye set Num_Platos =";
+	
+	static final String updateStock = "update vende set stock = stock + 50 where NomProducto = ";
+	
+	// *****************************************************************************************************************************************************************************************************
 	
 	static final String delete = "delete from operaciones where NumTrans = (select max(NumTrans) from comanda)";
 }
