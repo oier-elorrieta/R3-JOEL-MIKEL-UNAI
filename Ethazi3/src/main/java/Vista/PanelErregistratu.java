@@ -137,7 +137,7 @@ public class PanelErregistratu extends JPanel {
 				if(badagoDNI == true) {
 					JOptionPane.showMessageDialog(null, "Erabiltzaile hau badago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE); 
 					controladorPanelErregistratu.ikusiPanelErregistratu();
-				}else if(onanif == true) {
+				}else if(onanif == false) {
 					JOptionPane.showMessageDialog(null, "NIF ez dago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE);
 					controladorPanelErregistratu.ikusiPanelErregistratu();
 				}else {

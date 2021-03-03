@@ -65,4 +65,8 @@ public class Kontsultak {
 	static final String updateTiene = "update vende set Stock = Stock + ";
 	
 	//static final String updateKenduStock = "update vende set Stock = Stock - ";
+	
+	// ********************************************
+	
+	static final String delete = "delete from operaciones where NumTrans = (select max(NumTrans) from comanda)";
 }

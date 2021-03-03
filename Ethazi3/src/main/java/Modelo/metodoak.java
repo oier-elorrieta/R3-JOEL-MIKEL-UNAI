@@ -327,10 +327,9 @@ public class metodoak {
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			while (re.next()) {
-				if (dni.equals(re.getString("DNI"))) {
-					badago = true;
-					break;
-				}
+				dni = re.getString("DNI");
+				badago = true;
+				break;
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
@@ -352,11 +351,9 @@ public class metodoak {
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			while (re.next()) {
-				if (nif.equals(re.getString("NIF"))) {
-					ondoDago = false;
-				} else {
-					ondoDago = true;
-				}
+				nif = re.getString("NIF");
+				ondoDago = true;
+				break;
 			}
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
@@ -1103,7 +1100,7 @@ public class metodoak {
 
 	public static void ezabatuKomanda() throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("delete from operaciones where NumTrans = (select max(NumTrans) from comanda)");
+		String query1 = (Kontsultak.delete);
 		try {
 			Statement s1;
 			s1 = konekzioa.createStatement();
