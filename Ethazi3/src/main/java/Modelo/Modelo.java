@@ -16,8 +16,8 @@ public class Modelo {
 		return metodoak.sartuSalgaiak();
 	}
 
-	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru, boolean komanda) {
-		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa, komanda);
+	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru) {
+		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa);
 	}
 
 	public void sartuTiene()  {
@@ -65,7 +65,7 @@ public class Modelo {
 	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
 		return metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	}
-
+	
 	public String konprobatuNIF () {
 		return metodoak.konprobatuNIF(usuarioa.getErabiltzailea());
 	}
@@ -102,8 +102,8 @@ public class Modelo {
 		return metodoak.begiratuStock(produktua, nif);
 	}
 
-	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif, int kantitatea, boolean komanda) throws ClassNotFoundException, SQLException {
-		metodoak.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea, karroa, komanda);
+	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
+		metodoak.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea, karroa);
 	}
 
 	public String[] platerrakJaso() {
@@ -130,6 +130,10 @@ public class Modelo {
 	
 	public void hasieratuOperaciones() throws ClassNotFoundException, SQLException {
 		metodoak.hasieratuOperaciones();
+	}
+	
+	public void ofrece() {
+		metodoak.ofrece(konprobatuNIF());
 	}
 
 	public String[] platerMotaArabera(String platerMota) {

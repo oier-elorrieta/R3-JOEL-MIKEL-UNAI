@@ -39,8 +39,8 @@ public class ControladorPanelTicket {
 		return this.modelo.produktuakJaso();
 	}
 
-	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru, boolean komanda) {
-		return this.modelo.sartu(elikagaia, kopuru, komanda); 
+	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
+		return this.modelo.sartu(elikagaia, kopuru); 
 	}  
 
 	public double diruTotala() {

@@ -36,8 +36,8 @@ public class ControladorPanelKomanda {
 		this.modelo.ezabatuProduktuenArraya();
 	}
 	
-	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru, boolean komanda) {
-		return this.modelo.sartu(elikagaia, kopuru, komanda); 
+	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
+		return this.modelo.sartu(elikagaia, kopuru); 
 	}  
 
 	public double diruTotala() {
@@ -108,5 +108,9 @@ public class ControladorPanelKomanda {
 	
 	public void ezabatuKomanda() throws ClassNotFoundException, SQLException {
 		this.modelo.ezabatuKomanda();
+	}
+	
+	public void ofrece() {
+		this.modelo.ofrece();
 	}
 }
