@@ -97,7 +97,7 @@ public class ModeloTest {
 
 		ArrayList<Karritoa> aukera1 = new ArrayList<Karritoa>(10);
 
-		aukera1 = metodoak.sartuProduktuaArrayan("Sidra", 1, aukera1);
+		aukera1 = metodoak.sartuProduktuaArrayan("Sidra", 1, aukera1, false);
 
 		Karritoa esperotakoa = esperotakoa1.get(0);
 
@@ -116,7 +116,7 @@ public class ModeloTest {
 
 		int esperotakoa = 9;
 
-		assertEquals(esperotakoa, metodoak.sartuDirua("Sidra", 3), 0);
+		assertEquals(esperotakoa, metodoak.sartuDirua("Sidra", 3, false), 0);
 
 	}
 
