@@ -43,16 +43,18 @@ public class metodoak {
 	}
 
 	// *****************************************************************************************************************************************************************************************************
+	 
 	public static String[] sartuPlaterrak() {
 
 		Produktua platerrak[] = platerrak();
-
+		
 		String platerIzena[] = new String[platerKantitatea()];
 		for (int i = 0; i < platerIzena.length; i++) {
 			platerIzena[i] = platerrak[i].getIzena();
 		}
 		return platerIzena;
 	}
+	
 	// *****************************************************************************************************************************************************************************************************
 
 	public static double sartuDirua(String aukera, int kantitatea) {
@@ -108,12 +110,6 @@ public class metodoak {
 	// *****************************************************************************************************************************************************************************************************
 
 	public static ImageIcon argazkiaAukeratu(String aukera) {
-		return new ImageIcon("argazkiak/" + aukera + ".jpg");
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	public static ImageIcon argazkiaPlaterraAukeratu(String aukera) {
 		return new ImageIcon("argazkiak/" + aukera + ".jpg");
 	}
 
@@ -589,7 +585,6 @@ public class metodoak {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-		System.out.println(platerKodea);
 		return platerKodea;
 	}
 
@@ -980,7 +975,7 @@ public class metodoak {
 		}
 	}
 
-	public static void sartuIncluye(int platerKodea, int kantitatea, double prezioa, String nif, int numTrans) {
+ 	public static void sartuIncluye(int platerKodea, int kantitatea, double prezioa, String nif, int numTrans) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.insertIncluye + "('" + numTrans + "', '" + platerKodea + "', '" + kantitatea
 				+ "', '" + prezioa + "')");

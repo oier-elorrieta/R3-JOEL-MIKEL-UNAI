@@ -36,10 +36,6 @@ public class Modelo {
 		return metodoak.argazkiaAukeratu(aukera);
 	}
 
-	public ImageIcon argazkiaPlaterraAukeratu(String aukera) {
-		return metodoak.argazkiaPlaterraAukeratu(aukera);
-	}
-
 	// *****************************************************************************************************************************************************************
 
 	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {

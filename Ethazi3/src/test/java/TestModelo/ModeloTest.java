@@ -15,7 +15,9 @@ import Modelo.metodoak;
 
 public class ModeloTest {
 
-	Produktua elikagaiak[] = metodoak.elikagaiak();
+	Produktua[] elikagaiak = metodoak.elikagaiak();
+
+	Produktua[] platerrak = metodoak.platerrak();
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -23,7 +25,7 @@ public class ModeloTest {
 	public void testSartuSalgaiak() {
 		String aukera = elikagaiak[0].getIzena();
 
-		String esperotakoa = "Sidra";
+		String esperotakoa = "Ardoa";
 
 		metodoak.sartuSalgaiak();
 
@@ -34,7 +36,7 @@ public class ModeloTest {
 	public void testSartuSalgaiak1() {
 		String aukera = elikagaiak[2].getIzena();
 
-		String esperotakoa = "Ura";
+		String esperotakoa = "Garagardoa";
 
 		metodoak.sartuSalgaiak();
 
@@ -43,8 +45,38 @@ public class ModeloTest {
 
 	// *****************************************************************************************************************************************************************************************************
 
+	// *****************************************************************************************************************************************************************************************************
+
 	@Test
-	public void ezabatu() {
+	public void testSartuPlaterrak() {
+		String aukera = platerrak[0].getIzena();
+
+		System.out.println(aukera);
+
+		String esperotakoa = "Arroz con leche";
+
+		metodoak.sartuPlaterrak();
+
+		assertEquals(esperotakoa, aukera);
+	}
+
+	@Test
+	public void testSartuPlaterrak1() {
+		String aukera = platerrak[2].getIzena();
+
+		System.out.println(aukera);
+
+		String esperotakoa = "Carbonara Vegana";
+
+		metodoak.sartuPlaterrak();
+
+		assertEquals(esperotakoa, aukera);
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	@Test
+	public void testezabatu() {
 
 		Karritoa sidra = new Karritoa("Sidra", 0, 3);
 
@@ -70,7 +102,7 @@ public class ModeloTest {
 	// *****************************************************************************************************************************************************************************************************
 
 	@Test
-	public void pantailatu() {
+	public void testpantailatu() {
 
 		Karritoa sidra = new Karritoa("Sidra", 1, 3);
 
@@ -87,9 +119,9 @@ public class ModeloTest {
 	// *****************************************************************************************************************************************************************************************************
 
 	@Test
-	public void TestSartuProduktuaArrayan() {
+	public void testSartuProduktuaArrayan() {
 
-		Karritoa sidra = new Karritoa("Sidra", 1, 3);
+		Karritoa sidra = new Karritoa("Sidra", 1, 2);
 
 		ArrayList<Karritoa> esperotakoa1 = new ArrayList<Karritoa>(10);
 
@@ -97,7 +129,7 @@ public class ModeloTest {
 
 		ArrayList<Karritoa> aukera1 = new ArrayList<Karritoa>(10);
 
-		aukera1 = metodoak.sartuProduktuaArrayan("Sidra", 1, aukera1, false);
+		aukera1 = metodoak.sartuProduktuaArrayan("Sidra", 1, aukera1);
 
 		Karritoa esperotakoa = esperotakoa1.get(0);
 
@@ -112,18 +144,18 @@ public class ModeloTest {
 	// *****************************************************************************************************************************************************************************************************
 
 	@Test
-	public void sartuDirua() {
+	public void testsartuDirua() {
 
-		int esperotakoa = 9;
+		int esperotakoa = 6;
 
-		assertEquals(esperotakoa, metodoak.sartuDirua("Sidra", 3, false), 0);
+		assertEquals(esperotakoa, metodoak.sartuDirua("Sidra", 3), 0);
 
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
 	@Test
-	public void DiruTotalak() {
+	public void testDiruTotalak() {
 
 		Karritoa sidra = new Karritoa("Sidra", 0, 3);
 
@@ -149,7 +181,7 @@ public class ModeloTest {
 	// *****************************************************************************************************************************************************************************************************
 
 	@Test
-	public void TestArgazkiaAukeratu() {
+	public void testArgazkiaAukeratu() {
 
 		ImageIcon esperotakoa = new ImageIcon("argazkiak/Zukua.jpg");
 
@@ -160,7 +192,7 @@ public class ModeloTest {
 	// *****************************************************************************************************************************************************************************************************
 
 	@Test
-	public void gehituTransferentziaZenbakia() {
+	public void testGehituTransferentziaZenbakia() {
 
 		int esperotakoa = 1;
 
@@ -169,16 +201,62 @@ public class ModeloTest {
 	}
 
 	// *****************************************************************************************************************************************************************************************************
+
+	@Test
+	public void testJasoProduktuenPrezioa() {
+
+		double esperotakoa = 0.7 * 2; // Ardoa kostatzen du 0.7.
+
+		assertEquals(esperotakoa, metodoak.jasoProduktuenPrezioa("Ardoa", 2), 0);
+	}
+
+	// *****************************************************************************************************************************************************************************************************
 	// ***********************************DATU_BASE_TESTAK**************************************************************************************************************************************************
 	// *****************************************************************************************************************************************************************************************************
 
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+
 	@Test
-	public void komprobatuLokalarenIzena() {
+	public void begiratuDNI() {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
+		String query2 = ("SELECT DNI FROM usuario LIMIT 1");
+
+		String lehenengoDNI = null;
+
+		try {
+			ResultSet rs;
+			PreparedStatement q;
+
+			q = konekzioa.prepareStatement(query2);
+			rs = q.executeQuery();
+			if (rs.next()) {
+				lehenengoDNI = rs.getString("DNI");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		assertTrue(metodoak.begiratuDNI(lehenengoDNI));
+
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	@Test
+	public void begiratuNIF() {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
 		String query2 = ("SELECT NIF FROM local LIMIT 1");
 
 		String lehenengoNIF = null;
@@ -198,7 +276,114 @@ public class ModeloTest {
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
+		assertTrue(metodoak.begiratuNIF(lehenengoNIF));
+
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	@Test
+	public void begiratuStock() {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		String query1 = ("SELECT NomProducto FROM vende LIMIT 1");
+
+		String lehenengoProduktua = null;
+
+		try {
+			ResultSet rs;
+			PreparedStatement q;
+
+			q = konekzioa.prepareStatement(query1);
+			rs = q.executeQuery();
+			if (rs.next()) {
+				lehenengoProduktua = rs.getString("NomProducto");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		String query2 = ("SELECT NIF FROM local LIMIT 1");
+
+		String lehenengoNIF = null;
+
+		try {
+			ResultSet rs;
+			PreparedStatement q;
+
+			q = konekzioa.prepareStatement(query2);
+			rs = q.executeQuery();
+			if (rs.next()) {
+				lehenengoNIF = rs.getString("NIF");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		String query4 = ("SELECT Stock FROM vende where NIFLocal = '" + lehenengoNIF + "' and NomProducto = '"
+				+ lehenengoProduktua + "' ");
+
+		int esperotakoa = 0;
+
+		try {
+			ResultSet rs;
+			PreparedStatement q;
+
+			q = konekzioa.prepareStatement(query4);
+			rs = q.executeQuery();
+			if (rs.next()) {
+				esperotakoa = rs.getInt("Stock");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		assertEquals(esperotakoa, metodoak.begiratuStock(lehenengoProduktua, lehenengoNIF));
+
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	@Test
+	public void komprobatuLokalarenIzena() {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		String query2 = ("SELECT NIF FROM local LIMIT 1");
+
+		String lehenengoNIF = null;
+
+		try {
+			ResultSet rs;
+			PreparedStatement q;
+
+			q = konekzioa.prepareStatement(query2);
+			rs = q.executeQuery();
+			if (rs.next()) {
+				lehenengoNIF = rs.getString("NIF");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
 		String query1 = ("SELECT nombre FROM local where NIF = '" + lehenengoNIF + "'");
 
 		String esperotakoa = null;
@@ -218,24 +403,24 @@ public class ModeloTest {
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
 		assertEquals(esperotakoa, metodoak.konprobatuLokalarenIzena(lehenengoNIF));
 
 	}
 
 	// *****************************************************************************************************************************************************************************************************
- 
+
 	@Test
 	public void komprobatuLokala() {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
 		String query2 = ("SELECT NIF FROM local LIMIT 1");
 
 		String lehenengoNIF = null;
- 
+
 		try {
 			ResultSet rs;
 			PreparedStatement q;
@@ -251,8 +436,9 @@ public class ModeloTest {
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
-		String query1 = ("SELECT Tipo from local where NIF = (SELECT NIF from usuario where DNI ='"+lehenengoNIF+"');");
+
+		String query1 = ("SELECT Tipo from local where NIF = (SELECT NIF from usuario where DNI ='" + lehenengoNIF
+				+ "');");
 		String esperotakoa = null;
 
 		try {
@@ -270,7 +456,7 @@ public class ModeloTest {
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________ç
-		
+
 		assertEquals(esperotakoa, metodoak.konprobatuLokala(lehenengoNIF));
 
 	}
@@ -283,11 +469,11 @@ public class ModeloTest {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
 		String query2 = ("SELECT DNI FROM usuario LIMIT 1");
 
 		String lehenengoDNI = null;
- 
+
 		try {
 			ResultSet rs;
 			PreparedStatement q;
@@ -303,8 +489,8 @@ public class ModeloTest {
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
-		String query1 = ("SELECT NIF FROM usuario where dni = '"+lehenengoDNI+"'");
+
+		String query1 = ("SELECT NIF FROM usuario where dni = '" + lehenengoDNI + "'");
 
 		String esperotakoa = null;
 
@@ -323,7 +509,7 @@ public class ModeloTest {
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
 		assertEquals(esperotakoa, metodoak.konprobatuNIF(lehenengoDNI));
 
 	}
@@ -336,11 +522,11 @@ public class ModeloTest {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
 		String query2 = ("SELECT DNI FROM usuario LIMIT 1");
 
 		String lehenengoDNI = null;
- 
+
 		try {
 			ResultSet rs;
 			PreparedStatement q;
@@ -354,13 +540,13 @@ public class ModeloTest {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-		
+
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		String query3 = ("SELECT Contraseña FROM usuario LIMIT 1");
 
 		String lehenengoPasahitza = null;
- 
+
 		try {
 			ResultSet rs;
 			PreparedStatement q;
@@ -374,10 +560,10 @@ public class ModeloTest {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
-		
+
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
-		String query1 = ("SELECT DNI,Contraseña FROM usuario where dni = '"+lehenengoDNI+"'");
+
+		String query1 = ("SELECT DNI,Contraseña FROM usuario where dni = '" + lehenengoDNI + "'");
 		String esperotakoa = null;
 
 		try {
@@ -388,7 +574,6 @@ public class ModeloTest {
 			re = p.executeQuery();
 
 			if (re.next()) {
-				System.out.println(re.getString("DNI"));
 				if (re.getString("DNI").equalsIgnoreCase(lehenengoDNI)
 						&& re.getString("Contraseña").equalsIgnoreCase(lehenengoPasahitza)) {
 					esperotakoa = "EZ";
@@ -406,46 +591,173 @@ public class ModeloTest {
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
 		assertEquals(esperotakoa, metodoak.konprobatuErabiltzailea(lehenengoDNI, lehenengoPasahitza));
 
 	}
+
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+
+	@SuppressWarnings("deprecation")
+	@Test
+	public void platerMotaArabera() {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		String query1 = ("SELECT nombre from plato where TipoDePlato = 'Vegetariano' LIMIT 1");
+		String platerMotak[] = new String[10];
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				platerMotak[0] = re.getString("Nombre");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		
+		// _______________________________________________________________________________________________________________________________________________________________________________
+		
+		String query2 = ("SELECT nombre from plato where TipoDePlato = 'Vegetariano' and nombre = '"+platerMotak[0]+"'");
+		String platerMotak1[] = new String[10];
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query2);
+			re = p.executeQuery();
+			if (re.next()) {
+				platerMotak1[0] = re.getString("Nombre");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		
+		// _______________________________________________________________________________________________________________________________________________________________________________
+		
+		assertEquals(metodoak.platerMotaArabera(platerMotak1[0]), metodoak.platerMotaArabera(platerMotak[0]));
+
+	}
+
+	// *****************************************************************************************************************************************************************************************************
 	
+	@Test
+	public void jasoPlaterKodea() {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		String lehenengoPlaterra = null;
+		String query1 = ("SELECT Nombre from plato LIMIT 1");
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				lehenengoPlaterra = re.getString("Nombre");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		String esperotakoPlaterra = null;
+		String query = ("SELECT Nombre from plato where Nombre = '" + lehenengoPlaterra + "'");
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query);
+			re = p.executeQuery();
+			if (re.next()) {
+				esperotakoPlaterra = re.getString("Nombre");
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		assertEquals(metodoak.jasoPlaterKodea(esperotakoPlaterra), metodoak.jasoPlaterKodea(lehenengoPlaterra));
+
+	}
+
 	// *****************************************************************************************************************************************************************************************************
 
-		@Test
-		public void jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
+	@Test
+	public void zenbatPlaterMotaBakoitzeko() {
 
-			Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = BBDDKonexioa.getConexion();
 
-			// _______________________________________________________________________________________________________________________________________________________________________________
-			
-			String query1 = ("SELECT max(NumTrans) from operaciones;");
-			
-			int esperotakoa = 0;
+		// _______________________________________________________________________________________________________________________________________________________________________________
 
-			try {
-				ResultSet rs;
-				PreparedStatement q;
-
-				q = konekzioa.prepareStatement(query1);
-				rs = q.executeQuery();
-				if (rs.next()) {
-					if(rs.getInt("max(NumTrans)") == 0) {
-						esperotakoa = 1;
-					}else {
-						esperotakoa = rs.getInt("max(NumTrans)");
-						esperotakoa++;
-					}
-				}
-			} catch (SQLException e) {
-				System.out.println("Errorea konexioan");
-				e.printStackTrace();
+		String query1 = ("SELECT count('TipoDePlato') from plato where TipoDePlato = 'Vegetariano';");
+		int i = 0;
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				i = re.getInt("count('TipoDePlato')");
 			}
-
-			// _______________________________________________________________________________________________________________________________________________________________________________
-			
-			assertEquals(esperotakoa, metodoak.jasoTransakzioZbk());
-
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
 		}
+
+		assertEquals(metodoak.zenbatPlaterMotaBakoitzeko("Vegetariano"), i);
+
+	}
+
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+
+	@Test
+	public void jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
+
+		Connection konekzioa = BBDDKonexioa.getConexion();
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		String query1 = ("SELECT max(NumTrans) from operaciones;");
+
+		int esperotakoa = 0;
+
+		try {
+			ResultSet rs;
+			PreparedStatement q;
+
+			q = konekzioa.prepareStatement(query1);
+			rs = q.executeQuery();
+			if (rs.next()) {
+				if (rs.getInt("max(NumTrans)") == 0) {
+					esperotakoa = 1;
+				} else {
+					esperotakoa = rs.getInt("max(NumTrans)");
+					esperotakoa++;
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("Errorea konexioan");
+			e.printStackTrace();
+		}
+
+		// _______________________________________________________________________________________________________________________________________________________________________________
+
+		assertEquals(esperotakoa, metodoak.jasoTransakzioZbk());
+
+	}
+
 }

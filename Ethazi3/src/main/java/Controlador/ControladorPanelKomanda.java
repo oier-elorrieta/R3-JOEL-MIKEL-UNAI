@@ -45,7 +45,7 @@ public class ControladorPanelKomanda {
 	}	
 
 	public ImageIcon argazkiaPlaterraAukeratu(String aukera) {
-		return metodoak.argazkiaPlaterraAukeratu(aukera);
+		return metodoak.argazkiaAukeratu(aukera);
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
