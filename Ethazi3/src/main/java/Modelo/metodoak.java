@@ -862,7 +862,7 @@ public class metodoak {
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________
 
-	public static void sartuTiene(ArrayList<Karritoa> karroa, int numTrans) throws ClassNotFoundException, SQLException {
+	public static void sartuTiene(ArrayList<Karritoa> karroa, int numTrans, String erabiltzaile) throws ClassNotFoundException, SQLException {
 		for (int i = 0; i < karroa.size(); i++) {
 			String elikagaia = karroa.get(i).getElikagaia();
 			int kopurua = karroa.get(i).getKopuru();
@@ -870,7 +870,7 @@ public class metodoak {
 
 			if (begiratuTiene(elikagaia, numTrans) == false) {
 				insertTiene(elikagaia, kopurua, prezioa);
-				if (komprobatuStocka(elikagaia) < 5) {
+				if (begiratuStock(elikagaia, konprobatuNIF(erabiltzaile)) < 5) {
 					gehituVende(elikagaia);
 				}
 			} else {
@@ -1092,29 +1092,11 @@ public class metodoak {
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________
 
-	public static int komprobatuStocka(String elikagaia) {
-		int stockaKantitatea = 0;
-		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.selectStockNifLocal+ ""+Kontsultak.selectNifOperaciones+"("+Kontsultak.selectMaxNumTrans+"))"
-				+ "and NomProducto = '" + elikagaia + "'");
-		try {
-			ResultSet re;
-			PreparedStatement p;
-			p = konekzioa.prepareStatement(query1);
-			re = p.executeQuery();
-			if (re.next()) {
-				stockaKantitatea = re.getInt("stock");
-			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
-			e.printStackTrace();
-		}
-		return stockaKantitatea;
-	}
+
 
 	public static void gehituVende(String elikagaia) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.updateStock+"'" + elikagaia + "' and NIFLocal = ("+Kontsultak.selectNifOperaciones+"("+Kontsultak.selectMaxNumTrans+")");
+		String query1 = (Kontsultak.updateStock+"'" + elikagaia + "' and NIFLocal = ("+Kontsultak.selectNifOperaciones+"("+Kontsultak.selectMaxNumTrans+"))");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();

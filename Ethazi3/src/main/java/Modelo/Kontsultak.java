@@ -33,7 +33,7 @@ public class Kontsultak {
 
 	static final String selectLokalaMota = selectLokalarenNif + "(SELECT NIF from usuario where DNI = ";
 
-	static final String selectMaxNumTrans="SELECT max(NumTrans) from operaciones;";
+	static final String selectMaxNumTrans="SELECT max(NumTrans) from operaciones";
 	
 	static final String selectIzenaFabrikantea = "SELECT Nombre from fabricante where Nombre = ";
 	

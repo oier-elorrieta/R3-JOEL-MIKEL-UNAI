@@ -126,7 +126,7 @@ public class Modelo {
 	
 	public void sartuTiene()  {
 		try {
-			metodoak.sartuTiene(karroa, jasoTransakzioZbk()); 
+			metodoak.sartuTiene(karroa, jasoTransakzioZbk(), usuarioa.getErabiltzailea()); 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
