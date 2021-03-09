@@ -39,31 +39,31 @@ public class Modelo {
 	// *****************************************************************************************************************************************************************
 
 	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
-		return metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
+		return metodoakKonprobaketak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	}
 	
 	public String konprobatuNIF () {
-		return metodoak.konprobatuNIF(usuarioa.getErabiltzailea());
+		return metodoakKonprobaketak.konprobatuNIF(usuarioa.getErabiltzailea());
 	}
 
 	public String konprobatuLokala() {
-		return metodoak.konprobatuLokala(usuarioa.getErabiltzailea());
+		return metodoakKonprobaketak.konprobatuLokala(usuarioa.getErabiltzailea());
 	}
 
 	public String konprobatuLokalarenIzena() {
-		return metodoak.konprobatuLokalarenIzena(konprobatuNIF());
+		return metodoakKonprobaketak.konprobatuLokalarenIzena(konprobatuNIF());
 	}
 	
 	public boolean begiratuDNI(String dni) {
-		return metodoak.begiratuDNI(dni);
+		return metodoakKonprobaketak.begiratuDNI(dni);
 	}
 
 	public boolean begiratuNIF(String nif) {
-		return metodoak.begiratuNIF(nif);
+		return metodoakKonprobaketak.begiratuNIF(nif);
 	}
 
 	public int begiratuStock(String produktua,String nif) {
-		return metodoak.begiratuStock(produktua, nif);
+		return metodoakKonprobaketak.begiratuStock(produktua, nif);
 	}
 
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
@@ -74,19 +74,19 @@ public class Modelo {
 	}
 
 	public String[] platerMotak(){
-		return metodoak.platerMotak();
+		return metodoakPlaterZerrendak.platerMotak();
 	}
 
 	public String[] platerMota(String platerMota, String tipoa){
-		return metodoak.platerMota(platerMota, tipoa);
+		return metodoakPlaterZerrendak.platerMota(platerMota, tipoa);
 	}
 	
 	public int platerKodea(String platerra){
-		return metodoak.jasoPlaterKodea(platerra);
+		return metodoakPlaterZerrendak.jasoPlaterKodea(platerra);
 	}
 
 	public String[] platerMotaArabera(String platerMota) {
-		return metodoak.platerMotaArabera(platerMota);
+		return metodoakPlaterZerrendak.platerMotaArabera(platerMota);
 	}
 	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
@@ -101,57 +101,57 @@ public class Modelo {
 
 	
 	public void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) {
-		metodoak.sartuDatuak(izena, abizena, pasahitza, dni, nif);
+		metodoakErabiltzaile.sartuDatuak(izena, abizena, pasahitza, dni, nif);
 	}
 
 	public Erabiltzaile sartuErabiltzailea(String erabiltzailea, String pasahitza) {
-		return metodoak.sartuErabiltzailea(erabiltzailea, pasahitza,usuarioa);
+		return metodoakErabiltzaile.sartuErabiltzailea(erabiltzailea, pasahitza,usuarioa);
 	}
 	
 	public void sartuTicket(int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		metodoak.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
+		metodoakTicket.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	}
 
 	public void sartuEskaera(String helbidea, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		metodoak.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk(), año, mes , dia);
+		metodoakEskaera.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk(), año, mes , dia);
 	}
 
 	public void sartuFaktura(String izena, String abizena, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
+		metodoakFaktura.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
 	} 
 
 	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
-		metodoak.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea, karroa);
+		metodoakHornikuntza.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea, karroa);
 	}
 	
 	public void sartuTiene()  {
 		try {
-			metodoak.sartuTiene(karroa, jasoTransakzioZbk(), usuarioa.getErabiltzailea()); 
+			metodoakTiene.sartuTiene(karroa, jasoTransakzioZbk(), usuarioa.getErabiltzailea()); 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void sartuKomanda(int año, int mes, int dia) throws ClassNotFoundException, SQLException  {
-		metodoak.sartuKomanda(diruTotala(),konprobatuNIF(), año, mes, dia);
+		metodoakKomanda.sartuKomanda(diruTotala(),konprobatuNIF(), año, mes, dia);
 	} 
 	
 	public void incluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException{
-		metodoak.incluye(platerKodea, kantitatea, diruTotala(), konprobatuNIF());
+		metodoakIncluye.incluye(platerKodea, kantitatea, diruTotala(), konprobatuNIF());
 	}
 	
 	public void hasieratuOperaciones() throws ClassNotFoundException, SQLException   {
-		metodoak.hasieratuOperaciones();
+		metodoakKomanda.hasieratuOperaciones();
 	}
 	
 	public void ofrece() {
-		metodoak.ofrece(konprobatuNIF());
+		metodoakOfrece.ofrece(konprobatuNIF());
 	}
 	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________
 
 	public void ezabatuKomanda() throws ClassNotFoundException, SQLException {
-		metodoak.ezabatuKomanda();
+		metodoakKomanda.ezabatuKomanda();
 	}
 }
