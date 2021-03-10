@@ -20,13 +20,10 @@ public class ModeloTestKonprobaketakNif {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		String query2 = ("SELECT NIF FROM local LIMIT 1");
-
 		String lehenengoNIF = null;
-
 		try {
 			ResultSet rs;
 			PreparedStatement q;
-
 			q = konekzioa.prepareStatement(query2);
 			rs = q.executeQuery();
 			if (rs.next()) {
@@ -43,7 +40,6 @@ public class ModeloTestKonprobaketakNif {
 
 	}
 
-
 	@Test
 	public void komprobatuNIF() {
 
@@ -52,13 +48,10 @@ public class ModeloTestKonprobaketakNif {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		String query2 = ("SELECT DNI FROM usuario LIMIT 1");
-
 		String lehenengoDNI = null;
-
 		try {
 			ResultSet rs;
 			PreparedStatement q;
-
 			q = konekzioa.prepareStatement(query2);
 			rs = q.executeQuery();
 			if (rs.next()) {
@@ -72,13 +65,10 @@ public class ModeloTestKonprobaketakNif {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		String query1 = ("SELECT NIF FROM usuario where dni = '" + lehenengoDNI + "'");
-
 		String esperotakoa = null;
-
 		try {
 			ResultSet re;
 			PreparedStatement p;
-
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			if (re.next()) {

@@ -7,11 +7,12 @@ import java.sql.Statement;
 public class metodoakKomanda {
 
 	public static void hasieratuOperaciones() throws ClassNotFoundException, SQLException {
+		
 		Connection konekzioa = BBDDKonexioa.getConexion();
+		
 		int numTrans = metodoak.jasoTransakzioZbk();
 		String query1 = (Kontsultak.insertNumTransOperaciones+"" + numTrans + ")");
 		String query2 = (Kontsultak.insertKomanda + "('" + numTrans + "')");
-
 		try {
 			Statement s1;
 			s1 = konekzioa.createStatement();
@@ -27,7 +28,9 @@ public class metodoakKomanda {
 
 	public static void sartuKomanda(double prezioa, String nif, int año, int mes, int dia)
 			throws ClassNotFoundException, SQLException {
+		
 		Connection konekzioa = BBDDKonexioa.getConexion();
+		
 		char operazioMota = 'C';
 		String query1 = (Kontsultak.updateOperaciones+"'" + año + "/" + (mes + 1) + "/" + dia
 				+ "' , Total_Operaciones = " + prezioa + " , TipoOperacion = '" + operazioMota + "', NIF = '" + nif
@@ -43,7 +46,9 @@ public class metodoakKomanda {
 	}
 
 	public static void ezabatuKomanda() throws ClassNotFoundException, SQLException {
+		
 		Connection konekzioa = BBDDKonexioa.getConexion();
+		
 		String query1 = (Kontsultak.delete);
 		try {
 			Statement s1;

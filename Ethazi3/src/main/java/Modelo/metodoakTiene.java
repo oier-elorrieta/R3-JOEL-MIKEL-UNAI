@@ -14,7 +14,6 @@ public class metodoakTiene {
 			String elikagaia = karroa.get(i).getElikagaia();
 			int kopurua = karroa.get(i).getKopuru();
 			double prezioa = karroa.get(i).getBalioa();
-
 			if (begiratuTiene(elikagaia, numTrans) == false) {
 				insertTiene(elikagaia, kopurua, prezioa);
 				if (metodoakKonprobaketak.begiratuStock(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzaile)) < 5) {
@@ -60,10 +59,10 @@ public class metodoakTiene {
 		return egia;
 	}
 
-	public static void updateTiene(String elikagaia, int kopurua, double prezioa) { 
+	public static void updateTiene(String elikagaia, int kopurua, double prezioa) throws ClassNotFoundException, SQLException { 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.updateTiene+"N_Unidades + " + kopurua + ", Precio = Precio + " + prezioa
-				+ " where NomProducto = '" + elikagaia + "'");
+				+ " where NomProducto = '" + elikagaia + "' and NumTrans = "+(metodoak.jasoTransakzioZbk()-1)+"");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();

@@ -38,10 +38,10 @@ public class metodoakIncluye {
 		return sartutaDago;
 	}
 
-	public static void updateIncluye(int platerKodea, int kantitatea, double prezioa, int numTrans) {
+	public static void updateIncluye(int platerKodea, int kantitatea, double prezioa, int numTrans) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.updateIncluye+"Num_Platos + " + kantitatea + ", PrecioActual = PrecioActual + " + prezioa
-				+ " where Cod_Plato = " + platerKodea + "");
+				+ " where Cod_Plato = " + platerKodea + " and Num_Trans = "+(metodoak.jasoTransakzioZbk()-1)+"");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();

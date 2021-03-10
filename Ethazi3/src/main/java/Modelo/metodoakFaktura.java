@@ -8,7 +8,6 @@ import java.sql.Statement;
 
 public class metodoakFaktura {
 	
-
 	public static boolean begiratuFakturanNIF(String nif) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.selectNifFaktura+"'" + nif + "'");
@@ -16,7 +15,6 @@ public class metodoakFaktura {
 		try {
 			ResultSet re;
 			PreparedStatement p;
-
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			while (re.next()) {
@@ -46,27 +44,19 @@ public class metodoakFaktura {
 
 	public static void sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk,
 			int año, int mes, int dia) {
-
 		Connection konekzioa = BBDDKonexioa.getConexion();
-
 		char operazioMota = 'F';
-
 		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/"
 				+ dia + "' ,'" + diruTotala + "','" + NIF + "', '" + operazioMota + "')");
-
 		boolean nifDago = begiratuFakturanNIF(NIF);
-
 		if (nifDago == false) {
 			insertNifFaktura(NIF, izena, abizena);
 		}
-
 		String query3 = (Kontsultak.insertFactura + "('" + TransferentziaZbk + "','" + NIF + "');");
-
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
-
 			Statement smt;
 			smt = konekzioa.createStatement();
 			smt.executeUpdate(query3);

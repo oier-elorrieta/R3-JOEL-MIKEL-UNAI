@@ -7,11 +7,8 @@ import java.sql.Statement;
 public class metodoakTicket {
 
 	public static void sartuTicket(String NIF, double diruTotala, int TransferentziaZbk, int año, int mes, int dia) {
-
 		Connection konekzioa = BBDDKonexioa.getConexion();
-
 		char operazioMota = 'T';
-
 		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/"
 				+ dia + "','" + diruTotala + "','" + NIF + "', '" + operazioMota + "')");
 		try {

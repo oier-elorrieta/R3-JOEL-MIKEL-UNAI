@@ -28,13 +28,10 @@ public class ModeloTestTransferentziaZbk {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		String query1 = ("SELECT max(NumTrans) from operaciones;");
-
 		int esperotakoa = 0;
-
 		try {
 			ResultSet rs;
 			PreparedStatement q;
-
 			q = konekzioa.prepareStatement(query1);
 			rs = q.executeQuery();
 			if (rs.next()) {
