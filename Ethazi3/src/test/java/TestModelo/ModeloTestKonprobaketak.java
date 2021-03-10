@@ -20,13 +20,10 @@ public class ModeloTestKonprobaketak {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		String query2 = ("SELECT DNI FROM usuario LIMIT 1");
-
 		String lehenengoDNI = null;
-
 		try {
 			ResultSet rs;
 			PreparedStatement q;
-
 			q = konekzioa.prepareStatement(query2);
 			rs = q.executeQuery();
 			if (rs.next()) {
@@ -51,13 +48,10 @@ public class ModeloTestKonprobaketak {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		String query1 = ("SELECT NomProducto FROM vende LIMIT 1");
-
 		String lehenengoProduktua = null;
-
 		try {
 			ResultSet rs;
 			PreparedStatement q;
-
 			q = konekzioa.prepareStatement(query1);
 			rs = q.executeQuery();
 			if (rs.next()) {
@@ -77,7 +71,6 @@ public class ModeloTestKonprobaketak {
 		try {
 			ResultSet rs;
 			PreparedStatement q;
-
 			q = konekzioa.prepareStatement(query2);
 			rs = q.executeQuery();
 			if (rs.next()) {
@@ -98,7 +91,6 @@ public class ModeloTestKonprobaketak {
 		try {
 			ResultSet rs;
 			PreparedStatement q;
-
 			q = konekzioa.prepareStatement(query4);
 			rs = q.executeQuery();
 			if (rs.next()) {
@@ -123,13 +115,10 @@ public class ModeloTestKonprobaketak {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		String query2 = ("SELECT DNI FROM usuario LIMIT 1");
-
 		String lehenengoDNI = null;
-
 		try {
 			ResultSet rs;
 			PreparedStatement q;
-
 			q = konekzioa.prepareStatement(query2);
 			rs = q.executeQuery();
 			if (rs.next()) {
@@ -143,13 +132,10 @@ public class ModeloTestKonprobaketak {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		String query3 = ("SELECT Contraseña FROM usuario LIMIT 1");
-
 		String lehenengoPasahitza = null;
-
 		try {
 			ResultSet rs;
 			PreparedStatement q;
-
 			q = konekzioa.prepareStatement(query3);
 			rs = q.executeQuery();
 			if (rs.next()) {
@@ -164,14 +150,11 @@ public class ModeloTestKonprobaketak {
 
 		String query1 = ("SELECT DNI,Contraseña FROM usuario where dni = '" + lehenengoDNI + "'");
 		String esperotakoa = null;
-
 		try {
 			ResultSet re;
 			PreparedStatement p;
-
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
-
 			if (re.next()) {
 				if (re.getString("DNI").equalsIgnoreCase(lehenengoDNI)
 						&& re.getString("Contraseña").equalsIgnoreCase(lehenengoPasahitza)) {
@@ -183,7 +166,6 @@ public class ModeloTestKonprobaketak {
 			} else {
 				esperotakoa = "Bai, erabiltzailea txarto";
 			}
-
 		} catch (SQLException e) {
 			System.out.println("Errorea konexioan");
 			e.printStackTrace();

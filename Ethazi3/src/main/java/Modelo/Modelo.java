@@ -108,20 +108,20 @@ public class Modelo {
 		return metodoakErabiltzaile.sartuErabiltzailea(erabiltzailea, pasahitza,usuarioa);
 	}
 	
-	public void sartuTicket(int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		metodoakTicket.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
+	public void sartuTicket(int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoakTicket.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk(), anyo, mes , dia);
 	}
 
-	public void sartuEskaera(String helbidea, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		metodoakEskaera.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk(), año, mes , dia);
+	public void sartuEskaera(String helbidea, int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoakEskaera.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk(), anyo, mes , dia);
 	}
 
-	public void sartuFaktura(String izena, String abizena, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		metodoakFaktura.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), año, mes , dia);
+	public void sartuFaktura(String izena, String abizena, int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoakFaktura.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), anyo, mes , dia);
 	} 
 
-	public void sartuHornikuntza(String produktua,int año, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
-		metodoakHornikuntza.sartuHornikuntza(produktua, año, mes, dia, nif, kantitatea, karroa);
+	public void sartuHornikuntza(String produktua,int anyo, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
+		metodoakHornikuntza.sartuHornikuntza(produktua, anyo, mes, dia, nif, kantitatea, karroa);
 	}
 	
 	public void sartuTiene()  {
@@ -132,8 +132,8 @@ public class Modelo {
 		}
 	}
 
-	public void sartuKomanda(int año, int mes, int dia) throws ClassNotFoundException, SQLException  {
-		metodoakKomanda.sartuKomanda(diruTotala(),konprobatuNIF(), año, mes, dia);
+	public void sartuKomanda(int anyo, int mes, int dia) throws ClassNotFoundException, SQLException  {
+		metodoakKomanda.sartuKomanda(diruTotala(),konprobatuNIF(), anyo, mes, dia);
 	} 
 	
 	public void incluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException{

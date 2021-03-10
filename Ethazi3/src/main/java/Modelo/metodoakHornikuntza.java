@@ -35,12 +35,11 @@ public class metodoakHornikuntza {
 		double dirua = metodoak.jasoProduktuenPrezioa(produktua, kantitatea);
 		char operazioMota = 'A';
 
-		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + anyo + "/" + (mes + 1) + "/" + dia
+		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + anyo + "/" + (mes + 1) + "/" + dia  
 				+ "','" + dirua + "','" + nif + "', '" + operazioMota + "')");
 		String query3 = (Kontsultak.insertHornikuntza + "(" + numTrans + ",'" + izenaFabrikantea + "')");
 		String query4 = (Kontsultak.insertTiene+"('" + produktua + "'," + numTrans + "," + kantitatea + "," + dirua
 				+ ")");
-
 		try {
 			Statement s;
 			s = konekzioa.createStatement();

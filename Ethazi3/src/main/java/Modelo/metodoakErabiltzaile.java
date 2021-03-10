@@ -13,12 +13,9 @@ public class metodoakErabiltzaile {
 	}		
 
 	public static void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) {
-
 		Connection konekzioa = BBDDKonexioa.getConexion();
-
 		String query1 = (Kontsultak.insertDatuak + "('" + izena + "', '" + abizena + "','" + pasahitza + "','" + dni
 				+ "', '" + nif + "')");
-
 		try {
 			Statement s;
 			s = konekzioa.createStatement();

@@ -16,7 +16,6 @@ public class metodoakKonprobaketak {
 		try {
 			ResultSet re;
 			PreparedStatement p;
-
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			if(re.next()) {
@@ -37,7 +36,6 @@ public class metodoakKonprobaketak {
 		try {
 			ResultSet re;
 			PreparedStatement p;
-
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			if(re.next()) {
@@ -58,7 +56,6 @@ public class metodoakKonprobaketak {
 		try {
 			ResultSet re;
 			PreparedStatement p;
-
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			if (re.next()) {
@@ -78,14 +75,11 @@ public class metodoakKonprobaketak {
 
 		String query1 = (Kontsultak.selectErabiltzailea + "'" + erabiltzailea + "'");
 		String erroreaLogeatzean = null;
-
 		try {
 			ResultSet re;
 			PreparedStatement p;
-
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
-
 			if (re.next()) {
 				if (re.getString("DNI").equalsIgnoreCase(erabiltzailea)
 						&& re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
@@ -98,9 +92,8 @@ public class metodoakKonprobaketak {
 			} else {
 				JOptionPane.showMessageDialog(null, "Ez zaude logeatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
 				erroreaLogeatzean = "Bai, erabiltzailea txarto";
-			}
-
-		} catch (SQLException e) { 
+			} 
+		} catch (SQLException e) {  
 			e.printStackTrace();
 		}
 
@@ -114,13 +107,10 @@ public class metodoakKonprobaketak {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
 		String query1 = (Kontsultak.selectNIF + "'" + erabiltzailea + "'");
-
 		String NIF = null;
-
 		try {
 			ResultSet re;
 			PreparedStatement p;
-
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			if (re.next()) {
@@ -140,11 +130,9 @@ public class metodoakKonprobaketak {
 
 		String query1 = (Kontsultak.selectLokalaMota + "'" + erabiltzailea + "')");
 		String Tipo = null;
-
 		try {
 			ResultSet re;
 			PreparedStatement p;
-
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			if (re.next()) {
@@ -163,13 +151,10 @@ public class metodoakKonprobaketak {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
 		String query1 = (Kontsultak.selectLokalarenIzena + "'" + NIF + "'");
-
 		String LokalarenIzena = null;
-
 		try {
 			ResultSet re;
 			PreparedStatement p;
-
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			if (re.next()) {
