@@ -90,8 +90,8 @@ public class ControladorPanelKomanda {
 		return this.modelo.platerKodea(platerra);
 	}
 	
-	public void sartuKomanda(int año, int mes, int dia) throws ClassNotFoundException, SQLException{
-		this.modelo.sartuKomanda(año, mes, dia);
+	public void sartuKomanda(int anyo, int mes, int dia) throws ClassNotFoundException, SQLException{
+		this.modelo.sartuKomanda(anyo, mes, dia);
 	} 
 	
 	public void incluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException {

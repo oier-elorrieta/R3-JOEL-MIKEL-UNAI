@@ -19,25 +19,23 @@ public class metodoakKomanda {
 			Statement s2;
 			s2 = konekzioa.createStatement();
 			s2.executeUpdate(query2);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}
 
-	public static void sartuKomanda(double prezioa, String nif, int año, int mes, int dia)
+	public static void sartuKomanda(double prezioa, String nif, int anyo, int mes, int dia)
 			throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		char operazioMota = 'C';
-		String query1 = (Kontsultak.updateOperaciones+"'" + año + "/" + (mes + 1) + "/" + dia
+		String query1 = (Kontsultak.updateOperaciones+"'" + anyo + "/" + (mes + 1) + "/" + dia
 				+ "' , Total_Operaciones = " + prezioa + " , TipoOperacion = '" + operazioMota + "', NIF = '" + nif
 				+ "' where Numtrans = ("+Kontsultak.selectMaxNumTransKomanda+")");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}
@@ -49,8 +47,7 @@ public class metodoakKomanda {
 			Statement s1;
 			s1 = konekzioa.createStatement();
 			s1.executeUpdate(query1);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}

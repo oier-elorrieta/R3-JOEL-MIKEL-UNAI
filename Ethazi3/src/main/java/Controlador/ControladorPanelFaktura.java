@@ -46,8 +46,8 @@ public class ControladorPanelFaktura {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 	
-	public void sartuFaktura(String izena, String abizena, int año, int mes, int dia) throws ClassNotFoundException, SQLException {
-		this.modelo.sartuFaktura(izena, abizena, año, mes, dia);
+	public void sartuFaktura(String izena, String abizena, int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuFaktura(izena, abizena, anyo, mes, dia);
 	} 
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {

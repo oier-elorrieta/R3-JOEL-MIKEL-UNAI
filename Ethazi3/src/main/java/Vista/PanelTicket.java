@@ -50,7 +50,7 @@ public class PanelTicket extends JPanel {
 	private String[] produktuak;
 
 	private int TransferentziaZenbakia;
-	private int año;
+	private int anyo;
 	private int mes;
 	private int dia;
 
@@ -64,7 +64,7 @@ public class PanelTicket extends JPanel {
 
 		Calendar fecha = new GregorianCalendar();
 
-		año = fecha.get(Calendar.YEAR);
+		anyo = fecha.get(Calendar.YEAR);
 		mes = fecha.get(Calendar.MONTH);
 		dia = fecha.get(Calendar.DAY_OF_MONTH);
 
@@ -81,7 +81,7 @@ public class PanelTicket extends JPanel {
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
 
-		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + año); 
+		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + anyo); 
 		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Fecha.setBounds(367, 36, 75, 20);
 		tf_Fecha.setColumns(10);
@@ -209,7 +209,7 @@ public class PanelTicket extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelTicket.sakatuLaburpeneraBotoia();
 				try {
-					controladorPanelTicket.gordeTicket(año, mes, dia);
+					controladorPanelTicket.gordeTicket(anyo, mes, dia);
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				} 			

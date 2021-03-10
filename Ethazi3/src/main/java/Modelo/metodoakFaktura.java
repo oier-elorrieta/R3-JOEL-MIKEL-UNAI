@@ -24,8 +24,7 @@ public class metodoakFaktura {
 				nifDago = true;
 				break;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return nifDago;
@@ -38,20 +37,19 @@ public class metodoakFaktura {
 			Statement st;
 			st = konekzioa.createStatement();
 			st.executeUpdate(query2);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}
 
 	public static void sartuFaktura(String NIF, String izena, String abizena, double diruTotala, int TransferentziaZbk,
-			int año, int mes, int dia) {
+			int anyo, int mes, int dia) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
 		char operazioMota = 'F';
 
-		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/"
+		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + anyo + "/" + (mes + 1) + "/"
 				+ dia + "' ,'" + diruTotala + "','" + NIF + "', '" + operazioMota + "')");
 
 		boolean nifDago = begiratuFakturanNIF(NIF);
@@ -70,8 +68,7 @@ public class metodoakFaktura {
 			Statement smt;
 			smt = konekzioa.createStatement();
 			smt.executeUpdate(query3);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}

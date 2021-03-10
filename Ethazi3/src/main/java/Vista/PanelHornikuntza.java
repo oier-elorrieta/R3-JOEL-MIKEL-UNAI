@@ -34,7 +34,7 @@ public class PanelHornikuntza extends JPanel {
 
 	private JTextField tf_Fecha;
 
-	private int año;
+	private int anyo;
 	private int mes;
 	private int dia;
 
@@ -50,7 +50,7 @@ public class PanelHornikuntza extends JPanel {
 
 		Calendar fecha = new GregorianCalendar();
 
-		año = fecha.get(Calendar.YEAR);
+		anyo = fecha.get(Calendar.YEAR);
 		mes = fecha.get(Calendar.MONTH);
 		dia = fecha.get(Calendar.DAY_OF_MONTH);
 
@@ -73,7 +73,7 @@ public class PanelHornikuntza extends JPanel {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + año);
+		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + anyo);
 		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Fecha.setBounds(351, 203, 89, 20);
 		tf_Fecha.setColumns(10);
@@ -133,7 +133,7 @@ public class PanelHornikuntza extends JPanel {
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
 				String nif = controladorPanelHornikuntza.konprobatuNIF();
 				try {
-					controladorPanelHornikuntza.sartuHornikuntza(nomProduktua, año, mes, dia, nif,kantitatea);
+					controladorPanelHornikuntza.sartuHornikuntza(nomProduktua, anyo, mes, dia, nif,kantitatea);
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}

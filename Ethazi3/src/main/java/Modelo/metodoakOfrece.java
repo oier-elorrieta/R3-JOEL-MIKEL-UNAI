@@ -20,8 +20,7 @@ public class metodoakOfrece {
 			while (re.next()) {
 				zbk = re.getInt("count(Cod_Plato)");
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return zbk;
@@ -41,8 +40,7 @@ public class metodoakOfrece {
 				kodeak[i] = re.getInt("Cod_Plato");
 				i++;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return kodeak;
@@ -69,8 +67,7 @@ public class metodoakOfrece {
 			if (re.next()) {
 				platerraDago = true;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		} 
 		return platerraDago;
@@ -83,8 +80,7 @@ public class metodoakOfrece {
 			Statement s1;
 			s1 = konekzioa.createStatement();
 			s1.executeUpdate(query1);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}

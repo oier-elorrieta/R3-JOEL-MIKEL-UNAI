@@ -134,8 +134,7 @@ public class metodoak {
 					TransakzioZbk++;
 				}
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return TransakzioZbk;

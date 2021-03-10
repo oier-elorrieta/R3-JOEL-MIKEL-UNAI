@@ -31,8 +31,7 @@ public class metodoakIncluye {
 			if (re.next()) {
 				sartutaDago = true;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return sartutaDago;
@@ -46,8 +45,7 @@ public class metodoakIncluye {
 			Statement s;
 			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}
@@ -60,8 +58,7 @@ public class metodoakIncluye {
 			Statement s1;
 			s1 = konekzioa.createStatement();
 			s1.executeUpdate(query1);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}

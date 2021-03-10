@@ -34,8 +34,7 @@ public class metodoakTiene {
 			Statement s;
 			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}
@@ -53,8 +52,7 @@ public class metodoakTiene {
 			while (re.next()) {
 				egia = true;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return egia;
@@ -68,8 +66,7 @@ public class metodoakTiene {
 			Statement s;
 			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 
@@ -82,8 +79,7 @@ public class metodoakTiene {
 			Statement s;
 			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 

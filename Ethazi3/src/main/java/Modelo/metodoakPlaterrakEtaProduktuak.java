@@ -23,8 +23,7 @@ public class metodoakPlaterrakEtaProduktuak {
 			if (re.next()) {
 				kantitatea = re.getInt("count(nombre)");
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return kantitatea;
@@ -47,8 +46,7 @@ public class metodoakPlaterrakEtaProduktuak {
 			if (re.next()) {
 				kantitatea = re.getInt("count(nombre)");
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return kantitatea;
@@ -90,8 +88,7 @@ public class metodoakPlaterrakEtaProduktuak {
 				elikagaiak[kont] = p1;
 				kont++;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return elikagaiak;
@@ -133,8 +130,7 @@ public class metodoakPlaterrakEtaProduktuak {
 				platerrak[kont] = p1;
 				kont++;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return platerrak;
@@ -173,8 +169,7 @@ public class metodoakPlaterrakEtaProduktuak {
 				produktuak[kont] = p1;
 				kont++;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return produktuak;

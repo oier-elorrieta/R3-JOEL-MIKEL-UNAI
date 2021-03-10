@@ -21,8 +21,7 @@ public class metodoakPlaterZerrendak {
 				platerMotak[i] = re.getString("TipoDePlato");
 				i++;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return platerMotak;
@@ -42,8 +41,7 @@ public class metodoakPlaterZerrendak {
 				platerMotak[i] = re.getString("Nombre");
 				i++;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return platerMotak;
@@ -63,8 +61,7 @@ public class metodoakPlaterZerrendak {
 				platerMotak[i] = re.getString("Nombre");
 				i++;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return platerMotak;
@@ -82,8 +79,7 @@ public class metodoakPlaterZerrendak {
 			if (re.next()) {
 				i = re.getInt("count('" + platerMota + "')");
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return i;
@@ -101,8 +97,7 @@ public class metodoakPlaterZerrendak {
 			if (re.next()) {
 				platerKodea = re.getInt(1);
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return platerKodea;

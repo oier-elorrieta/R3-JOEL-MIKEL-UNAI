@@ -50,7 +50,7 @@ public class PanelKomanda extends JPanel {
 	private String[] platerMotak;
 
 	private int TransferentziaZenbakia;
-	private int año;
+	private int anyo;
 	private int mes;
 	private int dia; 
 
@@ -65,7 +65,7 @@ public class PanelKomanda extends JPanel {
 
 		Calendar fecha = new GregorianCalendar();
 
-		año = fecha.get(Calendar.YEAR);
+		anyo = fecha.get(Calendar.YEAR);
 		mes = fecha.get(Calendar.MONTH);
 		dia = fecha.get(Calendar.DAY_OF_MONTH);
 
@@ -82,7 +82,7 @@ public class PanelKomanda extends JPanel {
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
 
-		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + año); 
+		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + anyo); 
 		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Fecha.setBounds(367, 36, 75, 20);
 		tf_Fecha.setColumns(10);
@@ -238,7 +238,7 @@ public class PanelKomanda extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {	
 				controladorPanelKomanda.sakatuLaburpeneraBotoia();
 				try {
-					controladorPanelKomanda.sartuKomanda(año, mes, dia);
+					controladorPanelKomanda.sartuKomanda(anyo, mes, dia);
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				}

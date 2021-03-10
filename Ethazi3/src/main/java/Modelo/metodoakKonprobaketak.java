@@ -23,7 +23,6 @@ public class metodoakKonprobaketak {
 				badago = true;
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace(); 
 		}
 		return badago;
@@ -44,8 +43,7 @@ public class metodoakKonprobaketak {
 			if(re.next()) {
 				ondoDago = true;
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return ondoDago;
@@ -66,8 +64,7 @@ public class metodoakKonprobaketak {
 			if (re.next()) {
 				produktuKantitatea = re.getInt("Stock");
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace(); 
 		}
 		return produktuKantitatea;
@@ -103,8 +100,7 @@ public class metodoakKonprobaketak {
 				erroreaLogeatzean = "Bai, erabiltzailea txarto";
 			}
 
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 
@@ -130,8 +126,7 @@ public class metodoakKonprobaketak {
 			if (re.next()) {
 				NIF = re.getString("NIF");
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return NIF;
@@ -155,8 +150,7 @@ public class metodoakKonprobaketak {
 			if (re.next()) {
 				Tipo = re.getString("Tipo");
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return Tipo;
@@ -181,8 +175,7 @@ public class metodoakKonprobaketak {
 			if (re.next()) {
 				LokalarenIzena = re.getString("nombre");
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return LokalarenIzena;

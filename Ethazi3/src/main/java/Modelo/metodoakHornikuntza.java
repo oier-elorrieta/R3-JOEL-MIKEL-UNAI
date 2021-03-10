@@ -21,14 +21,13 @@ public class metodoakHornikuntza {
 			if (re.next()) {
 				izenaFabrikantea = re.getString("Nombre");
 			}
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 		return izenaFabrikantea;
 	}
 
-	public static void sartuHornikuntza(String produktua, int año, int mes, int dia, String nif, int kantitatea, ArrayList<Karritoa> karroa) throws ClassNotFoundException, SQLException {
+	public static void sartuHornikuntza(String produktua, int anyo, int mes, int dia, String nif, int kantitatea, ArrayList<Karritoa> karroa) throws ClassNotFoundException, SQLException {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea(produktua);
@@ -36,7 +35,7 @@ public class metodoakHornikuntza {
 		double dirua = metodoak.jasoProduktuenPrezioa(produktua, kantitatea);
 		char operazioMota = 'A';
 
-		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + año + "/" + (mes + 1) + "/" + dia
+		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + anyo + "/" + (mes + 1) + "/" + dia
 				+ "','" + dirua + "','" + nif + "', '" + operazioMota + "')");
 		String query3 = (Kontsultak.insertHornikuntza + "(" + numTrans + ",'" + izenaFabrikantea + "')");
 		String query4 = (Kontsultak.insertTiene+"('" + produktua + "'," + numTrans + "," + kantitatea + "," + dirua
@@ -52,8 +51,7 @@ public class metodoakHornikuntza {
 			Statement s2;
 			s2 = konekzioa.createStatement();
 			s2.executeUpdate(query4);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}

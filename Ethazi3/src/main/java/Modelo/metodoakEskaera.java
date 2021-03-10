@@ -6,14 +6,14 @@ import java.sql.Statement;
 
 public class metodoakEskaera {
 
-	public static void sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk, int año,
+	public static void sartuEskaera(String NIF, double diruTotala, String helbidea, int TransferentziaZbk, int anyo,
 			int mes, int dia) {
 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 
 		char operazioMota = 'P';
 
-		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + año + "/" + (mes + 1) + "/"
+		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + anyo + "/" + (mes + 1) + "/"
 				+ dia + "','" + diruTotala + "','" + NIF + "', '" + operazioMota + "')");
 
 		String query2 = (Kontsultak.insertEskaera + "('" + TransferentziaZbk + "', '" + helbidea + "')");
@@ -25,8 +25,7 @@ public class metodoakEskaera {
 			Statement st;
 			st = konekzioa.createStatement();
 			st.executeUpdate(query2);
-		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
+		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
 	}
