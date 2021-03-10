@@ -70,9 +70,7 @@ public class metodoakKonprobaketak {
 	// *****************************************************************************************************************************************************************************************************
 
 	public static String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
-
 		Connection konekzioa = BBDDKonexioa.getConexion();
-
 		String query1 = (Kontsultak.selectErabiltzailea + "'" + erabiltzailea + "'");
 		String erroreaLogeatzean = null;
 		try {
@@ -96,16 +94,13 @@ public class metodoakKonprobaketak {
 		} catch (SQLException e) {  
 			e.printStackTrace();
 		}
-
 		return erroreaLogeatzean;
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
 	public static String konprobatuNIF(String erabiltzailea) {
-
 		Connection konekzioa = BBDDKonexioa.getConexion();
-
 		String query1 = (Kontsultak.selectNIF + "'" + erabiltzailea + "'");
 		String NIF = null;
 		try {
@@ -125,9 +120,7 @@ public class metodoakKonprobaketak {
 	// *****************************************************************************************************************************************************************************************************
 
 	public static String konprobatuLokala(String erabiltzailea) {
-
 		Connection konekzioa = BBDDKonexioa.getConexion();
-
 		String query1 = (Kontsultak.selectLokalaMota + "'" + erabiltzailea + "')");
 		String Tipo = null;
 		try {
@@ -147,9 +140,7 @@ public class metodoakKonprobaketak {
 	// *****************************************************************************************************************************************************************************************************
 
 	public static String konprobatuLokalarenIzena(String NIF) {
-
 		Connection konekzioa = BBDDKonexioa.getConexion();
-
 		String query1 = (Kontsultak.selectLokalarenIzena + "'" + NIF + "'");
 		String LokalarenIzena = null;
 		try {

@@ -27,7 +27,7 @@ public class ModeloTestKonprobaketakTaulak {
 	@Test
 	public void begiratuOfrece(){
 
-		assertFalse(metodoakOfrece.begiratuOfrece(null, 0));
+		assertFalse(metodoakOfrece.begiratuLocalOfrece(null, 0));
 
 	}
 }

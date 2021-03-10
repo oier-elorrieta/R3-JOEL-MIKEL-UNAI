@@ -28,13 +28,11 @@ public class metodoakHornikuntza {
 	}
 
 	public static void sartuHornikuntza(String produktua, int anyo, int mes, int dia, String nif, int kantitatea, ArrayList<Karritoa> karroa) throws ClassNotFoundException, SQLException {
-
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea(produktua);
 		int numTrans = metodoak.jasoTransakzioZbk();
 		double dirua = metodoak.jasoProduktuenPrezioa(produktua, kantitatea);
 		char operazioMota = 'A';
-
 		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + anyo + "/" + (mes + 1) + "/" + dia  
 				+ "','" + dirua + "','" + nif + "', '" + operazioMota + "')");
 		String query3 = (Kontsultak.insertHornikuntza + "(" + numTrans + ",'" + izenaFabrikantea + "')");

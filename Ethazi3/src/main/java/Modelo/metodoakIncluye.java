@@ -7,22 +7,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class metodoakIncluye {
-	
+
 	public static void incluye(int platerKodea, int kantitatea, double prezioa, String nif)
 			throws ClassNotFoundException, SQLException {
 		int numTrans = metodoak.jasoTransakzioZbk() - 1;
 		if (begiratuIncluye(platerKodea, numTrans) == false) {
 			sartuIncluye(platerKodea, kantitatea, prezioa, nif, numTrans);
-		}else {
+		} else {
 			updateIncluye(platerKodea, kantitatea, prezioa, numTrans);
 		}
 	}
 
-	public static boolean begiratuIncluye(int platerKodea,int numTrans) throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion(); 
+	public static boolean begiratuIncluye(int platerKodea, int numTrans) throws ClassNotFoundException, SQLException {
+		Connection konekzioa = BBDDKonexioa.getConexion();
 		boolean sartutaDago = false;
-		String query1 = (Kontsultak.selectIncluye+"'" + numTrans + "' and Cod_Plato = '" + platerKodea
-				+ "'");
+		String query1 = (Kontsultak.selectIncluye + "'" + numTrans + "' and Cod_Plato = '" + platerKodea + "'");
 		try {
 			ResultSet re;
 			PreparedStatement p;
@@ -31,21 +30,23 @@ public class metodoakIncluye {
 			if (re.next()) {
 				sartutaDago = true;
 			}
-		} catch (SQLException e) { 
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return sartutaDago;
 	}
 
-	public static void updateIncluye(int platerKodea, int kantitatea, double prezioa, int numTrans) throws ClassNotFoundException, SQLException {
+	public static void updateIncluye(int platerKodea, int kantitatea, double prezioa, int numTrans)
+			throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.updateIncluye+"Num_Platos + " + kantitatea + ", PrecioActual = PrecioActual + " + prezioa
-				+ " where Cod_Plato = " + platerKodea + " and Num_Trans = "+(metodoak.jasoTransakzioZbk()-1)+"");
+		String query1 = (Kontsultak.updateIncluye + "Num_Platos + " + kantitatea + ", PrecioActual = PrecioActual + "
+				+ prezioa + " where Cod_Plato = " + platerKodea + " and Num_Trans = "
+				+ (metodoak.jasoTransakzioZbk() - 1) + "");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
-		} catch (SQLException e) { 
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -58,7 +59,7 @@ public class metodoakIncluye {
 			Statement s1;
 			s1 = konekzioa.createStatement();
 			s1.executeUpdate(query1);
-		} catch (SQLException e) { 
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

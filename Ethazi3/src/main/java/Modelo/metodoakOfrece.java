@@ -26,7 +26,7 @@ public class metodoakOfrece {
 		return zbk;
 	}
 
-	public static int[] kodeak() {
+	public static int[] platerrenKodeak() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.selectCodPlato+"("+Kontsultak.selectMaxNumTrans+")");
 		int[] kodeak = new int[aukeratuIncluyeKodeak()];
@@ -46,16 +46,16 @@ public class metodoakOfrece {
 		return kodeak;
 	}
 
-	public static void ofrece(String nif) {
-		int[] kodeak = kodeak();
+	public static void localOfrece(String nif) {
+		int[] kodeak = platerrenKodeak();
 		for (int i = 0; i < kodeak.length; i++) {
-			if (begiratuOfrece(nif, kodeak[i]) == false) {
-				insertOfrece(nif, kodeak[i]);
+			if (begiratuLocalOfrece(nif, kodeak[i]) == false) {
+				insertLocalOfrece(nif, kodeak[i]);
 			}
 		}
 	}
 
-	public static boolean begiratuOfrece(String nif, int platerKodea) {
+	public static boolean begiratuLocalOfrece(String nif, int platerKodea) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		boolean platerraDago = false;
 		String query1 = (Kontsultak.selectOfrece+"'" + nif + "' and Cod_Plato = '" + platerKodea + "'");
@@ -73,7 +73,7 @@ public class metodoakOfrece {
 		return platerraDago;
 	}
 
-	public static void insertOfrece(String nif, int platerKodea) {
+	public static void insertLocalOfrece(String nif, int platerKodea) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.insertOfrece+"('" + nif + "','" + platerKodea + "')");
 		try {

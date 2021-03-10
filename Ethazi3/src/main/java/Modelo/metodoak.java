@@ -114,16 +114,12 @@ public class metodoak {
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________		
 
 	public static int jasoTransakzioZbk() throws SQLException, ClassNotFoundException {
-
 		Connection konekzioa = BBDDKonexioa.getConexion();
-
 		String query1 = (Kontsultak.selectMaxNumTrans);
 		int TransakzioZbk = 0;
-
 		try {
 			ResultSet re;
 			PreparedStatement p;
-
 			p = konekzioa.prepareStatement(query1);
 			re = p.executeQuery();
 			if (re.next()) {

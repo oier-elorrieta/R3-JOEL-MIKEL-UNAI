@@ -43,7 +43,6 @@ public class ModeloTestTransferentziaZbk {
 				}
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 

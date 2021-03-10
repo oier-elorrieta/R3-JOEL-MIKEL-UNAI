@@ -30,14 +30,12 @@ public class ModeloTestKonprobaketak {
 				lehenengoDNI = rs.getString("DNI");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		assertTrue(metodoakKonprobaketak.begiratuDNI(lehenengoDNI));
-
 	}
 
 	@Test
@@ -58,7 +56,6 @@ public class ModeloTestKonprobaketak {
 				lehenengoProduktua = rs.getString("NomProducto");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
@@ -77,7 +74,6 @@ public class ModeloTestKonprobaketak {
 				lehenengoNIF = rs.getString("NIF");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
@@ -97,14 +93,12 @@ public class ModeloTestKonprobaketak {
 				esperotakoa = rs.getInt("Stock");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		assertEquals(esperotakoa, metodoakKonprobaketak.begiratuStock(lehenengoProduktua, lehenengoNIF));
-
 	}
 
 	@Test
@@ -125,7 +119,6 @@ public class ModeloTestKonprobaketak {
 				lehenengoDNI = rs.getString("DNI");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
@@ -142,7 +135,6 @@ public class ModeloTestKonprobaketak {
 				lehenengoPasahitza = rs.getString("Contraseña");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
@@ -167,13 +159,11 @@ public class ModeloTestKonprobaketak {
 				esperotakoa = "Bai, erabiltzailea txarto";
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		assertEquals(esperotakoa, metodoakKonprobaketak.konprobatuErabiltzailea(lehenengoDNI, lehenengoPasahitza));
-
 	}
 }

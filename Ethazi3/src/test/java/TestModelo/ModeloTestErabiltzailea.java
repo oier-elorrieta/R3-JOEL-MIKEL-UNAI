@@ -15,6 +15,5 @@ public class ModeloTestErabiltzailea {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		assertEquals(esperotakoa, metodoakErabiltzaile.sartuErabiltzailea("esperotakoa", "esperotakoa1", esperotakoa));
-
 	}
 }

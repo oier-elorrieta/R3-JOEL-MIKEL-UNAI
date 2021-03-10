@@ -29,7 +29,6 @@ public class ModeloTestKonprobaketakLokala {
 				lehenengoNIF = rs.getString("NIF");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
@@ -46,7 +45,6 @@ public class ModeloTestKonprobaketakLokala {
 				esperotakoa = re.getString("nombre");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
@@ -76,7 +74,6 @@ public class ModeloTestKonprobaketakLokala {
 				lehenengoNIF = rs.getString("NIF");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
@@ -94,14 +91,12 @@ public class ModeloTestKonprobaketakLokala {
 				esperotakoa = re.getString("Tipo");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________ç
 
 		assertEquals(esperotakoa, metodoakKonprobaketak.konprobatuLokala(lehenengoNIF));
-
 	}
 
 }

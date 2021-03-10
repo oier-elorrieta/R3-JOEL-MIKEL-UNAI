@@ -49,7 +49,6 @@ public class ModeloTestPlaterZerrendak {
 				platerMotak[0] = re.getString("Nombre");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
@@ -66,14 +65,12 @@ public class ModeloTestPlaterZerrendak {
 				platerMotak1[0] = re.getString("Nombre");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		assertEquals(metodoakPlaterZerrendak.platerMotaArabera(platerMotak1[0]), metodoakPlaterZerrendak.platerMotaArabera(platerMotak[0]));
-
 	}
 
 	@Test
@@ -94,7 +91,6 @@ public class ModeloTestPlaterZerrendak {
 				lehenengoPlaterra = re.getString("Nombre");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
@@ -111,13 +107,11 @@ public class ModeloTestPlaterZerrendak {
 				esperotakoPlaterra = re.getString("Nombre");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		assertEquals(metodoakPlaterZerrendak.jasoPlaterKodea(esperotakoPlaterra), metodoakPlaterZerrendak.jasoPlaterKodea(lehenengoPlaterra));
-
 	}
 
 	@Test
@@ -138,12 +132,12 @@ public class ModeloTestPlaterZerrendak {
 				i = re.getInt("count('TipoDePlato')");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
+		
+		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		assertEquals(metodoakPlaterZerrendak.zenbatPlaterMotaBakoitzeko("Vegetariano"), i);
-
 	}
 
 	@Test
@@ -166,13 +160,11 @@ public class ModeloTestPlaterZerrendak {
 				i++;
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		assertEquals(kodeak, metodoakOfrece.kodeak());
-
+		assertEquals(kodeak, metodoakOfrece.platerrenKodeak());
 	}
 }

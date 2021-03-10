@@ -9,7 +9,6 @@ public class metodoakTicket {
 	public static void sartuTicket(String NIF, double diruTotala, int TransferentziaZbk, int anyo, int mes, int dia) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		char operazioMota = 'T';
-
 		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + anyo + "/" + (mes + 1) + "/"
 				+ dia + "','" + diruTotala + "','" + NIF + "', '" + operazioMota + "')");
 		try {
@@ -17,7 +16,6 @@ public class metodoakTicket {
 			s = konekzioa.createStatement();
 			s.executeUpdate(query1);
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 	}

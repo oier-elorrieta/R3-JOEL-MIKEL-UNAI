@@ -18,14 +18,11 @@ public class BBDDKonexioa {
 		try {
 			Class.forName(CONTROLADOR);
 			konekzioa = DriverManager.getConnection(URL, USUARIO, CLAVE);			 
-			System.out.println("Konekzioa OK");
 
 		} catch (ClassNotFoundException e) {
-			System.out.println("Errorea kontroladorean");
 			e.printStackTrace();
 
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 		return konekzioa;

@@ -30,14 +30,12 @@ public class ModeloTestKonprobaketakNif {
 				lehenengoNIF = rs.getString("NIF");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		assertTrue(metodoakKonprobaketak.begiratuNIF(lehenengoNIF));
-
 	}
 
 	@Test
@@ -58,7 +56,6 @@ public class ModeloTestKonprobaketakNif {
 				lehenengoDNI = rs.getString("DNI");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
@@ -75,13 +72,11 @@ public class ModeloTestKonprobaketakNif {
 				esperotakoa = re.getString("NIF");
 			}
 		} catch (SQLException e) {
-			System.out.println("Errorea konexioan");
 			e.printStackTrace();
 		}
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		assertEquals(esperotakoa, metodoakKonprobaketak.konprobatuNIF(lehenengoDNI));
-
 	}
 }

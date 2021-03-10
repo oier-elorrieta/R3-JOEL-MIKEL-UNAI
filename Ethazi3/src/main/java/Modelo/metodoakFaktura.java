@@ -44,7 +44,6 @@ public class metodoakFaktura {
 			int anyo, int mes, int dia) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		char operazioMota = 'F';
-
 		String query1 = (Kontsultak.insertOperaciones + "('" + TransferentziaZbk + "', '" + anyo + "/" + (mes + 1) + "/"
 				+ dia + "' ,'" + diruTotala + "','" + NIF + "', '" + operazioMota + "')");
 		boolean nifDago = begiratuFakturanNIF(NIF);

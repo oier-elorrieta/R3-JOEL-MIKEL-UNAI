@@ -1,7 +1,6 @@
 package Controlador;
 
 import java.sql.SQLException;
-
 import Modelo.Modelo;
 import Vista.Vista;
 
@@ -10,7 +9,6 @@ public class Controlador {
 	private Modelo modelo;
 	
 	private Vista vista;
-	
 	
 	private ControladorPanelLogin controladorPanelLogin;
 	private ControladorPanelErregistratu controladorPanelErregistratu; 
