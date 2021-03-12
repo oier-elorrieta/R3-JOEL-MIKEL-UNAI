@@ -3,22 +3,27 @@ package Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import Controlador.ControladorPanelFaktura;
 
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 
 @SuppressWarnings("serial")
 public class PanelFaktura extends JPanel {
@@ -48,10 +53,15 @@ public class PanelFaktura extends JPanel {
 	private JButton btnSegi;
 
 	private JComboBox<String> cb_Produktoak = new JComboBox<String>();
+	private JFormattedTextField tf;
 	private JSpinner nºunidades;
 	private String[] produktuak;
 
 	private int TransferentziaZenbakia;
+	private int anyo;
+	private int mes;
+	private int dia;
+
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -60,6 +70,12 @@ public class PanelFaktura extends JPanel {
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
+
+		Calendar fecha = new GregorianCalendar();
+
+		anyo = fecha.get(Calendar.YEAR);
+		mes = fecha.get(Calendar.MONTH);
+		dia = fecha.get(Calendar.DAY_OF_MONTH);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -74,7 +90,7 @@ public class PanelFaktura extends JPanel {
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
 
-		tf_Fecha = new JTextField();
+		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + anyo); 
 		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Fecha.setBounds(367, 36, 75, 20);
 		tf_Fecha.setColumns(10);
@@ -121,7 +137,7 @@ public class PanelFaktura extends JPanel {
 		tf_Abizena.setColumns(10);
 		add(tf_Abizena);
 
-		tf_NIF = new JTextField(controladorPanelFaktura.ikusiNIF());
+		tf_NIF = new JTextField(controladorPanelFaktura.konprobatuNIF());
 		tf_NIF.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		tf_NIF.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_NIF.setBounds(61, 233, 183, 20);
@@ -187,6 +203,7 @@ public class PanelFaktura extends JPanel {
 		btnAurrera = new JButton(" Aurrera");
 		btnAurrera.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnAurrera.setBounds(254, 266, 92, 23);
+		btnAurrera.setEnabled(false);
 		add(btnAurrera);
 
 		btnSegi = new JButton("\u2714\uFE0F");
@@ -197,13 +214,18 @@ public class PanelFaktura extends JPanel {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		nºunidades = new JSpinner();
-		final String numbers[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
-		SpinnerModel model1 = new SpinnerListModel(numbers);
+		int min = 0;
+		int max = 100;
+		int step = 1;
+		int initValue = 0;
+		SpinnerModel model = new SpinnerNumberModel(initValue, min, max, step);
 
-		nºunidades = new JSpinner(model1);
+		nºunidades = new JSpinner(model);
 		nºunidades.setBounds(254, 233, 120, 20);
 		add(nºunidades);
+
+		tf = ((JSpinner.DefaultEditor) nºunidades.getEditor()).getTextField();
+		tf.setEditable(false);
 
 		cb_Produktoak.setBounds(30, 68, 214, 20);
 		add(cb_Produktoak);
@@ -233,7 +255,7 @@ public class PanelFaktura extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelFaktura.sakatuLaburpeneraBotoia();
 				try {
-					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText());
+					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText(), anyo, mes, dia);
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				} 
@@ -262,18 +284,25 @@ public class PanelFaktura extends JPanel {
 	private ActionListener listenerSegiBotoia(ControladorPanelFaktura controladorPanelFaktura) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 				String aukera = (String) cb_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
-				if (kantitatea != 0) {
-					controladorPanelFaktura.sartu(aukera, kantitatea);
+				int stockKantitatea = controladorPanelFaktura.begiratuStock(aukera, controladorPanelFaktura.konprobatuNIF());
+				btnAurrera.setEnabled(true);
+				if (kantitatea > stockKantitatea) {
+					JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}else {
+					if (kantitatea != 0) {
+						controladorPanelFaktura.sartu(aukera, kantitatea);
+					}
+
+					String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
+					tf_Totala.setText(diruTotala); 
 				}
-				nºunidades.setValue("0");
+				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);
 				cb_Produktoak.setSelectedItem(null);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
-
-				String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
-				tf_Totala.setText(diruTotala);
 			}
 		};
 	}

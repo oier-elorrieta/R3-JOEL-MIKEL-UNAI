@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import Controlador.ControladorPanelErregistratu;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
@@ -27,13 +28,13 @@ public class PanelErregistratu extends JPanel {
 	private JTextField tf_Pasahitza;
 	private JTextField tf_DNI;
 	private JTextField tf_NIF;
-	
+
 	private JLabel lb_Pasahitza;
 	private JLabel lb_DNI;
 	private JLabel lb_NIF;
 	private JLabel lb_Abizena;
 	private JLabel lb_Izena;
-	
+
 	// *****************************************************************************************************************************************************************************************************
 
 	public PanelErregistratu(ControladorPanelErregistratu controladorPanelErregistratu) {
@@ -60,7 +61,7 @@ public class PanelErregistratu extends JPanel {
 		btnAtzera.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		btnAtzera.setBounds(250, 181, 190, 21);
 		add(btnAtzera);
-		
+
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		tf_Izena = new JTextField();
@@ -82,14 +83,14 @@ public class PanelErregistratu extends JPanel {
 		tf_DNI.setColumns(10);
 		tf_DNI.setBounds(10, 182, 190, 19);
 		add(tf_DNI);
-		
+
 		tf_NIF = new JTextField();
 		tf_NIF.setColumns(10);
 		tf_NIF.setBounds(250, 61, 190, 19);
 		add(tf_NIF);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
 		lb_Pasahitza = new JLabel("Pasahitza:");
 		lb_Pasahitza.setBounds(10, 212, 190, 13);
 		add(lb_Pasahitza);
@@ -101,11 +102,11 @@ public class PanelErregistratu extends JPanel {
 		lb_Izena = new JLabel("Izena:");
 		lb_Izena.setBounds(10, 37, 190, 13);
 		add(lb_Izena);
-		
+
 		lb_NIF = new JLabel("NIF:");
 		lb_NIF.setBounds(250, 37, 190, 13);
 		add(lb_NIF);
-		
+
 		lb_DNI = new JLabel("DNI:");
 		lb_DNI.setBounds(10, 158, 190, 13);
 		add(lb_DNI);
@@ -130,14 +131,24 @@ public class PanelErregistratu extends JPanel {
 				String abizena = tf_Abizena.getText();
 				String pasahitza = tf_Pasahitza.getText();
 				String dni = tf_DNI.getText();
-				String nif = tf_NIF.getText();
-				try {
-					controladorPanelErregistratu.sakatuErregistratuBotoia(dni, izena, abizena, pasahitza, nif);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				}			
+				String nif = tf_NIF.getText(); 
+				boolean badagoDNI = controladorPanelErregistratu.begiratuDNI(dni);
+				boolean onanif = controladorPanelErregistratu.begiratuNIF(nif);
+				if(badagoDNI == true) {
+					JOptionPane.showMessageDialog(null, "Erabiltzaile hau badago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE); 
+					controladorPanelErregistratu.ikusiPanelErregistratu();
+				}else if(onanif == false) {
+					JOptionPane.showMessageDialog(null, "NIF ez dago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE);
+					controladorPanelErregistratu.ikusiPanelErregistratu();
+				}else {
+					try {
+						controladorPanelErregistratu.sakatuErregistratuBotoia(dni, izena, abizena, pasahitza, nif);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} catch (ClassNotFoundException e) {
+						e.printStackTrace();
+					}	
+				}		
 				controladorPanelErregistratu.sakatuErregistratuBotoia();
 			}
 		};
@@ -152,14 +163,14 @@ public class PanelErregistratu extends JPanel {
 			}
 		};
 	} 
-	
+
 	// *****************************************************************************************************************************************************************************************************
 
-		private ActionListener listenerAtzeraBotoia(ControladorPanelErregistratu controladorPanelErregistratu) {
-			return new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					controladorPanelErregistratu.sakatuAtzeraBotoia();
-				}
-			};
-		} 
+	private ActionListener listenerAtzeraBotoia(ControladorPanelErregistratu controladorPanelErregistratu) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelErregistratu.sakatuAtzeraBotoia();
+			}
+		};
+	} 
 }

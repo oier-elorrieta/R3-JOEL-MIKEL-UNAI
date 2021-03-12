@@ -1,5 +1,6 @@
 package Controlador;
 
+import java.sql.SQLException;
 import Modelo.Modelo;
 import Vista.Vista;
 
@@ -9,16 +10,17 @@ public class Controlador {
 	
 	private Vista vista;
 	
-	
 	private ControladorPanelLogin controladorPanelLogin;
 	private ControladorPanelErregistratu controladorPanelErregistratu; 
 	private ControladorPanelMenuJatetxea controladorPanelJatetxea;	
 	private ControladorPanelMenuTaberna controladorPanelTaberna;	
-	private ControladorPanelMenuKafetegia controladorPanelKafetegia;	
+	private ControladorPanelMenuKafetegia controladorPanelKafetegia;
+	private ControladorPanelHornikuntza controladorPanelHornikuntza;
 	private ControladorPanelFaktura controladorPanelFaktura;
 	private ControladorPanelTicket controladorPanelTicket;
 	private ControladorPanelEskaera controladorPanelPedidos; 
 	private ControladorPanelLaburpena controladorPanelLaburpena;
+	private ControladorPanelKomanda controladorPanelKomanda;
 
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
@@ -29,9 +31,11 @@ public class Controlador {
 		this.controladorPanelTaberna = new ControladorPanelMenuTaberna(this.vista, this);
 		this.controladorPanelKafetegia = new ControladorPanelMenuKafetegia(this.vista, this);
 		this.controladorPanelFaktura = new ControladorPanelFaktura(this.modelo, this.vista, this);
+		this.controladorPanelHornikuntza = new ControladorPanelHornikuntza(this.vista, this, this.modelo);
 		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
 		this.controladorPanelPedidos = new ControladorPanelEskaera(this.modelo, this.vista, this); 
 		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this);
+		this.controladorPanelKomanda = new ControladorPanelKomanda(this.modelo, this.vista, this);
 		this.nabegatzenPanelLogin();
 	}
 	
@@ -59,6 +63,10 @@ public class Controlador {
 		this.controladorPanelFaktura.ikusiPanelFaktura();
 	}
 	
+	public void nabegatzenPanelHornikuntza() { 
+		this.controladorPanelHornikuntza.ikusiPanelHornikuntza();
+	}
+	
 	public void nabegatzenPanelTicket() { 
 		this.controladorPanelTicket.ikusiPanelTicket();
 	}
@@ -67,8 +75,16 @@ public class Controlador {
 		this.controladorPanelPedidos.ikusiPanelPedidos();
 	}
 	
-	public void nabegatzenPanelLaburpena() { 
-		this.controladorPanelLaburpena.ikusiPanelLaburpena();
+	public void nabegatzenPanelLaburpena(){ 
+		try {
+			this.controladorPanelLaburpena.ikusiPanelLaburpena();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void nabegatzenPanelKomanda() {
+		this.controladorPanelKomanda.ikusiPanelKomanda();
 	}
 	
 	public void itxi() {

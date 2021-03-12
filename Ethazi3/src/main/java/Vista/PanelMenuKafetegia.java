@@ -4,11 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;  
 import javax.swing.JPanel;
-
-import Controlador.ControladorPanelMenuKafetegia; 
+import Controlador.ControladorPanelMenuKafetegia;
 
 @SuppressWarnings("serial")
 public class PanelMenuKafetegia extends JPanel {
@@ -20,6 +18,7 @@ public class PanelMenuKafetegia extends JPanel {
 	private JButton btnEskaera;
 	private JButton btnSarratu;
 	private JButton btnHasiera;
+	private JButton btnHornikuntza;
 
 	// *****************************************************************************************************************************************************************************************************
 	
@@ -42,7 +41,7 @@ public class PanelMenuKafetegia extends JPanel {
 
 		btnEskaera = new JButton("ESKAERA");
 		btnEskaera.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnEskaera.setBounds(123, 135, 210, 113);
+		btnEskaera.setBounds(10, 135, 210, 113);
 		add(btnEskaera);
 
 
@@ -55,6 +54,11 @@ public class PanelMenuKafetegia extends JPanel {
 		btnHasiera.setFont(new Font("Tahoma", Font.ITALIC, 8));
 		btnHasiera.setBounds(10, 259, 90, 30);
 		add(btnHasiera);
+		
+		btnHornikuntza = new JButton("+");
+		btnHornikuntza.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnHornikuntza.setBounds(230, 135, 210, 113);
+		add(btnHornikuntza);
 
 		initializeEvents();
 	}
@@ -67,6 +71,7 @@ public class PanelMenuKafetegia extends JPanel {
 		this.btnEskaera.addActionListener(listenerEskaeraBotoia(this.controladorPanelMenu3));
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelMenu3));
 		this.btnHasiera.addActionListener(listenerHasieraBotoia(this.controladorPanelMenu3));
+		this.btnHornikuntza.addActionListener(listenerHornikuntzaBotoia(this.controladorPanelMenu3));
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
@@ -108,6 +113,16 @@ public class PanelMenuKafetegia extends JPanel {
 			}
 		};
 	} 
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerHornikuntzaBotoia(ControladorPanelMenuKafetegia controladorPanelMenu3) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelMenu3.sakatuHornikuntzaBotoia();
+			}
+		};
+	}
 	
 	// *****************************************************************************************************************************************************************************************************
 	

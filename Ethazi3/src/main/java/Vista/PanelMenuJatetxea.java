@@ -22,6 +22,7 @@ public class PanelMenuJatetxea extends JPanel {
 	private JButton btnSarratu;
 	private JButton btnKomanda;
 	private JButton btnHasiera;
+	private JButton btnHornikuntza;
 
 	// *****************************************************************************************************************************************************************************************************
 	
@@ -34,17 +35,17 @@ public class PanelMenuJatetxea extends JPanel {
 
 		btnTicket = new JButton("TICKET");
 		btnTicket.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnTicket.setBounds(10, 11, 210, 113); 
+		btnTicket.setBounds(10, 11, 185, 113); 
 		add(btnTicket);
 
 		btnFaktura = new JButton("FAKTURA");
 		btnFaktura.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnFaktura.setBounds(230, 11, 210, 113);
+		btnFaktura.setBounds(255, 11, 185, 113);
 		add(btnFaktura);
 
 		btnEskaera = new JButton("ESKAERA");
 		btnEskaera.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnEskaera.setBounds(10, 135, 210, 113);
+		btnEskaera.setBounds(10, 135, 185, 113);
 		add(btnEskaera);
 
 
@@ -55,13 +56,18 @@ public class PanelMenuJatetxea extends JPanel {
 		
 		btnKomanda = new JButton("KOMANDA");
 		btnKomanda.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnKomanda.setBounds(230, 135, 210, 113);
+		btnKomanda.setBounds(255, 135, 185, 113);
 		add(btnKomanda);
 		
 		btnHasiera = new JButton("DESLOGEATU");
 		btnHasiera.setFont(new Font("Tahoma", Font.ITALIC, 8));
 		btnHasiera.setBounds(10, 259, 90, 30);
 		add(btnHasiera);
+		
+		btnHornikuntza = new JButton("+");
+		btnHornikuntza.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnHornikuntza.setBounds(204, 11, 41, 237);
+		add(btnHornikuntza);
 
 		initializeEvents();
 	}
@@ -74,6 +80,9 @@ public class PanelMenuJatetxea extends JPanel {
 		this.btnEskaera.addActionListener(listenerEskaeraBotoia(this.controladorPanelJatetxea));
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelJatetxea));
 		this.btnHasiera.addActionListener(listenerHasieraBotoia(this.controladorPanelJatetxea));
+		this.btnHornikuntza.addActionListener(listenerHornikuntzaBotoia(this.controladorPanelJatetxea));
+		this.btnKomanda.addActionListener(listenerKomandaBotoia(this.controladorPanelJatetxea));
+
 	}
 	
 	// *****************************************************************************************************************************************************************************************************
@@ -118,10 +127,30 @@ public class PanelMenuJatetxea extends JPanel {
 	
 	// *****************************************************************************************************************************************************************************************************
 	
+		private ActionListener listenerHornikuntzaBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
+			return new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					controladorPanelJatetxea.sakatuHornikuntzaBotoia();
+				}
+			};
+		} 
+	
+	// *****************************************************************************************************************************************************************************************************
+	
 	private ActionListener listenerHasieraBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelJatetxea.sakatuHasieraBotoia();
+			}
+		};
+	}
+	
+	// *****************************************************************************************************************************************************************************************************
+	
+	private ActionListener listenerKomandaBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelJatetxea.sakatuKomandaPanelaIkustekoBotoia();
 			}
 		};
 	}

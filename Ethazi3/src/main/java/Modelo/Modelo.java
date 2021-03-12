@@ -8,7 +8,7 @@ public class Modelo {
 
 	private ArrayList<Karritoa> karroa = new ArrayList<Karritoa>();
 
-	private Erabiltzaile usuarioa = new Erabiltzaile(null, null);
+	private Erabiltzaile usuarioa = new Erabiltzaile(null, null);													
 
 	// *****************************************************************************************************************************************************************
 
@@ -38,43 +38,119 @@ public class Modelo {
 
 	// *****************************************************************************************************************************************************************
 
-	public void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) throws ClassNotFoundException, SQLException {
-		metodoak.sartuDatuak(izena, abizena, pasahitza, dni, nif);
+	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
+		return metodoakKonprobaketak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
+	}
+	
+	public String konprobatuNIF () {
+		return metodoakKonprobaketak.konprobatuNIF(usuarioa.getErabiltzailea());
 	}
 
-	public Erabiltzaile sartuErabiltzailea(String erabiltzailea, String pasahitza) {
-		return metodoak.sartuErabiltzailea(erabiltzailea, pasahitza,usuarioa);
+	public String konprobatuLokala() {
+		return metodoakKonprobaketak.konprobatuLokala(usuarioa.getErabiltzailea());
 	}
 
+	public String konprobatuLokalarenIzena() {
+		return metodoakKonprobaketak.konprobatuLokalarenIzena(konprobatuNIF());
+	}
+	
+	public boolean begiratuDNI(String dni) {
+		return metodoakKonprobaketak.begiratuDNI(dni);
+	}
+
+	public boolean begiratuNIF(String nif) {
+		return metodoakKonprobaketak.begiratuNIF(nif);
+	}
+
+	public int begiratuStock(String produktua,String nif) {
+		return metodoakKonprobaketak.begiratuStock(produktua, nif);
+	}
+
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+		
+	public String[] platerrakJaso() {
+		return metodoak.sartuPlaterrak();
+	}
+
+	public String[] platerMotak(){
+		return metodoakPlaterZerrendak.platerMotak();
+	}
+
+	public String[] platerMota(String platerMota, String tipoa){
+		return metodoakPlaterZerrendak.platerMota(platerMota, tipoa);
+	}
+	
+	public int platerKodea(String platerra){
+		return metodoakPlaterZerrendak.jasoPlaterKodea(platerra);
+	}
+
+	public String[] platerMotaArabera(String platerMota) {
+		return metodoakPlaterZerrendak.platerMotaArabera(platerMota);
+	}
+	
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+		
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
 		return metodoak.jasoTransakzioZbk();
 	}
 	
-	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
-		return metodoak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+
+	public void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) {
+		metodoakErabiltzaile.sartuDatuak(izena, abizena, pasahitza, dni, nif);
 	}
 
-	public String konprobatuNIF () {
-		return metodoak.konprobatuNIF(usuarioa.getErabiltzailea());
+	public Erabiltzaile sartuErabiltzailea(String erabiltzailea, String pasahitza) {
+		return metodoakErabiltzaile.sartuErabiltzailea(erabiltzailea, pasahitza,usuarioa);
+	}
+	
+	public void sartuTicket(int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoakTicket.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk(), anyo, mes , dia);
 	}
 
-	public String konprobatuLokala() {
-		return metodoak.konprobatuLokala(usuarioa.getErabiltzailea());
+	public void sartuEskaera(String helbidea, int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoakEskaera.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk(), anyo, mes , dia);
 	}
 
-	public void sartuTicket() throws ClassNotFoundException, SQLException {
-		metodoak.sartuTicket(konprobatuNIF(), diruTotala(), metodoak.jasoTransakzioZbk());
-	}
-
-	public void sartuEskaera(String helbidea) throws ClassNotFoundException, SQLException {
-		metodoak.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk());
-	}
-
-	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
-		metodoak.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk());
+	public void sartuFaktura(String izena, String abizena, int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+		metodoakFaktura.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk(), anyo, mes , dia);
 	} 
 
-	public String konprobatuLokalarenIzena() {
-		return metodoak.konprobatuLokalarenIzena(konprobatuNIF());
+	public void sartuHornikuntza(String produktua,int anyo, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
+		metodoakHornikuntza.sartuHornikuntza(produktua, anyo, mes, dia, nif, kantitatea, karroa);
+	}
+	
+	public void sartuTiene()  {
+		try {
+			metodoakTiene.sartuTiene(karroa, jasoTransakzioZbk(), usuarioa.getErabiltzailea()); 
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void sartuKomanda(int anyo, int mes, int dia) throws ClassNotFoundException, SQLException  {
+		metodoakKomanda.sartuKomanda(diruTotala(),konprobatuNIF(), anyo, mes, dia);
 	} 
+	
+	public void incluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException{
+		metodoakIncluye.incluye(platerKodea, kantitatea, diruTotala(), konprobatuNIF());
+	}
+	
+	public void hasieratuOperaciones() throws ClassNotFoundException, SQLException   {
+		metodoakKomanda.hasieratuOperaciones();
+	}
+	
+	public void ofrece() {
+		metodoakOfrece.localOfrece(konprobatuNIF());
+	}
+	
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+
+	public void ezabatuKomanda() throws ClassNotFoundException, SQLException {
+		metodoakKomanda.ezabatuKomanda();
+	}
 }

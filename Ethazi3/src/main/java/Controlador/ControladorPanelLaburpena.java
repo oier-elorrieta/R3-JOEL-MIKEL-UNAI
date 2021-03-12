@@ -1,5 +1,6 @@
 package Controlador;
 
+import java.sql.SQLException;
 import Modelo.Modelo;
 import Vista.PanelLaburpena;
 import Vista.Vista;
@@ -17,7 +18,7 @@ public class ControladorPanelLaburpena {
 		this.controlador = controlador;	
 	}
 	
-	public void ikusiPanelLaburpena() {
+	public void ikusiPanelLaburpena() throws ClassNotFoundException, SQLException {
 		this.panelLaburpena = new PanelLaburpena(this);
 		this.vista.ikusiPanela(this.panelLaburpena);
 	}
@@ -51,5 +52,9 @@ public class ControladorPanelLaburpena {
 	
 	public String konprobatuLokalarenIzena() {
 		return this.modelo.konprobatuLokalarenIzena();
+	}
+	
+	public void sartuTiene() throws ClassNotFoundException, SQLException {
+		this.modelo.sartuTiene();
 	}
 }

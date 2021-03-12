@@ -26,7 +26,7 @@ public class ControladorPanelEskaera {
 		this.vista.ikusiPanela(this.panelPedidos);
 	}
 
-	public void sakatuLaburpeneraBotoia() {
+	public void sakatuLaburpeneraBotoia(){
 		this.controlador.nabegatzenPanelLaburpena();
 	}
 
@@ -46,8 +46,8 @@ public class ControladorPanelEskaera {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 
-	public void gordeEskaera(String helbidea) throws ClassNotFoundException, SQLException {
-		this.modelo.sartuEskaera(helbidea);
+	public void gordeEskaera(String helbidea, int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuEskaera(helbidea, anyo, mes, dia);
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
@@ -75,5 +75,13 @@ public class ControladorPanelEskaera {
 	
 	public String konprobatuLokalarenIzena() {
 		return this.modelo.konprobatuLokalarenIzena();
+	}
+	
+	public String konprobatuNIF() {
+		return this.modelo.konprobatuNIF();
+	}
+	
+	public int begiratuStock(String produktua, String nif) {
+		return this.modelo.begiratuStock(produktua, nif);
 	}
 }

@@ -51,8 +51,8 @@ public class ControladorPanelTicket {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 
-	public void gordeTicket() throws ClassNotFoundException, SQLException {
-		this.modelo.sartuTicket();
+	public void gordeTicket(int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuTicket(anyo, mes, dia);
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
@@ -80,5 +80,13 @@ public class ControladorPanelTicket {
 	
 	public String konprobatuLokalarenIzena() {
 		return this.modelo.konprobatuLokalarenIzena();
+	}
+	
+	public String konprobatuNIF() {
+		return this.modelo.konprobatuNIF();
+	} 
+
+	public int begiratuStock(String produktua, String nif) {
+		return this.modelo.begiratuStock(produktua, nif);
 	}
 }

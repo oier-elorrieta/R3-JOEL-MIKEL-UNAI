@@ -5,16 +5,20 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
 import Controlador.ControladorPanelEskaera;
@@ -45,10 +49,15 @@ public class PanelEskaera extends JPanel {
 	private JRadioButton rb_Helbide;
 
 	private JComboBox<String> cb_Produktoak = new JComboBox<String>();
+	private JFormattedTextField tf;
 	private JSpinner nºunidades;
 	private String[] produktuak;
 
 	private int TransferentziaZenbakia;
+	private int anyo;
+	private int mes;
+	private int dia;
+
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -57,6 +66,12 @@ public class PanelEskaera extends JPanel {
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
+
+		Calendar fecha = new GregorianCalendar();
+
+		anyo = fecha.get(Calendar.YEAR);
+		mes = fecha.get(Calendar.MONTH);
+		dia = fecha.get(Calendar.DAY_OF_MONTH);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -71,7 +86,7 @@ public class PanelEskaera extends JPanel {
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
 
-		tf_Fecha = new JTextField();
+		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + anyo);
 		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Fecha.setBounds(367, 36, 75, 20);
 		tf_Fecha.setColumns(10);
@@ -153,6 +168,7 @@ public class PanelEskaera extends JPanel {
 		btnAurrera = new JButton(" Aurrera");
 		btnAurrera.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnAurrera.setBounds(254, 266, 92, 23);
+		btnAurrera.setEnabled(false);
 		add(btnAurrera);
 
 		btnSegi = new JButton("\u2714\uFE0F");
@@ -168,12 +184,18 @@ public class PanelEskaera extends JPanel {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		final String numbers[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
-		SpinnerModel model1 = new SpinnerListModel(numbers);
+		int min = 0;
+		int max = 100;
+		int step = 1;
+		int initValue = 0;
+		SpinnerModel model = new SpinnerNumberModel(initValue, min, max, step);
 
-		nºunidades = new JSpinner(model1);
+		nºunidades = new JSpinner(model);
 		nºunidades.setBounds(254, 233, 120, 20);
 		add(nºunidades);
+
+		tf = ((JSpinner.DefaultEditor) nºunidades.getEditor()).getTextField();
+		tf.setEditable(false);
 
 		cb_Produktoak.setBounds(30, 68, 214, 20);
 		add(cb_Produktoak);
@@ -204,7 +226,7 @@ public class PanelEskaera extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelEskaera.sakatuLaburpeneraBotoia();
 				try {
-					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText());
+					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText(), anyo, mes, dia);
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				}
@@ -233,17 +255,25 @@ public class PanelEskaera extends JPanel {
 	private ActionListener listenerSegiBotoia(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 				String aukera = (String) cb_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
-				if (kantitatea != 0) {
-					controladorPanelEskaera.sartu(aukera, kantitatea);
+				int stockKantitatea = controladorPanelEskaera.begiratuStock(aukera, controladorPanelEskaera.konprobatuNIF());
+				btnAurrera.setEnabled(true);
+				if (kantitatea > stockKantitatea) {
+					JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}else {
+					if (kantitatea != 0) {
+						controladorPanelEskaera.sartu(aukera, kantitatea);
+					}
+
+					String diruTotala = String.valueOf(controladorPanelEskaera.diruTotala());
+					tf_Totala.setText(diruTotala); 
 				}
-				nºunidades.setValue("0");
+				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);
 				cb_Produktoak.setSelectedItem(null);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
-				String diruTotala = String.valueOf(controladorPanelEskaera.diruTotala());
-				tf_Totala.setText(diruTotala);
 			}
 		};
 	}

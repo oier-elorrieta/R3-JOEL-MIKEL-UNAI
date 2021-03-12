@@ -39,6 +39,15 @@ public class ControladorPanelErregistratu {
 	public void sakatuSarratuBotoia() {
 		this.controlador.itxi();
 	} 
+	
+	public boolean begiratuDNI(String dni) {
+		return this.modelo.begiratuDNI(dni);
+	}
+	
+	public boolean begiratuNIF(String nif) {
+		return this.modelo.begiratuNIF(nif);
+	}
+	
 }
 
 

@@ -35,8 +35,16 @@ public class ControladorPanelMenuJatetxea {
 		this.controlador.nabegatzenPanelLogin();
 	}
 	
+	public void sakatuHornikuntzaBotoia() {
+		this.controlador.nabegatzenPanelHornikuntza();
+	}
+	
 	public void sakatuAtzeraBotoia() {
 		this.controlador.itxi();
+	}
+	
+	public void sakatuKomandaPanelaIkustekoBotoia() {
+		this.controlador.nabegatzenPanelKomanda();
 	}
 }
 
