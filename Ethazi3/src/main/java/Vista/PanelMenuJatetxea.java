@@ -4,11 +4,12 @@ import java.awt.Color;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionListener; 
 
 import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import Controlador.ControladorPanelMenuJatetxea;
 import javax.swing.JMenuBar;
@@ -29,6 +30,12 @@ public class PanelMenuJatetxea extends JPanel {
 	private JMenu menuTop5;
 	private JMenuItem menuItemSarratu;
 	private JMenuItem menuItemDeslogeatu;
+	private String [] top5produktuak;
+	private JMenuItem produktuak;
+	private JMenu diario;	
+	private JMenu semanal;
+	private JMenuItem diarioDirua;
+	private JMenuItem semanalDirua;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -68,21 +75,38 @@ public class PanelMenuJatetxea extends JPanel {
 		menuBar.setBounds(24, 11, 400, 22);
 		add(menuBar);
 
-		menuOperatibitatea = new JMenu("Operatibitatea");
+		menuOperatibitatea = new JMenu("Operatibitatea"); 
 		menuBar.add(menuOperatibitatea);
-		
-		JMenuItem proba = new JMenuItem("nio");
-		menuOperatibitatea.add(proba);
-		
+
+		diario = new JMenu("Diario");
+		menuOperatibitatea.add(diario);
+
+		semanal = new JMenu("Semanal");
+		menuOperatibitatea.add(semanal);
+
+		semanalDirua = new JMenuItem(String.valueOf(controladorPanelJatetxea.asterokoIrabazia()));
+		semanal.add(semanalDirua);
+
+		diarioDirua = new JMenuItem(String.valueOf(controladorPanelJatetxea.egunerokoIrabazia()));
+		diario.add(diarioDirua);
+
 		menuTop5 = new JMenu("Top5 Salmentak");
-		menuBar.add(menuTop5);
+		menuBar.add(menuTop5);		
+
+		top5produktuak = controladorPanelJatetxea.top5produktuak();
+		for(int i = 0; i < top5produktuak.length; i++) { 
+			produktuak = new JMenuItem();  
+			produktuak.setText(top5produktuak[i]);
+			menuTop5.add(produktuak);
+		}
 
 		menuItemDeslogeatu	= new JMenuItem("DESLOGEATU");
 		menuBar.add(menuItemDeslogeatu); 
 
 		menuItemSarratu = new JMenuItem("X"); 
-		menuBar.add(menuItemSarratu);
+		menuItemSarratu.setHorizontalAlignment(SwingConstants.RIGHT);
 		menuItemSarratu.setForeground(Color.RED);
+		menuBar.add(menuItemSarratu);
 
 		initializeEvents();
 	}
@@ -96,8 +120,7 @@ public class PanelMenuJatetxea extends JPanel {
 		this.btnHornikuntza.addActionListener(listenerHornikuntzaBotoia(this.controladorPanelJatetxea));
 		this.btnKomanda.addActionListener(listenerKomandaBotoia(this.controladorPanelJatetxea));
 		this.menuItemSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelJatetxea));
-		this.menuItemDeslogeatu.addActionListener(listenerHasieraBotoia(this.controladorPanelJatetxea));
-
+		this.menuItemDeslogeatu.addActionListener(listenerHasieraBotoia(this.controladorPanelJatetxea));  
 	}
 
 	// *****************************************************************************************************************************************************************************************************

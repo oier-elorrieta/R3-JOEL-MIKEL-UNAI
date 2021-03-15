@@ -4,8 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.sql.Statement; 
 
 public class metodoakHornikuntza {
 
@@ -27,7 +26,7 @@ public class metodoakHornikuntza {
 		return izenaFabrikantea;
 	}
 
-	public static void sartuHornikuntza(String produktua, int anyo, int mes, int dia, String nif, int kantitatea, ArrayList<Karritoa> karroa) throws ClassNotFoundException, SQLException {
+	public static void sartuHornikuntza(String produktua, int anyo, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea(produktua);
 		int numTrans = metodoak.jasoTransakzioZbk();
