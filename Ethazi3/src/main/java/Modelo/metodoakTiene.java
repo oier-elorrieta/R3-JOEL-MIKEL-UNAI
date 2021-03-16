@@ -9,18 +9,17 @@ import java.util.ArrayList;
 
 public class metodoakTiene {
 
-	public static void sartuTiene(ArrayList<Karritoa> karroa, int numTrans, String erabiltzaile) throws ClassNotFoundException, SQLException {
+	public static void sartuTiene(ArrayList<Karritoa> karroa, int numTrans, String erabiltzaile, int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
 		for (int i = 0; i < karroa.size(); i++) {
 			String elikagaia = karroa.get(i).getElikagaia();
 			int kopurua = karroa.get(i).getKopuru();
 			double prezioa = karroa.get(i).getBalioa();
 			if (begiratuTiene(elikagaia, numTrans) == false) {
 				insertTiene(elikagaia, kopurua, prezioa);
-				if (metodoakKonprobaketak.begiratuStock(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzaile)) < 5) {
-					gehituVende(elikagaia);
-				}
+				gehituVende(elikagaia, erabiltzaile, anyo, mes, dia);
 			} else {
 				updateTiene(elikagaia, kopurua, prezioa);
+				gehituVende(elikagaia, erabiltzaile, anyo, mes, dia);
 			}
 		}
 	}
@@ -71,16 +70,9 @@ public class metodoakTiene {
 
 	}
 
-	public static void gehituVende(String elikagaia) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.updateStock+"'" + elikagaia + "' and NIFLocal = ("+Kontsultak.selectNifOperaciones+"("+Kontsultak.selectMaxNumTrans+"))");
-		try {
-			Statement s;
-			s = konekzioa.createStatement();
-			s.executeUpdate(query1);
-		} catch (SQLException e) { 
-			e.printStackTrace();
+	public static void gehituVende(String elikagaia, String erabiltzailea, int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+		if (metodoakKonprobaketak.begiratuStock(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea)) < 5) {
+			metodoakHornikuntza.sartuHornikuntza(elikagaia, anyo, (mes-1), dia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);
 		}
-
 	}
 }

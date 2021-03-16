@@ -80,10 +80,10 @@ public class metodoakKonprobaketak {
 			re = p.executeQuery();
 			if (re.next()) {
 				if (re.getString("DNI").equalsIgnoreCase(erabiltzailea)
-						&& re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
+						&& re.getString("Contrasenya").equalsIgnoreCase(pasahitza)) {
 					erroreaLogeatzean = "EZ";
 				} else if (re.getString("DNI").equalsIgnoreCase(erabiltzailea)
-						&& !re.getString("Contraseña").equalsIgnoreCase(pasahitza)) {
+						&& !re.getString("Contrasenya").equalsIgnoreCase(pasahitza)) {
 					JOptionPane.showMessageDialog(null, "Pasahitza ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
 					erroreaLogeatzean = "Bai, pasahitza txarto";
 				}
@@ -155,5 +155,9 @@ public class metodoakKonprobaketak {
 			e.printStackTrace();
 		}
 		return LokalarenIzena;
+	}
+
+	public static boolean konprobatuAtributuenLuzeera(String dni, String izena, String abizena, String pasahitza, String nif) {
+		return false;
 	}
 }

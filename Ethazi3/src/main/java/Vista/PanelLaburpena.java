@@ -10,6 +10,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 @SuppressWarnings("serial")
 public class PanelLaburpena extends JPanel {
@@ -26,6 +28,9 @@ public class PanelLaburpena extends JPanel {
 	private JLabel lb_Total;
 	private JLabel lb_TotalCant;
 	private JLabel lb_Laburpen;
+	private int anyo;
+	private int mes;
+	private int dia;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -34,7 +39,13 @@ public class PanelLaburpena extends JPanel {
 		this.controladorPanelLaburpena = controladorPanelLaburpena;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		
+
+		Calendar fecha = new GregorianCalendar();
+
+		anyo = fecha.get(Calendar.YEAR);
+		mes = fecha.get(Calendar.MONTH);
+		dia = fecha.get(Calendar.DAY_OF_MONTH);
+
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		String emaitza = controladorPanelLaburpena.pantailaratu();
@@ -101,12 +112,12 @@ public class PanelLaburpena extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					controladorPanelLaburpena.sartuTiene(); 
+					controladorPanelLaburpena.sartuTiene(anyo, mes, dia); 
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
-				
-				
+
+
 				if (controladorPanelLaburpena.konprobatuLokala().equals("Restaurante")) {
 					controladorPanelLaburpena.sakatuPanelJatetxeBotoia();
 				} else if (controladorPanelLaburpena.konprobatuLokala().equals("Bar")) {

@@ -11,26 +11,26 @@ public class ControladorPanelLaburpena {
 	private Vista vista;
 	private Controlador controlador;
 	private PanelLaburpena panelLaburpena; 
-	
+
 	public ControladorPanelLaburpena(Modelo modelo, Vista vista, Controlador controlador) {
 		this.modelo = modelo;
 		this.vista = vista;
 		this.controlador = controlador;	
 	}
-	
+
 	public void ikusiPanelLaburpena() throws ClassNotFoundException, SQLException {
 		this.panelLaburpena = new PanelLaburpena(this);
 		this.vista.ikusiPanela(this.panelLaburpena);
 	}
-	 
+
 	public String pantailaratu() {
 		return this.modelo.pantailaratu();
 	}
-	
+
 	public double diruTotala() {
 		return this.modelo.diruTotala();
 	}
-	
+
 	public void sakatuPanelTabernaBotoia() {
 		this.controlador.nabegatzenPanelTaberna();
 		this.modelo.ezabatuProduktuenArraya();
@@ -45,16 +45,16 @@ public class ControladorPanelLaburpena {
 		this.controlador.nabegatzenPanelJatetxea();
 		this.modelo.ezabatuProduktuenArraya();
 	}
-	
+
 	public String konprobatuLokala() {
 		return this.modelo.konprobatuLokala();
 	}
-	
+
 	public String konprobatuLokalarenIzena() {
 		return this.modelo.konprobatuLokalarenIzena();
 	}
-	
-	public void sartuTiene() throws ClassNotFoundException, SQLException {
-		this.modelo.sartuTiene();
+
+	public void sartuTiene(int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+		this.modelo.sartuTiene(anyo, mes, dia);
 	}
 }

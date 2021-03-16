@@ -21,7 +21,7 @@ public class Kontsultak {
 	
 	static final String selectNifLocal = "SELECT nif from local where NIF = ";
 
-	static final String selectErabiltzailea = "SELECT DNI,Contraseña FROM usuario where dni = " ;
+	static final String selectErabiltzailea = "SELECT DNI,contrasenya FROM usuario where dni = " ;
 
 	static final String selectNIF = "SELECT NIF FROM usuario where dni = ";
 

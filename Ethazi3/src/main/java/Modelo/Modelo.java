@@ -123,9 +123,9 @@ public class Modelo {
 		metodoakHornikuntza.sartuHornikuntza(produktua, anyo, mes, dia, nif, kantitatea);
 	}
 
-	public void sartuTiene()  {
+	public void sartuTiene(int anyo, int mes, int dia)  {
 		try {
-			metodoakTiene.sartuTiene(karroa, jasoTransakzioZbk(), usuarioa.getErabiltzailea()); 
+			metodoakTiene.sartuTiene(karroa, jasoTransakzioZbk(), usuarioa.getErabiltzailea(), anyo, mes, dia); 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
