@@ -59,10 +59,11 @@ public class PanelMenuTaberna extends JPanel {
 		add(btnHornikuntza);
 
 		menuBar = new JMenuBar();
-		menuBar.setBounds(24, 11, 400, 22);
+		menuBar.setBorderPainted(false);
+		menuBar.setBounds(0, 0, 475, 25);
 		add(menuBar);
 
-		menuOperatibitatea = new JMenu("Operatibitatea"); 
+		menuOperatibitatea = new JMenu("Operatibitatea");
 		menuBar.add(menuOperatibitatea);
 
 		diario = new JMenu("Diario");
@@ -78,19 +79,21 @@ public class PanelMenuTaberna extends JPanel {
 		diario.add(diarioDirua);
 
 		menuTop5 = new JMenu("Top5 Salmentak");
-		menuBar.add(menuTop5);		
+		menuBar.add(menuTop5);
 
 		top5produktuak = controladorPanelMenuTaberna.top5produktuak();
-		for(int i = 0; i < top5produktuak.length; i++) { 
-			produktuak = new JMenuItem();  
+		for (int i = 0; i < top5produktuak.length; i++) {
+			produktuak = new JMenuItem();
 			produktuak.setText(top5produktuak[i]);
 			menuTop5.add(produktuak);
 		}
 
-		menuItemDeslogeatu	= new JMenuItem("DESLOGEATU");
-		menuBar.add(menuItemDeslogeatu); 
+		menuItemDeslogeatu = new JMenuItem("DESLOGEATU");
+		menuItemDeslogeatu.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+		menuItemDeslogeatu.setHorizontalAlignment(SwingConstants.RIGHT);
+		menuBar.add(menuItemDeslogeatu);
 
-		menuItemSarratu = new JMenuItem("X"); 
+		menuItemSarratu = new JMenuItem("X");
 		menuItemSarratu.setHorizontalAlignment(SwingConstants.RIGHT);
 		menuItemSarratu.setForeground(Color.RED);
 		menuBar.add(menuItemSarratu);

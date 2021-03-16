@@ -44,29 +44,30 @@ public class PanelMenuKafetegia extends JPanel {
 
 		btnTicket = new JButton("TICKET");
 		btnTicket.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnTicket.setBounds(10, 40, 210, 113); 
+		btnTicket.setBounds(10, 40, 210, 120); 
 		add(btnTicket);
 
 		btnFaktura = new JButton("FAKTURA");
 		btnFaktura.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnFaktura.setBounds(230, 40, 210, 113);
+		btnFaktura.setBounds(230, 40, 210, 120);
 		add(btnFaktura);
 
 		btnEskaera = new JButton("ESKAERA");
 		btnEskaera.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnEskaera.setBounds(10, 164, 210, 113);
+		btnEskaera.setBounds(10, 171, 210, 118);
 		add(btnEskaera); 
 
 		btnHornikuntza = new JButton("+");
 		btnHornikuntza.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnHornikuntza.setBounds(230, 164, 210, 113);
+		btnHornikuntza.setBounds(230, 169, 210, 120);
 		add(btnHornikuntza);
 
 		menuBar = new JMenuBar();
-		menuBar.setBounds(24, 11, 400, 22);
+		menuBar.setBorderPainted(false);
+		menuBar.setBounds(0, 0, 475, 25);
 		add(menuBar);
 
-		menuOperatibitatea = new JMenu("Operatibitatea"); 
+		menuOperatibitatea = new JMenu("Operatibitatea");
 		menuBar.add(menuOperatibitatea);
 
 		diario = new JMenu("Diario");
@@ -82,17 +83,19 @@ public class PanelMenuKafetegia extends JPanel {
 		diario.add(diarioDirua);
 
 		menuTop5 = new JMenu("Top5 Salmentak");
-		menuBar.add(menuTop5);		
+		menuBar.add(menuTop5);
 
 		top5produktuak = controladorPanelMenuKafetegia.top5produktuak();
-		for(int i = 0; i < top5produktuak.length; i++) { 
-			produktuak = new JMenuItem();  
+		for (int i = 0; i < top5produktuak.length; i++) {
+			produktuak = new JMenuItem();
 			produktuak.setText(top5produktuak[i]);
 			menuTop5.add(produktuak);
 		}
 
-		menuItemDeslogeatu	= new JMenuItem("DESLOGEATU");
-		menuBar.add(menuItemDeslogeatu); 
+		menuItemDeslogeatu = new JMenuItem("DESLOGEATU");
+		menuItemDeslogeatu.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+		menuItemDeslogeatu.setHorizontalAlignment(SwingConstants.RIGHT);
+		menuBar.add(menuItemDeslogeatu);
 
 		menuItemSarratu = new JMenuItem("X");
 		menuItemSarratu.setHorizontalAlignment(SwingConstants.RIGHT);

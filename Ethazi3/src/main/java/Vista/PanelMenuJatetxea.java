@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener; 
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JMenu;
@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 
 import Controlador.ControladorPanelMenuJatetxea;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem; 
+import javax.swing.JMenuItem;
 
 @SuppressWarnings("serial")
 public class PanelMenuJatetxea extends JPanel {
@@ -22,17 +22,17 @@ public class PanelMenuJatetxea extends JPanel {
 
 	private JButton btnFaktura;
 	private JButton btnTicket;
-	private JButton btnEskaera; 
-	private JButton btnKomanda; 
+	private JButton btnEskaera;
+	private JButton btnKomanda;
 	private JButton btnHornikuntza;
 	private JMenuBar menuBar;
 	private JMenu menuOperatibitatea;
 	private JMenu menuTop5;
 	private JMenuItem menuItemSarratu;
 	private JMenuItem menuItemDeslogeatu;
-	private String [] top5produktuak;
+	private String[] top5produktuak;
 	private JMenuItem produktuak;
-	private JMenu diario;	
+	private JMenu diario;
 	private JMenu semanal;
 	private JMenuItem diarioDirua;
 	private JMenuItem semanalDirua;
@@ -48,34 +48,35 @@ public class PanelMenuJatetxea extends JPanel {
 
 		btnTicket = new JButton("TICKET");
 		btnTicket.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnTicket.setBounds(10, 39, 185, 113); 
+		btnTicket.setBounds(10, 39, 185, 122);
 		add(btnTicket);
 
 		btnFaktura = new JButton("FAKTURA");
 		btnFaktura.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnFaktura.setBounds(255, 39, 185, 113);
+		btnFaktura.setBounds(255, 39, 185, 122);
 		add(btnFaktura);
 
 		btnEskaera = new JButton("ESKAERA");
 		btnEskaera.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnEskaera.setBounds(10, 176, 185, 113);
+		btnEskaera.setBounds(10, 167, 185, 122);
 		add(btnEskaera);
 
 		btnKomanda = new JButton("KOMANDA");
 		btnKomanda.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnKomanda.setBounds(255, 176, 185, 113);
+		btnKomanda.setBounds(255, 167, 185, 122);
 		add(btnKomanda);
 
 		btnHornikuntza = new JButton("+");
 		btnHornikuntza.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnHornikuntza.setBounds(205, 52, 41, 237);
+		btnHornikuntza.setBounds(205, 39, 41, 250);
 		add(btnHornikuntza);
 
 		menuBar = new JMenuBar();
-		menuBar.setBounds(24, 11, 400, 22);
+		menuBar.setBorderPainted(false);
+		menuBar.setBounds(0, 0, 475, 25);
 		add(menuBar);
 
-		menuOperatibitatea = new JMenu("Operatibitatea"); 
+		menuOperatibitatea = new JMenu("Operatibitatea");
 		menuBar.add(menuOperatibitatea);
 
 		diario = new JMenu("Diario");
@@ -91,19 +92,21 @@ public class PanelMenuJatetxea extends JPanel {
 		diario.add(diarioDirua);
 
 		menuTop5 = new JMenu("Top5 Salmentak");
-		menuBar.add(menuTop5);		
+		menuBar.add(menuTop5);
 
 		top5produktuak = controladorPanelJatetxea.top5produktuak();
-		for(int i = 0; i < top5produktuak.length; i++) { 
-			produktuak = new JMenuItem();  
+		for (int i = 0; i < top5produktuak.length; i++) {
+			produktuak = new JMenuItem();
 			produktuak.setText(top5produktuak[i]);
 			menuTop5.add(produktuak);
 		}
 
-		menuItemDeslogeatu	= new JMenuItem("DESLOGEATU");
-		menuBar.add(menuItemDeslogeatu); 
+		menuItemDeslogeatu = new JMenuItem("DESLOGEATU");
+		menuItemDeslogeatu.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+		menuItemDeslogeatu.setHorizontalAlignment(SwingConstants.RIGHT);
+		menuBar.add(menuItemDeslogeatu);
 
-		menuItemSarratu = new JMenuItem("X"); 
+		menuItemSarratu = new JMenuItem("X");
 		menuItemSarratu.setHorizontalAlignment(SwingConstants.RIGHT);
 		menuItemSarratu.setForeground(Color.RED);
 		menuBar.add(menuItemSarratu);
@@ -116,11 +119,11 @@ public class PanelMenuJatetxea extends JPanel {
 	private void initializeEvents() {
 		this.btnFaktura.addActionListener(listenerFakturaBotoia(this.controladorPanelJatetxea));
 		this.btnTicket.addActionListener(listenerTicketBotoia(this.controladorPanelJatetxea));
-		this.btnEskaera.addActionListener(listenerEskaeraBotoia(this.controladorPanelJatetxea)); 
+		this.btnEskaera.addActionListener(listenerEskaeraBotoia(this.controladorPanelJatetxea));
 		this.btnHornikuntza.addActionListener(listenerHornikuntzaBotoia(this.controladorPanelJatetxea));
 		this.btnKomanda.addActionListener(listenerKomandaBotoia(this.controladorPanelJatetxea));
 		this.menuItemSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelJatetxea));
-		this.menuItemDeslogeatu.addActionListener(listenerHasieraBotoia(this.controladorPanelJatetxea));  
+		this.menuItemDeslogeatu.addActionListener(listenerHasieraBotoia(this.controladorPanelJatetxea));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -131,7 +134,7 @@ public class PanelMenuJatetxea extends JPanel {
 				controladorPanelJatetxea.sakatuFakturaPanelaIkustekoBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -141,7 +144,7 @@ public class PanelMenuJatetxea extends JPanel {
 				controladorPanelJatetxea.sakatuTicketPanelaIkustekoBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -151,7 +154,7 @@ public class PanelMenuJatetxea extends JPanel {
 				controladorPanelJatetxea.sakatuEskaeraPanelaIkustekoBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -171,7 +174,7 @@ public class PanelMenuJatetxea extends JPanel {
 				controladorPanelJatetxea.sakatuHornikuntzaBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
