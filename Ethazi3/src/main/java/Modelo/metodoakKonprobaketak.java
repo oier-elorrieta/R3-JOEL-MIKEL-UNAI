@@ -9,9 +9,9 @@ import javax.swing.JOptionPane;
 
 public class metodoakKonprobaketak {
 
-	public static boolean begiratuDNI(String dni) {
+	public static boolean begiratuNAN(String NAN) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.selectDNI+ " where DNI = '"+dni+"'");
+		String query1 = (Kontsultak.selectDNI+ " where DNI = '"+NAN+"'");
 		boolean badago = false;
 		try {
 			ResultSet re;
@@ -156,8 +156,30 @@ public class metodoakKonprobaketak {
 		}
 		return LokalarenIzena;
 	}
+	
+	// *****************************************************************************************************************************************************************************************************
 
-	public static boolean konprobatuAtributuenLuzeera(String dni, String izena, String abizena, String pasahitza, String nif) {
-		return false;
+	public static boolean konprobatuErabiltzaileAtributuenLuzeera(String nan, String izena, String abizena, String pasahitza, String nif) {
+		boolean luzeeraEgokia = true;
+		if (nan.length() == 0 || izena.length() == 0 || abizena.length() == 0 || pasahitza.length() == 0 || nif.length() == 0) {
+			JOptionPane.showMessageDialog(null, "Leku guztiak beharrezkoak dira", "ERROR", JOptionPane.ERROR_MESSAGE);
+			luzeeraEgokia = false;
+		}else if (nan.length() != 9) {
+			JOptionPane.showMessageDialog(null, "NAN luzeera ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
+			luzeeraEgokia = false;
+		}else if (izena.length() > 20) {
+			JOptionPane.showMessageDialog(null, "Izenaren luzeera ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
+			luzeeraEgokia = false;
+		}else if (abizena.length() > 40) {
+			JOptionPane.showMessageDialog(null, "Abizenaren luzeera ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
+			luzeeraEgokia = false;
+		}else if (pasahitza.length() > 20) {
+			JOptionPane.showMessageDialog(null, "Pasahitzaren luzeera ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
+			luzeeraEgokia = false;
+		}else if (nif.length() != 9) {
+			JOptionPane.showMessageDialog(null, "NIF-aren luzeera ez da egokia", "ERROR", JOptionPane.ERROR_MESSAGE);
+			luzeeraEgokia = false;
+		}
+		return luzeeraEgokia;
 	}
 }

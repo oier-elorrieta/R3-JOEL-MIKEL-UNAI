@@ -12,9 +12,9 @@ public class metodoakErabiltzaile {
 		return usuarioa;
 	}		
 
-	public static void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) {
+	public static void sartuDatuak(String izena, String abizena, String pasahitza, String nan, String nif) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.insertDatuak + "('" + izena + "', '" + abizena + "','" + pasahitza + "','" + dni
+		String query1 = (Kontsultak.insertDatuak + "('" + izena + "', '" + abizena + "','" + pasahitza + "','" + nan
 				+ "', '" + nif + "')");
 		try {
 			Statement s;

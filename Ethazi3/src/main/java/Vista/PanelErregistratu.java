@@ -26,11 +26,11 @@ public class PanelErregistratu extends JPanel {
 	private JTextField tf_Izena;
 	private JTextField tf_Abizena;
 	private JTextField tf_Pasahitza;
-	private JTextField tf_DNI;
+	private JTextField tf_NAN;
 	private JTextField tf_NIF;
 
 	private JLabel lb_Pasahitza;
-	private JLabel lb_DNI;
+	private JLabel lb_NAN;
 	private JLabel lb_NIF;
 	private JLabel lb_Abizena;
 	private JLabel lb_Izena;
@@ -79,10 +79,10 @@ public class PanelErregistratu extends JPanel {
 		tf_Pasahitza.setBounds(10, 236, 190, 19);
 		add(tf_Pasahitza);
 
-		tf_DNI = new JTextField();
-		tf_DNI.setColumns(10);
-		tf_DNI.setBounds(10, 182, 190, 19);
-		add(tf_DNI);
+		tf_NAN = new JTextField();
+		tf_NAN.setColumns(10);
+		tf_NAN.setBounds(10, 182, 190, 19);
+		add(tf_NAN);
 
 		tf_NIF = new JTextField();
 		tf_NIF.setColumns(10);
@@ -107,9 +107,9 @@ public class PanelErregistratu extends JPanel {
 		lb_NIF.setBounds(250, 37, 190, 13);
 		add(lb_NIF);
 
-		lb_DNI = new JLabel("DNI:");
-		lb_DNI.setBounds(10, 158, 190, 13);
-		add(lb_DNI);
+		lb_NAN = new JLabel("NAN:");
+		lb_NAN.setBounds(10, 158, 190, 13);
+		add(lb_NAN);
 
 		initializeEvents();
 	}
@@ -130,26 +130,31 @@ public class PanelErregistratu extends JPanel {
 				String izena = tf_Izena.getText();
 				String abizena = tf_Abizena.getText();
 				String pasahitza = tf_Pasahitza.getText();
-				String dni = tf_DNI.getText();
-				String nif = tf_NIF.getText(); 
-				boolean badagoDNI = controladorPanelErregistratu.begiratuDNI(dni);
-				boolean onanif = controladorPanelErregistratu.begiratuNIF(nif);
-				if(badagoDNI == true) {
-					JOptionPane.showMessageDialog(null, "Erabiltzaile hau badago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE); 
-					controladorPanelErregistratu.ikusiPanelErregistratu();
-				}else if(onanif == false) {
-					JOptionPane.showMessageDialog(null, "NIF ez dago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE);
-					controladorPanelErregistratu.ikusiPanelErregistratu();
+				String NAN = tf_NAN.getText();
+				String nif = tf_NIF.getText();
+				boolean luzeeraEgokia = controladorPanelErregistratu.konprobatuErabiltzaileAtributuenLuzeera(NAN, izena, abizena, pasahitza, nif);
+				boolean badagoNAN = controladorPanelErregistratu.begiratuNAN(NAN);
+				boolean onanif = controladorPanelErregistratu.begiratuNIF(nif); 
+				if(luzeeraEgokia == true) {
+					if(badagoNAN == true) {
+						JOptionPane.showMessageDialog(null, "Erabiltzaile hau badago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE); 
+						controladorPanelErregistratu.ikusiPanelErregistratu();
+					}else if(onanif == false) {
+						JOptionPane.showMessageDialog(null, "NIF ez dago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE);
+						controladorPanelErregistratu.ikusiPanelErregistratu();
+					}else {
+						try {
+							controladorPanelErregistratu.sakatuErregistratuBotoia(NAN, izena, abizena, pasahitza, nif);
+						} catch (SQLException e) {
+							e.printStackTrace();
+						} catch (ClassNotFoundException e) {
+							e.printStackTrace();
+						}	
+					}		
+					controladorPanelErregistratu.sakatuErregistratuBotoia();
 				}else {
-					try {
-						controladorPanelErregistratu.sakatuErregistratuBotoia(dni, izena, abizena, pasahitza, nif);
-					} catch (SQLException e) {
-						e.printStackTrace();
-					} catch (ClassNotFoundException e) {
-						e.printStackTrace();
-					}	
-				}		
-				controladorPanelErregistratu.sakatuErregistratuBotoia();
+					controladorPanelErregistratu.sakatuErregistratuBotoia();
+				} 
 			}
 		};
 	} 

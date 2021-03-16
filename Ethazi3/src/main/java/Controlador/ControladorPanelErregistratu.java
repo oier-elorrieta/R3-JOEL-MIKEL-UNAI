@@ -23,9 +23,9 @@ public class ControladorPanelErregistratu {
 		this.vista.ikusiPanela(this.panelErregistratu);
 	}
 	
-	public void sakatuErregistratuBotoia(String izena, String abizena, String pasahitza, String dni, String nif) throws SQLException, ClassNotFoundException {
+	public void sakatuErregistratuBotoia(String izena, String abizena, String pasahitza, String nan, String nif) throws SQLException, ClassNotFoundException {
 		this.controlador.nabegatzenPanelLogin();
-		this.modelo.sartuDatuak(izena,abizena,pasahitza, dni, nif);
+		this.modelo.sartuDatuak(izena,abizena,pasahitza, nan, nif);
 	}
 	
 	public void sakatuErregistratuBotoia() {
@@ -40,14 +40,17 @@ public class ControladorPanelErregistratu {
 		this.controlador.itxi();
 	} 
 	
-	public boolean begiratuDNI(String dni) {
-		return this.modelo.begiratuDNI(dni);
+	public boolean begiratuNAN(String nan) {
+		return this.modelo.begiratuNAN(nan);
 	}
 	
 	public boolean begiratuNIF(String nif) {
 		return this.modelo.begiratuNIF(nif);
 	}
 	
+	public boolean konprobatuErabiltzaileAtributuenLuzeera(String nan, String izena, String abizena, String pasahitza, String nif) {
+		return this.modelo.konprobatuErabiltzaileAtributuenLuzeera(nan, izena, abizena, pasahitza, nif);
+	}
 }
 
 

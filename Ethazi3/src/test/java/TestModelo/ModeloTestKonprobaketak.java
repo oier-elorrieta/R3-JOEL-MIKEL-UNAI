@@ -35,7 +35,7 @@ public class ModeloTestKonprobaketak {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		assertTrue(metodoakKonprobaketak.begiratuDNI(lehenengoDNI));
+		assertTrue(metodoakKonprobaketak.begiratuNAN(lehenengoDNI));
 	}
 
 	@Test

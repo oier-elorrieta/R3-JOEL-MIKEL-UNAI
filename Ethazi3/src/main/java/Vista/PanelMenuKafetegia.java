@@ -28,10 +28,10 @@ public class PanelMenuKafetegia extends JPanel {
 	private JMenuItem menuItemDeslogeatu;
 	private String [] top5produktuak;
 	private JMenuItem produktuak;
-	private JMenu diario;	
-	private JMenu semanal;
-	private JMenuItem diarioDirua;
-	private JMenuItem semanalDirua;
+	private JMenu egunero;	
+	private JMenu astero;
+	private JMenuItem eguneroDirua;
+	private JMenuItem asteroDirua;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -70,17 +70,17 @@ public class PanelMenuKafetegia extends JPanel {
 		menuOperatibitatea = new JMenu("Operatibitatea");
 		menuBar.add(menuOperatibitatea);
 
-		diario = new JMenu("Diario");
-		menuOperatibitatea.add(diario);
+		egunero = new JMenu("Egunean");
+		menuOperatibitatea.add(egunero);
 
-		semanal = new JMenu("Semanal");
-		menuOperatibitatea.add(semanal);
+		astero = new JMenu("Astean");
+		menuOperatibitatea.add(astero);
 
-		semanalDirua = new JMenuItem(String.valueOf(controladorPanelMenuKafetegia.asterokoIrabazia()));
-		semanal.add(semanalDirua);
+		asteroDirua = new JMenuItem(String.valueOf(controladorPanelMenuKafetegia.asterokoIrabazia()));
+		astero.add(asteroDirua);
 
-		diarioDirua = new JMenuItem(String.valueOf(controladorPanelMenuKafetegia.egunerokoIrabazia()));
-		diario.add(diarioDirua);
+		eguneroDirua = new JMenuItem(String.valueOf(controladorPanelMenuKafetegia.egunerokoIrabazia()));
+		egunero.add(eguneroDirua);
 
 		menuTop5 = new JMenu("Top5 Salmentak");
 		menuBar.add(menuTop5);

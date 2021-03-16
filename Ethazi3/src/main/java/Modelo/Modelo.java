@@ -12,6 +12,10 @@ public class Modelo {
 
 	// *****************************************************************************************************************************************************************
 
+	public boolean konprobatuErabiltzaileAtributuenLuzeera(String nan, String izena, String abizena, String pasahitza, String nif) {
+		return metodoakKonprobaketak.konprobatuErabiltzaileAtributuenLuzeera(nan, izena, abizena, pasahitza, nif);
+	}
+
 	public String[] produktuakJaso() {
 		return metodoak.sartuSalgaiak();
 	}
@@ -54,8 +58,8 @@ public class Modelo {
 		return metodoakKonprobaketak.konprobatuLokalarenIzena(konprobatuNIF());
 	}
 
-	public boolean begiratuDNI(String dni) {
-		return metodoakKonprobaketak.begiratuDNI(dni);
+	public boolean begiratuNAN(String nan) {
+		return metodoakKonprobaketak.begiratuNAN(nan);
 	}
 
 	public boolean begiratuNIF(String nif) {
@@ -99,8 +103,8 @@ public class Modelo {
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________
 
-	public void sartuDatuak(String izena, String abizena, String pasahitza, String dni, String nif) {
-		metodoakErabiltzaile.sartuDatuak(izena, abizena, pasahitza, dni, nif);
+	public void sartuDatuak(String izena, String abizena, String pasahitza, String NAN, String nif) {
+		metodoakErabiltzaile.sartuDatuak(izena, abizena, pasahitza, NAN, nif);
 	}
 
 	public Erabiltzaile sartuErabiltzailea(String erabiltzailea, String pasahitza) {
