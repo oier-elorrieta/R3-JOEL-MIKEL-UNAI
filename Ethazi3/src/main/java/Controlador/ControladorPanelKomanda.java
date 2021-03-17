@@ -113,4 +113,16 @@ public class ControladorPanelKomanda {
 	public void ofrece() {
 		this.modelo.ofrece();
 	}
+	
+	public String[] ComboBoxaSakatuProduktuak() {
+		return this.modelo.produktuakJaso();
+	}
+
+	public String konprobatuNIF() {
+		return this.modelo.konprobatuNIF();
+	} 
+	
+	public int begiratuStock(String produktua, String nif) {
+		return this.modelo.begiratuStock(produktua, nif);
+	}
 }
