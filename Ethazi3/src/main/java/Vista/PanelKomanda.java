@@ -1,4 +1,5 @@
 package Vista;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -14,7 +15,9 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
-import Controlador.ControladorPanelKomanda; 
+import javax.swing.JOptionPane;
+
+import Controlador.ControladorPanelKomanda;
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
@@ -43,17 +46,18 @@ public class PanelKomanda extends JPanel {
 	private JRadioButton rdbtnBigarrena;
 	private JRadioButton rdbtnPostre;
 
-	private JComboBox<String> cb_Produktoak = new JComboBox<String>();
+	private JComboBox<String> cb_Platerrak = new JComboBox<String>();
 	private JComboBox<String> cb_Mota = new JComboBox<String>();
+	private JComboBox<String> cb_Produktoak = new JComboBox<String>();
 	private JSpinner nºunidades;
+	private String[] platerrak;
 	private String[] produktuak;
 	private String[] platerMotak;
 
 	private int TransferentziaZenbakia;
 	private int anyo;
 	private int mes;
-	private int dia; 
-
+	private int dia;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -82,7 +86,7 @@ public class PanelKomanda extends JPanel {
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
 
-		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + anyo); 
+		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + anyo);
 		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Fecha.setBounds(367, 36, 75, 20);
 		tf_Fecha.setColumns(10);
@@ -161,17 +165,17 @@ public class PanelKomanda extends JPanel {
 
 		btnSegi = new JButton("\u2714\uFE0F");
 		btnSegi.setHorizontalAlignment(SwingConstants.TRAILING);
-		btnSegi.setBounds(388, 232, 57, 23); 
+		btnSegi.setBounds(388, 232, 57, 23);
 		btnSegi.setEnabled(false);
 		add(btnSegi);
 
 		rdbtnLehenengoa = new JRadioButton("Lehenengoa");
-		rdbtnLehenengoa.setBounds(30, 108, 211, 21);
+		rdbtnLehenengoa.setBounds(30, 134, 211, 21);
 		rdbtnLehenengoa.setEnabled(false);
 		add(rdbtnLehenengoa);
 
 		rdbtnBigarrena = new JRadioButton("Bigarrena");
-		rdbtnBigarrena.setBounds(30, 152, 214, 21);
+		rdbtnBigarrena.setBounds(30, 165, 211, 21);
 		rdbtnBigarrena.setEnabled(false);
 		add(rdbtnBigarrena);
 
@@ -192,12 +196,12 @@ public class PanelKomanda extends JPanel {
 		nºunidades.setBounds(254, 233, 120, 20);
 		add(nºunidades);
 
-		cb_Produktoak = new JComboBox<String>();
-		cb_Produktoak.setBounds(30, 68, 214, 20);
-		add(cb_Produktoak); 
+		cb_Platerrak = new JComboBox<String>();
+		cb_Platerrak.setBounds(30, 68, 214, 20);
+		add(cb_Platerrak);
 
-		produktuak = controladorPanelKomanda.platerrakJaso();
-		produktuArrayaPantailaratu(produktuak);
+		platerrak = controladorPanelKomanda.platerrakJaso();
+		produktuArrayaPantailaratu(platerrak);
 
 		cb_Mota = new JComboBox<String>();
 		cb_Mota.setBounds(30, 233, 214, 20);
@@ -209,9 +213,19 @@ public class PanelKomanda extends JPanel {
 		}
 		cb_Mota.setSelectedItem(null);
 
+		cb_Produktoak = new JComboBox<String>();
+		cb_Produktoak.setBounds(30, 99, 214, 20);
+		add(cb_Produktoak);
+
+		produktuak = controladorPanelKomanda.ComboBoxaSakatuProduktuak();
+		for (int i = 0; i < produktuak.length; i++) {
+			cb_Produktoak.addItem(produktuak[i]);
+		}
+		cb_Produktoak.setSelectedItem(null);
+
 		try {
 			controladorPanelKomanda.hasieratuOperaciones();
-		} catch (ClassNotFoundException | SQLException e) { 
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -223,23 +237,24 @@ public class PanelKomanda extends JPanel {
 	private void initializeEvents() {
 		this.btnAurrera.addActionListener(listenerLaburpeneraBotoia(this.controladorPanelKomanda));
 		this.btnAtzera.addActionListener(listenerAtzeraBotoia(this.controladorPanelKomanda));
-		this.cb_Produktoak.addActionListener(listenerComboBox(this.controladorPanelKomanda));
+		this.cb_Platerrak.addActionListener(listenerComboBox(this.controladorPanelKomanda));
 		this.btnSegi.addActionListener(listenerSegiBotoia(this.controladorPanelKomanda));
 		this.rdbtnLehenengoa.addActionListener(listenerRdbbtnLehenengoa(this.controladorPanelKomanda));
 		this.rdbtnBigarrena.addActionListener(listenerRdbtnBigarrena(this.controladorPanelKomanda));
 		this.rdbtnPostre.addActionListener(listenerRdbtnPostre(this.controladorPanelKomanda));
 		this.cb_Mota.addActionListener(listenerPlaterrak(this.controladorPanelKomanda));
+		this.cb_Produktoak.addActionListener(listenerProduktuak(this.controladorPanelKomanda));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
 
 	private ActionListener listenerLaburpeneraBotoia(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {	
+			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelKomanda.sakatuLaburpeneraBotoia();
 				try {
 					controladorPanelKomanda.sartuKomanda(anyo, mes, dia);
-				} catch (ClassNotFoundException | SQLException e) { 
+				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
 				controladorPanelKomanda.ofrece();
@@ -254,7 +269,7 @@ public class PanelKomanda extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					controladorPanelKomanda.ezabatuKomanda();
-				} catch (ClassNotFoundException | SQLException e) { 
+				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
 				if (controladorPanelKomanda.konprobatuLokala().equals("Restaurante")) {
@@ -273,15 +288,31 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerSegiBotoia(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String izena = (String) cb_Produktoak.getSelectedItem(); 
-				int platerKodea = controladorPanelKomanda.platerKodea(izena);
-				int kantitatea = (int) nºunidades.getValue();
-				if (kantitatea != 0) { 
-					controladorPanelKomanda.sartu(izena, kantitatea);
-					try {
-						controladorPanelKomanda.incluye(platerKodea, kantitatea);
-					} catch (ClassNotFoundException | SQLException e) { 
-						e.printStackTrace();
+
+				String aukeraPlaterra = (String) cb_Platerrak.getSelectedItem();
+				String aukeraProduktua = (String) cb_Produktoak.getSelectedItem();
+				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
+
+				if (aukeraPlaterra != null) {
+					int platerKodea = controladorPanelKomanda.platerKodea(aukeraPlaterra);
+					if (kantitatea != 0) {
+						controladorPanelKomanda.sartu(aukeraPlaterra, kantitatea);
+						try {
+							controladorPanelKomanda.incluye(platerKodea, kantitatea);
+						} catch (ClassNotFoundException | SQLException e) {
+							e.printStackTrace();
+						}
+					}
+				} else {
+					int stockKantitatea = controladorPanelKomanda.begiratuStock(aukeraProduktua,
+							controladorPanelKomanda.konprobatuNIF());
+					if (kantitatea > stockKantitatea) {
+						JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR",
+								JOptionPane.ERROR_MESSAGE);
+					} else {
+						if (kantitatea != 0) {
+							controladorPanelKomanda.sartu(aukeraProduktua, kantitatea);
+						}
 					}
 				}
 
@@ -295,9 +326,12 @@ public class PanelKomanda extends JPanel {
 				rdbtnPostre.setEnabled(false);
 				rdbtnPostre.setSelected(false);
 				cb_Mota.setSelectedItem(null);
-				cb_Produktoak.setSelectedItem(null); 
+				cb_Platerrak.setSelectedItem(null);
+				cb_Produktoak.setSelectedItem(null);
 				nºunidades.setValue(0);
-				cb_Produktoak.setEnabled(false);
+				cb_Platerrak.setEnabled(false);
+				cb_Produktoak.setEnabled(true);
+				cb_Mota.setEnabled(true);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
@@ -308,10 +342,11 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerComboBox(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String aukeratutakoa = (String) cb_Produktoak.getSelectedItem();
-				if(aukeratutakoa == null) {
+				String aukeratutakoa = (String) cb_Platerrak.getSelectedItem();
+				aukeratuBat("Platerra");
+				if (aukeratutakoa == null) {
 					btnSegi.setEnabled(false);
-				}else {
+				} else {
 					btnSegi.setEnabled(true);
 				}
 				ImageIcon argazkia = (ImageIcon) controladorPanelKomanda.argazkiaPlaterraAukeratu(aukeratutakoa);
@@ -320,10 +355,25 @@ public class PanelKomanda extends JPanel {
 		};
 	}
 
+	private ActionListener listenerProduktuak(ControladorPanelKomanda controladorPanelKomanda) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String aukeratutakoa = (String) cb_Produktoak.getSelectedItem();
+				aukeratuBat("Produktua");
+				if (aukeratutakoa == null) {
+					btnSegi.setEnabled(false);
+				} else {
+					btnSegi.setEnabled(true);
+				}
+				ImageIcon argazkia = (ImageIcon) controladorPanelKomanda.argazkiaPlaterraAukeratu(aukeratutakoa);
+				argazkiak.setIcon(argazkia);
+			}
+		};
+	}
 
 	private ActionListener listenerRdbbtnLehenengoa(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) { 
+			public void actionPerformed(ActionEvent arg0) {
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Primero";
 				int zbk = 1;
@@ -335,7 +385,7 @@ public class PanelKomanda extends JPanel {
 
 	private ActionListener listenerRdbtnBigarrena(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {			
+			public void actionPerformed(ActionEvent arg0) {
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Segundo";
 				int zbk = 2;
@@ -347,7 +397,7 @@ public class PanelKomanda extends JPanel {
 
 	private ActionListener listenerRdbtnPostre(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {			
+			public void actionPerformed(ActionEvent arg0) {
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Postre";
 				int zbk = 3;
@@ -359,16 +409,17 @@ public class PanelKomanda extends JPanel {
 
 	private ActionListener listenerPlaterrak(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) { 
-				cb_Produktoak.setEnabled(true);
+			public void actionPerformed(ActionEvent arg0) {
+				cb_Platerrak.setEnabled(true);
 				rdbtnLehenengoa.setEnabled(true);
 				rdbtnBigarrena.setEnabled(true);
 				rdbtnPostre.setEnabled(true);
-				rdbtnLehenengoa.setSelected(false); 
+				rdbtnLehenengoa.setSelected(false);
 				rdbtnBigarrena.setSelected(false);
 				rdbtnPostre.setSelected(false);
 				String platerMota = (String) cb_Mota.getSelectedItem();
-				String [] platerMotaArabera = controladorPanelKomanda.platerMotaArabera(platerMota);
+				aukeratuBat("Mota");
+				String[] platerMotaArabera = controladorPanelKomanda.platerMotaArabera(platerMota);
 				produktuArrayaPantailaratu(platerMotaArabera);
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
@@ -377,10 +428,10 @@ public class PanelKomanda extends JPanel {
 
 	private void produktuakEtaMotaJaso(String platerMota, String tipoa, int zbk) {
 		JRadioButton botoia = aukeratutakoBotoia(zbk);
-		if(botoia.isSelected() == true) {
-			produktuak = controladorPanelKomanda.platerMota(platerMota,tipoa);
+		if (botoia.isSelected() == true) {
+			produktuak = controladorPanelKomanda.platerMota(platerMota, tipoa);
 			produktuArrayaPantailaratu(produktuak);
-		}else {  
+		} else {
 			rdbtnLehenengoa.setEnabled(true);
 			rdbtnBigarrena.setEnabled(true);
 			rdbtnPostre.setEnabled(true);
@@ -391,15 +442,15 @@ public class PanelKomanda extends JPanel {
 	}
 
 	private JRadioButton aukeratutakoBotoia(int zbk) {
-		if (zbk == 1) { 
+		if (zbk == 1) {
 			rdbtnBigarrena.setEnabled(false);
 			rdbtnPostre.setEnabled(false);
 			return rdbtnLehenengoa;
-		}else if (zbk == 2) {
+		} else if (zbk == 2) {
 			rdbtnLehenengoa.setEnabled(false);
 			rdbtnPostre.setEnabled(false);
 			return rdbtnBigarrena;
-		}else {
+		} else {
 			rdbtnBigarrena.setEnabled(false);
 			rdbtnLehenengoa.setEnabled(false);
 			return rdbtnPostre;
@@ -407,10 +458,35 @@ public class PanelKomanda extends JPanel {
 	}
 
 	private void produktuArrayaPantailaratu(String[] produktuak) {
-		cb_Produktoak.removeAllItems();
+		cb_Platerrak.removeAllItems();
 		for (int i = 0; i < produktuak.length; i++) {
-			cb_Produktoak.addItem(produktuak[i]);
-		} 
-		cb_Produktoak.setSelectedItem(null);
+			cb_Platerrak.addItem(produktuak[i]);
+		}
+		cb_Platerrak.setSelectedItem(null);
+	}
+
+	private void aukeratuBat(String aukeratutakoa) {
+
+		if (aukeratutakoa.equals("Platerra")) {
+			cb_Platerrak.setEnabled(true);
+			cb_Produktoak.setEnabled(false);
+			cb_Mota.setEnabled(true);
+		}
+		if (aukeratutakoa.equals("Mota")) {
+			cb_Mota.setEnabled(true);
+			cb_Produktoak.setEnabled(false);
+			cb_Platerrak.setEnabled(true);
+		}
+		if (aukeratutakoa.equals("Produktua")) {
+			cb_Platerrak.setEnabled(false);
+			cb_Mota.setEnabled(false);
+			cb_Produktoak.setEnabled(true);
+			rdbtnLehenengoa.setEnabled(false);
+			rdbtnLehenengoa.setSelected(false);
+			rdbtnBigarrena.setEnabled(false);
+			rdbtnBigarrena.setSelected(false);
+			rdbtnPostre.setEnabled(false);
+			rdbtnPostre.setSelected(false);
+		}
 	}
 }

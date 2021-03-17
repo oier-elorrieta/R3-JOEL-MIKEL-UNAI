@@ -88,7 +88,7 @@ public class PanelMenuTaberna extends JPanel {
 			menuTop5.add(produktuak);
 		}
 
-		menuItemDeslogeatu = new JMenuItem("DESLOGEATU");
+		menuItemDeslogeatu = new JMenuItem("              DESLOGEATU");
 		menuItemDeslogeatu.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 		menuItemDeslogeatu.setHorizontalAlignment(SwingConstants.RIGHT);
 		menuBar.add(menuItemDeslogeatu);
