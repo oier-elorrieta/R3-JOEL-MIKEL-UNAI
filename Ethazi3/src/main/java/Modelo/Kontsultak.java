@@ -100,4 +100,12 @@ public class Kontsultak {
 	// *****************************************************************************************************************************************************************************************************
 	
 	static final String delete = "delete from operaciones where NumTrans = (select max(NumTrans) from comanda)";
+	
+	// *****************************************************************************************************************************************************************************************************
+
+	static final String selectTop5 = "select * from Top5";
+	
+	static final String selectEgunero = "select * from operatividadDiaria";
+	
+	static final String selectAstero = "select * from operatividadSemanal";
 }

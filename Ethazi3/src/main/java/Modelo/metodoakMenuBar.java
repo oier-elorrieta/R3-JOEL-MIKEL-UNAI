@@ -9,7 +9,7 @@ public class metodoakMenuBar {
 
 	public static String[] top5produktuak () {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("select * from Top5");
+		String query1 = (Kontsultak.selectTop5);
 		String[] top5produktuak = new String[5];
 		int i = 0;
 		try {
@@ -29,7 +29,7 @@ public class metodoakMenuBar {
 
 	public static double egunerokoIrabazia() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("select * from operatividadDiaria");
+		String query1 = (Kontsultak.selectEgunero);
 		double irabazia = 0;
 		try {
 			ResultSet re;
@@ -47,7 +47,7 @@ public class metodoakMenuBar {
 
 	public static double asterokoIrabazia() {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = ("select * from operatividadSemanal");
+		String query1 = (Kontsultak.selectAstero);
 		double irabazia = 0;
 		try {
 			ResultSet re;
