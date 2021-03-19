@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import javax.swing.JButton;  
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 import Controlador.ControladorPanelErregistratu;
 import javax.swing.JLabel;
@@ -25,7 +26,7 @@ public class PanelErregistratu extends JPanel {
 
 	private JTextField tf_Izena;
 	private JTextField tf_Abizena;
-	private JTextField tf_Pasahitza;
+	private JPasswordField tf_Pasahitza;
 	private JTextField tf_NAN;
 	private JTextField tf_NIF;
 
@@ -74,7 +75,7 @@ public class PanelErregistratu extends JPanel {
 		tf_Abizena.setBounds(10, 120, 190, 19);
 		add(tf_Abizena);
 
-		tf_Pasahitza = new JTextField();
+		tf_Pasahitza = new JPasswordField();
 		tf_Pasahitza.setColumns(10);
 		tf_Pasahitza.setBounds(10, 236, 190, 19);
 		add(tf_Pasahitza);
@@ -129,6 +130,7 @@ public class PanelErregistratu extends JPanel {
 			public void actionPerformed(ActionEvent arg0) { 
 				String izena = tf_Izena.getText();
 				String abizena = tf_Abizena.getText();
+				@SuppressWarnings("deprecation")
 				String pasahitza = tf_Pasahitza.getText();
 				String NAN = tf_NAN.getText();
 				String nif = tf_NIF.getText();

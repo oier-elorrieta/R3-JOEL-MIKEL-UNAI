@@ -63,7 +63,7 @@ public class metodoakKonprobaketak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace(); 
-		}
+		} 
 		return produktuKantitatea;
 	}
 

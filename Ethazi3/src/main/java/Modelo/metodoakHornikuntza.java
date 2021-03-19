@@ -35,8 +35,7 @@ public class metodoakHornikuntza {
 		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + anyo + "/" + (mes + 1) + "/" + dia  
 				+ "','" + dirua + "','" + nif + "', '" + operazioMota + "')");
 		String query3 = (Kontsultak.insertHornikuntza + "(" + numTrans + ",'" + izenaFabrikantea + "')");
-		String query4 = (Kontsultak.insertTiene+"('" + produktua + "'," + numTrans + "," + kantitatea + "," + dirua
-				+ ")");
+		String query4 = (Kontsultak.insertTiene+"('" + produktua + "'," + numTrans + "," + kantitatea + "," + dirua+ ", '" + operazioMota + "')");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();

@@ -14,20 +14,21 @@ public class metodoakTiene {
 			String elikagaia = karroa.get(i).getElikagaia();
 			int kopurua = karroa.get(i).getKopuru();
 			double prezioa = karroa.get(i).getBalioa();
+			String operazioMota = jasoOperazioMota();
 			if (begiratuTiene(elikagaia, numTrans) == false) {
-				insertTiene(elikagaia, kopurua, prezioa);
-				gehituVende(elikagaia, erabiltzaile, anyo, mes, dia);
+				insertTiene(elikagaia, kopurua, prezioa, operazioMota);
+				gehituVende(elikagaia, erabiltzaile, anyo, mes, dia, operazioMota);
 			} else {
 				updateTiene(elikagaia, kopurua, prezioa);
-				gehituVende(elikagaia, erabiltzaile, anyo, mes, dia);
+				gehituVende(elikagaia, erabiltzaile, anyo, mes, dia, operazioMota);
 			}
 		}
 	}
 
-	public static void insertTiene(String elikagaia, int kopurua, double prezioa) throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static void insertTiene(String elikagaia, int kopurua, double prezioa, String operazioMota) throws ClassNotFoundException, SQLException {
+		Connection konekzioa = BBDDKonexioa.getConexion(); 
 		String query1 = (Kontsultak.insertTiene + "('" + elikagaia + "', " + (metodoak.jasoTransakzioZbk() - 1) + ", " + kopurua
-				+ ", " + prezioa + ")");
+				+ ", " + prezioa + ", '" + operazioMota + "')");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
@@ -70,9 +71,47 @@ public class metodoakTiene {
 
 	}
 
-	public static void gehituVende(String elikagaia, String erabiltzailea, int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
-		if (metodoakKonprobaketak.begiratuStock(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea)) < 5) {
-			metodoakHornikuntza.sartuHornikuntza(elikagaia, anyo, (mes-1), dia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);
+	public static void gehituVende(String elikagaia, String erabiltzailea, int anyo, int mes, int dia, String operazioMota) throws ClassNotFoundException, SQLException {
+		if(!begiratuProduktuMota(elikagaia).equals("Plato")) {
+			if (metodoakKonprobaketak.begiratuStock(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea)) < 5) {
+				metodoakHornikuntza.sartuHornikuntza(elikagaia, anyo, (mes-1), dia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);
+			}
 		}
+	}
+
+	public static String jasoOperazioMota () {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String operazioMota = null;
+		String query1 = (Kontsultak.selectOperazioMota);
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if(re.next()) {
+				operazioMota = re.getString("TipoOperacion");
+			}
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		}
+		return operazioMota;
+	}
+
+	public static String begiratuProduktuMota (String produktua) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String produktuMota = null;
+		String query1 = (Kontsultak.selectProduktuMota + "'"+produktua+"'");
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if(re.next()) {
+				produktuMota = re.getString("Tipo");
+			}
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		}
+		return produktuMota;
 	}
 }
