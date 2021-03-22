@@ -147,7 +147,7 @@ public class ModeloTestPlaterZerrendak {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		String query1 = ("select Cod_Plato from incluye where Num_Trans = (SELECT max(NumTrans) from operaciones)");
+		String query1 = ("SELECT Cod_Plato from incluye where Num_Trans = (SELECT max(NumTrans) from operaciones);");
 		int[] kodeak = new int[metodoakOfrece.aukeratuIncluyeKodeak()];
 		int i = 0;
 		try {
@@ -158,11 +158,12 @@ public class ModeloTestPlaterZerrendak {
 			while (re.next()) {
 				kodeak[i] = re.getInt("Cod_Plato");
 				i++;
+				System.out.println(kodeak[i]);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		assertEquals(kodeak, metodoakOfrece.platerrenKodeak());

@@ -23,8 +23,16 @@ public class ControladorPanelLaburpena {
 		this.vista.ikusiPanela(this.panelLaburpena);
 	}
 
-	public String pantailaratu() {
-		return this.modelo.pantailaratu();
+	public String pantailaratuIzena() {
+		return this.modelo.pantailaratuIzena();
+	}
+	
+	public String pantailaratuKopurua() {
+		return this.modelo.pantailaratuKopurua();
+	}
+	
+	public String pantailaratuPrezioa() {
+		return this.modelo.pantailaratuPrezioa();
 	}
 
 	public double diruTotala() {

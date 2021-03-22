@@ -124,7 +124,7 @@ public class ModeloTestKonprobaketak {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		String query3 = ("SELECT Contraseña FROM usuario LIMIT 1");
+		String query3 = ("SELECT Contrasenya FROM usuario LIMIT 1");
 		String lehenengoPasahitza = null;
 		try {
 			ResultSet rs;
@@ -132,7 +132,7 @@ public class ModeloTestKonprobaketak {
 			q = konekzioa.prepareStatement(query3);
 			rs = q.executeQuery();
 			if (rs.next()) {
-				lehenengoPasahitza = rs.getString("Contraseña");
+				lehenengoPasahitza = rs.getString("Contrasenya");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -140,7 +140,7 @@ public class ModeloTestKonprobaketak {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		String query1 = ("SELECT DNI,Contraseña FROM usuario where dni = '" + lehenengoDNI + "'");
+		String query1 = ("SELECT DNI,Contrasenya FROM usuario where dni = '" + lehenengoDNI + "'");
 		String esperotakoa = null;
 		try {
 			ResultSet re;
@@ -149,10 +149,10 @@ public class ModeloTestKonprobaketak {
 			re = p.executeQuery();
 			if (re.next()) {
 				if (re.getString("DNI").equalsIgnoreCase(lehenengoDNI)
-						&& re.getString("Contraseña").equalsIgnoreCase(lehenengoPasahitza)) {
+						&& re.getString("Contrasenya").equalsIgnoreCase(lehenengoPasahitza)) {
 					esperotakoa = "EZ";
 				} else if (re.getString("DNI").equalsIgnoreCase(lehenengoDNI)
-						&& !re.getString("Contraseña").equalsIgnoreCase(lehenengoPasahitza)) {
+						&& !re.getString("Contrasenya").equalsIgnoreCase(lehenengoPasahitza)) {
 					esperotakoa = "Bai, pasahitza txarto";
 				}
 			} else {

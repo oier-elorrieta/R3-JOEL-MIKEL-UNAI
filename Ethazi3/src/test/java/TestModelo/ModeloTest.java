@@ -96,7 +96,7 @@ public class ModeloTest {
 	// *****************************************************************************************************************************************************************************************************
 
 	@Test
-	public void testpantailatu() {
+	public void testpantailatuIzena() {
 
 		Karritoa sidra = new Karritoa("Sidra", 1, 3);
 
@@ -104,9 +104,43 @@ public class ModeloTest {
 
 		aukera.add(sidra);
 
-		String esperotakoa = "";
+		String esperotakoa = "Sidra";
 
-		assertNotEquals(esperotakoa, metodoak.pantailatuProduktua(aukera));
+		assertNotEquals(esperotakoa, metodoak.pantailatuProduktuaIzena(aukera));
+
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	@Test
+	public void testpantailatuKopurua() {
+
+		Karritoa sidra = new Karritoa("Sidra", 1, 3);
+
+		ArrayList<Karritoa> aukera = new ArrayList<Karritoa>(10);
+
+		aukera.add(sidra);
+
+		int esperotakoa = 1;
+
+		assertNotEquals(esperotakoa, metodoak.pantailatuProduktuaKopurua(aukera));
+
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	@Test
+	public void testpantailatuPrezioa() {
+
+		Karritoa sidra = new Karritoa("Sidra", 1, 3);
+
+		ArrayList<Karritoa> aukera = new ArrayList<Karritoa>(10);
+
+		aukera.add(sidra);
+
+		int esperotakoa = 3;
+
+		assertNotEquals(esperotakoa, metodoak.pantailatuProduktuaPrezioa(aukera));
 
 	}
 

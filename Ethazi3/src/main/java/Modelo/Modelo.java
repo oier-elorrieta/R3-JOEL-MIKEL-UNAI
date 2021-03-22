@@ -24,8 +24,16 @@ public class Modelo {
 		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa);
 	}
 
-	public String pantailaratu() {
-		return metodoak.pantailatuProduktua(karroa);
+	public String pantailaratuIzena() {
+		return metodoak.pantailatuProduktuaIzena(karroa);
+	}
+	
+	public String pantailaratuKopurua() {
+		return metodoak.pantailatuProduktuaKopurua(karroa);
+	}
+	
+	public String pantailaratuPrezioa() {
+		return metodoak.pantailatuProduktuaPrezioa(karroa);
 	}
 
 	public double diruTotala() {
