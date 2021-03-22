@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.junit.Test;
 import Modelo.BBDDKonexioa;
-import Modelo.metodoakOfrece;
 import Modelo.metodoakPlaterZerrendak;
 
 public class ModeloTestPlaterZerrendak {
@@ -138,34 +137,5 @@ public class ModeloTestPlaterZerrendak {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		assertEquals(metodoakPlaterZerrendak.zenbatPlaterMotaBakoitzeko("Vegetariano"), i);
-	}
-
-	@Test
-	public void kodeak(){
-
-		Connection konekzioa = BBDDKonexioa.getConexion();
-
-		// _______________________________________________________________________________________________________________________________________________________________________________
-
-		String query1 = ("SELECT Cod_Plato from incluye where Num_Trans = (SELECT max(NumTrans) from operaciones);");
-		int[] kodeak = new int[metodoakOfrece.aukeratuIncluyeKodeak()];
-		int i = 0;
-		try {
-			ResultSet re;
-			PreparedStatement p;
-			p = konekzioa.prepareStatement(query1);
-			re = p.executeQuery();
-			while (re.next()) {
-				kodeak[i] = re.getInt("Cod_Plato");
-				i++;
-				System.out.println(kodeak[i]);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		// _______________________________________________________________________________________________________________________________________________________________________________
-
-		assertEquals(kodeak, metodoakOfrece.platerrenKodeak());
 	}
 }

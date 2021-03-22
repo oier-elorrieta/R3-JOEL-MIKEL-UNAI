@@ -45,8 +45,6 @@ public class ModeloTest {
 	public void testSartuPlaterrak() {
 		String aukera = platerrak[0].getIzena();
 
-		System.out.println(aukera);
-
 		String esperotakoa = "Arroz con leche";
 
 		metodoak.sartuPlaterrak();
@@ -57,8 +55,6 @@ public class ModeloTest {
 	@Test
 	public void testSartuPlaterrak1() {
 		String aukera = platerrak[2].getIzena();
-
-		System.out.println(aukera);
 
 		String esperotakoa = "Carbonara Vegana";
 
