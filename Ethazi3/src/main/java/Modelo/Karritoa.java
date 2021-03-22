@@ -38,7 +38,7 @@ public class Karritoa {
 	
 	@Override
 	public String toString() {
-		return "Karritoa [elikagaia=" + elikagaia + ", kopuru=" + kopuru + ", balioa=" + balioa + "]";
+		return "Produktua: "+elikagaia+"_____Kopurua: "+kopuru+"_____Prezioa: "+ balioa+"";
 	}
 	
 }

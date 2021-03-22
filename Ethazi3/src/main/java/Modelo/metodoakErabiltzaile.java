@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
 public class metodoakErabiltzaile {
 
 	public static Erabiltzaile sartuErabiltzailea(String erabiltzailea, String pasahitza, Erabiltzaile usuarioa) {
@@ -22,6 +24,7 @@ public class metodoakErabiltzaile {
 			s.executeUpdate(query1);
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du sartu erabiltzailea", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

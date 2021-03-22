@@ -68,7 +68,7 @@ public class PanelLaburpena extends JPanel {
 		add(lb_2_);
 
 		lb_3_ = new JLabel("_____________________________________________________________");
-		lb_3_.setBounds(10, 248, 430, 14);
+		lb_3_.setBounds(10, 250, 430, 14);
 		add(lb_3_);
 
 		lb_Nombre = new JLabel(controladorPanelLaburpena.konprobatuLokalarenIzena());
@@ -94,7 +94,7 @@ public class PanelLaburpena extends JPanel {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		btnSegi = new JButton("\u2714");
-		btnSegi.setBounds(10, 270, 305, 20);
+		btnSegi.setBounds(10, 270, 430, 20);
 		add(btnSegi);
 
 		initializeEvents();

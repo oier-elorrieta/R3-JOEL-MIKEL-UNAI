@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
 public class metodoakFaktura {
 
 	public static boolean begiratuFakturanNIF(String nif) {
@@ -24,6 +26,7 @@ public class metodoakFaktura {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi fakturaren NIF", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return nifDago;
 	}
@@ -37,6 +40,7 @@ public class metodoakFaktura {
 			st.executeUpdate(query2);
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du sartu NIF faktura", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -60,6 +64,7 @@ public class metodoakFaktura {
 			smt.executeUpdate(query3);
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du sartu faktura", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

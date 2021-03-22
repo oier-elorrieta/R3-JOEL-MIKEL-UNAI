@@ -101,7 +101,7 @@ public class PanelMenuJatetxea extends JPanel {
 			menuTop5.add(produktuak);
 		}
 
-		menuItemDeslogeatu = new JMenuItem("              DESLOGEATU");
+		menuItemDeslogeatu = new JMenuItem("           DESLOGEATU");
 		menuItemDeslogeatu.setHorizontalAlignment(SwingConstants.RIGHT);
 		menuItemDeslogeatu.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 		menuBar.add(menuItemDeslogeatu);

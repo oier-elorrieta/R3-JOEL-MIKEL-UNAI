@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 public class metodoakMenuBar {
 
 	public static String[] top5produktuak () {
@@ -23,6 +25,7 @@ public class metodoakMenuBar {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi top 5 produktuak", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return top5produktuak;
 	}
@@ -41,6 +44,7 @@ public class metodoakMenuBar {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi eguneroko irabazia", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return irabazia;
 	}
@@ -59,6 +63,7 @@ public class metodoakMenuBar {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi asteroko irabazia", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return irabazia;
 	}

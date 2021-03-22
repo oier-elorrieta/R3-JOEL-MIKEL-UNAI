@@ -4,16 +4,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-
 import Controlador.ControladorPanelLogin; 
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class PanelLogin extends JPanel {
@@ -25,7 +21,6 @@ public class PanelLogin extends JPanel {
 	private JButton btnErregistratu;
 
 	private JLabel lb_NAN;
-	private JLabel lb_1;
 	private JLabel lb_Pasahitza;
 
 	private JTextField tf_NAN;
@@ -45,7 +40,7 @@ public class PanelLogin extends JPanel {
 
 		btnSarratu = new JButton("SARRATU ");
 		btnSarratu.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnSarratu.setBounds(350, 259, 90, 30);
+		btnSarratu.setBounds(350, 260, 90, 30);
 		add(btnSarratu);
 
 		btnLogin = new JButton("Login");
@@ -55,7 +50,7 @@ public class PanelLogin extends JPanel {
 
 		btnErregistratu = new JButton("Erregistratu");
 		btnErregistratu.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnErregistratu.setBounds(165, 220, 115, 21);
+		btnErregistratu.setBounds(165, 210, 115, 21);
 		add(btnErregistratu);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
@@ -79,11 +74,6 @@ public class PanelLogin extends JPanel {
 		lb_Pasahitza = new JLabel("Pasahitza:");
 		lb_Pasahitza.setBounds(135, 97, 170, 13);
 		add(lb_Pasahitza);
-
-		lb_1 = new JLabel("*********************************");
-		lb_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_1.setBounds(10, 201, 430, 13);
-		add(lb_1);
 
 		initializeEvents();
 	}

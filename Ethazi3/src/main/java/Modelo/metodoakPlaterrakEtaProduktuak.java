@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 public class metodoakPlaterrakEtaProduktuak {
 
 	public static int produktuKantitatea() {
@@ -22,6 +24,7 @@ public class metodoakPlaterrakEtaProduktuak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi produktu kantitateak", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return kantitatea;
 	}
@@ -42,6 +45,7 @@ public class metodoakPlaterrakEtaProduktuak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi plater kantitateak", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return kantitatea;
 	}
@@ -73,6 +77,7 @@ public class metodoakPlaterrakEtaProduktuak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi produktuak", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return elikagaiak;
 	}
@@ -104,6 +109,7 @@ public class metodoakPlaterrakEtaProduktuak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi platerak", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return platerrak;
 	}
@@ -131,8 +137,9 @@ public class metodoakPlaterrakEtaProduktuak {
 				produktuak[kont] = p1;
 				kont++;
 			}
-		} catch (SQLException e) { 
+		} catch (SQLException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi produktu guztiak", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return produktuak;
 	}

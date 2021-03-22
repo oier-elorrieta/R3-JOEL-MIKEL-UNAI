@@ -13,8 +13,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		modelo = new Modelo();    
-		vista = new Vista();
-                
+		vista = new Vista();            
 		controlador = new Controlador(modelo, vista);
 	}
 }

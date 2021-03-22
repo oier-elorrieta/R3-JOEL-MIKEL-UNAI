@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class metodoakTiene {
 
 	public static void sartuTiene(ArrayList<Karritoa> karroa, int numTrans, String erabiltzaile, int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
@@ -35,6 +37,7 @@ public class metodoakTiene {
 			s.executeUpdate(query1);
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du gehitu tiene taulari", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -53,6 +56,7 @@ public class metodoakTiene {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi tiene taula", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return egia;
 	}
@@ -67,6 +71,7 @@ public class metodoakTiene {
 			s.executeUpdate(query1);
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du gehitu produktu berdina", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -93,6 +98,7 @@ public class metodoakTiene {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi operazio mota", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return operazioMota;
 	}
@@ -111,6 +117,7 @@ public class metodoakTiene {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du produktu mota ikusi", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return produktuMota;
 	}

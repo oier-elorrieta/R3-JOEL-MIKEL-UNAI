@@ -23,6 +23,7 @@ public class metodoakKonprobaketak {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace(); 
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi NAN", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return badago;
 	}
@@ -43,6 +44,7 @@ public class metodoakKonprobaketak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi NIF", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return ondoDago;
 	}
@@ -63,6 +65,7 @@ public class metodoakKonprobaketak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace(); 
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi stocka", "ERROR", JOptionPane.ERROR_MESSAGE);
 		} 
 		return produktuKantitatea;
 	}
@@ -93,6 +96,7 @@ public class metodoakKonprobaketak {
 			} 
 		} catch (SQLException e) {  
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du komprobatu erabiltzailea", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return erroreaLogeatzean;
 	}
@@ -113,6 +117,7 @@ public class metodoakKonprobaketak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du komprobatu NIF", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return NIF;
 	}
@@ -133,6 +138,7 @@ public class metodoakKonprobaketak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi lokala", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return Tipo;
 	}
@@ -153,6 +159,7 @@ public class metodoakKonprobaketak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi lokalaren izena", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return LokalarenIzena;
 	}

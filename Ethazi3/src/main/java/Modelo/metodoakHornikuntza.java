@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement; 
+import java.sql.Statement;
+
+import javax.swing.JOptionPane; 
 
 public class metodoakHornikuntza {
 
@@ -22,6 +24,7 @@ public class metodoakHornikuntza {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi produktu fabrikantea", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return izenaFabrikantea;
 	}
@@ -48,6 +51,7 @@ public class metodoakHornikuntza {
 			s2.executeUpdate(query4);
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du hornikuntza egin", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
 public class metodoakKomanda {
 
 	public static void hasieratuOperaciones() throws ClassNotFoundException, SQLException {
@@ -20,6 +22,7 @@ public class metodoakKomanda {
 			s2.executeUpdate(query2);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du hasieratu operazioa", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -36,6 +39,7 @@ public class metodoakKomanda {
 			s.executeUpdate(query1);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du sartu komanda", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -48,6 +52,7 @@ public class metodoakKomanda {
 			s1.executeUpdate(query1);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ezabatu komanda", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
