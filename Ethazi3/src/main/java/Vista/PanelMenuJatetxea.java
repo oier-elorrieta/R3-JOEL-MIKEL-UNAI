@@ -96,9 +96,11 @@ public class PanelMenuJatetxea extends JPanel {
 
 		top5produktuak = controladorPanelJatetxea.top5produktuak();
 		for (int i = 0; i < top5produktuak.length; i++) {
-			produktuak = new JMenuItem();
-			produktuak.setText(top5produktuak[i]);
-			menuTop5.add(produktuak);
+			if (top5produktuak[i] != null) {
+				produktuak = new JMenuItem();
+				produktuak.setText(top5produktuak[i]);
+				menuTop5.add(produktuak);
+			}
 		}
 
 		menuItemDeslogeatu = new JMenuItem("           DESLOGEATU");

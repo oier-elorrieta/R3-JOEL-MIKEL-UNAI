@@ -19,16 +19,16 @@ public class PanelMenuKafetegia extends JPanel {
 
 	private JButton btnFaktura;
 	private JButton btnTicket;
-	private JButton btnEskaera; 
+	private JButton btnEskaera;
 	private JButton btnHornikuntza;
 	private JMenuBar menuBar;
 	private JMenu menuOperatibitatea;
 	private JMenu menuTop5;
 	private JMenuItem menuItemSarratu;
 	private JMenuItem menuItemDeslogeatu;
-	private String [] top5produktuak;
+	private String[] top5produktuak;
 	private JMenuItem produktuak;
-	private JMenu egunero;	
+	private JMenu egunero;
 	private JMenu astero;
 	private JMenuItem eguneroDirua;
 	private JMenuItem asteroDirua;
@@ -44,7 +44,7 @@ public class PanelMenuKafetegia extends JPanel {
 
 		btnTicket = new JButton("TICKET");
 		btnTicket.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnTicket.setBounds(10, 40, 210, 120); 
+		btnTicket.setBounds(10, 40, 210, 120);
 		add(btnTicket);
 
 		btnFaktura = new JButton("FAKTURA");
@@ -55,7 +55,7 @@ public class PanelMenuKafetegia extends JPanel {
 		btnEskaera = new JButton("ESKAERA");
 		btnEskaera.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		btnEskaera.setBounds(10, 171, 210, 118);
-		add(btnEskaera); 
+		add(btnEskaera);
 
 		btnHornikuntza = new JButton("+");
 		btnHornikuntza.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -87,9 +87,11 @@ public class PanelMenuKafetegia extends JPanel {
 
 		top5produktuak = controladorPanelMenuKafetegia.top5produktuak();
 		for (int i = 0; i < top5produktuak.length; i++) {
-			produktuak = new JMenuItem();
-			produktuak.setText(top5produktuak[i]);
-			menuTop5.add(produktuak);
+			if (top5produktuak[i] != null) {
+				produktuak = new JMenuItem();
+				produktuak.setText(top5produktuak[i]);
+				menuTop5.add(produktuak);
+			}
 		}
 
 		menuItemDeslogeatu = new JMenuItem("           DESLOGEATU");
@@ -124,7 +126,7 @@ public class PanelMenuKafetegia extends JPanel {
 				controladorPanelMenuKafetegia.sakatuFakturaPanelaIkustekoBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -134,7 +136,7 @@ public class PanelMenuKafetegia extends JPanel {
 				controladorPanelMenuKafetegia.sakatuTicketPanelaIkustekoBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -144,7 +146,7 @@ public class PanelMenuKafetegia extends JPanel {
 				controladorPanelMenuKafetegia.sakatuEskaeraPanelaIkustekoBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -154,7 +156,7 @@ public class PanelMenuKafetegia extends JPanel {
 				controladorPanelMenuKafetegia.sakatuAtzeraBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -174,5 +176,5 @@ public class PanelMenuKafetegia extends JPanel {
 				controladorPanelMenuKafetegia.sakatuHasieraBotoia();
 			}
 		};
-	} 
+	}
 }

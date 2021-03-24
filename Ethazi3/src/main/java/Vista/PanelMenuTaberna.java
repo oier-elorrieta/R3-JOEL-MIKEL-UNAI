@@ -12,7 +12,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import Controlador.ControladorPanelMenuTaberna; 
+import Controlador.ControladorPanelMenuTaberna;
 
 @SuppressWarnings("serial")
 public class PanelMenuTaberna extends JPanel {
@@ -20,16 +20,16 @@ public class PanelMenuTaberna extends JPanel {
 	private ControladorPanelMenuTaberna controladorPanelMenuTaberna;
 
 	private JButton btnFaktura;
-	private JButton btnTicket; 
+	private JButton btnTicket;
 	private JButton btnHornikuntza;
 	private JMenuBar menuBar;
 	private JMenu menuOperatibitatea;
 	private JMenu menuTop5;
 	private JMenuItem menuItemSarratu;
 	private JMenuItem menuItemDeslogeatu;
-	private String [] top5produktuak;
+	private String[] top5produktuak;
 	private JMenuItem produktuak;
-	private JMenu egunero;	
+	private JMenu egunero;
 	private JMenu astero;
 	private JMenuItem eguneroDirua;
 	private JMenuItem asteroDirua;
@@ -45,13 +45,13 @@ public class PanelMenuTaberna extends JPanel {
 
 		btnTicket = new JButton("TICKET");
 		btnTicket.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnTicket.setBounds(10, 52, 210, 113); 
+		btnTicket.setBounds(10, 52, 210, 113);
 		add(btnTicket);
 
 		btnFaktura = new JButton("FAKTURA");
 		btnFaktura.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		btnFaktura.setBounds(230, 52, 210, 113);
-		add(btnFaktura); 
+		add(btnFaktura);
 
 		btnHornikuntza = new JButton("+");
 		btnHornikuntza.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -83,9 +83,11 @@ public class PanelMenuTaberna extends JPanel {
 
 		top5produktuak = controladorPanelMenuTaberna.top5produktuak();
 		for (int i = 0; i < top5produktuak.length; i++) {
-			produktuak = new JMenuItem();
-			produktuak.setText(top5produktuak[i]);
-			menuTop5.add(produktuak);
+			if (top5produktuak[i] != null) {
+				produktuak = new JMenuItem();
+				produktuak.setText(top5produktuak[i]);
+				menuTop5.add(produktuak);
+			}
 		}
 
 		menuItemDeslogeatu = new JMenuItem("           DESLOGEATU");
@@ -119,7 +121,7 @@ public class PanelMenuTaberna extends JPanel {
 				controladorPanelMenuTaberna.sakatuFakturaPanelaIkustekoBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -129,7 +131,7 @@ public class PanelMenuTaberna extends JPanel {
 				controladorPanelMenuTaberna.sakatuTicketPanelaIkustekoBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -139,7 +141,7 @@ public class PanelMenuTaberna extends JPanel {
 				controladorPanelMenuTaberna.sakatuAtzeraBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -149,7 +151,7 @@ public class PanelMenuTaberna extends JPanel {
 				controladorPanelMenuTaberna.sakatuHornikuntzaBotoia();
 			}
 		};
-	} 
+	}
 
 	// *****************************************************************************************************************************************************************************************************
 

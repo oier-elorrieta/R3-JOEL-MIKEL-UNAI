@@ -167,14 +167,14 @@ public class Modelo {
 	}
 
 	public String[] top5produktuak(){
-		return metodoakMenuBar.top5produktuak();
+		return metodoakMenuBar.top5produktuak(usuarioa.getErabiltzailea());
 	}
 
 	public double egunerokoIrabazia() {
-		return metodoakMenuBar.egunerokoIrabazia();
+		return metodoakMenuBar.egunerokoIrabazia(usuarioa.getErabiltzailea());
 	}
 
 	public double asterokoIrabazia() {
-		return metodoakMenuBar.asterokoIrabazia();
+		return metodoakMenuBar.asterokoIrabazia(usuarioa.getErabiltzailea());
 	}
 }

@@ -28,11 +28,12 @@ public class PanelLaburpena extends JPanel {
 	private JLabel lb_Total;
 	private JLabel lb_TotalCant;
 	private JLabel lb_LaburpenIzena;
+	private JLabel lb_LaburpenKopurua;
+	private JLabel lb_LaburpenPrezioa;
 	private int anyo;
 	private int mes;
 	private int dia;
-	private JLabel lb_LaburpenKopurua;
-	private JLabel lb_LaburpenPrezioa;
+	
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -92,7 +93,7 @@ public class PanelLaburpena extends JPanel {
 
 		lb_LaburpenIzena = new JLabel(izena);
 		lb_LaburpenIzena.setVerticalAlignment(SwingConstants.TOP);
-		lb_LaburpenIzena.setBounds(10, 100, 125, 139);
+		lb_LaburpenIzena.setBounds(10, 100, 170, 139);
 		add(lb_LaburpenIzena);
 		
 		lb_LaburpenKopurua = new JLabel(kopuru);

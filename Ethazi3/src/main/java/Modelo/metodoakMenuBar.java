@@ -9,9 +9,9 @@ import javax.swing.JOptionPane;
 
 public class metodoakMenuBar {
 
-	public static String[] top5produktuak () {
+	public static String[] top5produktuak (String erabiltzailea) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.selectTop5);
+		String query1 = (Kontsultak.selectTop5 + " where NIF = '"+metodoakKonprobaketak.konprobatuNIF(erabiltzailea)+"'");
 		String[] top5produktuak = new String[5];
 		int i = 0;
 		try {
@@ -30,9 +30,9 @@ public class metodoakMenuBar {
 		return top5produktuak;
 	}
 
-	public static double egunerokoIrabazia() {
+	public static double egunerokoIrabazia(String erabiltzailea) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.selectEgunero);
+		String query1 = (Kontsultak.selectEgunero + " where NIF = '"+metodoakKonprobaketak.konprobatuNIF(erabiltzailea)+"'");
 		double irabazia = 0;
 		try {
 			ResultSet re;
@@ -49,9 +49,9 @@ public class metodoakMenuBar {
 		return irabazia;
 	}
 
-	public static double asterokoIrabazia() {
+	public static double asterokoIrabazia(String erabiltzailea) {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.selectAstero);
+		String query1 = (Kontsultak.selectAstero + " where NIF = '"+metodoakKonprobaketak.konprobatuNIF(erabiltzailea)+"'");
 		double irabazia = 0;
 		try {
 			ResultSet re;
