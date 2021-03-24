@@ -4,16 +4,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-
 import Controlador.ControladorPanelLogin; 
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class PanelLogin extends JPanel {
@@ -24,11 +20,10 @@ public class PanelLogin extends JPanel {
 	private JButton btnLogin;
 	private JButton btnErregistratu;
 
-	private JLabel lb_DNI;
-	private JLabel lb_1;
+	private JLabel lb_NAN;
 	private JLabel lb_Pasahitza;
 
-	private JTextField tf_DNI;
+	private JTextField tf_NAN;
 	private JPasswordField tf_Pasahitza;
 
 	// *****************************************************************************************************************************************************************************************************
@@ -45,7 +40,7 @@ public class PanelLogin extends JPanel {
 
 		btnSarratu = new JButton("SARRATU ");
 		btnSarratu.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnSarratu.setBounds(350, 259, 90, 30);
+		btnSarratu.setBounds(350, 260, 90, 30);
 		add(btnSarratu);
 
 		btnLogin = new JButton("Login");
@@ -55,15 +50,15 @@ public class PanelLogin extends JPanel {
 
 		btnErregistratu = new JButton("Erregistratu");
 		btnErregistratu.setFont(new Font("Tahoma", Font.ITALIC, 11));
-		btnErregistratu.setBounds(165, 220, 115, 21);
+		btnErregistratu.setBounds(165, 210, 115, 21);
 		add(btnErregistratu);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		tf_DNI = new JTextField();
-		tf_DNI.setBounds(135, 60, 170, 19);
-		add(tf_DNI);
-		tf_DNI.setColumns(10);
+		tf_NAN = new JTextField();
+		tf_NAN.setBounds(135, 60, 170, 19);
+		add(tf_NAN);
+		tf_NAN.setColumns(10);
 
 		tf_Pasahitza = new JPasswordField();
 		tf_Pasahitza.setColumns(10);
@@ -72,18 +67,13 @@ public class PanelLogin extends JPanel {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		lb_DNI = new JLabel("DNI:");
-		lb_DNI.setBounds(135, 37, 170, 13);
-		add(lb_DNI);
+		lb_NAN = new JLabel("NAN:");
+		lb_NAN.setBounds(135, 37, 170, 13);
+		add(lb_NAN);
 
 		lb_Pasahitza = new JLabel("Pasahitza:");
 		lb_Pasahitza.setBounds(135, 97, 170, 13);
 		add(lb_Pasahitza);
-
-		lb_1 = new JLabel("*********************************");
-		lb_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_1.setBounds(10, 201, 430, 13);
-		add(lb_1);
 
 		initializeEvents();
 	}
@@ -103,7 +93,7 @@ public class PanelLogin extends JPanel {
 			@SuppressWarnings({ "deprecation" })
 			public void actionPerformed(ActionEvent arg0) {
 				String pasahitza = tf_Pasahitza.getText();
-				String erabiltzailea = tf_DNI.getText();
+				String erabiltzailea = tf_NAN.getText();
 				controladorPanelLogin.sartuErabiltzaile(erabiltzailea, pasahitza); 
 				String lokalaMota = controladorPanelLogin.konprobatuLokala();
 				String erroreaLogeatzean = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);

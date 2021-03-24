@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
 public class metodoakOfrece {
 
 	public static int aukeratuIncluyeKodeak() {
@@ -22,6 +24,7 @@ public class metodoakOfrece {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi incluye taula", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return zbk;
 	}
@@ -42,6 +45,7 @@ public class metodoakOfrece {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi platerren kodeak", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return kodeak;
 	}
@@ -69,6 +73,7 @@ public class metodoakOfrece {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi ofrece taula", "ERROR", JOptionPane.ERROR_MESSAGE);
 		} 
 		return platerraDago;
 	}
@@ -82,6 +87,7 @@ public class metodoakOfrece {
 			s1.executeUpdate(query1);
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du gehitu ofrece taulari", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

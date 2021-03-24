@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
 public class metodoakIncluye {
 
 	public static void incluye(int platerKodea, int kantitatea, double prezioa, String nif)
@@ -32,6 +34,7 @@ public class metodoakIncluye {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du begiratu tabla incluye", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return sartutaDago;
 	}
@@ -48,6 +51,7 @@ public class metodoakIncluye {
 			s.executeUpdate(query1);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du gehitu tabla incluyeri", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -61,6 +65,7 @@ public class metodoakIncluye {
 			s1.executeUpdate(query1);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du sartu tabla incluyeri", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

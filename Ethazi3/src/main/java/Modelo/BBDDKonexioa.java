@@ -3,6 +3,7 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class BBDDKonexioa {
 	
@@ -17,13 +18,13 @@ public class BBDDKonexioa {
 
 		try {
 			Class.forName(CONTROLADOR);
-			konekzioa = DriverManager.getConnection(URL, USUARIO, CLAVE);			 
-
+			konekzioa = DriverManager.getConnection(URL, USUARIO, CLAVE);		
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-
+			JOptionPane.showMessageDialog(null, "Ez zaude datu basera konektatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ez zaude datu basera konektatuta", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return konekzioa;
 	}

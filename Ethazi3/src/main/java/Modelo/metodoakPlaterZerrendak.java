@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 public class metodoakPlaterZerrendak {
 
 	public static String[] platerMotak() {
@@ -23,6 +25,7 @@ public class metodoakPlaterZerrendak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi plater motak", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return platerMotak;
 	}
@@ -43,6 +46,7 @@ public class metodoakPlaterZerrendak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi plater mota", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return platerMotak;
 	}
@@ -63,6 +67,7 @@ public class metodoakPlaterZerrendak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du egin plater moten diferentzia", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return platerMotak;
 	}
@@ -81,6 +86,7 @@ public class metodoakPlaterZerrendak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi plater mota kantitatea", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return i;
 	}
@@ -99,6 +105,7 @@ public class metodoakPlaterZerrendak {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi plater kodea", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return platerKodea;
 	}

@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+
+import javax.swing.JOptionPane; 
 
 public class metodoakHornikuntza {
 
@@ -23,11 +24,12 @@ public class metodoakHornikuntza {
 			}
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi produktu fabrikantea", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return izenaFabrikantea;
 	}
 
-	public static void sartuHornikuntza(String produktua, int anyo, int mes, int dia, String nif, int kantitatea, ArrayList<Karritoa> karroa) throws ClassNotFoundException, SQLException {
+	public static void sartuHornikuntza(String produktua, int anyo, int mes, int dia, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea(produktua);
 		int numTrans = metodoak.jasoTransakzioZbk();
@@ -36,8 +38,7 @@ public class metodoakHornikuntza {
 		String query2 = (Kontsultak.insertOperaciones + "('" + numTrans + "', '" + anyo + "/" + (mes + 1) + "/" + dia  
 				+ "','" + dirua + "','" + nif + "', '" + operazioMota + "')");
 		String query3 = (Kontsultak.insertHornikuntza + "(" + numTrans + ",'" + izenaFabrikantea + "')");
-		String query4 = (Kontsultak.insertTiene+"('" + produktua + "'," + numTrans + "," + kantitatea + "," + dirua
-				+ ")");
+		String query4 = (Kontsultak.insertTiene+"('" + produktua + "'," + numTrans + "," + kantitatea + "," + dirua+ ", '" + operazioMota + "')");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
@@ -50,6 +51,7 @@ public class metodoakHornikuntza {
 			s2.executeUpdate(query4);
 		} catch (SQLException e) { 
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du hornikuntza egin", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

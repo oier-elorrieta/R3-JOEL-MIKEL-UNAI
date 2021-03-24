@@ -55,5 +55,3 @@ public class ControladorPanelLogin {
 		return this.modelo.sartuErabiltzailea(erabiltzailea, pasahitza);
 	}
 }
-
-

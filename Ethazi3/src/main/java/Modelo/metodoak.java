@@ -3,9 +3,9 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException; 
-import java.util.ArrayList; 
-import javax.swing.ImageIcon; 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 public class metodoak {
 
@@ -18,10 +18,30 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String pantailatuProduktua(ArrayList<Karritoa> karroa) {
+	public static String pantailatuProduktuaIzena(ArrayList<Karritoa> karroa) {
 		String PantailatukoDena = "";
 		for (int i = 0; i < karroa.size(); i++) {
-			PantailatukoDena = PantailatukoDena + "<html>" + karroa.get(i).toString() + "<br><html>";
+			PantailatukoDena = PantailatukoDena + "<html>" + karroa.get(i).getElikagaia() + "<br><html>";
+		}
+		return PantailatukoDena;
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	public static String pantailatuProduktuaKopurua(ArrayList<Karritoa> karroa) {
+		String PantailatukoDena = "";
+		for (int i = 0; i < karroa.size(); i++) {
+			PantailatukoDena = PantailatukoDena + "<html>" + "x"+karroa.get(i).getKopuru() + "<br><html>";
+		}
+		return PantailatukoDena;
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	public static String pantailatuProduktuaPrezioa(ArrayList<Karritoa> karroa) {
+		String PantailatukoDena = "";
+		for (int i = 0; i < karroa.size(); i++) {
+			PantailatukoDena = PantailatukoDena + "<html>" + karroa.get(i).getBalioa()+"€" + "<br><html>";
 		}
 		return PantailatukoDena;
 	}
@@ -110,8 +130,8 @@ public class metodoak {
 		return new ImageIcon("argazkiak/" + aukera + ".jpg");
 	}
 
-	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
-	// ______________________________________________________________________________________________________________________________________________________________________________________________________		
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
+	// ______________________________________________________________________________________________________________________________________________________________________________________________________
 
 	public static int jasoTransakzioZbk() throws SQLException, ClassNotFoundException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
@@ -130,7 +150,7 @@ public class metodoak {
 					TransakzioZbk++;
 				}
 			}
-		} catch (SQLException e) { 
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return TransakzioZbk;
